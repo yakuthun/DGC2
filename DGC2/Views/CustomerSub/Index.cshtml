@@ -16,19 +16,22 @@
         <th>Tedarikçi Kodu</th>
         <th>Tedarikçi Adresi</th>
         <th>Tedarikçi Durum</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>@item.SubCustomerID</td>
-            <td>@item.SubCustomerUsername</td>
-            <td>@item.SubCustomerPassword</td>
-            <td>@item.SubCustomerName</td>
-            <td>@item.SubCustomerCode</td>
-            <td>@item.SubCustomerAddress</td>
-            <td>@item.SubCustomerStatus</td>
-            
-        </tr>
+<tr>
+    <td>@item.SubCustomerID</td>
+    <td>@item.SubCustomerUsername</td>
+    <td>@item.SubCustomerPassword</td>
+    <td>@item.SubCustomerName</td>
+    <td>@item.SubCustomerCode</td>
+    <td>@item.SubCustomerAddress</td>
+    <td>@item.SubCustomerStatus</td>
+    <td><a href="/CustomerSub/EditSubCustomer/@item.SubCustomerID" class="btn btn-warning">Tedarikçiyi Düzenle</a></td>
+    <td><a href="/CustomerSub/DeleteSubCustomer/@item.SubCustomerID" class="btn btn-danger">Tedarikçiyi Sil</a></td>
+</tr>
     }
 </table>
 <br />

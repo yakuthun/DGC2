@@ -35,7 +35,7 @@ namespace BusinessLayer.Concrete
 
         public void SubCustomerDelete(SubCustomer subcustomer)
         {
-            _customerAddsubDal.Delete(subcustomer);
+            _customerAddsubDal.Update(subcustomer);
         }
 
         public void SubCustomerUpdate(SubCustomer subcustomer)

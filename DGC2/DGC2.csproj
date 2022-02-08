@@ -2497,6 +2497,7 @@
     <Content Include="Views\Shared\_CustomerAdminLayout.cshtml" />
     <Content Include="Views\CustomerSub\Index.cshtml" />
     <Content Include="Views\CustomerSub\AddSubCustomer.cshtml" />
+    <Content Include="Views\CustomerSub\EditSubCustomer.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

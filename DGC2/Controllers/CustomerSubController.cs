@@ -42,5 +42,13 @@ namespace DGC2.Controllers
             csm.SubCustomerUpdate(p);
             return RedirectToAction("Index");
         }
+
+        public ActionResult DeleteSubCustomer(int id)
+        {
+            var subcustomervalue = csm.GetByID(id);
+            subcustomervalue.SubCustomerStatus = false;
+            csm.SubCustomerDelete(subcustomervalue);
+            return RedirectToAction("Index");
+        }
     }
 }
