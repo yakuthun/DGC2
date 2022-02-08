@@ -16,6 +16,7 @@
         <th>Tedarikçi Kodu</th>
         <th>Tedarikçi Adresi</th>
         <th>Tedarikçi Durum</th>
+        <th>Müşteri</th>
         <th>Güncelle</th>
         <th>Sil</th>
     </tr>
@@ -29,6 +30,7 @@
     <td>@item.SubCustomerCode</td>
     <td>@item.SubCustomerAddress</td>
     <td>@item.SubCustomerStatus</td>
+    <td>@item.CustomerID</td>
     <td><a href="/CustomerSub/EditSubCustomer/@item.SubCustomerID" class="btn btn-warning">Tedarikçiyi Düzenle</a></td>
     <td><a href="/CustomerSub/DeleteSubCustomer/@item.SubCustomerID" class="btn btn-danger">Tedarikçiyi Sil</a></td>
 </tr>

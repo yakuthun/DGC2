@@ -64,6 +64,10 @@
     <Compile Include="EntityFramework\EfChiefDal.cs" />
     <Compile Include="EntityFramework\EfCustomerDal.cs" />
     <Compile Include="EntityFramework\EfSubCustomerDal.cs" />
+    <Compile Include="Migrations\202202081714080_mig_add_realdate_and_driverconnections.cs" />
+    <Compile Include="Migrations\202202081714080_mig_add_realdate_and_driverconnections.designer.cs">
+      <DependentUpon>202202081714080_mig_add_realdate_and_driverconnections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -76,6 +80,11 @@
       <Project>{64df2439-a044-43e8-9c6b-9a6e47d3950d}</Project>
       <Name>EntityLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202202081714080_mig_add_realdate_and_driverconnections.resx">
+      <DependentUpon>202202081714080_mig_add_realdate_and_driverconnections.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

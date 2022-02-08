@@ -22,6 +22,8 @@ namespace EntityLayer.Concrete
 
         public int SubCustomerID { get; set; }
         public virtual SubCustomer SubCustomer { get; set; }
-      
+
+        public ICollection<Appointment> Appointments { get; set; }
+
     }
 }

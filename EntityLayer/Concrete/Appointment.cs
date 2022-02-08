@@ -19,6 +19,11 @@ namespace EntityLayer.Concrete
         public DateTime AppStartDate { get; set; }
 
         public DateTime AppFinishDate { get; set; }
+
+        public DateTime RealAppStartDate { get; set; }
+
+        public DateTime RealAppFinishDate { get; set; }
+
         public bool AppointmentStatus { get; set; }
 
 
@@ -29,6 +34,8 @@ namespace EntityLayer.Concrete
         public virtual Chief Chief { get; set; }
 
 
+        public int? DriverID { get; set; }
+        public virtual Driver Driver { get; set; }
 
     }
 }
