@@ -1,0 +1,23 @@
+﻿@model EntityLayer.Concrete.SubCustomer
+@{
+    ViewBag.Title = "AddSubCustomer";
+    Layout = "~/Views/Shared/_CustomerAdminLayout.cshtml";
+}
+<br />
+<h2>Yeni Tedarikçi Ekle</h2>
+
+@using (Html.BeginForm("AddSubCustomer", "SubCustomer", FormMethod.Post))
+{
+    <div class="form form-group">
+        @Html.Label("Kategori Adı")
+        @Html.TextBoxFor(x => x.SubCustomerName, new { @class = "form-control" })
+        
+        <br /> <br />
+        @Html.Label("Açıklamayı Yazınız")
+        @Html.TextBoxFor(x => x.SubCustomerPassword, new { @class = "form-control" })
+        
+        <br /><br />
+        <button class="btn btn-info">Kaydet</button>
+    </div>
+}
+

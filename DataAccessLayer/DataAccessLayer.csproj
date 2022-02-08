@@ -52,11 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IAdminDal.cs" />
+    <Compile Include="Abstract\ICustomerAddSubDal.cs" />
     <Compile Include="Abstract\ICustomerDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Concrete\Context.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
     <Compile Include="EntityFramework\EfAdminDal.cs" />
+    <Compile Include="EntityFramework\EfCustomerAddSubDal.cs" />
     <Compile Include="EntityFramework\EfCustomerDal.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
