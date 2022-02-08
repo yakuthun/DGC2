@@ -1,0 +1,24 @@
+﻿@model EntityLayer.Concrete.Chief
+@{
+    ViewBag.Title = "AddChief";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Şef Ekle</h2>
+
+@using (Html.BeginForm("AddChief", "AdminChief", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Adı")
+        @Html.TextAreaFor(x => x.ChiefName, new { @class = "form-control" })
+        @Html.Label("Soyadı")
+        @Html.TextAreaFor(x => x.ChiefSurname, new { @class = "form-control" })
+        @Html.Label("Şube No")
+        @Html.TextAreaFor(x => x.BranchNo, new { @class = "form-control" })
+        @Html.Label("Kullanıcı Adı")
+        @Html.TextAreaFor(x => x.ChiefUsername, new { @class = "form-control" })
+        @Html.Label("Şifre")
+        @Html.TextAreaFor(x => x.ChiefPassword, new { @class = "form-control" })
+        <button class="btn btn-primary">Oluştur</button>
+     </div>
+}

@@ -55,8 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IAdminService.cs" />
+    <Compile Include="Abstract\IChiefService.cs" />
     <Compile Include="Abstract\ICustomerService.cs" />
     <Compile Include="Concrete\AdminManager.cs" />
+    <Compile Include="Concrete\ChiefManager.cs" />
     <Compile Include="Concrete\CustomerManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

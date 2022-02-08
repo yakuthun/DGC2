@@ -1,0 +1,43 @@
+﻿@using EntityLayer.Concrete
+@model List<Chief>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Depo Şefleri</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Adı</th>
+        <th>Soyadı</th>
+        <th>Şube Numarası</th>
+        <th>Giriş Tarihi</th>
+        <th>Çıkış Tarihi</th>
+        <th>Statü</th>
+        <th>Düzenle</th>
+        <th>Bilgiler</th>
+        <th>Sil</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+
+    {
+<tr>
+    <td>@item.ChiefID</td>
+    <td>@item.ChiefName</td>
+    <td>@item.ChiefSurname</td>
+    <td>@item.BranchNo</td>
+    <td>@item.ChiefStartDate</td>
+    <td>@item.ChiefFinishDate</td>
+    <td>@item.ChiefStatus</td>
+    <td><a href="/AdminChief/EditChief/@item.ChiefID" class="btn btn-info">Düzenle</a></td>
+    <td><a href="#" class="btn btn-primary">Bilgiler</a></td>
+    <td><a href="/AdminChief/DeleteChief/@item.ChiefID" class="btn btn-danger">Sil</a></td>
+</tr>
+            }
+       
+    </table>
+<a href="/AdminChief/AddChief/" class="btn btn-info">Depo Şefi Girişi</a>

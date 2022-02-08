@@ -1,0 +1,33 @@
+﻿@model EntityLayer.Concrete.Chief
+@{
+    ViewBag.Title = "EditChief";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Şef Düzenleme</h2>
+
+
+@using (Html.BeginForm("EditChief", "AdminChief", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.Label("ID")
+    @Html.TextAreaFor(x => x.ChiefID, new { @class = "form-control" })
+    @Html.Label("Adı")
+    @Html.TextAreaFor(x => x.ChiefName, new { @class = "form-control" })
+    @Html.Label("Soyadı")
+    @Html.TextAreaFor(x => x.ChiefSurname, new { @class = "form-control" })
+    @Html.Label("Şube No")
+    @Html.TextAreaFor(x => x.BranchNo, new { @class = "form-control" })
+    @Html.Label("Kullanıcı Adı")
+    @Html.TextAreaFor(x => x.ChiefUsername, new { @class = "form-control" })
+    @Html.Label("Şifre")
+    @Html.TextAreaFor(x => x.ChiefPassword, new { @class = "form-control" })
+    @Html.Label("Giriş Tarihi")
+    @Html.TextAreaFor(x => x.ChiefStartDate, new { @class = "form-control" })
+    @Html.Label("Çıkış Tarihi")
+    @Html.TextAreaFor(x => x.ChiefFinishDate, new { @class = "form-control" })
+    @Html.Label("Statü")
+    @Html.TextAreaFor(x => x.ChiefStatus, new { @class = "form-control" })
+    <button class="btn btn-primary">Değişiklikleri Kaydet</button>
+</div>
+}
