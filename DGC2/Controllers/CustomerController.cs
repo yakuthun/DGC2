@@ -46,6 +46,7 @@ namespace DGC2.Controllers
         }
         public ActionResult DeleteCustomer(int id)
         {//Güncelleme işlemi
+            //customer delete kısmına git
             var customervalue = cm.GetByID(id);
             customervalue.CustomerStatus = false;
             cm.CustomerDelete(customervalue);
