@@ -1,0 +1,30 @@
+﻿@model EntityLayer.Concrete.Driver
+@{
+    ViewBag.Title = "AddDriver";
+    Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
+}
+
+<br />
+<h2>Yeni Sürücü Ekleme Sayfası</h2>
+
+@using (Html.BeginForm("AddDriver", "SubCustomer", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.Label("Sürücü İsim")
+    @Html.TextBoxFor(x => x.DriverName, new { @class = "form-control" })
+    <br />
+    @Html.Label("Sürücü Soyisim")
+    @Html.TextBoxFor(x => x.DriverSurname, new { @class = "form-control" })
+    <br />
+    @Html.Label("Statü")
+    @Html.TextBoxFor(x => x.DriverStatus, new { @class = "form-control" })
+    <br />
+    @Html.Label("Çalıştığı Firma")
+    @Html.TextBoxFor(x => x.DriverLogisticName, new { @class = "form-control" })
+    <br />
+    @Html.Label("ID")
+    @Html.TextBoxFor(x => x.SubCustomerID, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+</div>
+}

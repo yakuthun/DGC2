@@ -135,6 +135,7 @@
     <Compile Include="Controllers\CustomerSubController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SubCustomerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2498,6 +2499,10 @@
     <Content Include="Views\CustomerSub\Index.cshtml" />
     <Content Include="Views\CustomerSub\AddSubCustomer.cshtml" />
     <Content Include="Views\CustomerSub\EditSubCustomer.cshtml" />
+    <Content Include="Views\Shared\_SubCustomerLayout.cshtml" />
+    <Content Include="Views\SubCustomer\Index.cshtml" />
+    <Content Include="Views\SubCustomer\AddDriver.cshtml" />
+    <Content Include="Views\SubCustomer\EditDriver.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
