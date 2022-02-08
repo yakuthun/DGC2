@@ -1,0 +1,35 @@
+﻿@using EntityLayer.Concrete
+@model List<Driver>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
+}
+
+<br />
+<h1>ŞOFÖRLER</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Şoför İsim</th>
+        <th>Şoför Soyisim</th>
+        <th>Çalıştığı Firma</th>
+        <th>Durum</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.DriverID</td>
+    <td>@item.DriverName</td>
+    <td>@item.DriverSurname</td>
+    <td>@item.DriverLogisticName</td>
+    <td>@item.DriverStatus</td>
+    <td><a class="btn btn-warning" href="/SubCustomer/EditDriver/@item.DriverID">Güncelle</a></td>
+    <td><a class="btn btn-danger" href="/SubCustomer/DeleteDriver/@item.DriverID">Sil</a></td>
+</tr>
+    }
+</table>
+<a class="btn btn-success" href="/SubCustomer/AddAppoinment">Yeni Randevu Talebi</a>
+<a class="btn btn-warning" href="/SubCustomer/AddDriver/">Yeni Sürücü Girişi</a>

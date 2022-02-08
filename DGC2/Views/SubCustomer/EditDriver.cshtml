@@ -1,0 +1,33 @@
+﻿@model EntityLayer.Concrete.Driver
+@{
+    ViewBag.Title = "EditDriver";
+    Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
+}
+
+<h2>Sürücü Düzenleme Sayfası</h2>
+
+@using (Html.BeginForm("EditDriver", "SubCustomer", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.Label("ID")
+    @Html.TextBoxFor(x => x.DriverID, new { @class = "form-control" })
+    <br />
+    @Html.Label("Sürücü İsim")
+    @Html.TextBoxFor(x => x.DriverName, new { @class = "form-control" })
+    <br />
+    @Html.Label("Sürücü Soyisim")
+    @Html.TextBoxFor(x => x.DriverSurname, new { @class = "form-control" })
+    <br />
+    @Html.Label("Statü")
+    @Html.TextBoxFor(x => x.DriverStatus, new { @class = "form-control" })
+    <br />
+    @Html.Label("Çalıştığı Firma")
+    @Html.TextBoxFor(x => x.DriverLogisticName, new { @class = "form-control" })
+    <br />
+    @Html.Label("Tedarikçi ID")
+    @Html.TextBoxFor(x => x.SubCustomerID, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+</div>
+}
+
