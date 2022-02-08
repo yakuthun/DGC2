@@ -25,7 +25,7 @@ namespace BusinessLayer.Concrete
 
         public void CustomerDelete(Customer customer)
         {
-            _customerDal.Delete(customer);
+            _customerDal.Update(customer);
         }
 
         public void CustomerUpdate(Customer customer)

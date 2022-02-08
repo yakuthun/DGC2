@@ -26,6 +26,8 @@ namespace DGC2.Controllers
         [HttpPost]
         public ActionResult AddCustomer(Customer p)
         {
+            p.CustomerStartDate = DateTime.Parse(Convert.ToDateTime(DateTime.Now).ToString("dd.MM.yyyy HH:mm:ss"));
+            p.CustomerFinishDate = DateTime.Parse(Convert.ToDateTime(DateTime.Now).ToString("dd.MM.yyyy HH:mm:ss"));
             cm.CustomerAdd(p);
             return RedirectToAction("Index");
         }
@@ -40,6 +42,13 @@ namespace DGC2.Controllers
         public ActionResult EditCustomer(Customer p)
         {
             cm.CustomerUpdate(p);
+            return RedirectToAction("Index");
+        }
+        public ActionResult DeleteCustomer(int id)
+        {//Güncelleme işlemi
+            var customervalue = cm.GetByID(id);
+            customervalue.CustomerStatus = false;
+            cm.CustomerDelete(customervalue);
             return RedirectToAction("Index");
         }
 
