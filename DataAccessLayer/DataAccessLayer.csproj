@@ -52,10 +52,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IAdminDal.cs" />
+    <Compile Include="Abstract\ICustomerDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Concrete\Context.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
     <Compile Include="EntityFramework\EfAdminDal.cs" />
+    <Compile Include="EntityFramework\EfCustomerDal.cs" />
+    <Compile Include="Migrations\202202080941506_mig2_admin_customer_error_fixtest.cs" />
+    <Compile Include="Migrations\202202080941506_mig2_admin_customer_error_fixtest.designer.cs">
+      <DependentUpon>202202080941506_mig2_admin_customer_error_fixtest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202081058211_customer_admin_changes.cs" />
+    <Compile Include="Migrations\202202081058211_customer_admin_changes.designer.cs">
+      <DependentUpon>202202081058211_customer_admin_changes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,7 +79,14 @@
       <Name>EntityLayer</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202202080941506_mig2_admin_customer_error_fixtest.resx">
+      <DependentUpon>202202080941506_mig2_admin_customer_error_fixtest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202081058211_customer_admin_changes.resx">
+      <DependentUpon>202202081058211_customer_admin_changes.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -26,7 +26,7 @@ namespace EntityLayer.Concrete
         public bool SubCustomerStatus { get; set; }
 
 
-        public int CustomerID { get; set; }
+        public int? CustomerID { get; set; }
         public virtual Customer Customer { get; set; }
 
 
