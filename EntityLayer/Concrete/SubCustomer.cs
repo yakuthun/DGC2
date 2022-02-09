@@ -23,6 +23,8 @@ namespace EntityLayer.Concrete
         public string SubCustomerCode { get; set; }
         [StringLength(300)]
         public string SubCustomerAddress { get; set; }
+        [StringLength(70)]
+        public string SubCustomerCompany { get; set; }
         public bool SubCustomerStatus { get; set; }
 
 

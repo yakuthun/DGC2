@@ -70,6 +70,10 @@
     <Compile Include="Migrations\202202081714080_mig_add_realdate_and_driverconnections.designer.cs">
       <DependentUpon>202202081714080_mig_add_realdate_and_driverconnections.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202091621320_mig_driverupdate_subcustomername_added.cs" />
+    <Compile Include="Migrations\202202091621320_mig_driverupdate_subcustomername_added.designer.cs">
+      <DependentUpon>202202091621320_mig_driverupdate_subcustomername_added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -86,6 +90,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202202081714080_mig_add_realdate_and_driverconnections.resx">
       <DependentUpon>202202081714080_mig_add_realdate_and_driverconnections.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202091621320_mig_driverupdate_subcustomername_added.resx">
+      <DependentUpon>202202091621320_mig_driverupdate_subcustomername_added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
