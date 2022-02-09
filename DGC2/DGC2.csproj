@@ -2509,6 +2509,7 @@
     <Content Include="Views\AdminChief\AddChief.cshtml" />
     <Content Include="Views\AdminChief\EditChief.cshtml" />
     <Content Include="Views\Shared\_ChiefLayout.cshtml" />
+    <Content Include="Views\Chief\Index.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2532,7 +2533,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Chief\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IAdminDal.cs" />
+    <Compile Include="Abstract\IAppointmentDal.cs" />
     <Compile Include="Abstract\ICustomerAddSubDal.cs" />
     <Compile Include="Abstract\IChiefDal.cs" />
     <Compile Include="Abstract\ICustomerDal.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Concrete\Context.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
     <Compile Include="EntityFramework\EfAdminDal.cs" />
+    <Compile Include="EntityFramework\EfAppointmentDal.cs" />
     <Compile Include="EntityFramework\EfCustomerAddSubDal.cs" />
     <Compile Include="EntityFramework\EfChiefDal.cs" />
     <Compile Include="EntityFramework\EfCustomerDal.cs" />

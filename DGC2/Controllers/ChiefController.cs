@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,10 +11,11 @@ namespace DGC2.Controllers
     public class ChiefController : Controller
     {
         // GET: Chief
-        //ChiefManager cm = new ChiefManager(new EfChiefDal());
+        AppointmentManager am = new AppointmentManager(new EfAppointmentDal());
         public ActionResult Index()
         {
-            return View();
+            var appointments = am.GetList();
+            return View(appointments);
         }
     }
 }
