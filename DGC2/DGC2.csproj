@@ -2510,6 +2510,7 @@
     <Content Include="Views\AdminChief\EditChief.cshtml" />
     <Content Include="Views\Shared\_ChiefLayout.cshtml" />
     <Content Include="Views\Chief\Index.cshtml" />
+    <Content Include="Views\Chief\EditAppointment.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

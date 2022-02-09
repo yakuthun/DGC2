@@ -5,5 +5,39 @@
     Layout = "~/Views/Shared/_ChiefLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Randevular</h2>
 
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Müşteri</th>
+        <th>Kapasite</th>
+        <th>Paket Tipi</th>
+        <th>Sürücü</th>
+        <th>Randevu Geliş Tarihi</th>
+        <th>Randevu Bitiş Tarihi</th>
+        <th>Statü</th>
+        <th>Geliş Tarihi</th>
+        <th>Bitiş Tarihi</th>
+        <th>Durum</th>
+        <th>Düzenle</th>
+
+    </tr>
+    <tr>
+        @foreach (var item in Model)
+        {
+            <td>@item.AppointmentID</td>
+            <td>@item.SubCustomer.Customer.CompanyName</td>
+            <td>@item.AppointmentCapacity</td>
+            <td>@item.AppointmentLoadType</td>
+            <td>@item.Driver.DriverLogisticName</td>
+            <td>@item.AppStartDate</td>
+            <td>@item.AppFinishDate</td>
+            <td>@item.AppointmentStatus</td>
+            <td>@item.RealAppStartDate</td>
+            <td>@item.RealAppFinishDate</td>
+            <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Durum</a></td>
+            <td><a href="/Chief/EditAppointment/@item.AppointmentID" class="btn btn-warning">Düzenle</a></td>
+        }
+    </tr>
+</table>

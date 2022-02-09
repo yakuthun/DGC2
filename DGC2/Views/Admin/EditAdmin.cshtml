@@ -9,7 +9,7 @@
 @using (Html.BeginForm("EditAdmin", "Admin", FormMethod.Post))
 {
 <div class="form-group">
-    @Html.Label("Yönetici ID")
+    @Html.Label("Tedarikçi ID")
     @Html.TextAreaFor(x => x.AdminID, new { @class = "form-control" })
     @Html.Label("Yönetici Kullanıcı Adı")
     @Html.TextAreaFor(x => x.AdminUsername, new { @class = "form-control" })

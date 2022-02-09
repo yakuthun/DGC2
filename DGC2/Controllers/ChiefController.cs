@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,30 @@ namespace DGC2.Controllers
     {
         // GET: Chief
         AppointmentManager am = new AppointmentManager(new EfAppointmentDal());
+
         public ActionResult Index()
         {
-            var appointments = am.GetList();
-            return View(appointments);
+            var appointmentvalue = am.GetList();
+            return View(appointmentvalue);
+        }
+        public ActionResult DeleteAppointment(int id)
+        {
+            var appvalue = am.GetByID(id);
+            appvalue.AppointmentStatus = false;
+            am.AppointmentDelete(appvalue);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult EditAppointment(int id)
+        {
+            var appvalues = am.GetByID(id);
+            return View(appvalues);
+        }
+        [HttpPost]
+        public ActionResult EditAppointment(Appointment p)
+        {
+            am.AppointmentUpdate(p);
+            return RedirectToAction("Index");
         }
     }
 }
