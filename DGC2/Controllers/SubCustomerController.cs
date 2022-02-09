@@ -13,6 +13,7 @@ namespace DGC2.Controllers
     {
         // GET: SubCustomer
         SubCustomerManager scm = new SubCustomerManager(new EfSubCustomerDal());
+        AppointmentManager apm = new AppointmentManager(new EfAppointmentDal());
         public ActionResult Index()
         {
             var Subcustomervalues = scm.GetList();
@@ -46,6 +47,32 @@ namespace DGC2.Controllers
             var drivervalue = scm.GetByID(id);
             drivervalue.DriverStatus = false;
             scm.DriverUpdate(drivervalue);
+            return RedirectToAction("Index");
+        }
+        
+        public ActionResult ListAppoinment()
+        {
+            var listappoinment = apm.GetList();
+            return View(listappoinment);
+            
+        }
+        [HttpGet]
+        public  ActionResult AddAppoinment()
+        {
+
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult AddAppoinment(Appointment p)
+        {
+            apm.AppointmentAdd(p);
+            //p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            //p.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            //p.RealAppStartDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            //p.RealAppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+
+
             return RedirectToAction("Index");
         }
     }

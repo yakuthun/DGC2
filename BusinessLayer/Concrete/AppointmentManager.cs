@@ -35,7 +35,7 @@ namespace BusinessLayer.Concrete
 
         public Appointment GetByID(int id)
         {
-            return _appointmentDal.Get(x => x.AppointmentID == id)
+            return _appointmentDal.Get(x => x.AppointmentID == id);
         }
 
         public List<Appointment> GetList()
