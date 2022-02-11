@@ -2517,6 +2517,7 @@
     <Content Include="Views\Chief\EditAppointment.cshtml" />
     <Content Include="Views\CustomerAppAccept\Appointments.cshtml" />
     <Content Include="Views\CustomerSub\ListAppoinments.cshtml" />
+    <Content Include="Views\CustomerAppAccept\CanceledAppoinments.cshtml" />
     <Content Include="Views\Chief\PendingAppointments.cshtml" />
     <Content Include="Views\Chief\CanceledAppointments.cshtml" />
     <None Include="Web.config" />

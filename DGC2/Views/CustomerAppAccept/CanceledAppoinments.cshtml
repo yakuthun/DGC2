@@ -20,7 +20,7 @@
         <th>Randevu Bitiş Tarihi</th>
         <th>Onay Durumu</th>
         <th>Onayla</th>
-        <th>Düzenle</th>
+        
 
     </tr>
 
@@ -28,7 +28,7 @@
     {
 
 
-        if (@item.AppointmentAcceptStatus == true)
+        if (@item.AppointmentAcceptStatus == false)
         {
 
             <tr>
@@ -40,10 +40,12 @@
                 <td>@item.AppFinishDate</td>
                 <td>@item.AppointmentAcceptStatus</td>
 
-                <td><a href="/CustomerAppAccept/ApplyAppointment/@item.AppointmentID" class="btn btn-success">Onayla</a></td>
-                <td><a href="/CustomerAppAccept/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">İptal Et</a></td>
+                
+                <td><a href="/CustomerAppAccept/ApplyAppointment/@item.AppointmentID" class="btn btn-warning">İptali Geri Çek</a></td>
             </tr>
         }
     }
 
 </table>
+
+
