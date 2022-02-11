@@ -15,10 +15,14 @@ namespace EntityLayer.Concrete
         public string SubCustomerUsername { get; set; }
         [StringLength(50)]
         public string SubCustomerPassword { get; set; }
+        [StringLength(50)]
+        public string SubCustomerCreatedPassword { get; set; }
         [StringLength(20)]
         public string SubCustomerName { get; set; }
         [StringLength(20)]
         public string SubCustomerSurname { get; set; }
+        [StringLength(50)]
+        public string SubCustomerMail { get; set; }
         [StringLength(50)]
         public string SubCustomerCode { get; set; }
         [StringLength(300)]

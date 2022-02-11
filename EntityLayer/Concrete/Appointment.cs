@@ -14,24 +14,33 @@ namespace EntityLayer.Concrete
         public int AppointmentCapacity { get; set; }
         [StringLength(50)]
         public string AppointmentLoadType { get; set; }
-
+        [StringLength(50)]
+        public string AppointmentName { get; set; }
+        [StringLength(200)]
+        [Required(AllowEmptyStrings = true)]
+        public string AppointmentImage { get; set; }
+        [StringLength(200)]
+        [Required(AllowEmptyStrings = true)]
+        public string AppointmentComment { get; set; }
 
         public DateTime AppStartDate { get; set; }
 
         public DateTime AppFinishDate { get; set; }
 
-        public DateTime RealAppStartDate { get; set; }
+        public DateTime? RealAppStartDate { get; set; }
 
-        public DateTime RealAppFinishDate { get; set; }
+        public DateTime? RealAppFinishDate { get; set; }
 
         public bool AppointmentStatus { get; set; }
-
+        public bool AppointmentAcceptStatus { get; set; }
 
         public int SubCustomerID { get; set; }
         public virtual SubCustomer SubCustomer { get; set; }
 
         public int ChiefID { get; set; }
         public virtual Chief Chief { get; set; }
+
+     
 
 
         public int? DriverID { get; set; }

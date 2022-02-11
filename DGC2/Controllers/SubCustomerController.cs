@@ -33,12 +33,15 @@ namespace DGC2.Controllers
         [HttpGet]
         public ActionResult EditDriver(int id)
         {
+           
+           
             var drivervalue = scm.GetByID(id);
             return View(drivervalue);
         }
         [HttpPost]
         public ActionResult EditDriver(Driver p)
         {
+            
             scm.DriverUpdate(p);
             return RedirectToAction("Index");
         }

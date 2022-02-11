@@ -132,8 +132,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminChiefController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminSubCustomerController.cs" />
     <Compile Include="Controllers\ChiefController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\CustomerAppAcceptController.cs" />
     <Compile Include="Controllers\CustomerSubController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -2513,6 +2515,7 @@
     <Content Include="Views\SubCustomer\AddAppoinment.cshtml" />
     <Content Include="Views\SubCustomer\ListAppoinment.cshtml" />
     <Content Include="Views\Chief\EditAppointment.cshtml" />
+    <Content Include="Views\CustomerAppAccept\Appointments.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2536,6 +2539,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\AdminSubCustomer\" />
+    <Folder Include="Views\CustomerSubAppAccept\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

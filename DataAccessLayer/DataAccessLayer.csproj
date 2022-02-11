@@ -74,6 +74,10 @@
     <Compile Include="Migrations\202202091621320_mig_driverupdate_subcustomername_added.designer.cs">
       <DependentUpon>202202091621320_mig_driverupdate_subcustomername_added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202111607030_mig_appupdate_sbmmail_appacptupdatess.cs" />
+    <Compile Include="Migrations\202202111607030_mig_appupdate_sbmmail_appacptupdatess.designer.cs">
+      <DependentUpon>202202111607030_mig_appupdate_sbmmail_appacptupdatess.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -93,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202091621320_mig_driverupdate_subcustomername_added.resx">
       <DependentUpon>202202091621320_mig_driverupdate_subcustomername_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202111607030_mig_appupdate_sbmmail_appacptupdatess.resx">
+      <DependentUpon>202202111607030_mig_appupdate_sbmmail_appacptupdatess.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

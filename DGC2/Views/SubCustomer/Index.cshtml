@@ -7,7 +7,7 @@
 }
 
 <br />
-<h1>ŞOFÖRLER</h1>
+<h1>RANDEVU OLUŞTUR</h1>
 <table class="table table-bordered">
     <tr>
         <th>ID</th>
@@ -22,17 +22,18 @@
     </tr>
     @foreach (var item in Model)
     {
-    <tr>
-        <td>@item.DriverID</td>
-        <td>@item.DriverName</td>
-        <td>@item.DriverSurname</td>
-        <td>@item.DriverLogisticName</td>
-        <td>@item.DriverPlate</td>
-        <td>@item.DriverNumber</td>
-        <td>@item.DriverStatus</td>
-        <td><a class="btn btn-warning" href="/SubCustomer/EditDriver/@item.DriverID">Güncelle</a></td>
-        <td><a class="btn btn-danger" href="/SubCustomer/DeleteDriver/@item.DriverID">Sil</a></td>
-    </tr>
+<tr>
+    
+    <td>@item.DriverID</td>
+    <td>@item.DriverName</td>
+    <td>@item.DriverSurname</td>
+    <td>@item.DriverLogisticName</td>
+    <td>@item.DriverPlate</td>
+    <td>@item.DriverNumber</td>
+    <td>@item.DriverStatus</td>
+    <td><a class="btn btn-warning" href="/SubCustomer/EditDriver/@item.DriverID">Güncelle</a></td>
+    <td><a class="btn btn-danger" href="/SubCustomer/DeleteDriver/@item.DriverID">Sil</a></td>
+</tr>
     }
 </table>
 <a class="btn btn-success" href="/SubCustomer/AddAppoinment">Randevu Talebi</a>

@@ -15,6 +15,8 @@ namespace EntityLayer.Concrete
         public string CustomerUsername { get; set; }
         [StringLength(50)]
         public string CustomerPassword { get; set; }
+        [StringLength(50)]
+        public string CustomerCreatedPassword { get; set; }
         [StringLength(70)]
         public string CustomernMail { get; set; }
         [StringLength(20)]
@@ -35,7 +37,7 @@ namespace EntityLayer.Concrete
       
         public DateTime CustomerFinishDate { get; set; }
         public bool CustomerStatus { get; set; }
-
+       
         public ICollection<SubCustomer> SubCustomers { get; set; }
 
     }

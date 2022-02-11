@@ -11,6 +11,7 @@
     <tr>
         <th>ID</th>
         <th>Müşteri</th>
+        <th>Tedarikçi</th>
         <th>Kapasite</th>
         <th>Paket Tipi</th>
         <th>Sürücü</th>
@@ -27,8 +28,10 @@
     @foreach (var item in Model)
     {
 <tr>
+
     <td>@item.AppointmentID</td>
     <td>@item.SubCustomer.Customer.CompanyName</td>
+    <td>@item.SubCustomer.SubCustomerCompany</td>
     <td>@item.AppointmentCapacity</td>
     <td>@item.AppointmentLoadType</td>
     <td>@item.Driver.DriverLogisticName</td>
