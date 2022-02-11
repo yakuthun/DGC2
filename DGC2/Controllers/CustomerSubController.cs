@@ -14,6 +14,7 @@ namespace DGC2.Controllers
 
         // GET: CustomerSub
          CustomerSubManager csm = new CustomerSubManager(new EfCustomerAddSubDal());
+        AppointmentManager apm = new AppointmentManager(new EfAppointmentDal());
         public ActionResult Index()
         {
             var customersubvalues = csm.GetList();
@@ -49,6 +50,11 @@ namespace DGC2.Controllers
             subcustomervalue.SubCustomerStatus = false;
             csm.SubCustomerDelete(subcustomervalue);
             return RedirectToAction("Index");
+        }
+        public ActionResult ListAppoinments()
+        {
+            var values = apm.GetList();
+            return View(values);
         }
     }
 }

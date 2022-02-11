@@ -2513,6 +2513,7 @@
     <Content Include="Views\SubCustomer\AddAppoinment.cshtml" />
     <Content Include="Views\SubCustomer\ListAppoinment.cshtml" />
     <Content Include="Views\Chief\EditAppointment.cshtml" />
+    <Content Include="Views\CustomerSub\ListAppoinments.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
