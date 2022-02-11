@@ -1,0 +1,34 @@
+﻿@using EntityLayer.Concrete
+@model List<Appointment>
+
+@{
+    ViewBag.Title = "ListAppoinments";
+    Layout = "~/Views/Shared/_CustomerAdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Tür</th>
+        <th>Hacim</th>
+        <th>Başlangıç<th>
+        <th>Bitiş</th>
+        <th>Güncelle</th>
+       
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.AppointmentLoadType</td>
+            <td>@item.AppointmentCapacity</td>
+            <td>@item.AppStartDate</td>
+            <td>@item.AppFinishDate</td>
+            <td>@item.AppointmentStatus</td>
+            
+            <td><a href="#" class="btn btn-warning">Onayla</a></td>
+            <td><a href="#" class="btn btn-danger">İptal Et</a></td>
+        </tr>
+    }
+</table>
+<br />
+
+
