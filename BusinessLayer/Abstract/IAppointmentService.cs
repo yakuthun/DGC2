@@ -10,8 +10,11 @@ namespace BusinessLayer.Abstract
     public interface IAppointmentService
     {
         List<Appointment> GetList();
+        
+
         void AppointmentAdd(Appointment appointment);
         Appointment GetByID(int id);
+        List<Appointment> GetBySubCustomer();
         void AppointmentDelete(Appointment appointment);
         void AppointmentUpdate(Appointment appointment);
     }

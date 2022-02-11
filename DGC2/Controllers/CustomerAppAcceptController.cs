@@ -1,5 +1,7 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +14,14 @@ namespace DGC2.Controllers
     {
         // GET: CustomerSubAppAccept
         AppointmentManager am = new AppointmentManager(new EfAppointmentDal());
+        Context c = new Context();
+
+        
         public ActionResult Appointments()
         {
-            var appointmentvalue = am.GetList();
+
+            
+            var appointmentvalue = am.GetBySubCustomer();
             return View(appointmentvalue);
         }
     }

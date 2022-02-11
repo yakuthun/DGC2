@@ -10,6 +10,7 @@ namespace BusinessLayer.Abstract
     public interface ICustomerService
     {
         List<Customer> GetList();
+        
         void CustomerAdd(Customer customer);
         Customer GetByID(int id);
         void CustomerDelete(Customer customer);

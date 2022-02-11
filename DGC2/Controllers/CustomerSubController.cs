@@ -51,10 +51,6 @@ namespace DGC2.Controllers
             csm.SubCustomerDelete(subcustomervalue);
             return RedirectToAction("Index");
         }
-        public ActionResult ListAppoinments()
-        {
-            var values = apm.GetList();
-            return View(values);
-        }
+        
     }
 }

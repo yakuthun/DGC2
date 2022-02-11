@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace BusinessLayer.Concrete
     public class CustomerManager : ICustomerService
     {
         ICustomerDal _customerDal;
+        
 
         public CustomerManager(ICustomerDal customerDal)
         {
@@ -42,5 +44,7 @@ namespace BusinessLayer.Concrete
         {
             return _customerDal.List();
         }
+
+        
     }
 }

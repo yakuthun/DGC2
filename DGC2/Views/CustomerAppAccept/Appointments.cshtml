@@ -2,7 +2,7 @@
 @model List<Appointment>
 @{
     ViewBag.Title = "Appointments";
-    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    Layout = "~/Views/Shared/_CustomerAdminLayout.cshtml";
 }
 
 
@@ -10,18 +10,16 @@
 
 <table class="table table-bordered">
     <tr>
-        <th>ID</th>
-        <th>Müşteri</th>
+        
+       
         <th>Tedarikçi</th>
         <th>Kapasite</th>
         <th>Paket Tipi</th>
         <th>Sürücü</th>
         <th>Randevu Geliş Tarihi</th>
         <th>Randevu Bitiş Tarihi</th>
-        <th>Statü</th>
-        <th>Geliş Tarihi</th>
-        <th>Bitiş Tarihi</th>
-        <th>Durum</th>
+        <th>Onay Durumu</th>
+        <th>Onayla</th>
         <th>Düzenle</th>
 
     </tr>
@@ -29,8 +27,8 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.AppointmentID</td>
-            <td>@item.SubCustomer.Customer.CompanyName</td>
+            
+           
             <td>@item.SubCustomer.SubCustomerCompany</td>
             <td>@item.AppointmentCapacity</td>
             <td>@item.AppointmentLoadType</td>
@@ -38,10 +36,9 @@
             <td>@item.AppStartDate</td>
             <td>@item.AppFinishDate</td>
             <td>@item.AppointmentAcceptStatus</td>
-            <td>@item.RealAppStartDate</td>
-            <td>@item.RealAppFinishDate</td>
-            <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Durum</a></td>
-            <td><a href="/Chief/EditAppointment/@item.AppointmentID" class="btn btn-warning">Düzenle</a></td>
+            
+            <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Onayla</a></td>
+            <td><a href="/Chief/EditAppointment/@item.AppointmentID" class="btn btn-warning">İptal Et</a></td>
         </tr>
     }
 
