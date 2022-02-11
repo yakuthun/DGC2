@@ -19,13 +19,24 @@ namespace DGC2.Controllers
             var appointmentvalue = am.GetList();
             return View(appointmentvalue);
         }
+
+
         public ActionResult DeleteAppointment(int id)
         {
             var appvalue = am.GetByID(id);
             appvalue.AppointmentStatus = false;
             am.AppointmentDelete(appvalue);
-            return RedirectToAction("Index");
+            return RedirectToAction("PendingAppointments");
         }
+        public ActionResult ApplyAppointment(int id)
+        {
+            var appvalue = am.GetByID(id);
+            appvalue.AppointmentStatus = true;
+            am.AppointmentDelete(appvalue);
+            return RedirectToAction("CanceledAppointments");
+        }
+
+
         [HttpGet]
         public ActionResult EditAppointment(int id)
         {
@@ -38,5 +49,17 @@ namespace DGC2.Controllers
             am.AppointmentUpdate(p);
             return RedirectToAction("Index");
         }
+        public ActionResult PendingAppointments()
+        {
+            var appointmentvalue = am.GetList();
+            return View(appointmentvalue);
+        }
+        public ActionResult CanceledAppointments()
+        {
+            var appointmentvalue = am.GetList();
+            return View(appointmentvalue);
+        }
     }
+
+    //
 }

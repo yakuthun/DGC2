@@ -43,6 +43,10 @@ namespace BusinessLayer.Concrete
         {
             return _appointmentDal.List(x => x.SubCustomer.CustomerID == 1); //Session'dan gelecek.
         }
+        public List<Appointment> GetByChief()
+        {
+            return _appointmentDal.List(x => x.SubCustomer.CustomerID == 1); //Session'dan gelecek.
+        }
 
         public List<Appointment> GetList()
         {

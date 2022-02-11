@@ -2517,6 +2517,8 @@
     <Content Include="Views\Chief\EditAppointment.cshtml" />
     <Content Include="Views\CustomerAppAccept\Appointments.cshtml" />
     <Content Include="Views\CustomerSub\ListAppoinments.cshtml" />
+    <Content Include="Views\Chief\PendingAppointments.cshtml" />
+    <Content Include="Views\Chief\CanceledAppointments.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2541,7 +2543,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\AdminSubCustomer\" />
-    <Folder Include="Views\CustomerSubAppAccept\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

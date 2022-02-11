@@ -15,6 +15,7 @@ namespace BusinessLayer.Abstract
         void AppointmentAdd(Appointment appointment);
         Appointment GetByID(int id);
         List<Appointment> GetBySubCustomer();
+        List<Appointment> GetByChief();
         void AppointmentDelete(Appointment appointment);
         void AppointmentUpdate(Appointment appointment);
     }
