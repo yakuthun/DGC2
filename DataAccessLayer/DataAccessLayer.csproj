@@ -82,6 +82,10 @@
     <Compile Include="Migrations\202202121424151_mig_trackadded.designer.cs">
       <DependentUpon>202202121424151_mig_trackadded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202121736007_mig_appincomingand_appdownloadedDATE_ADDED.cs" />
+    <Compile Include="Migrations\202202121736007_mig_appincomingand_appdownloadedDATE_ADDED.designer.cs">
+      <DependentUpon>202202121736007_mig_appincomingand_appdownloadedDATE_ADDED.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -107,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202121424151_mig_trackadded.resx">
       <DependentUpon>202202121424151_mig_trackadded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202121736007_mig_appincomingand_appdownloadedDATE_ADDED.resx">
+      <DependentUpon>202202121736007_mig_appincomingand_appdownloadedDATE_ADDED.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

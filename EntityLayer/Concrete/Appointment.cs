@@ -27,9 +27,9 @@ namespace EntityLayer.Concrete
 
         public DateTime AppFinishDate { get; set; }
 
-        public DateTime? RealAppStartDate { get; set; }
+        public DateTime? InComingDate { get; set; }
 
-        public DateTime? RealAppFinishDate { get; set; }
+        public DateTime? DownloadedDate { get; set; }
 
         public bool AppointmentStatus { get; set; }
         public int AppointmentTrackStatus { get; set; }
