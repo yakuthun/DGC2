@@ -21,14 +21,17 @@
         <th>Statü</th>
         <th>Geliş Tarihi</th>
         <th>Bitiş Tarihi</th>
-        <th>Durum</th>
-        <th>Düzenle</th>
+        <th>Durum 1</th>
+        <th>Durum 2</th>
+        <th>Durum 3</th>
+        <th>Durum 4</th>
+       
 
     </tr>
     @foreach (var item in Model)
     {
 
-        if (item.AppointmentStatus == true)
+        if (item.AppointmentTrackStatus == 4 || item.AppointmentTrackStatus == 8 || item.AppointmentTrackStatus == 9)
         {
 
             <tr>
@@ -43,8 +46,11 @@
                 <td>@item.AppointmentStatus</td>
                 <td>@item.RealAppStartDate</td>
                 <td>@item.RealAppFinishDate</td>
-                <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Durum</a></td>
-                <td><a href="/Chief/EditAppointment/@item.AppointmentID" class="btn btn-warning">Düzenle</a></td>
+                <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Geldi</a></td>
+                <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">İndiriliyor</a></td>
+                <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Geldi İndi</a></td>
+                <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Tamamlandı</a></td>
+        
             </tr>
 
         }

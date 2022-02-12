@@ -50,12 +50,33 @@ namespace DGC2.Controllers
             am.AppointmentUpdate(p);
             return RedirectToAction("Index");
         }
-        public ActionResult PendingAppointments()
+        // 8- GELMEYEN
+        public ActionResult NotComing()
         {
             var appointmentvalue = am.GetList();
             return View(appointmentvalue);
         }
-        public ActionResult CanceledAppointments()
+        // 8- DEPOYA GELEN
+        public ActionResult InComingApp()
+        {
+            var appointmentvalue = am.GetList();
+            return View(appointmentvalue);
+        }
+        // 9- İNDİRİLİYOR
+        public ActionResult Downloaded()
+        {
+            var appointmentvalue = am.GetList();
+            return View(appointmentvalue);
+        }
+        // 9 - GELDİ VE İNDİRİLDİ
+        public ActionResult InComingAndDownloading()
+        {
+            var appointmentvalue = am.GetList();
+            return View(appointmentvalue);
+        }
+
+        // 9 - TAMAMLANAN
+        public ActionResult Completed()
         {
             var appointmentvalue = am.GetList();
             return View(appointmentvalue);
