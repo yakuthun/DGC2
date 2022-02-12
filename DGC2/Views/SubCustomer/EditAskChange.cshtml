@@ -1,0 +1,65 @@
+﻿@model EntityLayer.Concrete.Appointment
+@{
+    ViewBag.Title = "EditAskChange";
+    Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
+}
+
+<h2>Randevuyu Düzenle</h2>
+@using (Html.BeginForm("EditAskChange", "SubCustomer", FormMethod.Post))
+{
+<div class="form-group">
+
+    @Html.HiddenFor(x => x.AppointmentTrackStatus)
+    @Html.HiddenFor(x => x.AppointmentID)
+    @Html.HiddenFor(x => x.AppointmentLoadType)
+    @Html.HiddenFor(x => x.DriverID)
+    @Html.HiddenFor(x => x.SubCustomerID)
+    @Html.HiddenFor(x => x.AppointmentStatus)
+    @Html.HiddenFor(x => x.ChiefID)
+    @Html.HiddenFor(x => x.RealAppFinishDate)
+    @Html.HiddenFor(x => x.AppointmentImage)
+    @Html.HiddenFor(x => x.AppointmentComment)
+    @Html.HiddenFor(x => x.AppointmentName)
+    @Html.HiddenFor(x => x.AppFinishDate)
+
+    <br />
+    @Html.Label("Mal Türü")
+    @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control" })
+    <br />
+    @Html.Label("Kapasite")
+    @Html.TextBoxFor(x => x.AppointmentCapacity, new { @class = "form-control" })
+    <br />
+    @*@Html.Label("Sürücü ID")
+        @Html.TextBoxFor(x => x.DriverID, new { @class = "form-control" })
+        <br />
+        @Html.Label("Firma ID")
+        @Html.TextBoxFor(x => x.SubCustomerID, new { @class = "form-control" })*@
+    @*<br />
+        @Html.Label("Durum")
+        @Html.TextBoxFor(x => x.AppointmentStatus, new { @class = "form-control" })*@
+    @*<br />
+        @Html.Label("Şef ID")
+        @Html.TextBoxFor(x => x.ChiefID, new { @class = "form-control" })*@
+    <br />
+    @Html.Label("başla")
+    @Html.TextBoxFor(x => x.AppStartDate, new { @class = "form-control" })
+    @*<br />
+        @Html.Label("bitiş")
+        @Html.TextBoxFor(x => x.AppFinishDate, new { @class = "form-control" })*@
+    @*<br />
+        @Html.Label("start real")
+        @Html.TextBoxFor(x => x.RealAppStartDate, new { @class = "form-control" })
+        <br />
+        @Html.Label("bitiş real")
+        @Html.TextBoxFor(x => x.AppointmentName, new { @class = "form-control" })
+        <br />
+        @Html.Label("bitiş real")
+        @Html.TextBoxFor(x => x.AppointmentComment, new { @class = "form-control" })
+        <br />
+        @Html.Label("bitiş real")
+        @Html.TextBoxFor(x => x.AppointmentImage, new { @class = "form-control" })
+        <br />*@
+    <br />
+    <button class="btn btn-success">Kaydet</button>
+</div>
+}

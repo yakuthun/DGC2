@@ -71,17 +71,29 @@ namespace DGC2.Controllers
         {
 
 
-            var showappoinment = apm.GetBySubCustomer();
-          
-            return View(showappoinment);
+            var askvalue = apm.GetByID(id);
+            return View(askvalue);
         }
         [HttpPost]
         public ActionResult EditAskChange(Appointment p)
         {
-
-            apm.AppointmentUpdate(p);
             
-            return RedirectToAction("AppliedAppoinment");
+            
+            
+            apm.AppointmentAdd(p);
+            return RedirectToAction("AppliedListAppoinment");
+        }
+
+        public ActionResult EditAskChangeOnAdd(int id)
+        {
+
+            var value = apm.GetByID(id);
+            
+            value.AppointmentStatus = true;
+            apm.AppointmentUpdate(value);
+            
+
+            return RedirectToAction("AppliedListAppoinment");
         }
 
         public ActionResult CanceledListAppoinment()
@@ -101,7 +113,7 @@ namespace DGC2.Controllers
             var appvalue = apm.GetByID(id);
             appvalue.AppointmentTrackStatus = 20;
             apm.AppointmentUpdate(appvalue);
-            return RedirectToAction("AppliedListAppoinment");
+            return RedirectToAction("AppliedAppoinment");
         }
 
         [HttpGet]

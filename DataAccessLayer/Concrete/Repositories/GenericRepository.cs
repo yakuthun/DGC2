@@ -57,6 +57,7 @@ namespace DataAccessLayer.Concrete.Repositories
             var updatedEntity = c.Entry(p);
             updatedEntity.State = EntityState.Modified;
             c.SaveChanges();
+            
         }
     }
 }

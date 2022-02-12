@@ -25,9 +25,11 @@
                 <td>@item.AppointmentCapacity</td>
                 <td>@item.AppointmentLoadType</td>
                 <td>@item.AppStartDate</td>
+                <td>@item.AppointmentTrackStatus</td>
                 <td>@item.AppointmentStatus</td>
                 <td>@item.Driver.DriverName  @item.Driver.DriverSurname</td>
-                <td><a href="/SubCustomer/EditAskChange" class="btn btn-info">Düzenle</a></td>
+                <td><a href="/SubCustomer/EditAskChange/@item.AppointmentID" class="btn btn-info">Düzenle</a></td>
+
             </tr>
         }
     }
