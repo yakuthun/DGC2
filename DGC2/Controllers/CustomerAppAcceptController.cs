@@ -29,6 +29,18 @@ namespace DGC2.Controllers
             var appointmentvalue = am.GetBySubCustomer();
             return View(appointmentvalue);
         }
+        public ActionResult WantsChangeAppoinments()
+        {
+            var appointmentvalue = am.GetBySubCustomer();
+            return View(appointmentvalue);
+        }
+        public ActionResult AccesChangeAppointment(int id)
+        {
+            var appvalue = am.GetByID(id);
+            appvalue.AppointmentTrackStatus = 2;
+            am.AppointmentUpdate(appvalue);
+            return RedirectToAction("Appointments");
+        }
         public ActionResult ApplyAppointment(int id)
         {
             var appvalue = am.GetByID(id);

@@ -2521,6 +2521,11 @@
     <Content Include="Views\Chief\PendingAppointments.cshtml" />
     <Content Include="Views\Chief\CanceledAppointments.cshtml" />
     <Content Include="Views\CustomerAppAccept\WaitingAppointments.cshtml" />
+    <Content Include="Views\SubCustomer\AppliedListAppoinment.cshtml" />
+    <Content Include="Views\SubCustomer\CanceledListAppoinment.cshtml" />
+    <Content Include="Views\SubCustomer\WaitingListAppoinment.cshtml" />
+    <Content Include="Views\SubCustomer\AskChangeList.cshtml" />
+    <Content Include="Views\CustomerAppAccept\WantsChangeAppoinments.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

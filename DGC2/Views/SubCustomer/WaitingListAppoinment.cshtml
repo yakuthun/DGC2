@@ -19,17 +19,19 @@
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            
-            <td>@item.SubCustomer.SubCustomerName</td>
-            <td>@item.AppointmentCapacity</td>
-            <td>@item.AppointmentLoadType</td>
-            <td>@item.AppStartDate</td>
-            <td>@item.AppointmentStatus</td>
-            <td>@item.Driver.DriverName  @item.Driver.DriverSurname</td>
-            
-        </tr>
+        if (item.AppointmentTrackStatus == 1)
+        {
+            <tr>
+
+                <td>@item.SubCustomer.SubCustomerName</td>
+                <td>@item.AppointmentCapacity</td>
+                <td>@item.AppointmentLoadType</td>
+                <td>@item.AppStartDate</td>
+                <td>@item.AppointmentStatus</td>
+                <td>@item.Driver.DriverName  @item.Driver.DriverSurname</td>
+
+            </tr>
+        }
     }
 </table>
-
 
