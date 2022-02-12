@@ -70,6 +70,7 @@ namespace DGC2.Controllers
         public ActionResult AddAppoinment(Appointment p)
         {
             apm.AppointmentAdd(p);
+            p.AppointmentTrackStatus = 1;
             //p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             //p.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             //p.RealAppStartDate = DateTime.Parse(DateTime.Now.ToShortDateString());
