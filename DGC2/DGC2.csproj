@@ -2524,6 +2524,9 @@
     <Content Include="Views\SubCustomer\WaitingListAppoinment.cshtml" />
     <Content Include="Views\SubCustomer\AskChangeList.cshtml" />
     <Content Include="Views\CustomerAppAccept\WantsChangeAppoinments.cshtml" />
+    <Content Include="Views\Chief\Finished.cshtml" />
+    <Content Include="Views\Chief\NotComings.cshtml" />
+    <Content Include="Views\Chief\EditAppPartial.cshtml" />
     <Content Include="Views\SubCustomer\EditAskChange.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">

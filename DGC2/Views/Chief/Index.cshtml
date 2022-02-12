@@ -1,5 +1,7 @@
 ﻿@using EntityLayer.Concrete
 @model List<Appointment>
+
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_ChiefLayout.cshtml";
@@ -11,7 +13,9 @@
     }
 </style>
 
-@{string color = "";}
+@{string color1 = "";}
+@{string color2 = "";}
+@{string color3 = "";}
 
 <h2>Bekleyen Randevular </h2>
 
@@ -23,16 +27,16 @@
         <th>Kapasite</th>
         <th>Paket Tipi</th>
         <th>Sürücü</th>
-        <th>Randevu Geliş Tarihi</th>
-        <th>Randevu Bitiş Tarihi</th>
-        <th>Statü</th>
-        <th>Geliş Tarihi</th>
-        <th>Bitiş Tarihi</th>
+        <th>Randevu Alış Tarihi</th>
+        <th>Geldi</th>
+        <th>İndiriliyor</th>
+        <th>Tamamlandı</th>
+        <th>Durum</th>
         <th>Durum 1</th>
         <th>Durum 2</th>
-        <th>Durum 3</th>
         <th>Durum 4</th>
         <th>Durum 5</th>
+        <th>İşlem Yap</th>
 
 
     </tr>
@@ -42,45 +46,73 @@
         if (item.AppointmentTrackStatus == 4 || item.AppointmentTrackStatus == 8 || item.AppointmentTrackStatus == 9)
         {
 
-          
-
-<tr>
-    <td>@item.AppointmentID</td>
-    <td>@item.SubCustomer.Customer.CompanyName</td>
-    <td>@item.SubCustomer.SubCustomerCompany</td>
-    <td>@item.AppointmentCapacity</td>
-    <td>@item.AppointmentLoadType</td>
-    <td>@item.Driver.DriverLogisticName</td>
-    <td>@item.AppStartDate</td>
-    <td>@item.AppFinishDate</td>
-    <td>@item.AppointmentStatus</td>
-    <td>@item.RealAppStartDate</td>
-    <td>@item.RealAppFinishDate</td>
 
 
-    @if (item.AppointmentTrackStatus == 4)
-    {
-        color = "btn btn-danger";
-    }
-    @if (item.AppointmentTrackStatus == 8)
-    {
-        color = "btn btn btn-success inactiveLink";
-    }
-    @if (item.AppointmentTrackStatus == 9)
-    {
-        color = "btn btn btn-success inactiveLink";
-    }
-    <td><a href="/Chief/InComingApp/@item.AppointmentID" class="@color ">Geldi</a></td>
-    <td><a href="/Chief/Downloaded/@item.AppointmentID" class="@color">İndiriliyor</a></td>
-    <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Geldi İndi</a></td>
-    <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Tamamlandı</a></td>
-    <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Gelmedi</a></td>
+            <tr>
+                <td>@item.AppointmentID</td>
+                <td>@item.SubCustomer.Customer.CompanyName</td>
+                <td>@item.SubCustomer.SubCustomerCompany</td>
+                <td>@item.AppointmentCapacity</td>
+                <td>@item.AppointmentLoadType</td>
+                <td>@item.Driver.DriverLogisticName</td>
 
-</tr>
+                <td>@item.AppFinishDate</td>
+                <td>@item.InComingDate</td>
+                <td>@item.DownloadedDate</td>
+                <td>@item.AppStartDate</td>
+
+                @switch (item.AppointmentTrackStatus)
+                {
+                    case 4:
+                        color1 = "btn btn-secondary";
+                        color2 = "btn btn-secondary";
+                        color3 = "btn btn-secondary inactiveLink";
+                        break;
+                    case 8:
+                        color1 = "btn btn btn-info inactiveLink";
+                        color2 = "btn btn-secondary";
+                        color3 = "btn btn-secondary inactiveLink";
+                        break;
+                    case 9:
+                        color1 = "btn btn btn-success inactiveLink";
+                        color2 = "btn btn btn-success inactiveLink";
+                        color3 = "btn btn-secondary";
+                        break;
+                }
+
+
+
+                <td>@item.AppointmentTrackStatus</td>
+                <td><a href="/Chief/InComingApp/@item.AppointmentID" class="@color1">Geldi</a></td>
+                <td><a href="/Chief/Downloaded/@item.AppointmentID" class="@color2">İndiriliyor</a></td>
+                <td><a href="/Chief/Completed/@item.AppointmentID" class="@color3">Tamamlandı</a></td>
+                <td><a href="/Chief/NotComing/@item.AppointmentID" class="btn btn-danger">Gelmedi</a></td>
+                <td>
+
+
+                <td>
+                    <a href="/Chief/EditAppointment/@item.AppointmentID" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+                        Test
+                    </a>
+
+                </td>
+            </tr>
+            <div class="modal" id="Modal1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title">Hakkımızda Metin Girişi</h2>
+                        </div>
+                        <iframe src="/Chief/EditAppPartial/@item.AppointmentID" ></iframe>
+
+                    </div>
+                </div>
+            </div>
 
         }
 
     }
 
 </table>
+
 

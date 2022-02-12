@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
@@ -16,45 +17,68 @@ namespace DGC2.Controllers
 
         public ActionResult Index()
         {
+
             var appointmentvalue = am.GetList();
             return View(appointmentvalue);
         }
 
 
-        public ActionResult DeleteAppointment(int id)
+
+
+        [HttpPost]
+        public ActionResult UpdateApp(Appointment p)
         {
-            var appvalue = am.GetByID(id);
-            appvalue.AppointmentStatus = false;
-            am.AppointmentDelete(appvalue);
+            Context c = new Context();
+            c.Entry(p).State = System.Data.Entity.EntityState.Modified;
+            c.SaveChanges();
             return RedirectToAction("Index");
         }
-        public ActionResult ApplyAppointment(int id)
-        {
 
-            var appvalue = am.GetByID(id);
-            appvalue.AppointmentStatus = true;
-            am.AppointmentDelete(appvalue);
-            return RedirectToAction("CanceledAppointments");
+
+        public ActionResult Finished()
+        {
+            var appointmentvalue = am.GetList();
+            return View(appointmentvalue);
+        }
+
+        public ActionResult NotComings()
+        {
+            var appointmentvalue = am.GetList();
+            return View(appointmentvalue);
         }
 
 
-        [HttpGet]
-        public ActionResult EditAppointment(int id)
-        {
-            var appvalues = am.GetByID(id);
-            return View(appvalues);
-        }
+        //[HttpGet]
+        //public ActionResult EditAppointment(int id)
+        //{
+        //    var appvalues = am.GetByID(id);
+        //    return View(appvalues);
+        //}
         [HttpPost]
         public ActionResult EditAppointment(Appointment p)
         {
             am.AppointmentUpdate(p);
             return RedirectToAction("Index");
         }
-        // 5 - GELMEYEN
-        public ActionResult NotComing()
+        [HttpGet]
+        public PartialViewResult EditAppPartial(int id)
         {
-            var appointmentvalue = am.GetList();
-            return View(appointmentvalue);
+            var appvalues = am.GetByID(id);
+            return PartialView(appvalues);
+        }
+        [HttpPost]
+        public ActionResult EditAppPartial(Appointment p)
+        {
+            am.AppointmentUpdate(p);
+            return RedirectToAction("Index");
+        }
+        // 5 - GELMEYEN
+        public ActionResult NotComing(int id)
+        {
+            var appvalue = am.GetByID(id);
+            appvalue.AppointmentTrackStatus = 5;
+            am.AppointmentDelete(appvalue);
+            return RedirectToAction("Index");
         }
         // 8- DEPOYA GELEN
         public ActionResult InComingApp(int id)
@@ -80,10 +104,12 @@ namespace DGC2.Controllers
         }
 
         // 9 - TAMAMLANAN
-        public ActionResult Completed()
+        public ActionResult Completed(int id)
         {
-            var appointmentvalue = am.GetList();
-            return View(appointmentvalue);
+            var appvalue = am.GetByID(id);
+            appvalue.AppointmentTrackStatus = 10;
+            am.AppointmentDelete(appvalue);
+            return RedirectToAction("Index");
         }
     }
 
