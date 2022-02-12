@@ -26,7 +26,7 @@ namespace DGC2.Controllers
             var appvalue = am.GetByID(id);
             appvalue.AppointmentStatus = false;
             am.AppointmentDelete(appvalue);
-            return RedirectToAction("PendingAppointments");
+            return RedirectToAction("Index");
         }
         public ActionResult ApplyAppointment(int id)
         {
@@ -50,12 +50,37 @@ namespace DGC2.Controllers
             am.AppointmentUpdate(p);
             return RedirectToAction("Index");
         }
-        public ActionResult PendingAppointments()
+        // 5 - GELMEYEN
+        public ActionResult NotComing()
         {
             var appointmentvalue = am.GetList();
             return View(appointmentvalue);
         }
-        public ActionResult CanceledAppointments()
+        // 8- DEPOYA GELEN
+        public ActionResult InComingApp(int id)
+        {
+            var appvalue = am.GetByID(id);
+            appvalue.AppointmentTrackStatus = 8;
+            am.AppointmentDelete(appvalue);
+            return RedirectToAction("Index");
+        }
+        // 9- İNDİRİLİYOR
+        public ActionResult Downloaded(int id)
+        {
+            var appvalue = am.GetByID(id);
+            appvalue.AppointmentTrackStatus = 9;
+            am.AppointmentDelete(appvalue);
+            return RedirectToAction("Index");
+        }
+        // 9 - GELDİ VE İNDİRİLDİ
+        public ActionResult InComingAndDownloading()
+        {
+            var appointmentvalue = am.GetList();
+            return View(appointmentvalue);
+        }
+
+        // 9 - TAMAMLANAN
+        public ActionResult Completed()
         {
             var appointmentvalue = am.GetList();
             return View(appointmentvalue);
