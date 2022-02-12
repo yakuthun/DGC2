@@ -4,8 +4,16 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_ChiefLayout.cshtml";
 }
+<style>
+    .inactiveLink {
+        pointer-events: none;
+        cursor: default;
+    }
+</style>
 
-<h2>Bekleyen Randevular</h2>
+@{string color = "";}
+
+<h2>Bekleyen Randevular </h2>
 
 <table class="table table-bordered">
     <tr>
@@ -34,25 +42,41 @@
         if (item.AppointmentTrackStatus == 4 || item.AppointmentTrackStatus == 8 || item.AppointmentTrackStatus == 9)
         {
 
-            <tr>
-                <td>@item.AppointmentID</td>
-                <td>@item.SubCustomer.Customer.CompanyName</td>
-                <td>@item.SubCustomer.SubCustomerCompany</td>
-                <td>@item.AppointmentCapacity</td>
-                <td>@item.AppointmentLoadType</td>
-                <td>@item.Driver.DriverLogisticName</td>
-                <td>@item.AppStartDate</td>
-                <td>@item.AppFinishDate</td>
-                <td>@item.AppointmentStatus</td>
-                <td>@item.RealAppStartDate</td>
-                <td>@item.RealAppFinishDate</td>
-                <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Geldi</a></td>
-                <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">İndiriliyor</a></td>
-                <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Geldi İndi</a></td>
-                <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Tamamlandı</a></td>
-                <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Gelmedi</a></td>
+          
 
-            </tr>
+<tr>
+    <td>@item.AppointmentID</td>
+    <td>@item.SubCustomer.Customer.CompanyName</td>
+    <td>@item.SubCustomer.SubCustomerCompany</td>
+    <td>@item.AppointmentCapacity</td>
+    <td>@item.AppointmentLoadType</td>
+    <td>@item.Driver.DriverLogisticName</td>
+    <td>@item.AppStartDate</td>
+    <td>@item.AppFinishDate</td>
+    <td>@item.AppointmentStatus</td>
+    <td>@item.RealAppStartDate</td>
+    <td>@item.RealAppFinishDate</td>
+
+
+    @if (item.AppointmentTrackStatus == 4)
+    {
+        color = "btn btn-danger";
+    }
+    @if (item.AppointmentTrackStatus == 8)
+    {
+        color = "btn btn btn-success inactiveLink";
+    }
+    @if (item.AppointmentTrackStatus == 9)
+    {
+        color = "btn btn btn-success inactiveLink";
+    }
+    <td><a href="/Chief/InComingApp/@item.AppointmentID" class="@color ">Geldi</a></td>
+    <td><a href="/Chief/Downloaded/@item.AppointmentID" class="@color">İndiriliyor</a></td>
+    <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Geldi İndi</a></td>
+    <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Tamamlandı</a></td>
+    <td><a href="/Chief/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">Gelmedi</a></td>
+
+</tr>
 
         }
 
