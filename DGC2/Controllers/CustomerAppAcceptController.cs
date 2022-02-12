@@ -29,19 +29,19 @@ namespace DGC2.Controllers
             var appointmentvalue = am.GetBySubCustomer();
             return View(appointmentvalue);
         }
-        public ActionResult ApplyAppointment(int id)
-        {
-            var appvalue = am.GetByID(id);
-            appvalue.AppointmentAcceptStatus = true;
-            am.AppointmentUpdate(appvalue);
-            return RedirectToAction("Appointments");
-        }
-        public ActionResult DeleteAppointment(int id)
-        {
-            var appvalue = am.GetByID(id);
-            appvalue.AppointmentAcceptStatus = false;
-            am.AppointmentDelete(appvalue);
-            return RedirectToAction("Appointments");
-        }
+        //public ActionResult ApplyAppointment(int id)
+        //{
+        //    var appvalue = am.GetByID(id);
+        //    appvalue.AppointmentAcceptStatus = true;
+        //    am.AppointmentUpdate(appvalue);
+        //    return RedirectToAction("Appointments");
+        //}
+        //public ActionResult DeleteAppointment(int id)
+        //{
+        //    var appvalue = am.GetByID(id);
+        //    appvalue.AppointmentAcceptStatus = false;
+        //    am.AppointmentDelete(appvalue);
+        //    return RedirectToAction("Appointments");
+        //}
     }
 }

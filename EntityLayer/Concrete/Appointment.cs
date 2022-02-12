@@ -32,7 +32,7 @@ namespace EntityLayer.Concrete
         public DateTime? RealAppFinishDate { get; set; }
 
         public bool AppointmentStatus { get; set; }
-        public bool AppointmentAcceptStatus { get; set; }
+        public int AppointmentTrackStatus { get; set; }
 
         public int SubCustomerID { get; set; }
         public virtual SubCustomer SubCustomer { get; set; }

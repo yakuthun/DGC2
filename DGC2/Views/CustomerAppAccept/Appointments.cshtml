@@ -28,7 +28,7 @@
     {
 
 
-        if (@item.AppointmentAcceptStatus == true)
+        @*if (@item.AppointmentAcceptStatus == true)
         {
 
             <tr>
@@ -38,11 +38,11 @@
                 <td>@item.Driver.DriverLogisticName</td>
                 <td>@item.AppStartDate</td>
                 <td>@item.AppFinishDate</td>
-                <td>@item.AppointmentAcceptStatus</td>
+                <td>@item.AppointmentAcceptStatus</td>*@
 
                 <td><a href="/CustomerAppAccept/ApplyAppointment/@item.AppointmentID" class="btn btn-success">Onayla</a></td>
                 <td><a href="/CustomerAppAccept/DeleteAppointment/@item.AppointmentID" class="btn btn-danger">İptal Et</a></td>
-            </tr>
+            @*</tr>*@
         }
     }
 

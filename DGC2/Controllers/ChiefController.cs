@@ -30,6 +30,7 @@ namespace DGC2.Controllers
         }
         public ActionResult ApplyAppointment(int id)
         {
+
             var appvalue = am.GetByID(id);
             appvalue.AppointmentStatus = true;
             am.AppointmentDelete(appvalue);

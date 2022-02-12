@@ -78,6 +78,10 @@
     <Compile Include="Migrations\202202111607030_mig_appupdate_sbmmail_appacptupdatess.designer.cs">
       <DependentUpon>202202111607030_mig_appupdate_sbmmail_appacptupdatess.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202121424151_mig_trackadded.cs" />
+    <Compile Include="Migrations\202202121424151_mig_trackadded.designer.cs">
+      <DependentUpon>202202121424151_mig_trackadded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -100,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202111607030_mig_appupdate_sbmmail_appacptupdatess.resx">
       <DependentUpon>202202111607030_mig_appupdate_sbmmail_appacptupdatess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202121424151_mig_trackadded.resx">
+      <DependentUpon>202202121424151_mig_trackadded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
