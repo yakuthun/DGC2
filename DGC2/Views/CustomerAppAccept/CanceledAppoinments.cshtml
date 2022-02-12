@@ -6,7 +6,7 @@
 }
 
 
-<h2>Randevular</h2>
+<h2>İptal Edilen Randevular</h2>
 
 <table class="table table-bordered">
     <tr>
@@ -19,7 +19,7 @@
         <th>Randevu Geliş Tarihi</th>
         <th>Randevu Bitiş Tarihi</th>
         <th>Onay Durumu</th>
-        <th>Onayla</th>
+        
         
 
     </tr>
@@ -28,7 +28,7 @@
     {
 
 
-        if (@item.AppointmentAcceptStatus == false)
+        if (@item.AppointmentTrackStatus == 7)
         {
 
             <tr>
@@ -38,10 +38,10 @@
                 <td>@item.Driver.DriverLogisticName</td>
                 <td>@item.AppStartDate</td>
                 <td>@item.AppFinishDate</td>
-                <td>@item.AppointmentAcceptStatus</td>
+                <td>@item.AppointmentTrackStatus</td>
 
                 
-                <td><a href="/CustomerAppAccept/ApplyAppointment/@item.AppointmentID" class="btn btn-warning">İptali Geri Çek</a></td>
+                
             </tr>
         }
     }

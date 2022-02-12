@@ -11,16 +11,16 @@ using System.Web.Mvc;
 namespace DGC2.Controllers
 {
     public class CustomerAppAcceptController : Controller
-    {
+    {   
         // GET: CustomerSubAppAccept
         AppointmentManager am = new AppointmentManager(new EfAppointmentDal());
-        Context c = new Context();
 
-        
+
+
         public ActionResult Appointments()
         {
 
-            
+
             var appointmentvalue = am.GetBySubCustomer();
             return View(appointmentvalue);
         }
@@ -29,19 +29,27 @@ namespace DGC2.Controllers
             var appointmentvalue = am.GetBySubCustomer();
             return View(appointmentvalue);
         }
-        //public ActionResult ApplyAppointment(int id)
-        //{
-        //    var appvalue = am.GetByID(id);
-        //    appvalue.AppointmentAcceptStatus = true;
-        //    am.AppointmentUpdate(appvalue);
-        //    return RedirectToAction("Appointments");
-        //}
-        //public ActionResult DeleteAppointment(int id)
-        //{
-        //    var appvalue = am.GetByID(id);
-        //    appvalue.AppointmentAcceptStatus = false;
-        //    am.AppointmentDelete(appvalue);
-        //    return RedirectToAction("Appointments");
-        //}
+        public ActionResult ApplyAppointment(int id)
+        {
+            var appvalue = am.GetByID(id);
+            appvalue.AppointmentTrackStatus = 4;
+            am.AppointmentUpdate(appvalue);
+            return RedirectToAction("Appointments");
+        }
+        public ActionResult CancelAppointment(int id)
+        {
+            var appvalue = am.GetByID(id);
+            appvalue.AppointmentTrackStatus = 7;
+            am.AppointmentDelete(appvalue);
+            return RedirectToAction("CanceledAppoinments");
+        }
+
+       
+
+        public ActionResult WaitingAppointments()
+        {
+            var waitingvalue = am.GetBySubCustomer();
+            return View(waitingvalue);
+        }
     }
 }

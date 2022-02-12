@@ -1,12 +1,11 @@
 ﻿@using EntityLayer.Concrete
 @model List<Appointment>
 @{
-    ViewBag.Title = "Appointments";
+    ViewBag.Title = "WaitingAppointments";
     Layout = "~/Views/Shared/_CustomerAdminLayout.cshtml";
 }
 
-
-<h2>Onaylanan Randevular</h2>
+<h2>Bekleyen Randevular</h2>
 
 <table class="table table-bordered">
     <tr>
@@ -28,7 +27,7 @@
     {
 
 
-        if (@item.AppointmentTrackStatus == 4)
+        if (@item.AppointmentTrackStatus == 1)
         {
 
             <tr>
@@ -40,10 +39,11 @@
                 <td>@item.AppFinishDate</td>
                 <td>@item.AppointmentTrackStatus</td>
 
-                
-               
+                <td><a href="/CustomerAppAccept/ApplyAppointment/@item.AppointmentID" class="btn btn-success">Onayla</a></td>
+                <td><a href="/CustomerAppAccept/CancelAppointment/@item.AppointmentID" class="btn btn-danger">İptal Et</a></td>
             </tr>
         }
     }
 
 </table>
+

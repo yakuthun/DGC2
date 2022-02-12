@@ -10,6 +10,7 @@
 <div class="form-group">
     @*@Html.Label("Randevu ID")
     @Html.TextBoxFor(x => x.AppointmentID, new { @class = "form-control" })*@
+    @Html.HiddenFor(x=>x.AppointmentTrackStatus)
     <br />
     @Html.Label("Mal Türü")
     @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control" })
