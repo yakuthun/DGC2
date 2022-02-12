@@ -53,12 +53,57 @@ namespace DGC2.Controllers
             return RedirectToAction("Index");
         }
         
-        public ActionResult ListAppoinment()
+        public ActionResult WaitingListAppoinment()
         {
             var listappoinment = apm.GetList();
             return View(listappoinment);
             
         }
+        public ActionResult AskChangeList()
+        {
+            var listappoinment = apm.GetList();
+            return View(listappoinment);
+
+        }
+
+        [HttpGet]
+        public ActionResult EditAskChange(int id)
+        {
+
+
+            var showappoinment = apm.GetBySubCustomer();
+          
+            return View(showappoinment);
+        }
+        [HttpPost]
+        public ActionResult EditAskChange(Appointment p)
+        {
+
+            apm.AppointmentUpdate(p);
+            
+            return RedirectToAction("AppliedAppoinment");
+        }
+
+        public ActionResult CanceledListAppoinment()
+        {
+            var canceledappoinment = apm.GetList();
+            return View(canceledappoinment);
+
+        }
+        public ActionResult AppliedListAppoinment()
+        {
+            var appliedappoinment = apm.GetList();
+            return View(appliedappoinment);
+
+        }
+        public ActionResult AskChange(int id)
+        {
+            var appvalue = apm.GetByID(id);
+            appvalue.AppointmentTrackStatus = 20;
+            apm.AppointmentUpdate(appvalue);
+            return RedirectToAction("AppliedListAppoinment");
+        }
+
         [HttpGet]
         public  ActionResult AddAppoinment()
         {
