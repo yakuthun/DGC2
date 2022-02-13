@@ -17,6 +17,9 @@
 @{string color2 = "";}
 @{string color3 = "";}
 
+@{string veri = "test";}
+
+
 <h2>Bekleyen Randevular </h2>
 
 <table class="table table-bordered">
@@ -38,15 +41,12 @@
         <th>Durum 5</th>
         <th>İşlem Yap</th>
 
-
     </tr>
     @foreach (var item in Model)
     {
 
         if (item.AppointmentTrackStatus == 4 || item.AppointmentTrackStatus == 8 || item.AppointmentTrackStatus == 9)
         {
-
-
 
             <tr>
                 <td>@item.AppointmentID</td>
@@ -80,39 +80,65 @@
                         break;
                 }
 
-
-
                 <td>@item.AppointmentTrackStatus</td>
                 <td><a href="/Chief/InComingApp/@item.AppointmentID" class="@color1">Geldi</a></td>
                 <td><a href="/Chief/Downloaded/@item.AppointmentID" class="@color2">İndiriliyor</a></td>
                 <td><a href="/Chief/Completed/@item.AppointmentID" class="@color3">Tamamlandı</a></td>
                 <td><a href="/Chief/NotComing/@item.AppointmentID" class="btn btn-danger">Gelmedi</a></td>
-                <td>
-
-
+                <td><a href="/Chief/EditAppointment/@item.AppointmentID" class="btn btn-warning">Güncelle</a></td>
                 <td>
                     <a href="/Chief/EditAppointment/@item.AppointmentID" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
                         Test
                     </a>
 
                 </td>
+
+                @*<td>
+                    <iframe src="/Chief/EditAppointment/@item.AppointmentID" ></iframe>
+                </td>*@
+
             </tr>
+
             <div class="modal" id="Modal1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h2 class="modal-title">Hakkımızda Metin Girişi</h2>
                         </div>
-                        <iframe src="/Chief/EditAppPartial/@item.AppointmentID" ></iframe>
+
+                        <form method="post" action="/Chief/EditAppointment/">
+                            <div class="modal-body">
+                                <label>Hakkımda Metin 1</label>
+                                <input type="text" name="AppointmentID" value="@item.AppointmentID" class="form-control" />
+                                <input type="text" name="AppointmentLoadType" value="@item.AppointmentLoadType" class="form-control" />
+                                <input type="text" name="AppointmentCapacity" value="@item.AppointmentCapacity" class="form-control" />
+                                <input type="text" name="DriverID" value="@item.DriverID" class="form-control" />
+                                <input type="text" name="SubCustomerID" value="@item.SubCustomerID" class="form-control" />
+                                <input type="text" name="AppointmentStatus" value="@item.AppointmentStatus" class="form-control" />
+                                <input type="text" name="ChiefID" value="@item.ChiefID" class="form-control" />
+                                <input type="text" name="AppStartDate" value="@item.AppStartDate" class="form-control" />
+                                <input type="text" name="AppFinishDate" value="@item.AppFinishDate" class="form-control" />
+                                <input type="text" name="DownloadedDate" value="@item.DownloadedDate" class="form-control" />
+                                <input type="text" name="InComingDate" value="@item.InComingDate" class="form-control" />
+                                <input type="text" name="AppointmentName" value="@item.AppointmentName" class="form-control" />
+                                <input type="text" name="AppointmentImage" value="@item.AppointmentImage" class="form-control" />
+                                <input type="text" name="AppointmentComment" value="@item.AppointmentComment" class="form-control" />
+                                <input type="text" name="AppointmentTrackStatus" value="@item.AppointmentTrackStatus" class="form-control" />
+
+                                <button class="btn btn-info">Kaydet</button>
+                            </div>
+                        </form>
+
 
                     </div>
                 </div>
             </div>
+
+
 
         }
 
     }
 
 </table>
-
 

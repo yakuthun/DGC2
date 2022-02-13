@@ -19,18 +19,11 @@
         <th>Statü</th>
         <th>Geliş Tarihi</th>
         <th>Bitiş Tarihi</th>
-
-
-
     </tr>
     @foreach (var item in Model)
     {
-
         if (item.AppointmentTrackStatus == 10)
         {
-
-
-
             <tr>
                 <td>@item.AppointmentID</td>
                 <td>@item.SubCustomer.Customer.CompanyName</td>
@@ -41,18 +34,9 @@
                 <td>@item.AppStartDate</td>
                 <td>@item.AppFinishDate</td>
                 <td>@item.AppointmentStatus</td>
-                <td>@item.RealAppStartDate</td>
-                <td>@item.RealAppFinishDate</td>
-
-
-
-
-
-
+                <td>@item.DownloadedDate</td>
+                <td>@item.InComingDate</td>
             </tr>
-
         }
-
     }
-
 </table>

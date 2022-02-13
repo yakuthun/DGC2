@@ -17,24 +17,10 @@ namespace DGC2.Controllers
 
         public ActionResult Index()
         {
-
             var appointmentvalue = am.GetList();
             return View(appointmentvalue);
         }
-
-
-
-
-        [HttpPost]
-        public ActionResult UpdateApp(Appointment p)
-        {
-            Context c = new Context();
-            c.Entry(p).State = System.Data.Entity.EntityState.Modified;
-            c.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-
+      
         public ActionResult Finished()
         {
             var appointmentvalue = am.GetList();
@@ -48,30 +34,47 @@ namespace DGC2.Controllers
         }
 
 
-        //[HttpGet]
-        //public ActionResult EditAppointment(int id)
-        //{
-        //    var appvalues = am.GetByID(id);
-        //    return View(appvalues);
-        //}
+        [HttpGet]
+        public ActionResult EditAppointment(int id)
+        {
+            var appvalues = am.GetByID(id);
+            return View(appvalues);
+        }
         [HttpPost]
         public ActionResult EditAppointment(Appointment p)
         {
+            
+            p.InComingDate = DateTime.Parse(Convert.ToDateTime(DateTime.Now).ToString("dd.MM.yyyy HH:mm:ss"));
+            //p.InComingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             am.AppointmentUpdate(p);
             return RedirectToAction("Index");
+            
         }
-        [HttpGet]
-        public PartialViewResult EditAppPartial(int id)
+
+     
+        public PartialViewResult EditAppPartial()
         {
-            var appvalues = am.GetByID(id);
-            return PartialView(appvalues);
+            
+            return PartialView();
         }
-        [HttpPost]
-        public ActionResult EditAppPartial(Appointment p)
-        {
-            am.AppointmentUpdate(p);
-            return RedirectToAction("Index");
-        }
+
+        //[HttpGet]
+        //public PartialViewResult EditAppPartial(int id)
+        //{
+        //    var appvalues = am.GetByID(id);
+        //    return PartialView(appvalues);
+        //}
+        //[HttpPost]
+        //public ActionResult EditAppPartial(Appointment p)
+        //{
+        //    am.AppointmentUpdate(p);
+        //    return RedirectToAction("Index");
+        //}
+
+
+        //------------------------------------------------------------
+
+
         // 5 - GELMEYEN
         public ActionResult NotComing(int id)
         {
