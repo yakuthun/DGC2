@@ -119,22 +119,17 @@ namespace DGC2.Controllers
         [HttpGet]
         public  ActionResult AddAppoinment()
         {
-
+            
             return View();
         }
         
         [HttpPost]
         public ActionResult AddAppoinment(Appointment p)
         {
-            apm.AppointmentAdd(p);
-            p.AppointmentTrackStatus = 1;
-            //p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            //p.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            //p.RealAppStartDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            //p.RealAppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-
-
-            return RedirectToAction("Index");
+            
+            
+           
+           
         }
     }
 }
