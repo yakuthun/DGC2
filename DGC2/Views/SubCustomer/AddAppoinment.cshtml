@@ -8,6 +8,9 @@
 @using (Html.BeginForm("AddAppoinment", "SubCustomer", FormMethod.Post))
 {
 <div class="form-group">
+    @Html.Label("Randevu ID")
+    @Html.TextBoxFor(x => x.AppointmentID, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.AppointmentTrackStatus)
     @*@Html.Label("Randevu ID")
         @Html.TextBoxFor(x => x.AppointmentID, new { @class = "form-control" })*@
     @Html.TextBoxFor(x => x.AppointmentTrackStatus, new { @class = "form-control" })
@@ -40,10 +43,8 @@
     @Html.TextBoxFor(x => x.AppointmentImage, new { @class = "form-control" })
     <br />
     @Html.Label("bitiş real")
-    @Html.TextBoxFor(x => x.AppointmentComment, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.RealAppFinishDate, new { @class = "form-control" })
     <br />
-
     <button class="btn btn-success">Kaydet</button>
 </div>
 }
-
