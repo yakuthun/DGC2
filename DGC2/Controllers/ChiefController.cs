@@ -44,8 +44,8 @@ namespace DGC2.Controllers
         public ActionResult EditAppointment(Appointment p)
         {
             
-            p.InComingDate = DateTime.Parse(Convert.ToDateTime(DateTime.Now).ToString("dd.MM.yyyy HH:mm:ss"));
-            //p.InComingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            //p.InComingDate = DateTime.Parse(Convert.ToDateTime(DateTime.Now).ToString("dd.MM.yyyy HH:mm:ss"));
+            p.InComingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             am.AppointmentUpdate(p);
             return RedirectToAction("Index");
             

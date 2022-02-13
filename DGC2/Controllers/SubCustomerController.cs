@@ -108,7 +108,7 @@ namespace DGC2.Controllers
             return View(appliedappoinment);
 
         }
-        public ActionResult AskChange(int id)
+        public ActionResult AskChange(int id = 0)
         {
             var appvalue = apm.GetByID(id);
             appvalue.AppointmentTrackStatus = 20;
@@ -117,17 +117,42 @@ namespace DGC2.Controllers
         }
 
         [HttpGet]
-        public  ActionResult AddAppoinment()
+        public ActionResult AddAppoinment()
         {
 
             return View();
         }
-        
+
+
+
         [HttpPost]
         public ActionResult AddAppoinment(Appointment p)
         {
+
+            if (p.AppointmentUCode == null)
+            {
+                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                var stringChars = new char[8];
+                var random = new Random();
+
+                for (int i = 0; i < stringChars.Length; i++)
+                {
+                    stringChars[i] = chars[random.Next(chars.Length)];
+                }
+
+                var finalString = new String(stringChars);
+
+                p.AppointmentUCode = finalString;
+            }
+
+           
+
+            if (p.AppointmentTrackStatus == 0)
+            {
+                p.AppointmentTrackStatus = 1;
+            }
+
             apm.AppointmentAdd(p);
-            p.AppointmentTrackStatus = 1;
             //p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             //p.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             //p.RealAppStartDate = DateTime.Parse(DateTime.Now.ToShortDateString());

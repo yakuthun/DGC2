@@ -8,9 +8,9 @@
 @using (Html.BeginForm("AddAppoinment", "SubCustomer", FormMethod.Post))
 {
 <div class="form-group">
-    @*@Html.Label("Randevu ID")
-    @Html.TextBoxFor(x => x.AppointmentID, new { @class = "form-control" })*@
-    @Html.HiddenFor(x=>x.AppointmentTrackStatus)
+    @Html.Label("Randevu ID")
+    @Html.TextBoxFor(x => x.AppointmentID, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.AppointmentTrackStatus)
     <br />
     @Html.Label("Mal Türü")
     @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control" })
@@ -27,8 +27,8 @@
     @Html.Label("Durum")
     @Html.TextBoxFor(x => x.AppointmentStatus, new { @class = "form-control" })
     <br />
-    @*@Html.Label("Şef ID")
-    @Html.TextBoxFor(x => x.ChiefID, new { @class = "form-control" })*@
+    @Html.Label("Şef ID")
+    @Html.TextBoxFor(x => x.ChiefID, new { @class = "form-control" })
     <br />
     @Html.Label("başla")
     @Html.TextBoxFor(x => x.AppStartDate, new { @class = "form-control" })
@@ -37,13 +37,14 @@
     @Html.TextBoxFor(x => x.AppFinishDate, new { @class = "form-control" })
     <br />
     @Html.Label("start real")
-    @Html.TextBoxFor(x => x.RealAppStartDate, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.AppointmentImage, new { @class = "form-control" })
     <br />
     @Html.Label("bitiş real")
-    @Html.TextBoxFor(x => x.RealAppFinishDate, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.AppointmentComment, new { @class = "form-control" })
     <br />
-
+    @Html.Label("TRACK STATUS")
+    @Html.TextBoxFor(x => x.AppointmentTrackStatus, new { @class = "form-control" })
+    <br />
     <button class="btn btn-success">Kaydet</button>
 </div>
 }
-
