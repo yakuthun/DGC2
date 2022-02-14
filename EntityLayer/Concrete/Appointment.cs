@@ -36,7 +36,14 @@ namespace EntityLayer.Concrete
         public string AppointmentUCode { get; set; }
         public bool AppointmentStatus { get; set; }
         public int AppointmentTrackStatus { get; set; }
-
+        [StringLength(200)]
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        public string DriverComment { get; set; }
+        [StringLength(20)]
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        public string AppPlate { get; set; }
         public int SubCustomerID { get; set; }
         public virtual SubCustomer SubCustomer { get; set; }
 

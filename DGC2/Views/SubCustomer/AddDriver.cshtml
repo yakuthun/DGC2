@@ -1,7 +1,7 @@
 ﻿@model EntityLayer.Concrete.Driver
 @{
     ViewBag.Title = "AddDriver";
-    Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
 <br />
@@ -9,28 +9,32 @@
 
 @using (Html.BeginForm("AddDriver", "SubCustomer", FormMethod.Post))
 {
-<div class="form-group">
-    @Html.Label("Sürücü İsim")
-    @Html.TextBoxFor(x => x.DriverName, new { @class = "form-control" })
-    <br />
-    @Html.Label("Sürücü Soyisim")
-    @Html.TextBoxFor(x => x.DriverSurname, new { @class = "form-control" })
-    <br />
-    @Html.Label("Statü")
-    @Html.TextBoxFor(x => x.DriverStatus, new { @class = "form-control" })
-    <br />
-    @Html.Label("Çalıştığı Firma")
-    @Html.TextBoxFor(x => x.DriverLogisticName, new { @class = "form-control" })
-    <br />
-    @Html.Label("Plaka")
-    @Html.TextBoxFor(x => x.DriverPlate, new { @class = "form-control" })
-    <br />
-    @Html.Label("Telefon Numarası")
-    @Html.TextBoxFor(x => x.DriverNumber, new { @class = "form-control" })
-    <br />
-    @Html.Label("ID")
-    @Html.TextBoxFor(x => x.SubCustomerID, new { @class = "form-control" })
-    <br />
-    <button class="btn btn-info">Kaydet</button>
+
+<div class="card-form">
+    <a href="kapat">content</a>
+    <div class="form-group">
+        @Html.Label("Sürücü İsim")
+        @Html.TextBoxFor(x => x.DriverName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Sürücü Soyisim")
+        @Html.TextBoxFor(x => x.DriverSurname, new { @class = "form-control" })
+        <br />
+        @Html.Label("Statü")
+        @Html.TextBoxFor(x => x.DriverStatus, new { @class = "form-control" })
+        <br />
+        @Html.Label("Çalıştığı Firma")
+        @Html.TextBoxFor(x => x.DriverLogisticName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Plaka")
+        @Html.TextBoxFor(x => x.DriverPlate, new { @class = "form-control" })
+        <br />
+        @Html.Label("Telefon Numarası")
+        @Html.TextBoxFor(x => x.DriverNumber, new { @class = "form-control" })
+        <br />
+        @Html.Label("ID")
+        @Html.TextBoxFor(x => x.SubCustomerID, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary btn-lg btn-block">Kaydet</button>
+    </div>
 </div>
-}
+        }

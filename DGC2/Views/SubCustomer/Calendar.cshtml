@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Calendar";
+    Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
+}
+
+<h2>Calendar</h2>
+@{string veri1 = "test";}
+@{string veri2 = "tests";}
+@{string veri3 = "testss";}
+@{string veri4 = "testsss";}
+
+<input type="text" id="input">
+<input type="text" id="input2">
+<input type="text" id="input3">
+<!-- display elements -->
+<br />
+<textarea id="par"></textarea>
+
+<script>
+  var input = document.getElementById("input"),
+   
+    textarea = document.getElementById("textarea"),
+    par = document.getElementById("par");
+
+// the main function: get the content from source and display it in destination
+function display(source,destination)
+{
+  destination.textContent = source;
+}
+
+// events
+input.onkeyup=function()
+{ display(this.value,par); };
+
+
+</script>

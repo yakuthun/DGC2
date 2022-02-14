@@ -205,5 +205,11 @@ namespace DGC2.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult Calendar()
+        {
+            return View();
+        }
+
     }
 }
