@@ -106,6 +106,10 @@
     <Compile Include="Migrations\202202141614150_mig_test_vallahason.designer.cs">
       <DependentUpon>202202141614150_mig_test_vallahason.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202142047457_mig_applateadded.cs" />
+    <Compile Include="Migrations\202202142047457_mig_applateadded.designer.cs">
+      <DependentUpon>202202142047457_mig_applateadded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -149,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202141614150_mig_test_vallahason.resx">
       <DependentUpon>202202141614150_mig_test_vallahason.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202142047457_mig_applateadded.resx">
+      <DependentUpon>202202142047457_mig_applateadded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
