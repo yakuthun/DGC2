@@ -84,6 +84,8 @@ namespace DGC2.Controllers
                     p.AppointmentStatus = true;
             if (p.AppointmentTrackStatus == 2)
                     p.AppointmentTrackStatus = 20;
+
+            p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
             apm.AppointmentAdd(p);
             return RedirectToAction("AppliedListAppoinment");
         }

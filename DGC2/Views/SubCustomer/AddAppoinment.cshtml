@@ -8,73 +8,36 @@
 @using (Html.BeginForm("AddAppoinment", "SubCustomer", FormMethod.Post))
 {
 <div class="form-group">
-    @Html.Label("Takib statüs")
-    @Html.TextBoxFor(x => x.AppointmentTrackStatus ,new { @class = "form-control" })
-    @Html.Label("kargo İD")
-    @Html.TextBoxFor(x => x.AppointmentID, new { @class = "form-control" })
-    @Html.Label("tür")
-    @Html.TextBoxFor(x => x.AppointmentLoadType ,new { @class = "form-control" })
-    @Html.Label("sürücü id")
-    @Html.TextBoxFor(x => x.DriverID ,new { @class = "form-control" })
-    @Html.Label("tedarikçi id")
-    @Html.TextBoxFor(x => x.SubCustomerID ,new { @class = "form-control" })
-    @Html.Label("kargo durum")
-    @Html.TextBoxFor(x => x.AppointmentStatus ,new { @class = "form-control" })
-    @Html.Label("ChiefID")
-    @Html.TextBoxFor(x => x.ChiefID, new { @class = "form-control" })
-    @Html.Label("DownloadedDate")
-    @Html.TextBoxFor(x => x.DownloadedDate, new { @class = "form-control"  })
-    @Html.Label("AppointmentImage")
-    @Html.TextBoxFor(x => x.AppointmentImage ,new { @class = "form-control" })
-    @Html.Label("AppointmentComment")
-    @Html.TextBoxFor(x => x.AppointmentComment, new { @class = "form-control" })
-    @Html.Label("AppointmentName")
-    @Html.TextBoxFor(x => x.AppointmentName ,new { @class = "form-control" })
-    @Html.Label("AppFinishDate")
-    @Html.TextBoxFor(x => x.AppFinishDate ,new { @class = "form-control" })
-    @Html.Label("InComingDate")
-    @Html.TextBoxFor(x => x.InComingDate, new { @class = "form-control" })
-    @Html.Label("AppointmentUCode")
-    @Html.TextBoxFor(x => x.AppointmentUCode, new { @class = "form-control" })
 
-    <br />
-    @Html.Label("Mal Türü")
+    @Html.HiddenFor(x => x.AppointmentTrackStatus)
+    @Html.HiddenFor(x => x.AppFinishDate)
+    @Html.HiddenFor(x => x.InComingDate)
+    @Html.HiddenFor(x => x.AppointmentUCode)
+    @Html.HiddenFor(x => x.AppointmentID)
+    @Html.HiddenFor(x => x.DownloadedDate)
+    @Html.HiddenFor(x => x.AppointmentImage)
+    @Html.HiddenFor(x => x.AppointmentComment)
+    @Html.HiddenFor(x => x.AppointmentStatus)
+    @Html.HiddenFor(x => x.AppStartDate)
+    @Html.Label("Yükleme Türü (Dökme/Palet)")
     @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control" })
-    <br />
+
+    @Html.Label("sürücü id")
+    @Html.TextBoxFor(x => x.DriverID, new { @class = "form-control" })
+
+    @Html.Label("Tedarikçi id")
+    @Html.TextBoxFor(x => x.SubCustomerID, new { @class = "form-control" })
+
+    @Html.Label("Şef ID")
+    @Html.TextBoxFor(x => x.ChiefID, new { @class = "form-control" })
+
+    @Html.Label("Mal İsim")
+    @Html.TextBoxFor(x => x.AppointmentName, new { @class = "form-control" })
+
     @Html.Label("Kapasite")
     @Html.TextBoxFor(x => x.AppointmentCapacity, new { @class = "form-control" })
-    <br />
-    @*@Html.Label("Sürücü ID")
-        @Html.TextBoxFor(x => x.DriverID, new { @class = "form-control" })
-        <br />
-        @Html.Label("Firma ID")
-        @Html.TextBoxFor(x => x.SubCustomerID, new { @class = "form-control" })*@
-    @*<br />
-        @Html.Label("Durum")
-        @Html.TextBoxFor(x => x.AppointmentStatus, new { @class = "form-control" })*@
-    @*<br />
-        @Html.Label("Şef ID")
-        @Html.TextBoxFor(x => x.ChiefID, new { @class = "form-control" })*@
-    <br />
-    @Html.Label("başla")
-    @Html.TextBoxFor(x => x.AppStartDate, new { @class = "form-control" })
-    @*<br />
-        @Html.Label("bitiş")
-        @Html.TextBoxFor(x => x.AppFinishDate, new { @class = "form-control" })*@
-    @*<br />
-        @Html.Label("start real")
-        @Html.TextBoxFor(x => x.RealAppStartDate, new { @class = "form-control" })
-        <br />
-        @Html.Label("bitiş real")
-        @Html.TextBoxFor(x => x.AppointmentName, new { @class = "form-control" })
-        <br />
-        @Html.Label("bitiş real")
-        @Html.TextBoxFor(x => x.AppointmentComment, new { @class = "form-control" })
-        <br />
-        @Html.Label("bitiş real")
-        @Html.TextBoxFor(x => x.AppointmentImage, new { @class = "form-control" })
-        <br />*@
 
+    
 
     <button class="btn btn-success">Kaydet</button>
 </div>
