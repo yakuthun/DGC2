@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
@@ -162,10 +163,15 @@ namespace DGC2.Controllers
             if (p.AppointmentTrackStatus == 0)
             {
                 p.AppointmentTrackStatus = 1;
+                
+               
             }
-
+            p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            string appimage = "";
+            p.AppointmentComment = appimage;
             apm.AppointmentAdd(p);
-            //p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+           // p.AppStartDate = DateTime.TryParse(DateTime.Now.ToShortDateString());
+            
             //p.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             //p.RealAppStartDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             //p.RealAppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
