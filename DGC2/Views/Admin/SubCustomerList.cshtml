@@ -1,0 +1,32 @@
+﻿@using EntityLayer.Concrete
+@model List<SubCustomer>
+@{
+    ViewBag.Title = "SubCustomerList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Tedarikçileri</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>KULLANICI ADI</th>
+        <th>ŞİFRE</th>
+        <th>MAİL</th>
+
+
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.SubCustomerCompany</th>
+            <td>@item.SubCustomerStatus</td>
+            <td>@item.SubCustomerUsername</td>
+            <td>@item.SubCustomerPassword</td>
+
+           
+        </tr>
+    }
+</table>

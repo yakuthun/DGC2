@@ -14,29 +14,31 @@
         <th>Kapasite</th>
         <th>Paket Tipi</th>
         <th>Sürücü</th>
-        <th>Randevu Geliş Tarihi</th>
-        <th>Randevu Bitiş Tarihi</th>
-        <th>Statü</th>
-        <th>Geliş Tarihi</th>
+        <th>Alınan Tarih</th>
+        <th>Geliş Saati</th>
+     
+        <th>İnidirlme Saati</th>
         <th>Bitiş Tarihi</th>
     </tr>
     @foreach (var item in Model)
     {
         if (item.AppointmentTrackStatus == 10)
         {
-            <tr>
-                <td>@item.AppointmentID</td>
-                <td>@item.SubCustomer.Customer.CompanyName</td>
-                <td>@item.SubCustomer.SubCustomerCompany</td>
-                <td>@item.AppointmentCapacity</td>
-                <td>@item.AppointmentLoadType</td>
-                <td>@item.Driver.DriverLogisticName</td>
-                <td>@item.AppStartDate</td>
-                <td>@item.AppFinishDate</td>
-                <td>@item.AppointmentStatus</td>
-                <td>@item.DownloadedDate</td>
-                <td>@item.InComingDate</td>
-            </tr>
+<tr>
+    <td>@item.AppointmentID</td>
+    <td>@item.SubCustomer.Customer.CompanyName</td>
+    <td>@item.SubCustomer.SubCustomerCompany</td>
+    <td>@item.AppointmentCapacity</td>
+    <td>@item.AppointmentLoadType</td>
+    <td>@item.Driver.DriverLogisticName</td>
+    <td>@item.AppStartDate</td>
+    <td>@item.InComingDate</td>
+    <td>@item.DownloadedDate</td>
+    <td>@item.AppFinishDate</td>
+
+
+
+</tr>
         }
     }
 </table>

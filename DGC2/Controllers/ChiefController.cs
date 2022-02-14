@@ -37,17 +37,41 @@ namespace DGC2.Controllers
         [HttpGet]
         public ActionResult EditAppointment(int id)
         {
+            
             var appvalues = am.GetByID(id);
             return View(appvalues);
         }
         [HttpPost]
-        public ActionResult EditAppointment(Appointment p)
+        public ActionResult EditAppointment(Appointment p,int id)
         {
             
+
             //p.InComingDate = DateTime.Parse(Convert.ToDateTime(DateTime.Now).ToString("dd.MM.yyyy HH:mm:ss"));
             p.InComingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+
             am.AppointmentUpdate(p);
-            return RedirectToAction("Index");
+            if (p.AppointmentTrackStatus == 9)
+            {
+                var appvalue = am.GetByID(id);
+                appvalue.AppointmentTrackStatus = 10;
+                am.AppointmentDelete(appvalue);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("EditAppointment", "Chief", p.AppointmentID);
+            }
+
+            if (p.AppointmentTrackStatus == 4 || p.AppointmentTrackStatus == 8 || p.AppointmentTrackStatus == 9)
+            {
+                return RedirectToAction("EditAppointment", "Chief", p.AppointmentID);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+            
+            //return RedirectToAction("Index");
             
         }
 
@@ -83,10 +107,14 @@ namespace DGC2.Controllers
             am.AppointmentDelete(appvalue);
             return RedirectToAction("Index");
         }
-        // 8- DEPOYA GELEN
-        public ActionResult InComingApp(int id)
+        // 8- GELDİ
+        public ActionResult InComingApp(int id,Appointment p)
         {
+           
             var appvalue = am.GetByID(id);
+
+            appvalue.InComingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+
             appvalue.AppointmentTrackStatus = 8;
             am.AppointmentDelete(appvalue);
             return RedirectToAction("Index");
@@ -95,6 +123,7 @@ namespace DGC2.Controllers
         public ActionResult Downloaded(int id)
         {
             var appvalue = am.GetByID(id);
+            appvalue.DownloadedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             appvalue.AppointmentTrackStatus = 9;
             am.AppointmentDelete(appvalue);
             return RedirectToAction("Index");
@@ -103,13 +132,15 @@ namespace DGC2.Controllers
         public ActionResult InComingAndDownloading()
         {
             var appointmentvalue = am.GetList();
+
             return View(appointmentvalue);
         }
 
-        // 9 - TAMAMLANAN
+        // 10 - TAMAMLANAN
         public ActionResult Completed(int id)
         {
             var appvalue = am.GetByID(id);
+            appvalue.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             appvalue.AppointmentTrackStatus = 10;
             am.AppointmentDelete(appvalue);
             return RedirectToAction("Index");

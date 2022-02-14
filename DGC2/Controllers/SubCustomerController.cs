@@ -129,6 +129,8 @@ namespace DGC2.Controllers
         public ActionResult AddAppoinment(Appointment p)
         {
 
+           
+            
             if (p.AppointmentUCode == null)
             {
                 var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -145,7 +147,9 @@ namespace DGC2.Controllers
                 p.AppointmentUCode = finalString;
             }
 
-           
+
+         
+
 
             if (p.AppointmentTrackStatus == 0)
             {

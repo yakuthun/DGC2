@@ -30,7 +30,8 @@
         <th>Kapasite</th>
         <th>Paket Tipi</th>
         <th>Sürücü</th>
-        <th>Randevu Alış Tarihi</th>
+
+        <th>Alınan Saat</th>
         <th>Geldi</th>
         <th>İndiriliyor</th>
         <th>Tamamlandı</th>
@@ -56,10 +57,10 @@
                 <td>@item.AppointmentLoadType</td>
                 <td>@item.Driver.DriverLogisticName</td>
 
-                <td>@item.AppFinishDate</td>
+                <td>@item.AppStartDate</td>
                 <td>@item.InComingDate</td>
                 <td>@item.DownloadedDate</td>
-                <td>@item.AppStartDate</td>
+                <td>@item.AppFinishDate</td>
 
                 @switch (item.AppointmentTrackStatus)
                 {
@@ -83,9 +84,8 @@
                 <td>@item.AppointmentTrackStatus</td>
                 <td><a href="/Chief/InComingApp/@item.AppointmentID" class="@color1">Geldi</a></td>
                 <td><a href="/Chief/Downloaded/@item.AppointmentID" class="@color2">İndiriliyor</a></td>
-                <td><a href="/Chief/Completed/@item.AppointmentID" class="@color3">Tamamlandı</a></td>
                 <td><a href="/Chief/NotComing/@item.AppointmentID" class="btn btn-danger">Gelmedi</a></td>
-                <td><a href="/Chief/EditAppointment/@item.AppointmentID" class="btn btn-warning">Güncelle</a></td>
+                <td><a href="/Chief/EditAppointment/@item.AppointmentID" class="@color3">Tamamla</a></td>
                 <td>
                     <a href="/Chief/EditAppointment/@item.AppointmentID" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
                         Test

@@ -1,0 +1,56 @@
+﻿@using EntityLayer.Concrete
+@model List<Appointment>
+@{
+    ViewBag.Title = "WaitingApp";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>İptal Onayı Bekleyen Randevular</h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Müşteri</th>
+        <th>Tedarikçi</th>
+        <th>Kapasite</th>
+        <th>Paket Tipi</th>
+        <th>Sürücü</th>
+        <th>Randevu Alış Tarihi</th>
+        <th>Geldi</th>
+        <th>İndiriliyor</th>
+        <th>Tamamlandı</th>
+        <th>Durum</th>
+        <th>Durum 1</th>
+        <th>Durum 2</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        if (item.AppointmentTrackStatus == 3)
+        {
+
+            <tr>
+                <td>@item.AppointmentID</td>
+                <td>@item.SubCustomer.Customer.CompanyName</td>
+                <td>@item.SubCustomer.SubCustomerCompany</td>
+                <td>@item.AppointmentCapacity</td>
+                <td>@item.AppointmentLoadType</td>
+                <td>@item.Driver.DriverLogisticName</td>
+
+                <td>@item.AppFinishDate</td>
+                <td>@item.InComingDate</td>
+                <td>@item.DownloadedDate</td>
+                <td>@item.AppStartDate</td>
+                <td>@item.AppointmentTrackStatus</td>
+
+                <td><a href="/Admin/Completed/@item.AppointmentID" class="btn btn-success">Onayla</a></td>
+                <td><a href="/Admin/Canceled/@item.AppointmentID" class="btn btn-danger">Reddet</a></td>
+            </tr>
+
+        }
+
+    }
+
+</table>
+
