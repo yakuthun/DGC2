@@ -9,29 +9,30 @@
 
 <table class="table table-bordered">
     <tr>
-        <th>ID</th>
-        <th>Kapasite</th>
-        <th>Yükleme Tipi</th>
-        <th>Başlangıç Tarihi</th>
+        <th>Firma İsim</th>
+        <th>Mal İsim</th>
+        <th>Yük Adet</th>
+        <th>Giriş Tarihi</th>
         <th>Durum</th>
-        <th>Sürücü ID</th>
+        <th>Sürücü İsim</th>
+        <th>Talep</th>
         <th>Talep</th>
     </tr>
     @foreach (var item in Model)
     {
         if (item.AppointmentTrackStatus == 4)
         {
-<tr>
+            <tr>
 
-    <td>@item.SubCustomer.SubCustomerName</td>
-    <td>@item.AppointmentCapacity</td>
-    <td>@item.AppointmentLoadType</td>
-    <td>@item.AppStartDate</td>
-    <td>@item.AppointmentStatus</td>
-    <td>@item.Driver.DriverName  @item.Driver.DriverSurname</td>
-    <td><a href="/SubCustomer/AskChange/@item.AppointmentID" class="btn btn-warning">Değişiklik Talebi</a></td>
-    <td><a href="/SubCustomer/CancelChange/@item.AppointmentID" class="btn btn-dark">İptal Talebi</a></td>
-</tr>
+                <td>@item.SubCustomer.SubCustomerName</td>
+                <td>@item.AppointmentName</td>
+                <td>@item.AppointmentCapacity</td>
+                <td>@item.AppStartDate</td>
+                <td>@item.AppointmentStatus</td>
+                <td>@item.Driver.DriverName  @item.Driver.DriverSurname</td>
+                <td><a href="/SubCustomer/AskChange/@item.AppointmentID" class="btn btn-warning">Değişiklik Talebi</a></td>
+                <td><a href="/SubCustomer/CancelChange/@item.AppointmentID" class="btn btn-dark">İptal Talebi</a></td>
+            </tr>
         }
     }
 </table>

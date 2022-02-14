@@ -12,15 +12,16 @@
     <tr>
 
 
-        <th>Tedarikçi</th>
-        <th>Kapasite</th>
-        <th>Paket Tipi</th>
-        <th>Sürücü</th>
-        <th>Randevu Geliş Tarihi</th>
-        <th>Randevu Bitiş Tarihi</th>
+        <th>Firma İsim</th>
+        <th>Mal İsim</th>
+        <th>Yük Adet</th>
+        <th>Geliş Tarihi</th>
+        <th>Bitiş Tarihi</th>
+        <th>Durum</th>
+        <th>Sürücü İsim</th>
         <th>Onay Durumu</th>
-        
-        
+
+
 
     </tr>
 
@@ -31,18 +32,19 @@
         if (@item.AppointmentTrackStatus == 7)
         {
 
-            <tr>
-                <td>@item.SubCustomer.SubCustomerCompany</td>
-                <td>@item.AppointmentCapacity</td>
-                <td>@item.AppointmentLoadType</td>
-                <td>@item.Driver.DriverLogisticName</td>
-                <td>@item.AppStartDate</td>
-                <td>@item.AppFinishDate</td>
-                <td>@item.AppointmentTrackStatus</td>
+<tr>
+    <td>@item.SubCustomer.SubCustomerName</td>
+    <td>@item.AppointmentName</td>
+    <td>@item.AppointmentCapacity</td>
+    <td>@item.AppStartDate</td>
+    <td>@item.AppFinishDate</td>
+    <td>@item.AppointmentStatus</td>
+    <td>@item.Driver.DriverName  @item.Driver.DriverSurname</td>
+    <td>@item.AppointmentTrackStatus</td>
 
-                
-                
-            </tr>
+
+
+</tr>
         }
     }
 

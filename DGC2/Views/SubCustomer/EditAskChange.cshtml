@@ -24,43 +24,15 @@
     @Html.HiddenFor(x => x.InComingDate)
     @Html.HiddenFor(x => x.AppointmentUCode)
 
-    <br />
+    
     @Html.Label("Mal Türü")
     @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control" })
-    <br />
+    
     @Html.Label("Kapasite")
     @Html.TextBoxFor(x => x.AppointmentCapacity, new { @class = "form-control" })
-    <br />
-    @*@Html.Label("Sürücü ID")
-        @Html.TextBoxFor(x => x.DriverID, new { @class = "form-control" })
-        <br />
-        @Html.Label("Firma ID")
-        @Html.TextBoxFor(x => x.SubCustomerID, new { @class = "form-control" })*@
-    @*<br />
-        @Html.Label("Durum")
-        @Html.TextBoxFor(x => x.AppointmentStatus, new { @class = "form-control" })*@
-    @*<br />
-        @Html.Label("Şef ID")
-        @Html.TextBoxFor(x => x.ChiefID, new { @class = "form-control" })*@
-    <br />
-    @Html.Label("başla")
-    @Html.TextBoxFor(x => x.AppStartDate, new { @class = "form-control" })
-    @*<br />
-        @Html.Label("bitiş")
-        @Html.TextBoxFor(x => x.AppFinishDate, new { @class = "form-control" })*@
-    @*<br />
-        @Html.Label("start real")
-        @Html.TextBoxFor(x => x.RealAppStartDate, new { @class = "form-control" })
-        <br />
-        @Html.Label("bitiş real")
-        @Html.TextBoxFor(x => x.AppointmentName, new { @class = "form-control" })
-        <br />
-        @Html.Label("bitiş real")
-        @Html.TextBoxFor(x => x.AppointmentComment, new { @class = "form-control" })
-        <br />
-        @Html.Label("bitiş real")
-        @Html.TextBoxFor(x => x.AppointmentImage, new { @class = "form-control" })
-        <br />*@
+    
+    @Html.HiddenFor(x => x.AppStartDate)
+   
     <br />
     <button class="btn btn-success">Kaydet</button>
 </div>

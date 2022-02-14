@@ -9,13 +9,13 @@
 
 <table class="table table-bordered">
     <tr>
-        <th>ID</th>
-        <th>Kapasite</th>
-        <th>Yükleme Tipi</th>
-        <th>Başlangıç Tarihi</th>
+        <th>Firma İsim</th>
+        <th>Mal İsim</th>
+        <th>Yük Adet</th>
+        <th>Giriş Tarihi</th>
         <th>Durum</th>
-        <th>Sürücü ID</th>
-        <th>Randevu</th>
+        <th>Sürücü İsim</th>
+        
     </tr>
     @foreach (var item in Model)
     {
@@ -24,8 +24,8 @@
             <tr>
 
                 <td>@item.SubCustomer.SubCustomerName</td>
+                <td>@item.AppointmentName</td>
                 <td>@item.AppointmentCapacity</td>
-                <td>@item.AppointmentLoadType</td>
                 <td>@item.AppStartDate</td>
                 <td>@item.AppointmentStatus</td>
                 <td>@item.Driver.DriverName  @item.Driver.DriverSurname</td>
