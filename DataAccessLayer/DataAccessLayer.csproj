@@ -94,6 +94,18 @@
     <Compile Include="Migrations\202202141543244_add_nullabledate.designer.cs">
       <DependentUpon>202202141543244_add_nullabledate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202141605330_mig_test2134.cs" />
+    <Compile Include="Migrations\202202141605330_mig_test2134.designer.cs">
+      <DependentUpon>202202141605330_mig_test2134.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202141608183_mig_test_son.cs" />
+    <Compile Include="Migrations\202202141608183_mig_test_son.designer.cs">
+      <DependentUpon>202202141608183_mig_test_son.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202141614150_mig_test_vallahason.cs" />
+    <Compile Include="Migrations\202202141614150_mig_test_vallahason.designer.cs">
+      <DependentUpon>202202141614150_mig_test_vallahason.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -128,6 +140,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202141543244_add_nullabledate.resx">
       <DependentUpon>202202141543244_add_nullabledate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202141605330_mig_test2134.resx">
+      <DependentUpon>202202141605330_mig_test2134.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202141608183_mig_test_son.resx">
+      <DependentUpon>202202141608183_mig_test_son.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202141614150_mig_test_vallahason.resx">
+      <DependentUpon>202202141614150_mig_test_vallahason.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
