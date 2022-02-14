@@ -1,11 +1,13 @@
 ﻿@using EntityLayer.Concrete
 @model List<Appointment>
 @{
-    ViewBag.Title = "AppliedListAppoinment";
-    Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
+    ViewBag.Title = "AppliedWantsCancelAppointments";
+    Layout = "~/Views/Shared/_CustomerAdminLayout.cshtml";
 }
 
-<h1>Onaylanan Randevular</h1>
+
+
+<h1>İptal Bekleyen Randevular</h1>
 
 <table class="table table-bordered">
     <tr>
@@ -16,10 +18,11 @@
         <th>Durum</th>
         <th>Sürücü ID</th>
         <th>Talep</th>
+        <th>Talep</th>
     </tr>
     @foreach (var item in Model)
     {
-        if (item.AppointmentTrackStatus == 4)
+        if (item.AppointmentTrackStatus == 3)
         {
 <tr>
 
@@ -29,10 +32,9 @@
     <td>@item.AppStartDate</td>
     <td>@item.AppointmentStatus</td>
     <td>@item.Driver.DriverName  @item.Driver.DriverSurname</td>
-    <td><a href="/SubCustomer/AskChange/@item.AppointmentID" class="btn btn-warning">Değişiklik Talebi</a></td>
-    <td><a href="/SubCustomer/CancelChange/@item.AppointmentID" class="btn btn-dark">İptal Talebi</a></td>
+    <td><a href="/CustomerAppAccept/YesCancel/@item.AppointmentID" class="btn btn-success">Onayla</a></td>
+    <td><a href="/CustomerAppAccept/NoCancel/@item.AppointmentID" class="btn btn-danger">Reddet</a></td>
 </tr>
         }
     }
 </table>
-

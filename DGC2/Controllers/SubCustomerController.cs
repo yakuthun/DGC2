@@ -77,24 +77,17 @@ namespace DGC2.Controllers
         [HttpPost]
         public ActionResult EditAskChange(Appointment p)
         {
-            
-            
-            
+
+
+            if (p.AppointmentStatus == false)
+                    p.AppointmentStatus = true;
+            if (p.AppointmentTrackStatus == 2)
+                    p.AppointmentTrackStatus = 20;
             apm.AppointmentAdd(p);
             return RedirectToAction("AppliedListAppoinment");
         }
 
-        public ActionResult EditAskChangeOnAdd(int id)
-        {
-
-            var value = apm.GetByID(id);
-            
-            value.AppointmentStatus = true;
-            apm.AppointmentUpdate(value);
-            
-
-            return RedirectToAction("AppliedListAppoinment");
-        }
+        
 
         public ActionResult CanceledListAppoinment()
         {
@@ -108,12 +101,27 @@ namespace DGC2.Controllers
             return View(appliedappoinment);
 
         }
-        public ActionResult AskChange(int id = 0)
+        public ActionResult AskChange(int id)
         {
             var appvalue = apm.GetByID(id);
+
+
+            appvalue.AppointmentStatus = false;
             appvalue.AppointmentTrackStatus = 20;
             apm.AppointmentUpdate(appvalue);
-            return RedirectToAction("AppliedAppoinment");
+            return RedirectToAction("AppliedListAppoinment");
+        }
+        public ActionResult CancelChange(int id)
+        {
+            var appvalue = apm.GetByID(id);
+            appvalue.AppointmentTrackStatus = 3;
+            apm.AppointmentUpdate(appvalue);
+            return RedirectToAction("AppliedListAppoinment");
+        }
+        public ActionResult CancelChangeList()
+        {
+            var cancelChangeList = apm.GetList();
+            return View(cancelChangeList);
         }
 
         [HttpGet]

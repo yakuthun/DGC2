@@ -36,6 +36,7 @@ namespace BusinessLayer.Concrete
         public Appointment GetByID(int id)
         {
             return _appointmentDal.Get(x => x.AppointmentID == id);
+          
             
         }
 
@@ -53,6 +54,19 @@ namespace BusinessLayer.Concrete
             return _appointmentDal.List();
         }
 
-       
+        public Appointment GetByIDForChange(bool id, string code)
+        {
+            return _appointmentDal.Get(x=>x.AppointmentStatus == id && x.AppointmentUCode == code );
+        }
+
+        public void AppointmentCopyDelete(Appointment appointment)
+        {
+            _appointmentDal.Delete(appointment);
+        }
+
+        public Appointment GetByIDForDelete(int id, bool t, string code)
+        {
+            return _appointmentDal.Get(x =>x.AppointmentID == id && x.AppointmentStatus == t && x.AppointmentUCode == code);
+        }
     }
 }
