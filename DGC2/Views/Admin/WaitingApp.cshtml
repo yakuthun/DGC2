@@ -27,7 +27,7 @@
     @foreach (var item in Model)
     {
 
-        if (item.AppointmentTrackStatus == 3)
+        if (item.AppointmentTrackStatus == 6)
         {
 
             <tr>
@@ -44,8 +44,8 @@
                 <td>@item.AppStartDate</td>
                 <td>@item.AppointmentTrackStatus</td>
 
-                <td><a href="/Admin/Completed/@item.AppointmentID" class="btn btn-success">Onayla</a></td>
-                <td><a href="/Admin/Canceled/@item.AppointmentID" class="btn btn-danger">Reddet</a></td>
+                <td><a href="/Admin/Canceled/@item.AppointmentID" class="btn btn-success">Onayla</a></td>
+                <td><a href="/Admin/Completed/@item.AppointmentID" class="btn btn-danger">Reddet</a></td>
             </tr>
 
         }
