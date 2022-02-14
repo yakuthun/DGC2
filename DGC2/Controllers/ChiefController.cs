@@ -15,6 +15,11 @@ namespace DGC2.Controllers
         // GET: Chief
         AppointmentManager am = new AppointmentManager(new EfAppointmentDal());
         
+        public ActionResult ClosePopUp()
+        {
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Index()
         {
             var appointmentvalue = am.GetList();
