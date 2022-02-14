@@ -18,9 +18,11 @@ namespace EntityLayer.Concrete
         public string AppointmentName { get; set; }
         [StringLength(200)]
         [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string AppointmentImage { get; set; }
         [StringLength(200)]
         [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string AppointmentComment { get; set; }
 
         public DateTime AppStartDate { get; set; }

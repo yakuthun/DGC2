@@ -167,8 +167,8 @@ namespace DGC2.Controllers
                
             }
             p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
-            string appimage = "";
-            p.AppointmentComment = appimage;
+            //string appimage = "";
+            //p.AppointmentComment = appimage;
             apm.AppointmentAdd(p);
            // p.AppStartDate = DateTime.TryParse(DateTime.Now.ToShortDateString());
             
