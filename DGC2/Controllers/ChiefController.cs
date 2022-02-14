@@ -14,11 +14,12 @@ namespace DGC2.Controllers
     {
         // GET: Chief
         AppointmentManager am = new AppointmentManager(new EfAppointmentDal());
-
+        
         public ActionResult Index()
         {
             var appointmentvalue = am.GetList();
             return View(appointmentvalue);
+
         }
       
         public ActionResult Finished()
@@ -46,8 +47,8 @@ namespace DGC2.Controllers
         {
             
 
-            //p.InComingDate = DateTime.Parse(Convert.ToDateTime(DateTime.Now).ToString("dd.MM.yyyy HH:mm:ss"));
-            p.InComingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+           // p.InComingDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            p.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
 
             am.AppointmentUpdate(p);
             if (p.AppointmentTrackStatus == 9)
@@ -78,7 +79,6 @@ namespace DGC2.Controllers
      
         public PartialViewResult EditAppPartial()
         {
-            
             return PartialView();
         }
 
@@ -108,22 +108,21 @@ namespace DGC2.Controllers
             return RedirectToAction("Index");
         }
         // 8- GELDİ
+
         public ActionResult InComingApp(int id,Appointment p)
         {
-           
+            p.InComingDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
             var appvalue = am.GetByID(id);
-
-            appvalue.InComingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-
             appvalue.AppointmentTrackStatus = 8;
             am.AppointmentDelete(appvalue);
             return RedirectToAction("Index");
         }
         // 9- İNDİRİLİYOR
-        public ActionResult Downloaded(int id)
+        public ActionResult Downloaded(int id, Appointment p)
         {
             var appvalue = am.GetByID(id);
-            appvalue.DownloadedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            //appvalue.DownloadedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            p.DownloadedDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
             appvalue.AppointmentTrackStatus = 9;
             am.AppointmentDelete(appvalue);
             return RedirectToAction("Index");
@@ -137,10 +136,11 @@ namespace DGC2.Controllers
         }
 
         // 10 - TAMAMLANAN
-        public ActionResult Completed(int id)
+        public ActionResult Completed(int id, Appointment p)
         {
             var appvalue = am.GetByID(id);
-            appvalue.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            //appvalue.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            p.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
             appvalue.AppointmentTrackStatus = 10;
             am.AppointmentDelete(appvalue);
             return RedirectToAction("Index");

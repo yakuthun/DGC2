@@ -26,8 +26,10 @@ namespace DGC2.Controllers
         [HttpPost]
         public ActionResult AddChief(Chief p)
         {
-            p.ChiefStartDate = DateTime.Parse(Convert.ToDateTime(DateTime.Now).ToString("dd.MM.yyyy HH:mm:ss"));
-            p.ChiefFinishDate = DateTime.Parse(Convert.ToDateTime(DateTime.Now).ToString("dd.MM.yyyy HH:mm:ss"));
+            p.ChiefStartDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            p.ChiefFinishDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+
+
             cm.ChiefAdd(p);
             return RedirectToAction("Index");
         }
