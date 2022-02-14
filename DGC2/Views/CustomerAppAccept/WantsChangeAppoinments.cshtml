@@ -16,22 +16,30 @@
         <th>Durum</th>
         <th>Sürücü ID</th>
         <th>Talep</th>
+        <th>Talep</th>
+        <th>Talep</th>
+        <th>Talep</th>
     </tr>
     @foreach (var item in Model)
     {
         if (item.AppointmentTrackStatus == 20)
         {
-            <tr>
+<tr>
 
-                <td>@item.SubCustomer.SubCustomerName</td>
-                <td>@item.AppointmentCapacity</td>
-                <td>@item.AppointmentLoadType</td>
-                <td>@item.AppStartDate</td>
-                <td>@item.AppointmentStatus</td>
-                <td>@item.Driver.DriverName  @item.Driver.DriverSurname</td>
-                <td><a href="/CustomerAppAccept/AccesChangeAppointment/@item.AppointmentID" class="btn btn-warning">Onay Ver</a></td>
+    <td>@item.SubCustomer.SubCustomerName</td>
+    <td>@item.AppointmentCapacity</td>
+    <td>@item.AppointmentLoadType</td>
+    <td>@item.AppStartDate</td>
+    <td>@item.AppointmentStatus</td>
+    <td>@item.Driver.DriverName  @item.Driver.DriverSurname</td>
+    <td><a href="/CustomerAppAccept/AccesChangeAppointment/@item.AppointmentID" class="btn btn-success">İzin Ver</a> </td>
+    <td><a href="/CustomerAppAccept/ApplyChangedAppointment/@item.AppointmentID" class="btn btn-warning">Onayla</a> </td>
+    <td><a href="/CustomerAppAccept/CancelChangedAppointment/@item.AppointmentID" class="btn btn-danger">Reddet</a> </td>
+    <td><a href="/CustomerAppAccept/ThrowToCancelAppointment/@item.AppointmentID" class="btn btn-dark">İptal Et</a> </td>
 
-            </tr>
+
+
+</tr>
         }
     }
 </table>

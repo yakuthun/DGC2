@@ -1,0 +1,37 @@
+﻿@using EntityLayer.Concrete
+@model List<Appointment>
+@{
+    ViewBag.Title = "CancelChangeList";
+    Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
+}
+
+<h1>İptal Bekleyen Randevular</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Kapasite</th>
+        <th>Yükleme Tipi</th>
+        <th>Başlangıç Tarihi</th>
+        <th>Durum</th>
+        <th>Sürücü ID</th>
+        <th>Talep</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (item.AppointmentTrackStatus == 23)
+        {
+            <tr>
+
+                <td>@item.SubCustomer.SubCustomerName</td>
+                <td>@item.AppointmentCapacity</td>
+                <td>@item.AppointmentLoadType</td>
+                <td>@item.AppStartDate</td>
+                <td>@item.AppointmentStatus</td>
+                <td>@item.Driver.DriverName  @item.Driver.DriverSurname</td>
+                
+            </tr>
+        }
+    }
+</table>
+

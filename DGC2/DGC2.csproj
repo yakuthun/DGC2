@@ -2528,6 +2528,9 @@
     <Content Include="Views\Chief\NotComings.cshtml" />
     <Content Include="Views\Chief\EditAppPartial.cshtml" />
     <Content Include="Views\SubCustomer\EditAskChange.cshtml" />
+    <Content Include="Views\CustomerAppAccept\CanceledAfterChangedAppointments.cshtml" />
+    <Content Include="Views\SubCustomer\CancelChangeList.cshtml" />
+    <Content Include="Views\CustomerAppAccept\AppliedWantsCancelAppointments.cshtml" />
     <Content Include="Views\Admin\WaitingApp.cshtml" />
     <Content Include="Views\Admin\SubCustomerList.cshtml" />
     <None Include="Web.config" />
