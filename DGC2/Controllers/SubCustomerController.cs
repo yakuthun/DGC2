@@ -31,24 +31,23 @@ namespace DGC2.Controllers
         [HttpPost]
         public ActionResult AddDriver(Driver p, Appointment ps)
         {
-            //p.DriverName = "Mahmut";
+            p.DriverName = "Mahmut";
             //p.DriverSurname = "Özcan";
-            //p.DriverNumber = "321321321";
-            //p.DriverPlate = "34 ASD 23";
-            //p.DriverLogisticName = "React A.Ş.";
-            //var name = p.DriverName;
+            p.DriverNumber = "321321321";
+            p.DriverPlate = "34 ASD 23";
+            p.DriverLogisticName = "React A.Ş.";
+            var name = p.DriverName;
             //var surname = p.DriverSurname;
-            //var number = p.DriverNumber;
-            //var plate = p.DriverPlate;
-            //var logisticname = p.DriverLogisticName;
-            //var app = apm.GetByID(78);
-            ////ps.AppointmentComment =p.DriverName + " " + p.DriverSurname + " " + p.DriverNumber + " " + p.DriverPlate + " " + p.DriverLogisticName;
-            //scm.DriverAdd(p);
+            var number = p.DriverNumber;
+            var plate = p.DriverPlate;
+            var logisticname = p.DriverLogisticName;
+            var app = apm.GetByID(78);
+            //ps.AppointmentComment =p.DriverName + " " + p.DriverSurname + " " + p.DriverNumber + " " + p.DriverPlate + " " + p.DriverLogisticName;
+            scm.DriverAdd(p);
 
-            //var fullname = String.Format( "İsim:" + name + " Soyad:" + surname + " Telefon:" + number + " Plaka:" + plate + " Firma:" + logisticname);
-            //var asd = apm.GetByID(78);
-            //asd.AppointmentComment = fullname;
-
+            var fullname = String.Format( "İsim:" + name + " Soyad:"  + " Telefon:" + number + " Plaka:" + plate + " Firma:" + logisticname);
+            var asd = apm.GetByID(78);
+            asd.AppointmentComment = fullname;
 
             //apm.AppointmentUpdate(app);
             return RedirectToAction("Index");
@@ -207,7 +206,7 @@ namespace DGC2.Controllers
 
             return RedirectToAction("Index");
         }
-
+       
         public ActionResult Calendar()
         {
             return View();

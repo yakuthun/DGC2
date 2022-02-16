@@ -15,8 +15,6 @@ namespace EntityLayer.Concrete
         public string DriverLogisticName { get; set; }
         [StringLength(50)]
         public string DriverName { get; set; }
-        [StringLength(50)]
-        public string DriverSurname { get; set; }
         [StringLength(20)]
         public string DriverPlate { get; set; }
         [StringLength(20)]
