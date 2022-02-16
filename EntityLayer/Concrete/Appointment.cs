@@ -40,10 +40,17 @@ namespace EntityLayer.Concrete
         [Required(AllowEmptyStrings = true)]
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string DriverComment { get; set; }
+
+        [StringLength(50)]
+        public string AppDriverLogisticName { get; set; }
+        [StringLength(50)]
+        public string AppDriverName { get; set; }
         [StringLength(20)]
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
-        public string AppPlate { get; set; }
+        public string AppDriverPlate { get; set; }
+        [StringLength(20)]
+        public string AppDriverNumber { get; set; }
+
+        public bool DriverStatus { get; set; }
         public int SubCustomerID { get; set; }
         public virtual SubCustomer SubCustomer { get; set; }
 

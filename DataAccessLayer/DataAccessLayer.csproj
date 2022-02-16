@@ -110,6 +110,10 @@
     <Compile Include="Migrations\202202142047457_mig_applateadded.designer.cs">
       <DependentUpon>202202142047457_mig_applateadded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202150048150_add_appdriverall_add.cs" />
+    <Compile Include="Migrations\202202150048150_add_appdriverall_add.designer.cs">
+      <DependentUpon>202202150048150_add_appdriverall_add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -156,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202142047457_mig_applateadded.resx">
       <DependentUpon>202202142047457_mig_applateadded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202150048150_add_appdriverall_add.resx">
+      <DependentUpon>202202150048150_add_appdriverall_add.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
