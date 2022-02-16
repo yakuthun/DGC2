@@ -160,12 +160,8 @@ namespace DGC2.Controllers
 
 
         [HttpPost]
-        public ActionResult AddAppoinment(Appointment p)
+        public ActionResult AddAppoinment(Appointment p,Driver d)
         {
-
-
-            
-
 
             if (p.AppointmentUCode == null)
             {
@@ -184,27 +180,42 @@ namespace DGC2.Controllers
             }
 
 
+
+            if (p.DriverStatus == false)
+            {
+                d.SubCustomerID = p.SubCustomerID;
+                d.DriverName = p.AppDriverName;
+                d.DriverNumber = p.AppDriverNumber;
+                d.DriverPlate = p.AppDriverPlate;
+                d.DriverLogisticName = p.AppDriverLogisticName;
+                d.DriverStatus = true;
+                scm.DriverAdd(d);
+            }
+
+                
+            
+            
+                if (p.AppointmentTrackStatus == 0)
+                {
+                    p.AppointmentTrackStatus = 1;
+
+
+                }
+                p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+                apm.AppointmentAdd(p);
+                
             
 
-
-            if (p.AppointmentTrackStatus == 0)
-            {
-                p.AppointmentTrackStatus = 1;
-
-
-            }
-            p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
-            //string appimage = "";
-            //p.AppointmentComment = appimage;
-            apm.AppointmentAdd(p);
-            // p.AppStartDate = DateTime.TryParse(DateTime.Now.ToShortDateString());
-
-            //p.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            //p.RealAppStartDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            //p.RealAppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-
-
             return RedirectToAction("Index");
+            //if (p.AppointmentTrackStatus == 0)
+            //{
+            //    p.AppointmentTrackStatus = 1;
+
+
+            //}
+            //p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            //apm.AppointmentAdd(p);
+            //return RedirectToAction("Index");
         }
        
         public ActionResult Calendar()
