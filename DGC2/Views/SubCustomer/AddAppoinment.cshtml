@@ -38,7 +38,28 @@
     @Html.TextBoxFor(x => x.AppointmentCapacity, new { @class = "form-control" })
 
     
+    @Html.Label("Sürücü İsim")
+    @Html.TextBoxFor(x => x.Driver.DriverName, new { @class = "form-control" })
 
+    @Html.Label("Sürücü Soyisim")
+    @Html.TextBoxFor(x => x.Driver.DriverSurname, new { @class = "form-control" })
+
+
+    @Html.Label("Çalıştığı Firma")
+    @Html.TextBoxFor(x => x.Driver.DriverLogisticName, new { @class = "form-control" })
+
+    @Html.Label("Plaka")
+    @Html.TextBoxFor(x => x.Driver.DriverPlate, new { @class = "form-control" })
+
+    @Html.Label("Telefon Numarası")
+    @Html.TextBoxFor(x => x.Driver.DriverNumber, new { @class = "form-control" })
+
+    @Html.Label("ID")
+    @Html.TextBoxFor(x => x.SubCustomerID, new { @class = "form-control" })
+
+    @Html.Label("Sürücüyü Kaydetmek İstemiyorum")
+    @Html.CheckBoxFor(m => m.AppointmentStatus, new { @checked = "checked" })
+    <br />
     <button class="btn btn-success">Kaydet</button>
 </div>
 }
