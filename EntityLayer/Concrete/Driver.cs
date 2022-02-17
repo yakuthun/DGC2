@@ -20,8 +20,10 @@ namespace EntityLayer.Concrete
         [StringLength(20)]
         public string DriverNumber { get; set; }
         public bool DriverStatus { get; set; }
-
-
+        [StringLength(20)]
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        public string DriverSurname { get; set; }
         public int SubCustomerID { get; set; }
         public virtual SubCustomer SubCustomer { get; set; }
 
