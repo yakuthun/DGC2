@@ -45,7 +45,7 @@ namespace DGC2.Controllers
             //ps.AppointmentComment =p.DriverName + " " + p.DriverSurname + " " + p.DriverNumber + " " + p.DriverPlate + " " + p.DriverLogisticName;
             scm.DriverAdd(p);
 
-            var fullname = String.Format( "İsim:" + name + " Soyad:"  + " Telefon:" + number + " Plaka:" + plate + " Firma:" + logisticname);
+            var fullname = String.Format("İsim:" + name + " Soyad:" + " Telefon:" + number + " Plaka:" + plate + " Firma:" + logisticname);
             var asd = apm.GetByID(78);
             asd.AppointmentComment = fullname;
 
@@ -160,7 +160,7 @@ namespace DGC2.Controllers
 
 
         [HttpPost]
-        public ActionResult AddAppoinment(Appointment p,Driver d)
+        public ActionResult AddAppoinment(Appointment p, Driver d)
         {
 
             if (p.AppointmentUCode == null)
@@ -192,19 +192,14 @@ namespace DGC2.Controllers
                 scm.DriverAdd(d);
             }
 
-                
-            
-            
-                if (p.AppointmentTrackStatus == 0)
-                {
-                    p.AppointmentTrackStatus = 1;
+            if (p.AppointmentTrackStatus == 0)
+            {
+                p.AppointmentTrackStatus = 1;
 
 
-                }
-                p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
-                apm.AppointmentAdd(p);
-                
-            
+            }
+            p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            apm.AppointmentAdd(p);
 
             return RedirectToAction("Index");
             //if (p.AppointmentTrackStatus == 0)
@@ -217,7 +212,7 @@ namespace DGC2.Controllers
             //apm.AppointmentAdd(p);
             //return RedirectToAction("Index");
         }
-       
+
         public ActionResult Calendar()
         {
             return View();

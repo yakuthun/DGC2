@@ -114,6 +114,10 @@
     <Compile Include="Migrations\202202150048150_add_appdriverall_add.designer.cs">
       <DependentUpon>202202150048150_add_appdriverall_add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202162004531_retake.cs" />
+    <Compile Include="Migrations\202202162004531_retake.designer.cs">
+      <DependentUpon>202202162004531_retake.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -163,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202150048150_add_appdriverall_add.resx">
       <DependentUpon>202202150048150_add_appdriverall_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202162004531_retake.resx">
+      <DependentUpon>202202162004531_retake.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
