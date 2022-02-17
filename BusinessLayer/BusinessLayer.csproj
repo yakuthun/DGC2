@@ -57,12 +57,14 @@
   <ItemGroup>
     <Compile Include="Abstract\IAdminService.cs" />
     <Compile Include="Abstract\IAppointmentService.cs" />
+    <Compile Include="Abstract\ICalendarService.cs" />
     <Compile Include="Abstract\IChiefService.cs" />
     <Compile Include="Abstract\ICustomerService.cs" />
     <Compile Include="Abstract\ICustomerSubService.cs" />
     <Compile Include="Abstract\ISubCustomerService.cs" />
     <Compile Include="Concrete\AdminManager.cs" />
     <Compile Include="Concrete\AppointmentManager.cs" />
+    <Compile Include="Concrete\CalendarManager.cs" />
     <Compile Include="Concrete\ChiefManager.cs" />
     <Compile Include="Concrete\CustomerManager.cs" />
     <Compile Include="Concrete\CustomerSubManager.cs" />

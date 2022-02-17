@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Abstract\IAdminDal.cs" />
     <Compile Include="Abstract\IAppointmentDal.cs" />
+    <Compile Include="Abstract\ICalendarDal.cs" />
     <Compile Include="Abstract\ICustomerAddSubDal.cs" />
     <Compile Include="Abstract\IChiefDal.cs" />
     <Compile Include="Abstract\ICustomerDal.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
     <Compile Include="EntityFramework\EfAdminDal.cs" />
     <Compile Include="EntityFramework\EfAppointmentDal.cs" />
+    <Compile Include="EntityFramework\EfCalendarDal.cs" />
     <Compile Include="EntityFramework\EfCustomerAddSubDal.cs" />
     <Compile Include="EntityFramework\EfChiefDal.cs" />
     <Compile Include="EntityFramework\EfCustomerDal.cs" />
@@ -118,6 +120,14 @@
     <Compile Include="Migrations\202202162004531_retake.designer.cs">
       <DependentUpon>202202162004531_retake.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202172024090_mig_calendar_add2.cs" />
+    <Compile Include="Migrations\202202172024090_mig_calendar_add2.designer.cs">
+      <DependentUpon>202202172024090_mig_calendar_add2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202172027562_mig_calendar_add4.cs" />
+    <Compile Include="Migrations\202202172027562_mig_calendar_add4.designer.cs">
+      <DependentUpon>202202172027562_mig_calendar_add4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -170,6 +180,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202162004531_retake.resx">
       <DependentUpon>202202162004531_retake.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202172024090_mig_calendar_add2.resx">
+      <DependentUpon>202202172024090_mig_calendar_add2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202172027562_mig_calendar_add4.resx">
+      <DependentUpon>202202172027562_mig_calendar_add4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

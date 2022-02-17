@@ -17,5 +17,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<Driver> Drivers { get; set; }
         public DbSet<AppManagement> AppManagements { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Calendar> Calendars { get; set; }
     }
 }

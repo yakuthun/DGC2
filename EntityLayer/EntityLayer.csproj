@@ -54,6 +54,7 @@
     <Compile Include="Concrete\Admin.cs" />
     <Compile Include="Concrete\AppManagement.cs" />
     <Compile Include="Concrete\Appointment.cs" />
+    <Compile Include="Concrete\Calendar.cs" />
     <Compile Include="Concrete\Chief.cs" />
     <Compile Include="Concrete\Customer.cs" />
     <Compile Include="Concrete\Driver.cs" />

@@ -24,8 +24,8 @@ namespace EntityLayer.Concrete
         [Required(AllowEmptyStrings = true)]
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string AppointmentComment { get; set; }
-
         public DateTime AppStartDate { get; set; }
+       
 
         public DateTime? AppFinishDate { get; set; }
 
@@ -57,11 +57,13 @@ namespace EntityLayer.Concrete
         public int ChiefID { get; set; }
         public virtual Chief Chief { get; set; }
 
-     
+        public int? CalendarID { get; set; }
+        public virtual Calendar Calendar { get; set; }
 
 
         public int? DriverID { get; set; }
         public virtual Driver Driver { get; set; }
+       
 
     }
 }
