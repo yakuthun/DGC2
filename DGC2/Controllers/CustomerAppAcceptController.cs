@@ -14,6 +14,7 @@ namespace DGC2.Controllers
     {
         // GET: CustomerSubAppAccept
         AppointmentManager am = new AppointmentManager(new EfAppointmentDal());
+        CustomerSubManager csm = new CustomerSubManager(new EfCustomerAddSubDal());
         Context c = new Context();
 
 
@@ -23,6 +24,11 @@ namespace DGC2.Controllers
 
             var appointmentvalue = am.GetBySubCustomer();
             return View(appointmentvalue);
+        }
+        public ActionResult SubCustomerList()
+        {
+            var ssubcustomervalue = csm.GetList();
+            return View(ssubcustomervalue);
         }
         public ActionResult CanceledAppoinments()
         {
@@ -117,5 +123,40 @@ namespace DGC2.Controllers
             am.AppointmentUpdate(nocancel);
             return RedirectToAction("Appointments");
         }
+
+        // TEDARİKÇİ EKLEME 
+
+        public ActionResult AddSubCustomer()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddSubCustomer(SubCustomer p)
+        {
+            csm.SubCustomerAdd(p);
+            return RedirectToAction("SubCustomerList");
+        }
+        [HttpGet]
+        public ActionResult EditSubCustomer(int id)
+        {
+            var subcustomervalue = csm.GetByID(id);
+            return View(subcustomervalue);
+        }
+        [HttpPost]
+        public ActionResult EditSubCustomer(SubCustomer p)
+        {
+            csm.SubCustomerUpdate(p);
+            return RedirectToAction("SubCustomerList");
+        }
+
+        public ActionResult DeleteSubCustomer(int id)
+        {
+            var subcustomervalue = csm.GetByID(id);
+            subcustomervalue.SubCustomerStatus = false;
+            csm.SubCustomerDelete(subcustomervalue);
+            return RedirectToAction("SubCustomerList");
+        }
+
+        // TEDARİKÇİ EKLEME
     }
 }
