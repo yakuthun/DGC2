@@ -59,7 +59,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title" style="font-size:30px; font-weight:700">Beklenen Randevular</h3>
+                <h3 class="card-title" style="font-size:30px; font-weight:700">Onaylanan Randevular</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -71,6 +71,9 @@
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
+                            <th style="width: 8%">
+                                Firma
+                            </th>
                             <th style="width: 8%">
                                 Tür
                             </th>
@@ -117,35 +120,38 @@
                                 //{
                                 //    color = "badge badge-danger";
                                 //}
-                                <tr>
-                                    <td style="font-size: 20px;">
-                                        @item.AppointmentLoadType
-                                    </td>
-                                    <td>
-                                        <a style="font-size: 20px;">
-                                            @item.AppointmentName
-                                        </a>
-                                        <br />
+                        <tr>
+                            <td style="font-size: 20px; font-weight:800">
+                                @item.SubCustomer.SubCustomerCompany
+                            </td>
+                            <td style="font-size: 20px;">
+                                @item.AppointmentLoadType
+                            </td>
+                            <td>
+                                <a style="font-size: 20px;">
+                                    @item.AppointmentName
+                                </a>
+                                <br />
 
-                                    </td>
-                                    <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item" style="font-size: 30px; font-weight: 600; ">
-                                                @item.AppointmentCapacity
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <p style="font-weight:800; font-size:20px" class="badge badge-success">Onaylandı</p>
-                                    </td>
-                                    <td class="project-state" style="font-size:18px">
-                                        @item.AppStartDate
-                                    </td>
-                                    <td class="project-actions text-right">
-                                    </td>
+                            </td>
+                            <td>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item" style="font-size: 30px; font-weight: 600; ">
+                                        @item.AppointmentCapacity
+                                    </li>
+                                </ul>
+                            </td>
+                            <td>
+                                <p style="font-weight:800; font-size:20px" class="badge badge-success">Onaylandı</p>
+                            </td>
+                            <td class="project-state" style="font-size:18px">
+                                @item.AppStartDate
+                            </td>
+                            <td class="project-actions text-right">
+                            </td>
 
 
-                                </tr>
+                        </tr>
 
                             }
                         }
