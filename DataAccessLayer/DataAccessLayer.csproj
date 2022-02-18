@@ -128,6 +128,14 @@
     <Compile Include="Migrations\202202172027562_mig_calendar_add4.designer.cs">
       <DependentUpon>202202172027562_mig_calendar_add4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202181446401_add_sliceid.cs" />
+    <Compile Include="Migrations\202202181446401_add_sliceid.designer.cs">
+      <DependentUpon>202202181446401_add_sliceid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202181544431_add_slice_calendarconnecti.cs" />
+    <Compile Include="Migrations\202202181544431_add_slice_calendarconnecti.designer.cs">
+      <DependentUpon>202202181544431_add_slice_calendarconnecti.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -186,6 +194,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202172027562_mig_calendar_add4.resx">
       <DependentUpon>202202172027562_mig_calendar_add4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202181446401_add_sliceid.resx">
+      <DependentUpon>202202181446401_add_sliceid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202181544431_add_slice_calendarconnecti.resx">
+      <DependentUpon>202202181544431_add_slice_calendarconnecti.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

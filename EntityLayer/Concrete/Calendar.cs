@@ -11,8 +11,7 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int CalendarID { get; set; }
-        public int CLVersion { get; set; }
-        public bool CLStatus { get; set; }
+        public int CLSliceID { get; set; }
         public DateTime CLUseStartDate  { get; set; }
         public DateTime CLUseFinishDate  { get; set; }
         public DateTime CLStartDate { get; set; }
@@ -22,8 +21,11 @@ namespace EntityLayer.Concrete
         public int CLTolerance { get; set; }
         public int CLSumTolerance { get; set; }
         public int CLPalletCapacity { get; set; }
+        public int? SlicesID { get; set; }
+        public virtual Slice Slice { get; set; }
         public ICollection<Appointment> Appointments { get; set; }
-       
+
+     
 
     }
 }

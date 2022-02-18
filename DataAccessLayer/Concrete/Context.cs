@@ -18,5 +18,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<AppManagement> AppManagements { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Calendar> Calendars { get; set; }
+        public DbSet<Slice> Slices { get; set; }
     }
 }
