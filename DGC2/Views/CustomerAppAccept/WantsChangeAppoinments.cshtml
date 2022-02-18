@@ -7,39 +7,158 @@
 
 <h2>Değişiklik İsteyen Randevular</h2>
 
-<table class="table table-bordered">
-    <tr>
-        <th>Firma İsim</th>
-        <th>Mal İsim</th>
-        <th>Yükleme Tipi</th>
-        <th>Geliş Tarihi</th>
-        <th>Durum</th>
-        <th>Sürücü İsim</th>
-        <th>Talep</th>
-        <th>Talep</th>
-        <th>Talep</th>
-        <th>Talep</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        if (item.AppointmentTrackStatus == 20)
+@*<table class="table table-bordered">
+        <tr>
+            <th>Firma İsim</th>
+            <th>Mal İsim</th>
+            <th>Yükleme Tipi</th>
+            <th>Geliş Tarihi</th>
+            <th>Durum</th>
+            <th>Sürücü İsim</th>
+            <th>Talep</th>
+            <th>Talep</th>
+            <th>Talep</th>
+            <th>Talep</th>
+        </tr>
+        @foreach (var item in Model)
         {
-<tr>
+            if (item.AppointmentTrackStatus == 20)
+            {
+    <tr>
 
-    <td>@item.SubCustomer.SubCustomerName</td>
-    <td>@item.AppointmentName</td>
-    <td>@item.AppointmentLoadType</td>
-    <td>@item.AppStartDate</td>
-    <td>@item.AppointmentStatus</td>
-    
-    <td><a href="/CustomerAppAccept/AccesChangeAppointment/@item.AppointmentID" class="btn btn-success">İzin Ver</a> </td>
-    <td><a href="/CustomerAppAccept/ApplyChangedAppointment/@item.AppointmentID" class="btn btn-warning">Onayla</a> </td>
-    <td><a href="/CustomerAppAccept/CancelChangedAppointment/@item.AppointmentID" class="btn btn-danger">Reddet</a> </td>
-    <td><a href="/CustomerAppAccept/ThrowToCancelAppointment/@item.AppointmentID" class="btn btn-dark">İptal Et</a> </td>
+        <td>@item.SubCustomer.SubCustomerName</td>
+        <td>@item.AppointmentName</td>
+        <td>@item.AppointmentLoadType</td>
+        <td>@item.AppStartDate</td>
+        <td>@item.AppointmentStatus</td>
+
+        <td><a href="/CustomerAppAccept/AccesChangeAppointment/@item.AppointmentID" class="btn btn-success">İzin Ver</a> </td>
+        <td><a href="/CustomerAppAccept/ApplyChangedAppointment/@item.AppointmentID" class="btn btn-warning">Onayla</a> </td>
+        <td><a href="/CustomerAppAccept/CancelChangedAppointment/@item.AppointmentID" class="btn btn-danger">Reddet</a> </td>
+        <td><a href="/CustomerAppAccept/ThrowToCancelAppointment/@item.AppointmentID" class="btn btn-dark">İptal Et</a> </td>
 
 
 
-</tr>
+    </tr>
+            }
         }
-    }
-</table>
+    </table>*@
+<body class="hold-transition sidebar-mini">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title" style="font-size:30px; font-weight:700">Beklenen Randevular</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 8%">
+                                Tür
+                            </th>
+                            <th style="width: 15%">
+                                Mal İsim
+                            </th>
+                            <th style="width: 15%">
+                                Yük Adet
+                            </th>
+                            <th style="width: 15%">
+                                Durum
+                            </th>
+                            <th style="width: 8%" class="text-center">
+                                Geliş Tarihi
+                            </th>
+                            <th style="width: 10%">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (item.AppointmentTrackStatus == 20)
+                            {
+
+
+                                //if (item.Category.CategoryName == "Tiyatro")
+                                //{
+                                //    color = "badge badge-warning";
+                                //}
+                                //if (item.Category.CategoryName == "Spor")
+                                //{
+                                //    color = "badge badge-success";
+                                //}
+                                //if (item.Category.CategoryName == "Yazılım")
+                                //{
+                                //    color = "badge badge-info";
+                                //}
+                                //if (item.Category.CategoryName == "Yemek")
+                                //{
+                                //    color = "badge badge-secondary";
+                                //}
+                                //if (item.Category.CategoryName == "Kitap")
+                                //{
+                                //    color = "badge badge-danger";
+                                //}
+                                <tr>
+                                    <td style="font-size: 20px;">
+                                        @item.AppointmentLoadType
+                                    </td>
+                                    <td>
+                                        <a style="font-size: 20px;">
+                                            @item.AppointmentName
+                                        </a>
+                                        <br />
+
+                                    </td>
+                                    <td>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item" style="font-size: 30px; font-weight: 600; ">
+                                                @item.AppointmentCapacity
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <p style="font-weight:800; font-size:20px" class="badge badge-info">Değişiklik İsteniyor</p>
+                                    </td>
+                                    <td class="project-state" style="font-size:18px">
+                                        @item.AppStartDate
+                                    </td>
+                                    <td class="project-actions text-right">
+                                    </td>
+                                    <td>
+                                        <a href="/CustomerAppAccept/AccesChangeAppointment/@item.AppointmentID" class="btn btn-success">İzin Ver</a>
+                                        <a href="/CustomerAppAccept/ApplyChangedAppointment/@item.AppointmentID" class="btn btn-warning">Onayla</a>
+                                        <a href="/CustomerAppAccept/CancelChangedAppointment/@item.AppointmentID" class="btn btn-danger">Reddet</a>
+                                        <a href="/CustomerAppAccept/ThrowToCancelAppointment/@item.AppointmentID" class="btn btn-dark">İptal Et</a>
+                                    </td>
+
+                                </tr>
+
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+</body>

@@ -29,7 +29,7 @@ namespace DGC2.Controllers
         public ActionResult AddSubCustomer(SubCustomer p)
         {
             csm.SubCustomerAdd(p);
-            return RedirectToAction("Index");
+            return RedirectToAction("/CustomerAppAccept/SubCustomerList");
         }
         [HttpGet]
         public ActionResult EditSubCustomer(int id)

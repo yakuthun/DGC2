@@ -50,7 +50,7 @@
                         <img src="~/AdminLTE/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Müşteri Paneli</a>
+                        <a href="#" class="d-block" style="font-weight:800">Müşteri Paneli</a>
                     </div>
                 </div>
 
@@ -71,8 +71,29 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
     with font-awesome or any other icon font library -->
+
+
+
+                        <li style="margin-bottom:5%">
+                            <a href="/CustomerSub/AddSubCustomer" class="nav-link">
+                                <p class="btn btn-success" style="padding-right:42%; padding-bottom:5%; padding-top:5%;">
+                                    Tedarikçi Girişi
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item">
-                            <a href="/CustomerSub/Index/" class="nav-link">
+                            <a href="/CustomerAppAccept/Appointments/" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Ana Sayfa
+
+                                </p>
+                            </a>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/CustomerAppAccept/SubCustomerList/" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Tedarikçiler
@@ -93,17 +114,7 @@
 
                         </li>
 
-                        <li class="nav-item">
-                            <a href="/CustomerAppAccept/Appointments/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Onaylanan Randevular
 
-                                </p>
-                            </a>
-
-
-                        </li>
                         <li class="nav-item">
                             <a href="/CustomerAppAccept/CanceledAppoinments/" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>

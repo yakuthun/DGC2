@@ -2535,6 +2535,8 @@
     <Content Include="Views\Admin\SubCustomerList.cshtml" />
     <Content Include="Views\Shared\_FormLayout.cshtml" />
     <Content Include="Views\SubCustomer\Calendar.cshtml" />
+    <Content Include="Views\CustomerAppAccept\SubCustomerList.cshtml" />
+    <Content Include="Views\CustomerAppAccept\EditSubCustomer.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

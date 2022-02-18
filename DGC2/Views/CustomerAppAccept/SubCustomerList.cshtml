@@ -1,0 +1,157 @@
+﻿@using EntityLayer.Concrete
+@model List<SubCustomer>
+@{
+    ViewBag.Title = "SubCustomerList";
+    Layout = "~/Views/Shared/_CustomerAdminLayout.cshtml";
+}
+
+@*<table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Tedarikçi Kullanıcı Adı</th>
+            <th>Tedarikçi Şifre</th>
+            <th>Tedarikçi İsim</th>
+            <th>Tedarikçi Kodu</th>
+            <th>Tedarikçi Adresi</th>
+            <th>Tedarikçi Durum</th>
+            <th>Müşteri</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.SubCustomerID</td>
+                <td>@item.SubCustomerUsername</td>
+                <td>@item.SubCustomerPassword</td>
+                <td>@item.SubCustomerName</td>
+                <td>@item.SubCustomerCode</td>
+                <td>@item.SubCustomerAddress</td>
+                <td>@item.SubCustomerStatus</td>
+                <td>@item.CustomerID</td>
+                <td><a href="/CustomerSub/EditSubCustomer/@item.SubCustomerID" class="btn btn-warning">Tedarikçiyi Düzenle</a></td>
+                <td><a href="/CustomerSub/DeleteSubCustomer/@item.SubCustomerID" class="btn btn-danger">Tedarikçiyi Sil</a></td>
+            </tr>
+        }
+    </table>*@
+<body class="hold-transition sidebar-mini">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title" style="font-size:30px; font-weight:700">Tedarikçilerim</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 8%">
+                                Firma
+                            </th>
+                            
+                            <th style="width: 12%">
+                                Adres
+                            </th>
+                            <th style="width: 10%">
+                                Durum
+                            </th>
+                           
+                            <th style="width: 10%;">
+                                Firma Kodu
+                            </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+
+
+                            //if (item.Category.CategoryName == "Tiyatro")
+                            //{
+                            //    color = "badge badge-warning";
+                            //}
+                            //if (item.Category.CategoryName == "Spor")
+                            //{
+                            //    color = "badge badge-success";
+                            //}
+                            //if (item.Category.CategoryName == "Yazılım")
+                            //{
+                            //    color = "badge badge-info";
+                            //}
+                            //if (item.Category.CategoryName == "Yemek")
+                            //{
+                            //    color = "badge badge-secondary";
+                            //}
+                            //if (item.Category.CategoryName == "Kitap")
+                            //{
+                            //    color = "badge badge-danger";
+                            //}
+                        <tr>
+                            <td>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item" style="font-size: 18px; font-weight: 600; ">
+                                        @item.SubCustomerCompany
+                                    </li>
+                                </ul>
+                            </td>
+                            
+                            <td>
+                                <a style="font-size: 20px;">
+                                    @item.SubCustomerAddress
+                                </a>
+                                <br />
+
+                            </td>
+                            
+                            <td>
+                                <p style="font-weight:800; font-size:20px" class="badge badge-success">Aktif</p>
+                            </td>
+
+
+                            <td>
+                                <a style="font-size: 20px;">
+                                    @item.SubCustomerCode
+                                </a>
+                                <br />
+
+                            </td>
+
+                            <td class="project-actions text-right">
+                            </td>
+
+                            <td>
+                                <a href="/CustomerAppAccept/EditSubCustomer/@item.SubCustomerID" class="btn btn-warning">Düzenle</a>
+                                <a href="/CustomerAppAccept/DeleteSubCustomer/@item.SubCustomerID" class="btn btn-danger">Sil</a>
+                            </td>
+                        </tr>
+
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+</body>
+
