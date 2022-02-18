@@ -2535,6 +2535,9 @@
     <Content Include="Views\Admin\SubCustomerList.cshtml" />
     <Content Include="Views\Shared\_FormLayout.cshtml" />
     <Content Include="Views\SubCustomer\Calendar.cshtml" />
+    <Content Include="Views\Admin\AddCalendar.cshtml" />
+    <Content Include="Views\Admin\CalendarList.cshtml" />
+    <Content Include="Views\Admin\EditCalendar.cshtml" />
     <Content Include="Views\CustomerAppAccept\SubCustomerList.cshtml" />
     <Content Include="Views\CustomerAppAccept\EditSubCustomer.cshtml" />
     <None Include="Web.config" />

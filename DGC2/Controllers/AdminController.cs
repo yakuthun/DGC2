@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
@@ -13,6 +14,7 @@ namespace DGC2.Controllers
     {
         AdminManager am = new AdminManager(new EfAdminDal());
         AppointmentManager apm = new AppointmentManager(new EfAppointmentDal());
+        CalendarManager cl = new CalendarManager(new EfCalendarDal());
 
         CustomerSubManager sbm = new CustomerSubManager(new EfCustomerAddSubDal());
        
@@ -82,6 +84,53 @@ namespace DGC2.Controllers
             appvalue.AppointmentTrackStatus = 11;
             apm.AppointmentDelete(appvalue);
             return RedirectToAction("WaitingApp", "Admin");
+        }
+
+        public ActionResult CalendarList()
+        {
+            var calendarvalues = cl.GetList();
+            return View(calendarvalues);
+        }
+
+        [HttpGet]
+        public ActionResult AddCalendar()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddCalendar(Calendar p)
+        {
+            cl.CalendarAdd(p);
+            return RedirectToAction("CalendarList", "Admin");
+        }
+        [HttpGet]
+        public ActionResult EditCalendar(int id)
+        {
+            var calendarvalue = cl.GetByID(id);
+            return View(calendarvalue);
+        }
+        [HttpPost]
+        public ActionResult EditCalendar(Calendar p)
+        {
+            cl.CalendarUpdate(p);
+            return RedirectToAction("CalendarList","Admin");
+        }
+
+        [HttpGet]
+        public ActionResult PassiveSlice(int id)
+        {
+            var calendarvalue = cl.GetByID(id);
+            return View(calendarvalue);
+        }
+        [HttpPost]
+        public ActionResult PassiveSlice(Calendar p)
+        {
+            Context c = new Context();
+            //var calendar = c.Calendars.Where(c => c.CLStatus == true)
+            //var calendarvalue = cl.GetByStatusAndVersin(p.CLStatus, p.CLVersion);
+           
+            
+            return RedirectToAction("CalendarList", "Admin");
         }
     }
 }
