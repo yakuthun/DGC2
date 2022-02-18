@@ -126,8 +126,8 @@ namespace DGC2.Controllers
         public ActionResult PassiveSlice(Calendar p)
         {
             Context c = new Context();
-            var calendar = c.Calendars.Where(c => c.CLStatus == true)
-            var calendarvalue = cl.GetByStatusAndVersin(p.CLStatus, p.CLVersion);
+            //var calendar = c.Calendars.Where(c => c.CLStatus == true)
+            //var calendarvalue = cl.GetByStatusAndVersin(p.CLStatus, p.CLVersion);
            
             
             return RedirectToAction("CalendarList", "Admin");
