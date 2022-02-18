@@ -17,7 +17,7 @@ namespace DGC2.Controllers
         AppointmentManager apm = new AppointmentManager(new EfAppointmentDal());
         public ActionResult Index()
         {
-            var Subcustomervalues = scm.GetList();
+            var Subcustomervalues = apm.GetList();
             return View(Subcustomervalues);
         }
         [HttpGet]
