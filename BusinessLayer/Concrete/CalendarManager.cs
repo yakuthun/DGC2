@@ -38,6 +38,11 @@ namespace BusinessLayer.Concrete
             return _calendarDal.Get(x => x.CalendarID == id);
         }
 
+        public Calendar GetByStatusAndVersin(bool id, int version)
+        {
+            return _calendarDal.Get(x=> x.CLStatus == id && x.CLVersion == version);
+        }
+
         public List<Calendar> GetList()
         {
             return _calendarDal.List();
