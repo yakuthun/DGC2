@@ -8,7 +8,7 @@
 @using (Html.BeginForm("AddAppoinment", "SubCustomer", FormMethod.Post))
 {
 <div class="form-group">
-
+    
     @Html.HiddenFor(x => x.AppointmentTrackStatus)
     @Html.HiddenFor(x => x.AppFinishDate)
     @Html.HiddenFor(x => x.InComingDate)
@@ -20,7 +20,7 @@
     @Html.HiddenFor(x => x.AppointmentStatus)
     @Html.HiddenFor(x => x.AppStartDate)
     @Html.HiddenFor(m => m.DriverComment)
-
+    
     @Html.Label("Yükleme Türü (Dökme/Palet)")
     @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control" })
 

@@ -15,6 +15,7 @@ namespace DGC2.Controllers
         // GET: SubCustomer
         SubCustomerManager scm = new SubCustomerManager(new EfSubCustomerDal());
         AppointmentManager apm = new AppointmentManager(new EfAppointmentDal());
+        CalendarManager cm = new CalendarManager(new EfCalendarDal());
         public ActionResult Index()
         {
             var Subcustomervalues = apm.GetList();
@@ -151,17 +152,15 @@ namespace DGC2.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddAppoinment()
+        public ActionResult AddAppoinment(int id)
         {
-
-            return View();
+            var asd = cm.GetByID(id);
+            return View(asd);
         }
-
-
-
         [HttpPost]
-        public ActionResult AddAppoinment(Appointment p, Driver d)
+        public ActionResult AddAppoinment(Appointment p, Driver d, Calendar c, int id)
         {
+            
 
             if (p.AppointmentUCode == null)
             {
@@ -179,7 +178,9 @@ namespace DGC2.Controllers
                 p.AppointmentUCode = finalString;
             }
 
+           
 
+            
 
             if (p.DriverStatus == false)
             {
@@ -195,10 +196,11 @@ namespace DGC2.Controllers
             if (p.AppointmentTrackStatus == 0)
             {
                 p.AppointmentTrackStatus = 1;
-
-
             }
-            p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+
+            //p.AppointmentName = calenderid.Slice.ToString();
+            //p.AppStartDate = DateTime.Parse(calenderid.CLStartDate.ToShortTimeString());
+            //p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
             apm.AppointmentAdd(p);
 
             return RedirectToAction("Index");
@@ -213,9 +215,11 @@ namespace DGC2.Controllers
             //return RedirectToAction("Index");
         }
 
+
         public ActionResult Calendar()
         {
-            return View();
+            var calenderresult = cm.GetList();
+            return View(calenderresult);
         }
 
     }

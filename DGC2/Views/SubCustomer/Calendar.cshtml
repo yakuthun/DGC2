@@ -1,55 +1,30 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<Calendar>
 @{
     ViewBag.Title = "Calendar";
     Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
 }
-<head>
-    <style>
 
-        * {
-            box-sizing: border-box
-        }
+<!DOCTYPE html>
 
-        .container {
-            width: 100%;
-            background-color: #ddd;
-        }
+<title>DGC Lojistik</title>
 
-        .skills {
-            text-align: center;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            color: white;
-        }
-
-        .html {
-            
-            background-color: #04AA6D;
-        }
-
-     
-
-    </style>
-</head>
-
-<h2>Calendar</h2>
-
-<body>
+<table class="table table-bordered">
+    <tr>
+        <th>Dilim</th>
+        <th>Saat Başlangıç</th>
+        <th>Saat Bitiş</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CLSlice</td>
+            <td>@item.CLStartDate</td>
+            <td>@item.CLFinishDate</td>
+            <td><a href="/SubCustomer/AddAppoinment/@item.CalendarID" class="btn btn-success">Randevu Al</a></td>
+        </tr>
+    }
 
 
-    <div class="container">
-        <div class="skills html" style=" width: 90%;">9 : 00</div>
-    </div>
-    <br />
-    <div class="container">
-        <div class="skills html" style=" width: 30%;">10 : 30</div>
-    </div>
-    <br />
-    <div class="container">
-        <div class="skills html" style=" width: 60%" ;>12 : 00</div>
-    </div>
+</table>
 
-
-
-   
-</body>
