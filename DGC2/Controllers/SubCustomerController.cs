@@ -152,16 +152,21 @@ namespace DGC2.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddAppoinment(int id)
+        public ActionResult AddAppoinment(int id, Appointment p)
         {
-            var asd = cm.GetByID(id);
-            return View(asd);
-        }
-        [HttpPost]
-        public ActionResult AddAppoinment(Appointment p, Driver d, Calendar c, int id)
-        {
+            var datetime = cm.GetByID(id).CLStartDate;
+            var sliceid = cm.GetByID(id).CalendarID;
+            TempData["tempdata"] = datetime;
+            TempData["tempslice"] = sliceid;
+            return View();
             
 
+        }
+        [HttpPost]
+        public ActionResult AddAppoinment(Appointment p, Driver d)
+        {
+         
+            
             if (p.AppointmentUCode == null)
             {
                 var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -178,9 +183,9 @@ namespace DGC2.Controllers
                 p.AppointmentUCode = finalString;
             }
 
-           
-
-            
+            p.AppStartDate = DateTime.Parse(TempData["tempdata"].ToString());
+            var number = TempData["tempslice"];
+            p.CalendarID = int.Parse(number.ToString());
 
             if (p.DriverStatus == false)
             {
@@ -197,6 +202,10 @@ namespace DGC2.Controllers
             {
                 p.AppointmentTrackStatus = 1;
             }
+
+           
+            
+
 
             //p.AppointmentName = calenderid.Slice.ToString();
             //p.AppStartDate = DateTime.Parse(calenderid.CLStartDate.ToShortTimeString());
