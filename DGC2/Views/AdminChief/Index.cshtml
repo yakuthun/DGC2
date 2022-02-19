@@ -5,39 +5,74 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Depo Şefleri</h2>
+<h2>Operasyon Şefleri</h2>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Operasyon Şefi Düzenle</h3>
+        <div class="card-tools">
 
-<table class="table table-bordered">
-    <tr>
-        <th>ID</th>
-        <th>Adı</th>
-        <th>Soyadı</th>
-        <th>Şube Numarası</th>
-        <th>Giriş Tarihi</th>
-        <th>Çıkış Tarihi</th>
-        <th>Statü</th>
-        <th>Düzenle</th>
-        <th>Bilgiler</th>
-        <th>Sil</th>
+            <div class="input-group input-group-sm" style="width: 150px;">
 
-    </tr>
 
-    @foreach (var item in Model)
 
-    {
-<tr>
-    <td>@item.ChiefID</td>
-    <td>@item.ChiefName</td>
-    <td>@item.ChiefSurname</td>
-    <td>@item.BranchNo</td>
-    <td>@item.ChiefStartDate</td>
-    <td>@item.ChiefFinishDate</td>
-    <td>@item.ChiefStatus</td>
-    <td><a href="/AdminChief/EditChief/@item.ChiefID" class="btn btn-info">Düzenle</a></td>
-    <td><a href="#" class="btn btn-primary">Bilgiler</a></td>
-    <td><a href="/AdminChief/DeleteChief/@item.ChiefID" class="btn btn-danger">Sil</a></td>
-</tr>
-            }
-       
-    </table>
-<a href="/AdminChief/AddChief/" class="btn btn-info">Depo Şefi Girişi</a>
+                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0">
+        <table id="example1" class="table table-bordered table-striped table-hover">
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Adı</th>
+                    <th>Soyadı</th>
+                    <th>Şube Numarası</th>
+                    <th>Giriş Tarihi</th>
+                    <th>Çıkış Tarihi</th>
+                    <th>Statü</th>
+                    <th>Düzenle</th>
+                    <th>Bilgiler</th>
+                    <th>Sil</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+
+                {
+                    <tr>
+                        <td>@item.ChiefID</td>
+                        <td>@item.ChiefName</td>
+                        <td>@item.ChiefSurname</td>
+                        <td>@item.BranchNo</td>
+                        <td>@item.ChiefStartDate</td>
+                        <td>@item.ChiefFinishDate</td>
+                        <td>@Html.Raw(item.ChiefStatus == true ? "<span class='badge badge-success'>Aktif</span>" : "<span class='badge badge-danger'>Pasif</span>")</td>
+                        <td><a href="/AdminChief/EditChief/@item.ChiefID" class="btn btn-info">Düzenle</a></td>
+                        <td><a href="#" class="btn btn-primary">Bilgiler</a></td>
+                        <td><a href="/AdminChief/DeleteChief/@item.ChiefID" class="btn btn-danger">Sil</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer clearfix">
+        <a href="/AdminChief/AddChief/" class="btn btn-info float-right">Depo Şefi Girişi</a>
+        <ul class="pagination pagination-sm m-0">
+            <li class="page-item"><a class="page-link" href="#">«</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">»</a></li>
+        </ul>
+    </div>
+
+</div>

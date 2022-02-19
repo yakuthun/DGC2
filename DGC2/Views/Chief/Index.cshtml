@@ -22,123 +22,160 @@
 
 <h2>Bekleyen Randevular </h2>
 
-<table class="table table-bordered">
-    <tr>
-        <th>ID</th>
-        <th>Müşteri</th>
-        <th>Tedarikçi</th>
-        <th>Kapasite</th>
-        <th>Paket Tipi</th>
-        <th>Sürücü</th>
 
-        <th>Alınan Saat</th>
-        <th>Geldi</th>
-        <th>İndiriliyor</th>
-        <th>Tamamlandı</th>
-        <th>Durum</th>
-        <th>Durum 1</th>
-        <th>Durum 2</th>
-        <th>Durum 4</th>
-        <th>Durum 5</th>
-        <th>İşlem Yap</th>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Bekleyen Randevular</h3>
+        <div class="card-tools">
 
-    </tr>
-    @foreach (var item in Model)
-    {
-
-        if (item.AppointmentTrackStatus == 4 || item.AppointmentTrackStatus == 8 || item.AppointmentTrackStatus == 9)
-        {
-
-            <tr>
-                <td>@item.AppointmentID</td>
-                <td>@item.SubCustomer.Customer.CompanyName</td>
-                <td>@item.SubCustomer.SubCustomerCompany</td>
-                <td>@item.AppointmentCapacity</td>
-                <td>@item.AppointmentLoadType</td>
-                @*<td>@item.Driver.DriverLogisticName</td>*@
-
-                <td>@item.AppStartDate</td>
-                <td>@item.InComingDate</td>
-                <td>@item.DownloadedDate</td>
-                <td>@item.AppFinishDate</td>
-
-                @switch (item.AppointmentTrackStatus)
-                {
-                    case 4:
-                        color1 = "btn btn-secondary";
-                        color2 = "btn btn-secondary";
-                        color3 = "btn btn-secondary inactiveLink";
-                        break;
-                    case 8:
-                        color1 = "btn btn btn-info inactiveLink";
-                        color2 = "btn btn-secondary";
-                        color3 = "btn btn-secondary inactiveLink";
-                        break;
-                    case 9:
-                        color1 = "btn btn btn-success inactiveLink";
-                        color2 = "btn btn btn-success inactiveLink";
-                        color3 = "btn btn-secondary";
-                        break;
-                }
-
-                <td>@item.AppointmentTrackStatus</td>
-                <td><a href="/Chief/InComingApp/@item.AppointmentID" class="@color1">Geldi</a></td>
-                <td><a href="/Chief/Downloaded/@item.AppointmentID" class="@color2">İndiriliyor</a></td>
-                <td><a href="/Chief/NotComing/@item.AppointmentID" class="btn btn-danger">Gelmedi</a></td>
-                <td><a href="/Chief/EditAppointment/@item.AppointmentID" class="@color3">Tamamla</a></td>
-                <td>
-                    <a href="/Chief/EditAppointment/@item.AppointmentID" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
-                        Test
-                    </a>
-
-                </td>
-
-                @*<td>
-                    <iframe src="/Chief/EditAppointment/@item.AppointmentID" ></iframe>
-                </td>*@
-
-            </tr>
-
-            <div class="modal" id="Modal1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h2 class="modal-title">Hakkımızda Metin Girişi</h2>
-                        </div>
-
-                        <form method="post" action="/Chief/EditAppointment/">
-                            <div class="modal-body">
-                                <label>Hakkımda Metin 1</label>
-                                <input type="text" name="AppointmentID" value="@item.AppointmentID" class="form-control" />
-                                <input type="text" name="AppointmentLoadType" value="@item.AppointmentLoadType" class="form-control" />
-                                <input type="text" name="AppointmentCapacity" value="@item.AppointmentCapacity" class="form-control" />
-                                <input type="text" name="DriverID" value="@item.DriverID" class="form-control" />
-                                <input type="text" name="SubCustomerID" value="@item.SubCustomerID" class="form-control" />
-                                <input type="text" name="AppointmentStatus" value="@item.AppointmentStatus" class="form-control" />
-                                <input type="text" name="ChiefID" value="@item.ChiefID" class="form-control" />
-                                <input type="text" name="AppStartDate" value="@item.AppStartDate" class="form-control" />
-                                <input type="text" name="AppFinishDate" value="@item.AppFinishDate" class="form-control" />
-                                <input type="text" name="DownloadedDate" value="@item.DownloadedDate" class="form-control" />
-                                <input type="text" name="InComingDate" value="@item.InComingDate" class="form-control" />
-                                <input type="text" name="AppointmentName" value="@item.AppointmentName" class="form-control" />
-                                <input type="text" name="AppointmentImage" value="@item.AppointmentImage" class="form-control" />
-                                <input type="text" name="AppointmentComment" value="@item.AppointmentComment" class="form-control" />
-                                <input type="text" name="AppointmentTrackStatus" value="@item.AppointmentTrackStatus" class="form-control" />
-
-                                <button class="btn btn-info">Kaydet</button>
-                            </div>
-                        </form>
+            <div class="input-group input-group-sm" style="width: 150px;">
 
 
-                    </div>
+
+                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
             </div>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0">
+        <table id="example1" class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Müşteri</th>
+                    <th>Tedarikçi</th>
+                    <th>Kapasite</th>
+                    <th>Paket Tipi</th>
+                    <th>Sürücü</th>
+
+                    <th>Alınan Saat</th>
+                    <th>Geldi</th>
+                    <th>İndiriliyor</th>
+                    <th>Tamamlandı</th>
+                    <th colspan="5" style="text-align:center">İşlem Yap</th>
+                
+                    
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+
+                    if (item.AppointmentTrackStatus == 4 || item.AppointmentTrackStatus == 8 || item.AppointmentTrackStatus == 9)
+                    {
+
+                        <tr>
+                            <td>@item.AppointmentID</td>
+                            <td>@item.SubCustomer.Customer.CompanyName</td>
+                            <td>@item.SubCustomer.SubCustomerCompany</td>
+                            <td>@item.AppointmentCapacity</td>
+                            <td>@item.AppointmentLoadType</td>
+                            @*<td>@item.Driver.DriverLogisticName</td>*@
+
+                            <td>@item.AppStartDate</td>
+                            <td>@item.InComingDate</td>
+                            <td>@item.DownloadedDate</td>
+                            <td>@item.AppFinishDate</td>
+
+                            @switch (item.AppointmentTrackStatus)
+                            {
+                                case 4:
+                                    color1 = "btn btn-secondary";
+                                    color2 = "btn btn-secondary";
+                                    color3 = "btn btn-secondary inactiveLink";
+                                    break;
+                                case 8:
+                                    color1 = "btn btn btn-info inactiveLink";
+                                    color2 = "btn btn-secondary";
+                                    color3 = "btn btn-secondary inactiveLink";
+                                    break;
+                                case 9:
+                                    color1 = "btn btn btn-success inactiveLink";
+                                    color2 = "btn btn btn-success inactiveLink";
+                                    color3 = "btn btn-secondary";
+                                    break;
+                            }
+
+                            <td>@item.AppointmentTrackStatus</td>
+                            <td><a href="/Chief/InComingApp/@item.AppointmentID" class="@color1">Geldi</a></td>
+                            <td><a href="/Chief/Downloaded/@item.AppointmentID" class="@color2">İndiriliyor</a></td>
+                            <td><a href="/Chief/NotComing/@item.AppointmentID" class="btn btn-danger">Gelmedi</a></td>
+                            <td><a href="/Chief/EditAppointment/@item.AppointmentID" class="@color3">Tamamla</a></td>
+                            <td>
+                                <a href="/Chief/EditAppointment/@item.AppointmentID" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+                                    Test
+                                </a>
+
+                            </td>
+
+                            @*<td>
+                                    <iframe src="/Chief/EditAppointment/@item.AppointmentID" ></iframe>
+                                </td>*@
+
+                        </tr>
+
+                        <div class="modal" id="Modal1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h2 class="modal-title">Hakkımızda Metin Girişi</h2>
+                                    </div>
+
+                                    <form method="post" action="/Chief/EditAppointment/">
+                                        <div class="modal-body">
+                                            <label>Hakkımda Metin 1</label>
+                                            <input type="text" name="AppointmentID" value="@item.AppointmentID" class="form-control" />
+                                            <input type="text" name="AppointmentLoadType" value="@item.AppointmentLoadType" class="form-control" />
+                                            <input type="text" name="AppointmentCapacity" value="@item.AppointmentCapacity" class="form-control" />
+                                            <input type="text" name="DriverID" value="@item.DriverID" class="form-control" />
+                                            <input type="text" name="SubCustomerID" value="@item.SubCustomerID" class="form-control" />
+                                            <input type="text" name="AppointmentStatus" value="@item.AppointmentStatus" class="form-control" />
+                                            <input type="text" name="ChiefID" value="@item.ChiefID" class="form-control" />
+                                            <input type="text" name="AppStartDate" value="@item.AppStartDate" class="form-control" />
+                                            <input type="text" name="AppFinishDate" value="@item.AppFinishDate" class="form-control" />
+                                            <input type="text" name="DownloadedDate" value="@item.DownloadedDate" class="form-control" />
+                                            <input type="text" name="InComingDate" value="@item.InComingDate" class="form-control" />
+                                            <input type="text" name="AppointmentName" value="@item.AppointmentName" class="form-control" />
+                                            <input type="text" name="AppointmentImage" value="@item.AppointmentImage" class="form-control" />
+                                            <input type="text" name="AppointmentComment" value="@item.AppointmentComment" class="form-control" />
+                                            <input type="text" name="AppointmentTrackStatus" value="@item.AppointmentTrackStatus" class="form-control" />
+
+                                            <button class="btn btn-info">Kaydet</button>
+                                        </div>
+                                    </form>
+
+
+                                </div>
+                            </div>
+                        </div>
 
 
 
-        }
+                    }
 
-    }
+                }
 
-</table>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer clearfix">
+      
+        <ul class="pagination pagination-sm m-0">
+            <li class="page-item"><a class="page-link" href="#">«</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">»</a></li>
+        </ul>
+    </div>
+</div>
 

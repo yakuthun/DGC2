@@ -15,7 +15,6 @@ namespace DGC2.Controllers
         AdminManager am = new AdminManager(new EfAdminDal());
         AppointmentManager apm = new AppointmentManager(new EfAppointmentDal());
         CalendarManager cl = new CalendarManager(new EfCalendarDal());
-
         CustomerSubManager sbm = new CustomerSubManager(new EfCustomerAddSubDal());
        
         public ActionResult Index()
@@ -132,5 +131,12 @@ namespace DGC2.Controllers
             
             return RedirectToAction("CalendarList", "Admin");
         }
+
+        public ActionResult SliceList()
+        {
+            var calendarvalues = cl.GetList();
+            return View(calendarvalues);
+        }
+
     }
 }

@@ -4,27 +4,18 @@
     Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
-<h2>Randevu Düzenle</h2>
+<h2 class="title">Randevu Düzenle</h2>
 
-@*<div class="modal" id="Modal1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Hakkımızda Metin Girişi</h2>
-            </div>*@
+ <a href="/Chief/ClosePopUp/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
+<hr />
+
 
 
 
 @using (Html.BeginForm("EditAppointment", "Chief", FormMethod.Post))
 {
 
-    <a href="/Chief/ClosePopUp/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
-    <div class="card-form">
-
-
-
         @Html.HiddenFor(x => x.AppointmentID, new { @class = "form-control" })
-
         @Html.Label("Mal Türü")
         @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control" })
         @*@Html.Label("Kapasite")*@
@@ -51,7 +42,7 @@
 
         @Html.Label("Eşya Adı")
         @Html.TextBoxFor(x => x.AppointmentName, new { @class = "form-control" })
-
+        
         @Html.Label("Randevu Image")
         @Html.TextBoxFor(x => x.AppointmentImage, new { @class = "form-control" })
 
@@ -70,7 +61,7 @@
         <a href="/Chief/InComingApp/" class="btn btn-secondary btn-lg btn-block">İndiriliyor</a>
         <button class="btn btn-primary btn-lg btn-block">İşlem Bitti</button>
         <br />
-    </div>
+   
    
     
 

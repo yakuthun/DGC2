@@ -58,6 +58,7 @@
     <Compile Include="Abstract\IChiefDal.cs" />
     <Compile Include="Abstract\ICustomerDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\ISliceDal.cs" />
     <Compile Include="Abstract\ISubCustomerDal.cs" />
     <Compile Include="Concrete\Context.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="EntityFramework\EfCustomerAddSubDal.cs" />
     <Compile Include="EntityFramework\EfChiefDal.cs" />
     <Compile Include="EntityFramework\EfCustomerDal.cs" />
+    <Compile Include="EntityFramework\EfSliceDal.cs" />
     <Compile Include="EntityFramework\EfSubCustomerDal.cs" />
     <Compile Include="Migrations\202202081714080_mig_add_realdate_and_driverconnections.cs" />
     <Compile Include="Migrations\202202081714080_mig_add_realdate_and_driverconnections.designer.cs">

@@ -7,50 +7,87 @@
 
 <h2>İptal Onayı Bekleyen Randevular</h2>
 
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">İptal Randevular</h3>
+        <div class="card-tools">
 
-<table class="table table-bordered">
-    <tr>
-        <th>ID</th>
-        <th>Müşteri</th>
-        <th>Tedarikçi</th>
-        <th>Kapasite</th>
-        <th>Paket Tipi</th>
-        <th>Sürücü</th>
-        <th>Randevu Alış Tarihi</th>
-        <th>Geldi</th>
-        <th>İndiriliyor</th>
-        <th>Tamamlandı</th>
-        <th>Durum</th>
-        <th>Durum 1</th>
-        <th>Durum 2</th>
-    </tr>
-    @foreach (var item in Model)
-    {
+            <div class="input-group input-group-sm" style="width: 150px;">
 
-        if (item.AppointmentTrackStatus == 6)
-        {
 
-            <tr>
-                <td>@item.AppointmentID</td>
-                <td>@item.SubCustomer.Customer.CompanyName</td>
-                <td>@item.SubCustomer.SubCustomerCompany</td>
-                <td>@item.AppointmentCapacity</td>
-                <td>@item.AppointmentLoadType</td>
-                @*<td>@item.Driver.DriverLogisticName</td>*@
 
-                <td>@item.AppFinishDate</td>
-                <td>@item.InComingDate</td>
-                <td>@item.DownloadedDate</td>
-                <td>@item.AppStartDate</td>
-                <td>@item.AppointmentTrackStatus</td>
+                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-                <td><a href="/Admin/Canceled/@item.AppointmentID" class="btn btn-success">Onayla</a></td>
-                <td><a href="/Admin/Completed/@item.AppointmentID" class="btn btn-danger">Reddet</a></td>
-            </tr>
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0">
+        <table id="example1" class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Müşteri</th>
+                    <th>Tedarikçi</th>
+                    <th>Kapasite</th>
+                    <th>Paket Tipi</th>
+                    <th>Sürücü</th>
+                    <th>Randevu Alış Tarihi</th>
+                    <th>Geldi</th>
+                    <th>İndiriliyor</th>
+                    <th>Tamamlandı</th>
+                    <th colspan="2">Durum</th>
+                   
+                  
+                </tr>
+            </thead>
 
-        }
+            <tbody>
+                @foreach (var item in Model)
+                {
 
-    }
+                    if (item.AppointmentTrackStatus == 6)
+                    {
 
-</table>
+                        <tr>
+                            <td>@item.AppointmentID</td>
+                            <td>@item.SubCustomer.Customer.CompanyName</td>
+                            <td>@item.SubCustomer.SubCustomerCompany</td>
+                            <td>@item.AppointmentCapacity</td>
+                            <td>@item.AppointmentLoadType</td>
+                            @*<td>@item.Driver.DriverLogisticName</td>*@
+
+                            <td>@item.AppFinishDate</td>
+                            <td>@item.InComingDate</td>
+                            <td>@item.DownloadedDate</td>
+                            <td>@item.AppStartDate</td>
+                            <td>@item.AppointmentTrackStatus</td>
+
+                            <td><a href="/Admin/Canceled/@item.AppointmentID" class="btn btn-success">Onayla</a></td>
+                            <td><a href="/Admin/Completed/@item.AppointmentID" class="btn btn-danger">Reddet</a></td>
+                        </tr>
+
+                    }
+
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer clearfix">
+      
+        <ul class="pagination pagination-sm m-0">
+            <li class="page-item"><a class="page-link" href="#">«</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">»</a></li>
+        </ul>
+    </div>
+</div>
+
 

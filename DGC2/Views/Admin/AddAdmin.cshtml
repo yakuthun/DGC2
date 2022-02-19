@@ -1,21 +1,25 @@
 ﻿@model EntityLayer.Concrete.Admin
 @{
     ViewBag.Title = "AddAdmin";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
 <h2>Yönetici Ekleme Sayfası</h2>
+<a href="/Admin/Index/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
+<hr />
 @using (Html.BeginForm("AddAdmin", "Admin", FormMethod.Post))
 {
-<div class="form-group">
-    @Html.Label("Yönetici Kullanıcı Adı")
-    @Html.TextAreaFor(x => x.AdminUsername, new { @class = "form-control" })
-    @Html.Label("Yönetici Şifre")
-    @Html.TextAreaFor(x => x.AdminPassword, new { @class = "form-control" })
-    @Html.Label("Yönetici Mail")
-    @Html.TextAreaFor(x => x.AdminMail, new { @class = "form-control" })
-    <br />
-    <button class="btn btn-info">Oluştur</button>
-</div>
+    <div class="form-group">
+        @Html.Label("Yönetici Kullanıcı Adı")
+        @Html.TextAreaFor(x => x.AdminUsername, new { @class = "form-control" })
+        @Html.Label("Yönetici Şifre")
+        @Html.TextAreaFor(x => x.AdminPassword, new { @class = "form-control" })
+        @Html.Label("Yönetici Mail")
+        @Html.TextAreaFor(x => x.AdminMail, new { @class = "form-control" })
+        @Html.Label("Yönetici Rol")
+        @Html.TextAreaFor(x => x.AdminRole, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-info">Oluştur</button>
+    </div>
 
 }
