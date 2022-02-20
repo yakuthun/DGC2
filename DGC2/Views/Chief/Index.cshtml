@@ -29,22 +29,32 @@
         <div class="card-tools">
 
             <div class="input-group input-group-sm" style="width: 150px;">
+                
 
 
 
-                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                <select type="search" class="select-table-filter selectpicker" data-table="order-table" data-style="btn-primary">
+                    <option value="">Reset</option>
+                    <option value="16">16</option>
+                    <option value="22">22</option>
+                    </select>
 
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
+                     
+
+
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+</div>
         </div>
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive p-0">
-        <table id="example1" class="table table-bordered table-striped table-hover">
+        <table id="example1" class="table table-bordered table-striped table-hover order-table">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -60,8 +70,8 @@
                     <th>Tamamlandı</th>
                     <th>Statü</th>
                     <th colspan="5" style="text-align:center">İşlem Yap</th>
-                
-                    
+
+
 
                 </tr>
 
@@ -74,52 +84,52 @@
                     if (item.AppointmentTrackStatus == 4 || item.AppointmentTrackStatus == 8 || item.AppointmentTrackStatus == 9)
                     {
 
-                <tr>
-                    <td>@item.AppointmentID</td>
-                    @*<td>@item.SubCustomer.Customer.CompanyName</td>
-                    <td>@item.SubCustomer.SubCustomerCompany</td>*@
-                    <td>@item.SubCustomer.Customer.CompanyName</td>
-                    <td>@item.SubCustomer.SubCustomerCompany</td>
+                        <tr>
+                            <td>@item.AppointmentID</td>
+                            @*<td>@item.SubCustomer.Customer.CompanyName</td>
+                                <td>@item.SubCustomer.SubCustomerCompany</td>*@
+                            <td>@item.SubCustomer.Customer.CompanyName</td>
+                            <td>@item.SubCustomer.SubCustomerCompany</td>
 
 
-                    <td>@item.AppDriverPlate</td>
-                    <td>@item.AppStartDate</td>
-                    <td>@item.InComingDate</td>
-                    <td>@item.DownloadedDate</td>
-                    <td>@item.AppFinishDate</td>
-                    <td>@item.AppointmentTrackStatus</td>
+                            <td>@item.AppDriverPlate</td>
+                            <td>@item.AppStartDate</td>
+                            <td>@item.InComingDate</td>
+                            <td>@item.DownloadedDate</td>
+                            <td>@item.AppFinishDate</td>
+                            <td>@item.AppointmentTrackStatus</td>
 
-                    @switch (item.AppointmentTrackStatus)
-                    {
-                        case 4:
-                            color1 = "btn btn-secondary";
-                            color2 = "btn btn-secondary";
-                            color3 = "btn btn-secondary inactiveLink";
-                            break;
-                        case 8:
-                            color1 = "btn btn btn-info inactiveLink";
-                            color2 = "btn btn-secondary";
-                            color3 = "btn btn-secondary inactiveLink";
-                            break;
-                        case 9:
-                            color1 = "btn btn btn-success inactiveLink";
-                            color2 = "btn btn btn-success inactiveLink";
-                            color3 = "btn btn-secondary";
-                            break;
-                    }
-
-
-                    <td><a href="/Chief/InComingApp/@item.AppointmentID" class="@color1">Geldi</a></td>
-                    <td><a href="/Chief/Downloaded/@item.AppointmentID" class="@color2">İndiriliyor</a></td>
-                    <td><a href="/Chief/NotComing/@item.AppointmentID" class="btn btn-danger">Gelmedi</a></td>
-                    <td><a href="/Chief/EditAppointment/@item.AppointmentID" class="@color3">Tamamla</a></td>
+                            @switch (item.AppointmentTrackStatus)
+                            {
+                                case 4:
+                                    color1 = "btn btn-secondary";
+                                    color2 = "btn btn-secondary";
+                                    color3 = "btn btn-secondary inactiveLink";
+                                    break;
+                                case 8:
+                                    color1 = "btn btn btn-info inactiveLink";
+                                    color2 = "btn btn-secondary";
+                                    color3 = "btn btn-secondary inactiveLink";
+                                    break;
+                                case 9:
+                                    color1 = "btn btn btn-success inactiveLink";
+                                    color2 = "btn btn btn-success inactiveLink";
+                                    color3 = "btn btn-secondary";
+                                    break;
+                            }
 
 
-                    @*<td>
-            <iframe src="/Chief/EditAppointment/@item.AppointmentID" ></iframe>
-        </td>*@
+                            <td><a href="/Chief/InComingApp/@item.AppointmentID" class="@color1">Geldi</a></td>
+                            <td><a href="/Chief/Downloaded/@item.AppointmentID" class="@color2">İndiriliyor</a></td>
+                            <td><a href="/Chief/NotComing/@item.AppointmentID" class="btn btn-danger">Gelmedi</a></td>
+                            <td><a href="/Chief/EditAppointment/@item.AppointmentID" class="@color3">Tamamla</a></td>
 
-                </tr>
+
+                            @*<td>
+                                    <iframe src="/Chief/EditAppointment/@item.AppointmentID" ></iframe>
+                                </td>*@
+
+                        </tr>
 
 
                     }
@@ -130,7 +140,7 @@
         </table>
     </div>
     <div class="card-footer clearfix">
-      
+
         <ul class="pagination pagination-sm m-0">
             <li class="page-item"><a class="page-link" href="#">«</a></li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -140,4 +150,72 @@
         </ul>
     </div>
 </div>
+
+
+
+<script>
+    (function (document) {
+        'use strict';
+
+        var LightTableFilter = (function (Arr) {
+
+            var _input;
+            var _select;
+
+            function _onInputEvent(e) {
+                _input = e.target;
+                var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                Arr.forEach.call(tables, function (table) {
+                    Arr.forEach.call(table.tBodies, function (tbody) {
+                        Arr.forEach.call(tbody.rows, _filter);
+                    });
+                });
+            }
+
+            function _onSelectEvent(e) {
+                _select = e.target;
+                var tables = document.getElementsByClassName(_select.getAttribute('data-table'));
+                Arr.forEach.call(tables, function (table) {
+                    Arr.forEach.call(table.tBodies, function (tbody) {
+                        Arr.forEach.call(tbody.rows, _filterSelect);
+                    });
+                });
+            }
+
+            function _filter(row) {
+
+                var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+
+            }
+
+            function _filterSelect(row) {
+
+                var text_select = row.textContent.toLowerCase(), val_select = _select.options[_select.selectedIndex].value.toLowerCase();
+                row.style.display = text_select.indexOf(val_select) === -1 ? 'none' : 'table-row';
+
+            }
+
+            return {
+                init: function () {
+                    var inputs = document.getElementsByClassName('light-table-filter');
+                    var selects = document.getElementsByClassName('select-table-filter');
+                    Arr.forEach.call(inputs, function (input) {
+                        input.oninput = _onInputEvent;
+                    });
+                    Arr.forEach.call(selects, function (select) {
+                        select.onchange = _onSelectEvent;
+                    });
+                }
+            };
+        })(Array.prototype);
+
+        document.addEventListener('readystatechange', function () {
+            if (document.readyState === 'complete') {
+                LightTableFilter.init();
+            }
+        });
+
+    })(document);
+</script>
 
