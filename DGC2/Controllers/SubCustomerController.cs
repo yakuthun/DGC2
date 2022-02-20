@@ -89,7 +89,24 @@ namespace DGC2.Controllers
 
         }
 
+        [HttpGet]
+        public ActionResult AskChangeComment(int id)
+        {
 
+
+            var askvalue = apm.GetByID(id);
+            return View(askvalue);
+        }
+        [HttpPost]
+        public ActionResult AskChangeComment(Appointment p)
+        {
+
+            if (p.AppointmentTrackStatus == 2)
+                p.AppointmentTrackStatus = 20;
+
+            apm.AppointmentUpdate(p);
+            return RedirectToAction("AppliedListAppoinment");
+        }
 
         [HttpGet]
         public ActionResult EditAskChange(int id)
@@ -107,7 +124,7 @@ namespace DGC2.Controllers
             if (p.AppointmentStatus == false)
                 p.AppointmentStatus = true;
             if (p.AppointmentTrackStatus == 2)
-                p.AppointmentTrackStatus = 20;
+                p.AppointmentTrackStatus = 24;
 
             p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
             apm.AppointmentAdd(p);

@@ -1,38 +1,34 @@
 ﻿@model EntityLayer.Concrete.SubCustomer
 @{
     ViewBag.Title = "AddSubCustomer";
-    Layout = "~/Views/Shared/_CustomerAdminLayout.cshtml";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 <br />
 <h2>Yeni Tedarikçi Ekle</h2>
-
+<a href="/CustomerAppAccept/SubCustomerList/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
+<hr />
 @using (Html.BeginForm("AddSubCustomer", "CustomerSub", FormMethod.Post))
 {
-<div class="form form-group">
-    @Html.Label("Kullanıcı Adı")
-    @Html.TextBoxFor(x => x.SubCustomerUsername, new { @class = "form-control" })
-    <br /> <br />
-    @Html.Label("Şifre")
-    @Html.TextBoxFor(x => x.SubCustomerPassword, new { @class = "form-control" })
-    <br /> <br />
-    @Html.Label("Şirket İsim")
-    @Html.TextBoxFor(x => x.SubCustomerName, new { @class = "form-control" })
-    <br /> <br />
-    @Html.Label("Şirket Soyisim")
-    @Html.TextBoxFor(x => x.SubCustomerSurname, new { @class = "form-control" })
-    <br /> <br />
-    @Html.Label("Şirket Kodu")
-    @Html.TextBoxFor(x => x.SubCustomerCode, new { @class = "form-control" })
-    <br /> <br />
-    @Html.Label("Şirket Adresi")
-    @Html.TextBoxFor(x => x.SubCustomerAddress, new { @class = "form-control" })
-    <br /> 
+    <div class="form form-group">
+        @Html.Label("Kullanıcı Adı")
+        @Html.TextBoxFor(x => x.SubCustomerUsername, new { @class = "form-control" })
 
+        @Html.Label("Şifre")
+        @Html.TextBoxFor(x => x.SubCustomerPassword, new { @class = "form-control" })
 
+        @Html.Label("Şirket İsim")
+        @Html.TextBoxFor(x => x.SubCustomerName, new { @class = "form-control" })
 
+        @Html.Label("Şirket Soyisim")
+        @Html.TextBoxFor(x => x.SubCustomerSurname, new { @class = "form-control" })
 
-    <br /><br />
-    <button class="btn btn-info">Kaydet</button>
-</div>
+        @Html.Label("Şirket Kodu")
+        @Html.TextBoxFor(x => x.SubCustomerCode, new { @class = "form-control" })
+
+        @Html.Label("Şirket Adresi")
+        @Html.TextBoxFor(x => x.SubCustomerAddress, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-info btn-lg btn btn-block">Kaydet</button>
+    </div>
 }
 

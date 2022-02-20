@@ -61,8 +61,14 @@ namespace DGC2.Controllers
             am.AppointmentDelete(appvalue);
             return RedirectToAction("CanceledAppoinments");
         }
-        
 
+        public ActionResult RefuseChangeAppointment(int id)
+        {
+            var appvalue = am.GetByID(id);
+            appvalue.AppointmentTrackStatus = 4;
+            am.AppointmentDelete(appvalue);
+            return RedirectToAction("Appointments");
+        }
         public ActionResult CancelChangedAppointment(int id)
         {
             var stats = am.GetByID(id).AppointmentUCode;

@@ -1,10 +1,12 @@
 ﻿@model EntityLayer.Concrete.Appointment
 @{
     ViewBag.Title = "EditAskChange";
-    Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
 <h2>Randevuyu Düzenle</h2>
+<a href="/SubCustomer/AppliedListAppoinment/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
+<hr />
 @using (Html.BeginForm("EditAskChange", "SubCustomer", FormMethod.Post))
 {
 <div class="form-group">
@@ -23,18 +25,21 @@
     @Html.HiddenFor(x => x.AppFinishDate)
     @Html.HiddenFor(x => x.InComingDate)
     @Html.HiddenFor(x => x.AppointmentUCode)
-    @Html.HiddenFor(x=>x.DriverComment)
+    @Html.HiddenFor(x => x.DriverComment)
 
-    
+
     @Html.Label("Mal Türü")
     @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control" })
-    
-    @Html.Label("Kapasite")
+
+    @Html.Label("Miktar")
     @Html.TextBoxFor(x => x.AppointmentCapacity, new { @class = "form-control" })
-    
+
+    @Html.Label("Geleceği Dilim")
+    @Html.TextBoxFor(x => x.AppStartDate, new { @class = "form-control" })
+
     @Html.HiddenFor(x => x.AppStartDate)
-   
+
     <br />
-    <button class="btn btn-success">Kaydet</button>
+    <button class="btn btn-success btn-lg btn btn-block">Kaydet</button>
 </div>
 }
