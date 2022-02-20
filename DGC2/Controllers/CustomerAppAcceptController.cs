@@ -170,11 +170,33 @@ namespace DGC2.Controllers
         public ActionResult SeeTheAppointment(int id)
         {
             ViewBag.a = id;
+            
             var appoinmentid = am.GetByID(id);
+            ViewBag.company = appoinmentid.SubCustomer.SubCustomerCompany;
+            ViewBag.name = appoinmentid.AppointmentName;
+            ViewBag.capacity = appoinmentid.AppointmentCapacity;
             return View(appoinmentid);
         }
         [HttpPost]
         public ActionResult SeeTheAppointment(Appointment p)
+        {
+            am.AppointmentUpdate(p);
+            return RedirectToAction("SubCustomerList");
+        }
+
+        [HttpGet]
+        public ActionResult SeeAndCancelTheAppointment(int id)
+        {
+            ViewBag.a = id;
+
+            var appoinmentid = am.GetByID(id);
+            ViewBag.company = appoinmentid.SubCustomer.SubCustomerCompany;
+            ViewBag.name = appoinmentid.AppointmentName;
+            ViewBag.capacity = appoinmentid.AppointmentCapacity;
+            return View(appoinmentid);
+        }
+        [HttpPost]
+        public ActionResult SeeAndCancelTheAppointment(Appointment p)
         {
             am.AppointmentUpdate(p);
             return RedirectToAction("SubCustomerList");

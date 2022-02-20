@@ -9,31 +9,35 @@
 <hr />
 @using (Html.BeginForm("EditSubCustomer", "CustomerAppAccept", FormMethod.Post))
 {
-    <div class="form form-group">
-        @Html.Label("Kullanıcı ID")
-        @Html.TextBoxFor(x => x.SubCustomerID, new { @class = "form-control" })
-        @Html.Label("Kullanıcı Adı")
-        @Html.TextBoxFor(x => x.SubCustomerUsername, new { @class = "form-control" })
+<div class="form form-group">
+    @Html.HiddenFor(x => x.SubCustomerCreatedPassword)
+    @Html.HiddenFor(x => x.SubCustomerMail)
+    @Html.HiddenFor(x => x.SubCustomerStatus)
+    @Html.HiddenFor(x => x.CustomerID)
+    @Html.HiddenFor(x=>x.SubCustomerID)
+    
+    @Html.Label("Kullanıcı Adı")
+    @Html.TextBoxFor(x => x.SubCustomerUsername, new { @class = "form-control" })
 
-        @Html.Label("Şifre")
-        @Html.TextBoxFor(x => x.SubCustomerPassword, new { @class = "form-control" })
-      
-        @Html.Label("Şirket İsim")
-        @Html.TextBoxFor(x => x.SubCustomerName, new { @class = "form-control" })
-       
-        @Html.Label("Şirket Soyisim")
-        @Html.TextBoxFor(x => x.SubCustomerSurname, new { @class = "form-control" })
-     
-        @Html.Label("Şirket Kodu")
-        @Html.TextBoxFor(x => x.SubCustomerCode, new { @class = "form-control" })
-      
-        @Html.Label("Şirket Adresi")
-        @Html.TextBoxFor(x => x.SubCustomerAddress, new { @class = "form-control" })
-       
-        @Html.Label("Durum")
-        @Html.TextBoxFor(x => x.SubCustomerStatus, new { @class = "form-control" })
-        <br />
-        <button class="btn btn-success btn-lg btn btn-block">Kaydet</button>
-    </div>
+    @Html.Label("Şifre")
+    @Html.TextBoxFor(x => x.SubCustomerPassword, new { @class = "form-control" })
+
+    @Html.Label("Firma")
+    @Html.TextBoxFor(x => x.SubCustomerCompany, new { @class = "form-control" })
+
+    @Html.Label("Yetkili İsim")
+    @Html.TextBoxFor(x => x.SubCustomerName, new { @class = "form-control" })
+
+    @Html.Label("Yetkili Soyisim")
+    @Html.TextBoxFor(x => x.SubCustomerSurname, new { @class = "form-control" })
+
+    @Html.Label("Şirket Kodu")
+    @Html.TextBoxFor(x => x.SubCustomerCode, new { @class = "form-control" })
+
+    @Html.Label("Şirket Adresi")
+    @Html.TextBoxFor(x => x.SubCustomerAddress, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-success btn-lg btn btn-block">Kaydet</button>
+</div>
 }
 

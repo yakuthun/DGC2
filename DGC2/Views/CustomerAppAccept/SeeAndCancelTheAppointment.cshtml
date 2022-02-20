@@ -1,13 +1,12 @@
 ﻿@model EntityLayer.Concrete.Appointment
 @{
-    ViewBag.Title = "AskChangeComment";
+    ViewBag.Title = "SeeAndCancelTheAppointment";
     Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
-
-<h2>Değişiklik Talebi Formu</h2>
-<a href="/SubCustomer/AppliedAppoinments/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
+<h2><b>@ViewBag.company</b> - @ViewBag.name - <b>@ViewBag.capacity</b></h2>
+<a href="/CustomerAppAccept/WantsChangeAppoinments/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
 <hr />
-@using (Html.BeginForm("AskChangeComment", "SubCustomer", FormMethod.Post))
+@using (Html.BeginForm("SeeAndCancelTheAppointment", "CustomerAppAccept", FormMethod.Post))
 {
     <div class="form-group">
 
@@ -31,9 +30,11 @@
         @Html.HiddenFor(x => x.AppStartDate)
         @Html.HiddenFor(x => x.CalendarID)
 
-        @Html.Label("Değişiklik Nedeni")
-        @Html.TextAreaFor(x => x.AppointmentUpdateComment, new { @class = "form-control" })
+        @Html.TextAreaFor(x => x.AppointmentUpdateComment, new { @class = "form-control", @readonly = "readonly" })
         <br />
-        <button class="btn btn-primary btn-lg btn btn-block">Gönder</button>
+        
+        <a href="/CustomerAppAccept/ThrowToCancelAppointment/@ViewBag.a" class="btn btn-dark btn-lg btn btn-block">Randevuyu İptal Et</a>
+
     </div>
 }
+
