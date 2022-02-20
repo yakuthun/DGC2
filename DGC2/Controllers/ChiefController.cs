@@ -22,6 +22,7 @@ namespace DGC2.Controllers
 
         public ActionResult Index()
         {
+            
             var appointmentvalue = am.GetList();
             return View(appointmentvalue);
 
@@ -43,7 +44,7 @@ namespace DGC2.Controllers
         [HttpGet]
         public ActionResult EditAppointment(int id)
         {
-            
+            ViewBag.d = id;
             var appvalues = am.GetByID(id);
             return View(appvalues);
         }
@@ -53,7 +54,7 @@ namespace DGC2.Controllers
             
 
            // p.InComingDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
-            p.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            p.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
 
             am.AppointmentUpdate(p);
             if (p.AppointmentTrackStatus == 9)
@@ -116,8 +117,10 @@ namespace DGC2.Controllers
 
         public ActionResult InComingApp(int id,Appointment p)
         {
-            p.InComingDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+           
             var appvalue = am.GetByID(id);
+            appvalue.InComingDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+
             appvalue.AppointmentTrackStatus = 8;
             am.AppointmentDelete(appvalue);
             return RedirectToAction("Index");
@@ -126,8 +129,8 @@ namespace DGC2.Controllers
         public ActionResult Downloaded(int id, Appointment p)
         {
             var appvalue = am.GetByID(id);
-            //appvalue.DownloadedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            p.DownloadedDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            appvalue.DownloadedDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+
             appvalue.AppointmentTrackStatus = 9;
             am.AppointmentDelete(appvalue);
             return RedirectToAction("Index");
@@ -144,8 +147,7 @@ namespace DGC2.Controllers
         public ActionResult Completed(int id, Appointment p)
         {
             var appvalue = am.GetByID(id);
-            //appvalue.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            p.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            appvalue.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             appvalue.AppointmentTrackStatus = 10;
             am.AppointmentDelete(appvalue);
             return RedirectToAction("Index");
