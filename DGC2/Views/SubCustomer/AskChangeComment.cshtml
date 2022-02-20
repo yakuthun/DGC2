@@ -1,11 +1,12 @@
 ﻿@model EntityLayer.Concrete.Appointment
 @{
     ViewBag.Title = "AskChangeComment";
-    Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
-<h2>Değişiklik Talep Form</h2>
-
+<h2>Değişiklik Talebi Formu</h2>
+<a href="/SubCustomer/AppliedAppoinments/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
+<hr />
 @using (Html.BeginForm("AskChangeComment", "SubCustomer", FormMethod.Post))
 {
 <div class="form-group">
@@ -28,7 +29,8 @@
     @Html.HiddenFor(x => x.AppointmentCapacity, new { @class = "form-control" })
     @Html.HiddenFor(x => x.AppStartDate, new { @class = "form-control" })
     @Html.HiddenFor(x => x.AppStartDate)
-    @Html.HiddenFor(x=>x.CalendarID)
+    @Html.HiddenFor(x => x.CalendarID)
+    @Html.HiddenFor(x => x.AppointmentCancelComment)
 
     @Html.Label("Değişiklik Nedeni")
     @Html.TextAreaFor(x => x.AppointmentUpdateComment, new { @class = "form-control" })

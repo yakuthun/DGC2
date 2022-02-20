@@ -60,21 +60,23 @@
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
-                            <th style="width: 8%">
+                            <th>
                                 Firma
                             </th>
                             
-                            <th style="width: 12%">
+                            <th >
                                 Adres
                             </th>
-                            <th style="width: 10%">
+                            <th >
                                 Durum
                             </th>
                            
-                            <th style="width: 10%;">
+                            <th >
                                 Firma Kodu
                             </th>
-                            
+                            <th colspan="2">
+
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -111,7 +113,7 @@
                                     </li>
                                 </ul>
                             </td>
-                            
+
                             <td>
                                 <a style="font-size: 20px;">
                                     @item.SubCustomerAddress
@@ -119,7 +121,7 @@
                                 <br />
 
                             </td>
-                            
+
                             <td>
                                 <p style="font-weight:800; font-size:20px" class="badge badge-success">Aktif</p>
                             </td>
@@ -136,9 +138,11 @@
                             <td class="project-actions text-right">
                             </td>
 
-                            <td>
-                                <a href="/CustomerAppAccept/EditSubCustomer/@item.SubCustomerID" class="btn btn-warning">Düzenle</a>
-                                <a href="/CustomerAppAccept/DeleteSubCustomer/@item.SubCustomerID" class="btn btn-danger">Sil</a>
+                            <td style="text-align:right;">
+                                <a href="/CustomerAppAccept/EditSubCustomer/@item.SubCustomerID" class="btn btn-warning"><i class="fas fa-edit"></i> Düzenle</a>
+                            </td>
+                            <td style="text-align:left;">
+                               <a href="/CustomerAppAccept/DeleteSubCustomer/@item.SubCustomerID" class="btn btn-danger"><i class="fas fa-trash"></i> Sil</a>
                             </td>
                         </tr>
 

@@ -2886,6 +2886,8 @@
     <Content Include="Views\SubCustomer\AskChangeComment.cshtml" />
     <Content Include="Views\CustomerAppAccept\AddSubCustomer.cshtml" />
     <Content Include="Views\CustomerAppAccept\SeeTheAppointment.cshtml" />
+    <Content Include="Views\CustomerAppAccept\SeeAndCancelTheAppointment.cshtml" />
+    <Content Include="Views\SubCustomer\SeeTheCanceledAppointment.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

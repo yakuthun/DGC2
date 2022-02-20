@@ -95,6 +95,8 @@ namespace DGC2.Controllers
 
 
             var askvalue = apm.GetByID(id);
+            askvalue.AppointmentUpdateComment = null;
+            askvalue.AppointmentStatus = false;
             return View(askvalue);
         }
         [HttpPost]
@@ -103,10 +105,11 @@ namespace DGC2.Controllers
 
             if(p.AppointmentTrackStatus == 4)
             {
+                
                 p.AppointmentTrackStatus = 20;
             }
-            
 
+            p.AppointmentStatus = false;
             apm.AppointmentUpdate(p);
             return RedirectToAction("AppliedListAppoinment");
         }
@@ -251,5 +254,11 @@ namespace DGC2.Controllers
             return View(calenderresult);
         }
 
+        [HttpGet]
+        public ActionResult SeeTheCanceledAppointment(int id)
+        {
+            var appointmentvalue = apm.GetByID(id);
+            return View(appointmentvalue);
+        }
     }
 }
