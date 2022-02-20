@@ -39,7 +39,7 @@ namespace EntityLayer.Concrete
         [StringLength(200)]
         [Required(AllowEmptyStrings = true)]
         [DisplayFormat(ConvertEmptyStringToNull = false)]
-        public string DriverComment { get; set; }
+        public string AppointmentUpdateComment { get; set; }
 
         [StringLength(50)]
         public string AppDriverLogisticName { get; set; }
