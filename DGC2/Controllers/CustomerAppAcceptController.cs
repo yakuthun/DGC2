@@ -201,5 +201,7 @@ namespace DGC2.Controllers
             am.AppointmentUpdate(p);
             return RedirectToAction("SubCustomerList");
         }
+
+        
     }
 }

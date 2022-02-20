@@ -260,5 +260,8 @@ namespace DGC2.Controllers
             var appointmentvalue = apm.GetByID(id);
             return View(appointmentvalue);
         }
+
+        
+
     }
 }

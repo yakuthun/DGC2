@@ -6,7 +6,6 @@
 }
 
 
-
 @*<table class="table table-bordered">
         <tr>
             <th>Firma İsim</th>
@@ -60,13 +59,16 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title" style="font-size:30px; font-weight:700">Değişiklik Onayı İsteyen Randevular</h3>
-                <div class="card-tools">
-
-
-                </div>
+                @*<div class="card-tools">
+                        <select type="search" class="select-table-filter btn btn-secondary dropdown-toggle" id="dropdownMenuButton" aria-labelledby="dropdownMenuButton" data-table="order-table">
+                            <option class="dropdown-item" value="">Hepsini Getir</option>
+                            <option class="dropdown-item" value="Değişiklik Onayı İsteniyor">Değişiklik Onayı İsteyenler</option>
+                            <option class="dropdown-item" value="Değişiklik Sonrası Onay Bekliyor">Değişiklik Sonrası Onay Bekliyor</option>
+                    </select>*@
+            
             </div>
             <div class="card-body table-responsive p-0">
-                <table class="table table-striped projects">
+                <table class="table table-striped projects order-table">
                     <thead>
                         <tr>
                             <th style="width: 8%">
@@ -92,9 +94,11 @@
                         </tr>
                     </thead>
                     <tbody>
+
                         @foreach (var item in Model)
                         {
-                            if (item.AppointmentTrackStatus == 20 || item.AppointmentTrackStatus == 24)
+
+                            if (item.AppointmentTrackStatus == 20 || item.AppointmentTrackStatus == 24 /*20*/ /*|| item.AppointmentTrackStatus == 24*/)
                             {
 
                                 <tr>
@@ -172,3 +176,71 @@
         <!-- /.card -->
     </section>
 </body>
+
+
+
+<script>
+    (function (document) {
+        'use strict';
+
+        var LightTableFilter = (function (Arr) {
+
+            var _input;
+            var _select;
+
+            function _onInputEvent(e) {
+                _input = e.target;
+                var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                Arr.forEach.call(tables, function (table) {
+                    Arr.forEach.call(table.tBodies, function (tbody) {
+                        Arr.forEach.call(tbody.rows, _filter);
+                    });
+                });
+            }
+
+            function _onSelectEvent(e) {
+                _select = e.target;
+                var tables = document.getElementsByClassName(_select.getAttribute('data-table'));
+                Arr.forEach.call(tables, function (table) {
+                    Arr.forEach.call(table.tBodies, function (tbody) {
+                        Arr.forEach.call(tbody.rows, _filterSelect);
+                    });
+                });
+            }
+
+            function _filter(row) {
+
+                var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+
+            }
+
+            function _filterSelect(row) {
+
+                var text_select = row.textContent.toLowerCase(), val_select = _select.options[_select.selectedIndex].value.toLowerCase();
+                row.style.display = text_select.indexOf(val_select) === -1 ? 'none' : 'table-row';
+
+            }
+
+            return {
+                init: function () {
+                    var inputs = document.getElementsByClassName('light-table-filter');
+                    var selects = document.getElementsByClassName('select-table-filter');
+                    Arr.forEach.call(inputs, function (input) {
+                        input.oninput = _onInputEvent;
+                    });
+                    Arr.forEach.call(selects, function (select) {
+                        select.onchange = _onSelectEvent;
+                    });
+                }
+            };
+        })(Array.prototype);
+
+        document.addEventListener('readystatechange', function () {
+            if (document.readyState === 'complete') {
+                LightTableFilter.init();
+            }
+        });
+
+    })(document);
+</script>
