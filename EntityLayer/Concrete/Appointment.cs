@@ -40,6 +40,10 @@ namespace EntityLayer.Concrete
         [Required(AllowEmptyStrings = true)]
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string AppointmentUpdateComment { get; set; }
+        [StringLength(200)]
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        public string AppointmentCancelComment { get; set; }
 
         [StringLength(50)]
         public string AppDriverLogisticName { get; set; }

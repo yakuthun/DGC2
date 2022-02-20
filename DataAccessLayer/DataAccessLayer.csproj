@@ -142,6 +142,10 @@
     <Compile Include="Migrations\202202201231512_mig_appupdatecomment.designer.cs">
       <DependentUpon>202202201231512_mig_appupdatecomment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202201629297_add_canceledapp.cs" />
+    <Compile Include="Migrations\202202201629297_add_canceledapp.designer.cs">
+      <DependentUpon>202202201629297_add_canceledapp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -209,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202201231512_mig_appupdatecomment.resx">
       <DependentUpon>202202201231512_mig_appupdatecomment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202201629297_add_canceledapp.resx">
+      <DependentUpon>202202201629297_add_canceledapp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
