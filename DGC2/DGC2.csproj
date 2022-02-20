@@ -192,7 +192,6 @@
     <Content Include="AdminLTE\dist\css\alt\adminlte.plugins.css" />
     <Content Include="AdminLTE\dist\css\alt\adminlte.plugins.min.css" />
     <Content Include="AdminLTE\dist\css\formlayouts.css" />
-    <Content Include="AdminLTE\dist\img\AdminLTELogo.png" />
     <Content Include="AdminLTE\dist\img\avatar.png" />
     <Content Include="AdminLTE\dist\img\avatar2.png" />
     <Content Include="AdminLTE\dist\img\avatar3.png" />
