@@ -2540,6 +2540,7 @@
     <Content Include="Views\Admin\EditCalendar.cshtml" />
     <Content Include="Views\CustomerAppAccept\SubCustomerList.cshtml" />
     <Content Include="Views\CustomerAppAccept\EditSubCustomer.cshtml" />
+    <Content Include="Views\SubCustomer\AskChangeComment.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

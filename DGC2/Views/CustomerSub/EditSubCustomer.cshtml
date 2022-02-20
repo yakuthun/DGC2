@@ -1,45 +1,46 @@
 ﻿@model EntityLayer.Concrete.SubCustomer
 @{
     ViewBag.Title = "EditSubCustomer";
-    Layout = "~/Views/Shared/_CustomerAdminLayout.cshtml";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
 <br />
 <h2>Tedarikçiyi Düzenle</h2>
-
+<a href="/CustomerAppAccept/SubCustomerList/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
+<hr />
 @using (Html.BeginForm("EditSubCustomer", "CustomerSub", FormMethod.Post))
 {
-<div class="form form-group">
-    @Html.Label("Kullanıcı ID")
-    @Html.TextBoxFor(x => x.SubCustomerID, new { @class = "form-control" })
-    @Html.Label("Kullanıcı Adı")
-    @Html.TextBoxFor(x => x.SubCustomerUsername, new { @class = "form-control" })
+    <div class="form form-group">
+        @Html.Label("Kullanıcı ID")
+        @Html.TextBoxFor(x => x.SubCustomerID, new { @class = "form-control" })
+        @Html.Label("Kullanıcı Adı")
+        @Html.TextBoxFor(x => x.SubCustomerUsername, new { @class = "form-control" })
 
-    <br /> <br />
-    @Html.Label("Şifre")
-    @Html.TextBoxFor(x => x.SubCustomerPassword, new { @class = "form-control" })
-    <br /> <br />
-    @Html.Label("Şirket İsim")
-    @Html.TextBoxFor(x => x.SubCustomerName, new { @class = "form-control" })
-    <br /> <br />
-    @Html.Label("Şirket Soyisim")
-    @Html.TextBoxFor(x => x.SubCustomerSurname, new { @class = "form-control" })
-    <br /> <br />
-    @Html.Label("Şirket Kodu")
-    @Html.TextBoxFor(x => x.SubCustomerCode, new { @class = "form-control" })
-    <br /> <br />
-    @Html.Label("Şirket Adresi")
-    @Html.TextBoxFor(x => x.SubCustomerAddress, new { @class = "form-control" })
-    <br /><br />
-    @Html.Label("Durum")
-    @Html.TextBoxFor(x => x.SubCustomerStatus, new { @class = "form-control" })
-
-
+        <br /> <br />
+        @Html.Label("Şifre")
+        @Html.TextBoxFor(x => x.SubCustomerPassword, new { @class = "form-control" })
+        <br /> <br />
+        @Html.Label("Şirket İsim")
+        @Html.TextBoxFor(x => x.SubCustomerName, new { @class = "form-control" })
+        <br /> <br />
+        @Html.Label("Şirket Soyisim")
+        @Html.TextBoxFor(x => x.SubCustomerSurname, new { @class = "form-control" })
+        <br /> <br />
+        @Html.Label("Şirket Kodu")
+        @Html.TextBoxFor(x => x.SubCustomerCode, new { @class = "form-control" })
+        <br /> <br />
+        @Html.Label("Şirket Adresi")
+        @Html.TextBoxFor(x => x.SubCustomerAddress, new { @class = "form-control" })
+        <br /><br />
+        @Html.Label("Durum")
+        @Html.TextBoxFor(x => x.SubCustomerStatus, new { @class = "form-control" })
 
 
 
-    <br /><br />
-    <button class="btn btn-success">Kaydet</button>
-</div>
+
+
+        <br /><br />
+        <button class="btn btn-success btn-lg btn btn-block">Kaydet</button>
+    </div>
 }
 

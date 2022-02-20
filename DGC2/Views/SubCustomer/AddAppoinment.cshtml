@@ -2,9 +2,11 @@
 
 @{
     ViewBag.Title = "AddAppoinment";
-    Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
-
+<h1>Randevu Talebi</h1>
+<a href="/SubCustomer/Index/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
+<hr />
 @using (Html.BeginForm("AddAppoinment", "SubCustomer", FormMethod.Post))
 {
 <div class="form-group">
@@ -20,7 +22,7 @@
     @Html.HiddenFor(x => x.AppointmentStatus)
     @Html.HiddenFor(x => x.AppStartDate)
     @Html.HiddenFor(m => m.DriverComment)
-    @Html.TextBoxFor(m => m.AppStartDate)
+    @Html.HiddenFor(m => m.AppStartDate)
 
     @Html.Label("Yükleme Türü (Dökme/Palet)")
     @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control" })
@@ -34,7 +36,7 @@
     @Html.Label("Mal İsim")
     @Html.TextBoxFor(x => x.AppointmentName, new { @class = "form-control" })
 
-    @Html.Label("Kapasite")
+    @Html.Label("Miktar")
     @Html.TextBoxFor(x => x.AppointmentCapacity, new { @class = "form-control" })
 
     @Html.Label("Sürücü Ad Soyad")
@@ -48,12 +50,11 @@
 
     @Html.Label("Çalıştığı Firma")
     @Html.TextBoxFor(x => x.AppDriverLogisticName, new { @class = "form-control" })
-
-    @Html.Label("Sürücüyü Kaydetmek İstemiyorum")
-    @Html.CheckBoxFor(m => m.DriverStatus, new { @checked = "checked" })
-
-
     <br />
-    <button class="btn btn-success">Kaydet</button>
+    @Html.Label("Sürücüyü Kaydetmek İstiyorum")
+    @Html.CheckBoxFor(m => m.DriverStatus, new { @checked = "checked" })
+    <br />
+    <br />
+    <button class="btn btn-success btn-lg btn btn-block">Kaydet</button>
 </div>
 }
