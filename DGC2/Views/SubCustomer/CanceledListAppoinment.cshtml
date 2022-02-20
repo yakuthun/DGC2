@@ -81,30 +81,11 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            if (item.AppointmentTrackStatus == 7)
+                            if (item.AppointmentTrackStatus == 11)
                             {
 
 
-                                //if (item.Category.CategoryName == "Tiyatro")
-                                //{
-                                //    color = "badge badge-warning";
-                                //}
-                                //if (item.Category.CategoryName == "Spor")
-                                //{
-                                //    color = "badge badge-success";
-                                //}
-                                //if (item.Category.CategoryName == "Yazılım")
-                                //{
-                                //    color = "badge badge-info";
-                                //}
-                                //if (item.Category.CategoryName == "Yemek")
-                                //{
-                                //    color = "badge badge-secondary";
-                                //}
-                                //if (item.Category.CategoryName == "Kitap")
-                                //{
-                                //    color = "badge badge-danger";
-                                //}
+                               
                                 <tr>
                                     <td style="font-size: 20px;">
                                         @item.AppointmentLoadType
@@ -130,6 +111,7 @@
                                         @item.AppStartDate
                                     </td>
                                     <td class="project-actions text-right">
+                                        <a href="/SubCustomer/SeeTheCanceledAppointment/@item.AppointmentID" class="btn btn-primary">Görüntüle</a>
                                     </td>
                                     
                                 </tr>

@@ -21,8 +21,8 @@
     @Html.HiddenFor(x => x.AppointmentComment)
     @Html.HiddenFor(x => x.AppointmentStatus)
     @Html.HiddenFor(x => x.AppStartDate)
-    @Html.HiddenFor(m => m.DriverComment)
-    @Html.HiddenFor(m => m.AppStartDate)
+    @Html.HiddenFor(x=>x.AppointmentCancelComment)
+    @Html.HiddenFor(x=>x.AppointmentUpdateComment)
 
     @Html.Label("Yükleme Türü (Dökme/Palet)")
     @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control" })
