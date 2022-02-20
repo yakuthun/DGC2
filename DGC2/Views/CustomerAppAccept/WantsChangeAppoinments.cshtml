@@ -140,9 +140,13 @@
                                     @if (item.AppointmentTrackStatus == 20)
                                     {
                                         <td>
-                                            <a href="/CustomerAppAccept/AccesChangeAppointment/@item.AppointmentID" class="btn btn-success">Düzenlemeye Onay Ver</a>
-                                            <a href="/CustomerAppAccept/RefuseChangeAppointment/@item.AppointmentID" class="btn btn-danger">Düzenlemeyi İsteğini Reddet</a>
+                                            <a href="/CustomerAppAccept/SeeTheAppointment/@item.AppointmentID" class="btn btn-primary">Görüntüle</a>
                                         </td>
+
+                                        @*<td>
+                                                <a href="/CustomerAppAccept/AccesChangeAppointment/@item.AppointmentID" class="btn btn-success">Düzenlemeye Onay Ver</a>
+                                                <a href="/CustomerAppAccept/RefuseChangeAppointment/@item.AppointmentID" class="btn btn-danger">Düzenlemeyi İsteğini Reddet</a>
+                                            </td>*@
                                     }
                                     else if (item.AppointmentTrackStatus == 24)
                                     {

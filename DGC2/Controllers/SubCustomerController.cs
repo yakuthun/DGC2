@@ -101,8 +101,11 @@ namespace DGC2.Controllers
         public ActionResult AskChangeComment(Appointment p)
         {
 
-            if (p.AppointmentTrackStatus == 2)
+            if(p.AppointmentTrackStatus == 4)
+            {
                 p.AppointmentTrackStatus = 20;
+            }
+            
 
             apm.AppointmentUpdate(p);
             return RedirectToAction("AppliedListAppoinment");
@@ -169,21 +172,21 @@ namespace DGC2.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddAppoinment(int id, Appointment p)
+        public ActionResult AddAppoinment(int id)
         {
             var datetime = cm.GetByID(id).CLStartDate;
             var sliceid = cm.GetByID(id).CalendarID;
             TempData["tempdata"] = datetime;
             TempData["tempslice"] = sliceid;
             return View();
-            
+
 
         }
         [HttpPost]
         public ActionResult AddAppoinment(Appointment p, Driver d)
         {
-         
-            
+
+
             if (p.AppointmentUCode == null)
             {
                 var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -220,8 +223,8 @@ namespace DGC2.Controllers
                 p.AppointmentTrackStatus = 1;
             }
 
-           
-            
+
+
 
 
             //p.AppointmentName = calenderid.Slice.ToString();

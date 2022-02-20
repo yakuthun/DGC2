@@ -1,12 +1,15 @@
 ﻿@model EntityLayer.Concrete.Appointment
+
 @{
-    ViewBag.Title = "AskChangeComment";
-    Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
+    ViewBag.Title = "SeeTheAppointment";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
-<h2>Değişiklik Talep Form</h2>
-
-@using (Html.BeginForm("AskChangeComment", "SubCustomer", FormMethod.Post))
+<h2>Değişiklik Nedeni</h2>
+<a href="/CustomerAppAccept/WantsChangeAppoinments/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
+<hr />
+ 
+@using (Html.BeginForm("SeeTheAppointment", "CustomerAppAccept", FormMethod.Post))
 {
 <div class="form-group">
 
@@ -28,11 +31,14 @@
     @Html.HiddenFor(x => x.AppointmentCapacity, new { @class = "form-control" })
     @Html.HiddenFor(x => x.AppStartDate, new { @class = "form-control" })
     @Html.HiddenFor(x => x.AppStartDate)
-    @Html.HiddenFor(x=>x.CalendarID)
+    @Html.HiddenFor(x => x.CalendarID)
 
-    @Html.Label("Değişiklik Nedeni")
-    @Html.TextAreaFor(x => x.AppointmentUpdateComment, new { @class = "form-control" })
+    @Html.TextAreaFor(x => x.AppointmentUpdateComment, new { @class = "form-control", @readonly = "readonly" })
     <br />
-    <button class="btn btn-primary btn-lg btn btn-block">Gönder</button>
+    <a href="/CustomerAppAccept/AccesChangeAppointment/@ViewBag.a" class="btn btn-success btn-lg btn btn-block">Düzenlemeye Onay Ver</a>
+    <a href="/CustomerAppAccept/RefuseChangeAppointment/@ViewBag.a" class="btn btn-danger btn-lg btn btn-block">Düzenlemeyi İsteğini Reddet</a>
+
 </div>
 }
+
+

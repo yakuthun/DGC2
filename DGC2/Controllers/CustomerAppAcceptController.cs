@@ -56,7 +56,9 @@ namespace DGC2.Controllers
         }
         public ActionResult CancelAppointment(int id)
         {
+
             var appvalue = am.GetByID(id);
+            ViewBag.d = appvalue.AppointmentID;
             appvalue.AppointmentTrackStatus = 7;
             am.AppointmentDelete(appvalue);
             return RedirectToAction("CanceledAppoinments");
@@ -164,5 +166,18 @@ namespace DGC2.Controllers
         }
 
         // TEDARİKÇİ EKLEME
+        [HttpGet]
+        public ActionResult SeeTheAppointment(int id)
+        {
+            ViewBag.a = id;
+            var appoinmentid = am.GetByID(id);
+            return View(appoinmentid);
+        }
+        [HttpPost]
+        public ActionResult SeeTheAppointment(Appointment p)
+        {
+            am.AppointmentUpdate(p);
+            return RedirectToAction("SubCustomerList");
+        }
     }
 }
