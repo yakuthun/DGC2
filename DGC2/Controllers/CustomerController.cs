@@ -26,8 +26,8 @@ namespace DGC2.Controllers
         [HttpPost]
         public ActionResult AddCustomer(Customer p)
         {
-            p.CustomerStartDate = DateTime.Parse(Convert.ToDateTime(DateTime.Now).ToString("dd.MM.yyyy HH:mm:ss"));
-            p.CustomerFinishDate = DateTime.Parse(Convert.ToDateTime(DateTime.Now).ToString("dd.MM.yyyy HH:mm:ss"));
+            p.CustomerStartDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            p.CustomerFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             cm.CustomerAdd(p);
             return RedirectToAction("Index");
         }
