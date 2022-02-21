@@ -16,7 +16,7 @@ namespace DGC2.Controllers
         AppointmentManager apm = new AppointmentManager(new EfAppointmentDal());
         CalendarManager cl = new CalendarManager(new EfCalendarDal());
         CustomerSubManager sbm = new CustomerSubManager(new EfCustomerAddSubDal());
-       
+        SliceManager sm = new SliceManager(new EfSliceDal());
         public ActionResult Index()
         {
             var adminvalues = am.GetList();
@@ -85,22 +85,26 @@ namespace DGC2.Controllers
             return RedirectToAction("WaitingApp", "Admin");
         }
 
-        public ActionResult CalendarList()
+        public ActionResult CalendarList(int id)
         {
-            var calendarvalues = cl.GetList();
-            return View(calendarvalues);
+            
+           var onemli = cl.GetListByID(id);
+            TempData["SliceID"] = id;
+            return View(onemli);
         }
 
         [HttpGet]
         public ActionResult AddCalendar()
         {
+            ViewBag.t  = TempData["SliceID"];
             return View();
         }
         [HttpPost]
         public ActionResult AddCalendar(Calendar p)
         {
+            
             cl.CalendarAdd(p);
-            return RedirectToAction("CalendarList", "Admin");
+            return RedirectToAction("SliceList", "Admin");
         }
         [HttpGet]
         public ActionResult EditCalendar(int id)
@@ -134,10 +138,26 @@ namespace DGC2.Controllers
 
         public ActionResult SliceList()
         {
+            Context c = new Context();
+            var deger1 = c.Calendars.Count().ToString();
+            ViewBag.d1 = deger1;
 
-
-            var calendarvalues = cl.GetList();
+            var calendarvalues = sm.GetList();
             return View(calendarvalues);
+        }
+
+        [HttpGet]
+        public ActionResult AddSlice()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddSlice(Slice p)
+        {
+           
+            sm.SliceAdd(p);
+
+            return RedirectToAction("SliceList", "Admin");
         }
 
     }

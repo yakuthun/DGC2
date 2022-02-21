@@ -15,5 +15,7 @@ namespace BusinessLayer.Abstract
         void CalendarDelete(Calendar calendar);
         void CalendarUpdate(Calendar calendar);
         Calendar GetByStatusAndVersin(bool id, int version);
+
+        List<Calendar> GetListByID(int id);
     }
 }

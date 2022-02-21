@@ -1,0 +1,18 @@
+﻿@model EntityLayer.Concrete.Slice
+@{
+    ViewBag.Title = "AddSlice";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
+}
+
+<h2>AddSlice</h2>
+@using (Html.BeginForm("AddSlice", "Admin", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.SlicesID, new { @class = "form-control" })
+        @Html.HiddenFor(x => x.SliceStatus, new { @class = "form-control" })
+        @Html.Label("Versiyon")
+        @Html.HiddenFor(x => x.SliceVersion, new { @class = "form-control" })
+    </div>
+    <button class="btn btn-info">Oluştur</button>
+}
+

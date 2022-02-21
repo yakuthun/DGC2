@@ -1,28 +1,58 @@
 ﻿@using EntityLayer.Concrete
-@model List<Calendar>
+@using System.Linq
+@model List<Slice>
 @{
     ViewBag.Title = "SliceList";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Dilimler</h2>
+<div class="row">
+    @foreach (var item in Model)
+    {
 
-@foreach (var item in Model)
-{
-    
+        if (item.SliceStatus == true)
+        {
 
-    <div class="col-lg-3 col-6">
 
-        <div class="small-box bg-success">
-            <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-                <p>Dilim Sayısı:</p>
+            <div class="col-lg-3 col-6">
+
+
+
+                <div class="small-box bg-success">
+
+                    <div class="inner">
+                        <h3>V<sup style="font-size: 20px">@item.SlicesID</sup></h3>
+                        <p>Dilim Sayısı: @ViewBag.d1<p>
+</div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="/Admin/CalendarList/@item.SlicesID" class="small-box-footer">Dilimi Düzenle<i class="fas fa-arrow-circle-right"></i></a>
+                </div>
             </div>
-            <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
+        }
+        else
+        {
+            <div class="col-lg-3 col-6">
 
-}
+
+
+                <div class="small-box bg-secondary">
+
+                    <div class="inner">
+                        <h3>V<sup style="font-size: 20px">@item.SlicesID</sup></h3>
+                        <p>Dilim Sayısı: @ViewBag.d1</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="/Admin/CalendarList/@item.SlicesID" class="small-box-footer">Dilimi Düzenle<i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        }
+
+    }
+</div>
+
+<a href="/Admin/AddSlice/" class="btn btn-info">Dilim Ekle</a>

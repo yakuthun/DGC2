@@ -50,5 +50,10 @@ namespace BusinessLayer.Concrete
         {
             return _calendarDal.List();
         }
+
+        public List<Calendar> GetListByID(int id)
+        {
+            return _calendarDal.List(x => x.Slice.SlicesID == id);
+        }
     }
 }

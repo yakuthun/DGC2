@@ -2889,6 +2889,7 @@
     <Content Include="Views\CustomerAppAccept\SeeAndCancelTheAppointment.cshtml" />
     <Content Include="Views\SubCustomer\SeeTheCanceledAppointment.cshtml" />
     <Content Include="Views\Admin\SliceList.cshtml" />
+    <Content Include="Views\Admin\AddSlice.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
