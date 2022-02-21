@@ -150,6 +150,10 @@
     <Compile Include="Migrations\202202211227202_mig_testsr34.designer.cs">
       <DependentUpon>202202211227202_mig_testsr34.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202211247338_mig_added_dailypalet.cs" />
+    <Compile Include="Migrations\202202211247338_mig_added_dailypalet.designer.cs">
+      <DependentUpon>202202211247338_mig_added_dailypalet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -223,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202211227202_mig_testsr34.resx">
       <DependentUpon>202202211227202_mig_testsr34.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202211247338_mig_added_dailypalet.resx">
+      <DependentUpon>202202211247338_mig_added_dailypalet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

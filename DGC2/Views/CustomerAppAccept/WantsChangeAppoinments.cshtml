@@ -59,119 +59,120 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title" style="font-size:30px; font-weight:700">Değişiklik Onayı İsteyen Randevular</h3>
-                @*<div class="card-tools">
-                        <select type="search" class="select-table-filter btn btn-secondary dropdown-toggle" id="dropdownMenuButton" aria-labelledby="dropdownMenuButton" data-table="order-table">
-                            <option class="dropdown-item" value="">Hepsini Getir</option>
-                            <option class="dropdown-item" value="Değişiklik Onayı İsteniyor">Değişiklik Onayı İsteyenler</option>
-                            <option class="dropdown-item" value="Değişiklik Sonrası Onay Bekliyor">Değişiklik Sonrası Onay Bekliyor</option>
-                    </select>*@
-            
-            </div>
-            <div class="card-body table-responsive p-0">
-                <table class="table table-striped projects order-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 8%">
-                                Firma
-                            </th>
-                            <th style="width: 8%">
-                                Tür
-                            </th>
-                            <th style="width: 10%">
-                                Mal İsim
-                            </th>
-                            <th style="width: 5%">
-                                Yük Adet
-                            </th>
-                            <th style="width: 15%">
-                                Durum
-                            </th>
-                            <th style="width: 12%" class="text-center">
-                                Geliş Tarihi
-                            </th>
-                            <th style="width: 10%">
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div class="card-tools">
+                    <select type="search" class="select-table-filter selectpicker" data-table="order-table" data-style="btn-primary">
+                        <option value="">Hepsini Getir</option>
+                        <option value="Değişiklik Onayı İsteniyor">Değişiklik Onayı İsteyenler</option>
+                        <option value="Değişiklik Sonrası Onay Bekliyor">Değişiklik Sonrası Onay Bekliyor</option>
+                    </select>
 
-                        @foreach (var item in Model)
-                        {
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-striped projects order-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 8%">
+                                    Firma
+                                </th>
+                                <th style="width: 8%">
+                                    Tür
+                                </th>
+                                <th style="width: 10%">
+                                    Mal İsim
+                                </th>
+                                <th style="width: 5%">
+                                    Yük Adet
+                                </th>
+                                <th style="width: 15%">
+                                    Durum
+                                </th>
+                                <th style="width: 12%" class="text-center">
+                                    Geliş Tarihi
+                                </th>
+                                <th style="width: 10%">
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                            if (item.AppointmentTrackStatus == 20 || item.AppointmentTrackStatus == 24 /*20*/ /*|| item.AppointmentTrackStatus == 24*/)
+                            @foreach (var item in Model)
                             {
 
-                                <tr>
-                                    <td style="font-size: 20px; font-weight:800">
-                                        @item.SubCustomer.SubCustomerCompany
-                                    </td>
-                                    <td style="font-size: 20px;">
-                                        @item.AppointmentLoadType
-                                    </td>
-                                    <td>
-                                        <a style="font-size: 20px;">
-                                            @item.AppointmentName
-                                        </a>
-                                        <br />
+                                if (item.AppointmentTrackStatus == 20 || item.AppointmentTrackStatus == 24 /*20*/ /*|| item.AppointmentTrackStatus == 24*/)
+                                {
 
-                                    </td>
-                                    <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item" style="font-size: 30px; font-weight: 600; ">
-                                                @item.AppointmentCapacity
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    @if (item.AppointmentTrackStatus == 20)
-                                    {
-                                        <td>
-                                            <p style="font-weight:800; font-size:20px" class="badge badge-info">Değişiklik Onayı İsteniyor</p>
+                                    <tr>
+                                        <td style="font-size: 20px; font-weight:800">
+                                            @item.SubCustomer.SubCustomerCompany
                                         </td>
-                                    }
-                                    else if (item.AppointmentTrackStatus == 24)
-                                    {
-                                        <td>
-                                            <p style="font-weight:800; font-size:20px" class="badge badge-warning">Değişiklik Sonrası Onay Bekliyor</p>
+                                        <td style="font-size: 20px;">
+                                            @item.AppointmentLoadType
                                         </td>
-                                    }
-
-                                    <td class="project-state" style="font-size:18px">
-                                        @item.AppStartDate
-                                    </td>
-                                    <td class="project-actions text-right">
-                                    </td>
-
-                                    @if (item.AppointmentTrackStatus == 20)
-                                    {
                                         <td>
-                                            <a href="/CustomerAppAccept/SeeTheAppointment/@item.AppointmentID" class="btn btn-primary">Görüntüle</a>
+                                            <a style="font-size: 20px;">
+                                                @item.AppointmentName
+                                            </a>
+                                            <br />
+
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item" style="font-size: 30px; font-weight: 600; ">
+                                                    @item.AppointmentCapacity
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        @if (item.AppointmentTrackStatus == 20)
+                                        {
+                                            <td>
+                                                <p style="font-weight:800; font-size:20px" class="badge badge-info">Değişiklik Onayı İsteniyor</p>
+                                            </td>
+                                        }
+                                        else if (item.AppointmentTrackStatus == 24)
+                                        {
+                                            <td>
+                                                <p style="font-weight:800; font-size:20px" class="badge badge-warning">Değişiklik Sonrası Onay Bekliyor</p>
+                                            </td>
+                                        }
+
+                                        <td class="project-state" style="font-size:18px">
+                                            @item.AppStartDate
+                                        </td>
+                                        <td class="project-actions text-right">
                                         </td>
 
-                                        @*<td>
-                                                <a href="/CustomerAppAccept/AccesChangeAppointment/@item.AppointmentID" class="btn btn-success">Düzenlemeye Onay Ver</a>
-                                                <a href="/CustomerAppAccept/RefuseChangeAppointment/@item.AppointmentID" class="btn btn-danger">Düzenlemeyi İsteğini Reddet</a>
-                                            </td>*@
-                                    }
-                                    else if (item.AppointmentTrackStatus == 24)
-                                    {
-                                        <td>
-                                            <a href="/CustomerAppAccept/ApplyChangedAppointment/@item.AppointmentID" class="btn btn-warning">Randevuyu Onayla</a>
-                                            <a href="/CustomerAppAccept/SeeAndCancelTheAppointment/@item.AppointmentID" class="btn btn-dark">Randevuyu İptal Et</a>
-                                        </td>
-                                    }
+                                        @if (item.AppointmentTrackStatus == 20)
+                                        {
+                                            <td>
+                                                <a href="/CustomerAppAccept/SeeTheAppointment/@item.AppointmentID" class="btn btn-primary">Randevuyu Görüntüle</a>
+                                            </td>
+
+                                            @*<td>
+                                                    <a href="/CustomerAppAccept/AccesChangeAppointment/@item.AppointmentID" class="btn btn-success">Düzenlemeye Onay Ver</a>
+                                                    <a href="/CustomerAppAccept/RefuseChangeAppointment/@item.AppointmentID" class="btn btn-danger">Düzenlemeyi İsteğini Reddet</a>
+                                                </td>*@
+                                        }
+                                        else if (item.AppointmentTrackStatus == 24)
+                                        {
+                                            <td>
+                                                <a href="/CustomerAppAccept/ApplyChangedAppointment/@item.AppointmentID" class="btn btn-warning">Randevuyu Onayla</a>
+                                                <a href="/CustomerAppAccept/SeeAndCancelTheAppointment/@item.AppointmentID" class="btn btn-dark">Randevuyu İptal Et</a>
+                                            </td>
+                                        }
 
 
 
 
 
-                                </tr>
+                                    </tr>
 
+                                }
                             }
-                        }
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
         </div>
         <!-- /.card -->
     </section>

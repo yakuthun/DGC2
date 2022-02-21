@@ -4,7 +4,7 @@
     ViewBag.Title = "AddAppoinment";
     Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
-<h1>Randevu Talebi</h1>
+<h1>@(((DateTime)ViewBag.startdate).ToString("hh:mm")) - @(((DateTime)ViewBag.finishdate).ToString("hh:mm"))</h1>
 <a href="/SubCustomer/Index/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
 <hr />
 @using (Html.BeginForm("AddAppoinment", "SubCustomer", FormMethod.Post))
@@ -55,6 +55,7 @@
     @Html.CheckBoxFor(m => m.DriverStatus, new { @checked = "checked" })
     <br />
     <br />
+    @ViewBag.asd
     <button class="btn btn-success btn-lg btn btn-block">Kaydet</button>
 </div>
 }

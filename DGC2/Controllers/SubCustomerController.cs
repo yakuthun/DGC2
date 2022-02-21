@@ -177,10 +177,19 @@ namespace DGC2.Controllers
         [HttpGet]
         public ActionResult AddAppoinment(int id)
         {
+            var alldatas = cm.GetByID(id);
             var datetime = cm.GetByID(id).CLStartDate;
             var sliceid = cm.GetByID(id).CalendarID;
+            var dailyamountid = cm.GetByID(id).CLDailyAmount;
+            var dailypaletid = cm.GetByID(id).CLDailyPaletAmount;
             TempData["tempdata"] = datetime;
             TempData["tempslice"] = sliceid;
+            TempData["tempdailyamount"] = dailyamountid;
+            TempData["tempdailypaletamount"] = dailypaletid;
+            TempData["allcalendardata"] = cm.GetByID(id).CalendarID;
+
+            ViewBag.startdate = alldatas.CLStartDate;
+            ViewBag.finishdate = alldatas.CLFinishDate;
             return View();
 
 
@@ -189,6 +198,8 @@ namespace DGC2.Controllers
         public ActionResult AddAppoinment(Appointment p, Driver d)
         {
 
+            int asd = (int)TempData["allcalendardata"];
+            var allcalendar = cm.GetByID(asd);
 
             if (p.AppointmentUCode == null)
             {
@@ -206,10 +217,16 @@ namespace DGC2.Controllers
                 p.AppointmentUCode = finalString;
             }
 
-            p.AppStartDate = DateTime.Parse(TempData["tempdata"].ToString());
+            //p.AppStartDate = DateTime.Parse(TempData["tempdata"].ToString());
+
+            var getDateFromData = (DateTime)TempData["tempDATA"];
+                p.AppStartDate = DateTime.Parse(getDateFromData.ToString());
             var number = TempData["tempslice"];
             p.CalendarID = int.Parse(number.ToString());
+            //var dailyamount = (int)TempData["tempdailyamount"];
 
+            
+            
             if (p.DriverStatus == false)
             {
                 d.SubCustomerID = p.SubCustomerID;
@@ -227,12 +244,20 @@ namespace DGC2.Controllers
             }
 
 
-
+            if(p.AppointmentLoadType == "Dökme")
+            {
+                allcalendar.CLDailyAmount += p.AppointmentCapacity;
+            }
+            else if(p.AppointmentLoadType=="Palet")
+            {
+                allcalendar.CLDailyPaletAmount += p.AppointmentCapacity;
+            }
 
 
             //p.AppointmentName = calenderid.Slice.ToString();
             //p.AppStartDate = DateTime.Parse(calenderid.CLStartDate.ToShortTimeString());
             //p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            cm.CalendarUpdate(allcalendar);
             apm.AppointmentAdd(p);
 
             return RedirectToAction("Index");
