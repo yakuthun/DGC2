@@ -179,8 +179,12 @@ namespace DGC2.Controllers
         {
             var datetime = cm.GetByID(id).CLStartDate;
             var sliceid = cm.GetByID(id).CalendarID;
+            var dailyamountid = cm.GetByID(id).CLDailyAmount;
+            
             TempData["tempdata"] = datetime;
             TempData["tempslice"] = sliceid;
+            TempData["tempdailyamount"] = dailyamountid;
+            TempData["allcalendardata"] = cm.GetByID(id).CalendarID;
             return View();
 
 
@@ -189,6 +193,8 @@ namespace DGC2.Controllers
         public ActionResult AddAppoinment(Appointment p, Driver d)
         {
 
+            int asd = (int)TempData["allcalendardata"];
+            var allcalendar = cm.GetByID(asd);
 
             if (p.AppointmentUCode == null)
             {
@@ -209,7 +215,10 @@ namespace DGC2.Controllers
             p.AppStartDate = DateTime.Parse(TempData["tempdata"].ToString());
             var number = TempData["tempslice"];
             p.CalendarID = int.Parse(number.ToString());
+            var dailyamount = (int)TempData["tempdailyamount"];
 
+            allcalendar.CLDailyAmount  += p.AppointmentCapacity;
+            
             if (p.DriverStatus == false)
             {
                 d.SubCustomerID = p.SubCustomerID;
@@ -233,6 +242,7 @@ namespace DGC2.Controllers
             //p.AppointmentName = calenderid.Slice.ToString();
             //p.AppStartDate = DateTime.Parse(calenderid.CLStartDate.ToShortTimeString());
             //p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            cm.CalendarUpdate(allcalendar);
             apm.AppointmentAdd(p);
 
             return RedirectToAction("Index");

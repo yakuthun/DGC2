@@ -21,6 +21,7 @@ namespace EntityLayer.Concrete
         public int CLTolerance { get; set; }
         public int CLSumTolerance { get; set; }
         public int CLDailyAmount { get; set; }
+        public int CLDailyPaletAmount { get; set; }
         public int CLPalletCapacity { get; set; }
         public int? SlicesID { get; set; }
         public virtual Slice Slice { get; set; }
