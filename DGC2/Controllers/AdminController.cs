@@ -134,6 +134,8 @@ namespace DGC2.Controllers
 
         public ActionResult SliceList()
         {
+
+
             var calendarvalues = cl.GetList();
             return View(calendarvalues);
         }
