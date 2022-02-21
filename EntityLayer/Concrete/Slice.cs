@@ -13,6 +13,9 @@ namespace EntityLayer.Concrete
         public int SlicesID { get; set; }
         public int SliceVersion { get; set; }
         public bool SliceStatus { get; set; }
+       
+   
         public ICollection<Calendar> Calendars { get; set; }
+
     }
 }

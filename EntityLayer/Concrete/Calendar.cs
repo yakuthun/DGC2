@@ -20,12 +20,14 @@ namespace EntityLayer.Concrete
         public int CLAmount { get; set; }
         public int CLTolerance { get; set; }
         public int CLSumTolerance { get; set; }
+        public int CLDailyAmount { get; set; }
         public int CLPalletCapacity { get; set; }
         public int? SlicesID { get; set; }
         public virtual Slice Slice { get; set; }
         public ICollection<Appointment> Appointments { get; set; }
-
      
+        
+
 
     }
 }
