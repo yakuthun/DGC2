@@ -10,17 +10,25 @@
 <table class="table table-bordered">
 
     <tr>
-        <th>Dilim</th>
+
         <th>Saat Başlangıç</th>
         <th>Saat Bitiş</th>
+        <th>Randevu Al</th>
+        <th>Toplam Miktar</th>
+        <th>Toplam Palet</th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.CLSlice</td>
+            
             <td>@item.CLStartDate</td>
             <td>@item.CLFinishDate</td>
+            
             <td><a href="/SubCustomer/AddAppoinment/@item.CalendarID" class="btn btn-success">Randevu Al</a></td>
+            <td>@item.CLAmount
+                   /
+            </td>
+            <td>@item.CLPalletCapacity</td>
         </tr>
     }
 </table>
