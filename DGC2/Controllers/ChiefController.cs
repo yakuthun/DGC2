@@ -42,7 +42,7 @@ namespace DGC2.Controllers
 
 
         [HttpGet]
-        public ActionResult EditAppointment(int id)
+        public ActionResult EditAppointment(int id, Appointment p)
         {
             ViewBag.d = id;
             var appvalues = am.GetByID(id);

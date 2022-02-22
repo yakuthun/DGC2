@@ -109,6 +109,7 @@ namespace DGC2.Controllers
         [HttpGet]
         public ActionResult EditCalendar(int id)
         {
+            ViewBag.t = TempData["SliceID"];
             var calendarvalue = cl.GetByID(id);
             return View(calendarvalue);
         }
@@ -119,22 +120,17 @@ namespace DGC2.Controllers
             return RedirectToAction("CalendarList","Admin");
         }
 
-        [HttpGet]
+       
         public ActionResult PassiveSlice(int id)
         {
-            var calendarvalue = cl.GetByID(id);
-            return View(calendarvalue);
+
+            var appvalue = sm.GetByID(id);
+
+            appvalue.SliceStatus = true;
+            sm.SliceUpdate(appvalue);
+            return RedirectToAction("SliceList", "Admin");
         }
-        [HttpPost]
-        public ActionResult PassiveSlice(Calendar p)
-        {
-            Context c = new Context();
-            //var calendar = c.Calendars.Where(c => c.CLStatus == true)
-            //var calendarvalue = cl.GetByStatusAndVersin(p.CLStatus, p.CLVersion);
-           
-            
-            return RedirectToAction("CalendarList", "Admin");
-        }
+      
 
         public ActionResult SliceList()
         {

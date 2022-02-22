@@ -57,13 +57,13 @@
                     <th>Tedarikçi</th>
                     <th>Plaka</th>
                     <th>Paket Tipi</th>
-                    <th>Plaka</th>
-
-                    <th>Alınan Saat</th>
                     <th>Geldi</th>
+
                     <th>İndiriliyor</th>
-                    <th>Tamamlandı</th>
-                    <th>Statü</th>
+                 
+                    <th>Durum</th>
+                    
+                    
                     <th colspan="5" style="text-align:center">İşlem Yap</th>
 
 
@@ -82,12 +82,12 @@
                         <tr>
                             <td>@item.AppointmentID</td>
                             <td>@*@item.SubCustomer.Customer.CompanyName*@</td>
-                            <td>@item.SubCustomer.SubCustomerCompany</td>
+                            <td>@*@item.SubCustomer.SubCustomerCompany*@</td>
                             <td>@item.AppDriverPlate</td>
-                            <td>@item.AppStartDate</td>
+                            <td>@item.AppointmentLoadType</td>
                             <td>@item.InComingDate</td>
                             <td>@item.DownloadedDate</td>
-                            <td>@item.AppFinishDate</td>
+                         
                             <td>@item.AppointmentTrackStatus</td>
 
                             @switch (item.AppointmentTrackStatus)

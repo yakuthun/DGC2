@@ -10,7 +10,7 @@
 <hr />
 
 
-
+@ViewBag.Plaka
 
 @using (Html.BeginForm("EditAppointment", "Chief", FormMethod.Post))
 {
@@ -48,19 +48,19 @@
     @Html.Label("Randevu Image")
     @Html.TextBoxFor(x => x.AppointmentImage, new { @class = "form-control" })
 
-    @Html.Label("Randevu Image")
+    @Html.Label("Randevu Açıklama")
     @Html.TextBoxFor(x => x.AppointmentComment, new { @class = "form-control" })
 
     @Html.Label("Randevu Müşteri Onay Durumu")
     @Html.TextBoxFor(x => x.AppointmentTrackStatus, new { @class = "form-control" })
 
-    <a class="btn btn-primary" href="@Url.Action("InComingApp","Chief")">Click</a>
-        @Html.ActionLink("geldi", "InComingApp", "Chief", new { id = @ViewBag.d }, null)
-
+    
+    
 
     <a href="/Chief/InComingApp/@ViewBag.d" class="btn btn-success btn-lg btn-block">Geldi</a>
     <a href="/Chief/Downloaded/@ViewBag.d" class="btn btn-secondary btn-lg btn-block">İndiriliyor</a>
     <button class="btn btn-primary btn-lg btn-block">İşlem Bitti</button>
+    <h1>@ViewBag.plate</h1>
     <br />
 }
 

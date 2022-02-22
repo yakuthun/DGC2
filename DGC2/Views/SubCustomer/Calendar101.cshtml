@@ -1,0 +1,62 @@
+﻿@using EntityLayer.Concrete
+@model List<Calendar>
+@{
+    ViewBag.Title = "Calendar101";
+    Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
+}
+<head>
+    <link href='~/AdminLTE/fullcalendar/lib/main.css' rel='stylesheet' />
+    <script src='~/AdminLTE/fullcalendar/lib/main.js'></script>
+
+
+    <style>
+
+
+
+        #calendar {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+
+        //document.addEventListener('DOMContentLoaded', function () {
+        //    var calendarEl = document.getElementById('calendar');
+
+        //    var calendar = new FullCalendar.Calendar(calendarEl, {
+        //        initialView: 'timeGridDay',
+        //        selectable: true,
+
+        //    });
+
+        //            calendar.render();
+        //        });
+        document.addEventListener('DOMContentLoaded', function () {
+                var calendarEl = document.getElementById('calendar');
+
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialDate: '2020-09-12',
+                initialView: 'timeGridDay',
+                nowIndicator: true,
+
+                headerToolbar: {
+                left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+               
+                selectable: true,
+                events: '/Calendar/GetCalendarEvents/'
+            });
+
+            calendar.render();
+        });
+
+    </script>
+
+</head>
+<body>
+
+    <div id='calendar'></div>
+
+</body>

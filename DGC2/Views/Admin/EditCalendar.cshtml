@@ -1,7 +1,7 @@
 ﻿@model EntityLayer.Concrete.Calendar
 @{
     ViewBag.Title = "EditCalendar";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
 <h2>Dilim Güncelle</h2>
@@ -10,12 +10,10 @@
 {
 <div class="form-group">
     @Html.HiddenFor(x => x.CalendarID, new { @class = "form-control" })
-    @Html.Label("Versiyon")
-    @Html.TextAreaFor(x => x.CLVersion, new { @class = "form-control" })
-    @Html.Label("Statü")
-    @Html.TextAreaFor(x => x.CLStatus, new { @class = "form-control" })
-    @Html.Label("Dilim ID")
-    @Html.TextAreaFor(x => x.SliceID, new { @class = "form-control" })
+
+
+    @Html.Label("Dilim 101 ID")
+    @Html.TextAreaFor(x => x.CLSliceID, new { @class = "form-control" })
     @Html.Label("Kullanıma Geçiş Tarihi")
     @Html.TextAreaFor(x => x.CLUseStartDate, new { @class = "form-control" })
     @Html.Label("Kullanımı Bitirme Tarihi")
@@ -24,16 +22,21 @@
     @Html.TextAreaFor(x => x.CLStartDate, new { @class = "form-control" })
     @Html.Label("Bitiş Tarihi")
     @Html.TextAreaFor(x => x.CLFinishDate, new { @class = "form-control" })
-    @Html.Label("Dilim Sayısı")
+    @Html.Label("Dilim Sayısı 1,2")
     @Html.TextAreaFor(x => x.CLSlice, new { @class = "form-control" })
     @Html.Label("Miktar")
     @Html.TextAreaFor(x => x.CLAmount, new { @class = "form-control" })
+    @Html.Label("Günlük Miktar")
+    @Html.TextAreaFor(x => x.CLDailyAmount, new { @class = "form-control" })
     @Html.Label("Tölerans")
     @Html.TextAreaFor(x => x.CLTolerance, new { @class = "form-control" })
     @Html.Label("Toplam Tölerans")
     @Html.TextAreaFor(x => x.CLSumTolerance, new { @class = "form-control" })
     @Html.Label("Palet Kapasitesi")
-    @Html.TextAreaFor(x => x.CLPalletCapacity, new { @class = "form-control" })
+    @Html.TextAreaFor(x => x.CLPalletCapacity, new { @class = "form-control", })
+
+    @Html.Label("ANA DİLİM ID")
+    <input type="text" name="SlicesID" value="@ViewBag.t" class="form-control" readonly />
     <br />
     <button class="btn btn-info">Düzenle</button>
 </div>
