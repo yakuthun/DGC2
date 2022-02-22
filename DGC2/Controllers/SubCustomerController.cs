@@ -175,8 +175,9 @@ namespace DGC2.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddAppoinment(int id)
+        public ActionResult AddAppoinment(int id, DateTime mydatetime)
         {
+            TempData["mydatetime"] = mydatetime;
             var alldatas = cm.GetByID(id);
             var datetime = cm.GetByID(id).CLStartDate;
             var sliceid = cm.GetByID(id).CalendarID;
@@ -197,6 +198,8 @@ namespace DGC2.Controllers
         [HttpPost]
         public ActionResult AddAppoinment(Appointment p, Driver d)
         {
+
+           
 
             int asd = (int)TempData["allcalendardata"];
             var allcalendar = cm.GetByID(asd);
@@ -219,8 +222,8 @@ namespace DGC2.Controllers
 
             //p.AppStartDate = DateTime.Parse(TempData["tempdata"].ToString());
 
-            var getDateFromData = (DateTime)TempData["tempDATA"];
-                p.AppStartDate = DateTime.Parse(getDateFromData.ToString());
+
+            p.AppStartDate = DateTime.Parse(TempData["mydatetime"].ToString());
             var number = TempData["tempslice"];
             p.CalendarID = int.Parse(number.ToString());
             //var dailyamount = (int)TempData["tempdailyamount"];
@@ -290,7 +293,12 @@ namespace DGC2.Controllers
         //------------------------------------------------EGEMEN ALAN--------------------------------------------
 
 
-
+        public JsonResult getCalenderTime(DateTime date)
+        {
+            var tempdata = date;
+            TempData["getdatetime"] = tempdata;
+            return Json(tempdata, JsonRequestBehavior.AllowGet);
+        }
 
 
         //---------------------------------------------------------------------------------------------------------

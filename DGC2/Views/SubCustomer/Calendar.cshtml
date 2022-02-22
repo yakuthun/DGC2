@@ -37,7 +37,9 @@
             </tr>
         }
     </table>*@
+
 <body class="hold-transition sidebar-mini">
+    <script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -59,7 +61,7 @@
                     <span style="font-size: 30px; font-weight: 500; ">@(((DateTime)DateTime.Now).ToString("dd MMMM yyyy"))</span>
                 </h3>
 
-                
+
                 <div class="card-tools">
 
 
@@ -104,7 +106,8 @@
                                 <tr>
                                     <td style="font-size: 25px;">
                                         @*@item.CLStartDate*@
-                                        @(((DateTime)tomorrow).ToString("dd MMM yyyy"))
+                                        @(((DateTime)tomorrow).ToString("dd MMMM yyyy"))
+
                                     </td>
                                     <td>
                                         <a style="font-size: 25px;">
@@ -115,13 +118,19 @@
                                     </td>
                                     <td>
                                         <ul class="list-inline">
-                                            <li class="list-inline-item" style="font-size: 30px; font-weight: 600; ">
+                                            <li class="list-inline-item btn btn-success" style="font-size: 25px; font-weight: 600;   ">
 
-                                                
-                                                <a href="/SubCustomer/AddAppoinment/@item.CalendarID " class="btn btn-success"><div style="font-size:20px; font-weight:600">Randevu Al</div></a>
+                                                @*<input type="submit" class="btn btn-success" value="Listele" id="getapp" />*@
+                                              
+                                                @Html.ActionLink("Randevu Al", "AddAppoinment" ,"SubCustomer", new { mydatetime = tomorrow, id= item.CalendarID },null)
+                
+              
                                             </li>
+
                                         </ul>
+
                                     </td>
+
                                     <!--<td>-->
                                     @*<p style="font-weight:800; font-size:20px" class="badge badge-primary">Onay Bekleniyor</p>*@
                                     <!--</td>-->
@@ -164,4 +173,34 @@
         </div>
         <!-- /.card -->
     </section>
+
+    @*<script type="text/javascript">
+
+            $(function () {
+                $("#getapp").click(function () {
+                    var s = $("#tomorrow").val();
+                    $.ajax({
+                        type: "POST",
+                        url: "/SubCustomer/AddAppoinment/", // the method we are calling
+                        contentType: "application/json; charset=utf-8",
+                        data: { tempDataValue: s },
+                        dataType: "json",
+                        success: function (result) {
+                            alert('Yay! It worked!');
+                            // Or if you are returning something
+                            alert('I returned... ');
+                        },
+                        error: function (result) {
+                            alert('Oh no :(');
+                        }
+                    });
+                });
+            });
+
+        </script>*@
 </body>
+
+
+
+
+
