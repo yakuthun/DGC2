@@ -16,8 +16,10 @@
 {
 
     @Html.HiddenFor(x => x.AppointmentID, new { @class = "form-control" })
+    @Html.Label("PLAKA")
+    @Html.TextBoxFor(x => x.AppDriverPlate, new { @class = "form-control", @readonly = "readonly" })
     @Html.Label("Mal Türü")
-    @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control", @readonly = "readonly" })
     @*@Html.Label("Kapasite")*@
     @Html.HiddenFor(x => x.AppointmentCapacity, new { @class = "form-control" })
     @*@Html.Label("Sürücü Adı")*@
@@ -43,7 +45,7 @@
     @Html.HiddenFor(x => x.AppointmentUpdateComment, new { @class = "form-control" })
     @Html.HiddenFor(x => x.CalendarID, new { @class = "form-control" })
     @Html.Label("Eşya Adı")
-    @Html.TextBoxFor(x => x.AppointmentName, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.AppointmentName, new { @class = "form-control", @readonly = "readonly" })
 
     @Html.Label("Randevu Image")
     @Html.TextBoxFor(x => x.AppointmentImage, new { @class = "form-control" })
@@ -51,15 +53,16 @@
     @Html.Label("Randevu Açıklama")
     @Html.TextBoxFor(x => x.AppointmentComment, new { @class = "form-control" })
 
-    @Html.Label("Randevu Müşteri Onay Durumu")
-    @Html.TextBoxFor(x => x.AppointmentTrackStatus, new { @class = "form-control" })
+    @*@Html.Label("Randevu Müşteri Onay Durumu")*@
+    @Html.HiddenFor(x => x.AppointmentTrackStatus, new { @class = "form-control" })
 
-    
-    
+
+
 
     <a href="/Chief/InComingApp/@ViewBag.d" class="btn btn-success btn-lg btn-block">Geldi</a>
     <a href="/Chief/Downloaded/@ViewBag.d" class="btn btn-secondary btn-lg btn-block">İndiriliyor</a>
     <button class="btn btn-primary btn-lg btn-block">İşlem Bitti</button>
+    <a href="/Chief/NotComing/@ViewBag.d" class="btn btn-danger btn-lg btn-block">Gelmedi</a>
     <h1>@ViewBag.plate</h1>
     <br />
 }

@@ -44,7 +44,7 @@ namespace DGC2.Controllers
         [HttpGet]
         public ActionResult EditAppointment(int id, Appointment p)
         {
-            ViewBag.d = id;
+            ViewBag.d = p.AppDriverPlate;
             var appvalues = am.GetByID(id);
             return View(appvalues);
         }

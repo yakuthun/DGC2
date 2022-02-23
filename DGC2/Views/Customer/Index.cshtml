@@ -5,18 +5,18 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Müşteriler</h2>
+<br />
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Müşterileri Düzenle</h3>
+        <h3 class="card-title" style="font-size:30px; font-weight:700">Müşteriler</h3>
         <div class="card-tools">
 
             <div class="input-group input-group-sm" style="width: 150px;">
 
+                <a href="/Customer/AddCustomer/" class="btn btn-success">Müşteri Ekle</a>
 
-
-                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+          
 
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-default">
@@ -81,15 +81,5 @@
             </tbody>
         </table>
     </div>
-    <div class="card-footer clearfix">
-        <a href="/Customer/AddCustomer/" class="btn btn-info float-right">Yeni Müşteri Girişi</a>
-        <ul class="pagination pagination-sm m-0">
-            <li class="page-item"><a class="page-link" href="#">«</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">»</a></li>
-        </ul>
-    </div>
-
+   
 </div>

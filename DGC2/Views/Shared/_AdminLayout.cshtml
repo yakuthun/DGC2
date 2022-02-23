@@ -4,7 +4,7 @@
 }
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,15 +28,6 @@
     <!-- DATATABLE -->
 
 </head>
-<!--
-`body` tag options:
-
-  Apply one or more of the following classes to to the body tag
-  to get the desired effect
-
-  * sidebar-collapse
-  * sidebar-mini
--->
 
 
 
@@ -398,7 +389,8 @@
         $(function () {
             $("#example1").DataTable({
                 "responsive": true, "lengthChange": false, "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "language": { "url": "/AdminLTE/plugins/datatables/Turkish.json" }
+              /*  "buttons": ["csv", "excel", "pdf", "print", "colvis"]*/
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,
@@ -408,7 +400,9 @@
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
+                "language": { "url": "/AdminLTE/plugins/datatables/Turkish.json" }
             });
+
         });
     </script>
 </body>

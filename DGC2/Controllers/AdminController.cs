@@ -117,7 +117,7 @@ namespace DGC2.Controllers
         public ActionResult EditCalendar(Calendar p)
         {
             cl.CalendarUpdate(p);
-            return RedirectToAction("CalendarList","Admin");
+            return RedirectToAction("SliceList","Admin");
         }
 
        
