@@ -60,11 +60,11 @@
             <div class="card-header">
                 <h3 class="card-title" style="font-size:30px; font-weight:700">Değişiklik Onayı İsteyen Randevular</h3>
                 <div class="card-tools">
-                    <select type="search" class="select-table-filter selectpicker" data-table="order-table" data-style="btn-primary">
+                    @*<select type="search" class="select-table-filter selectpicker" data-table="order-table" data-style="btn-primary">
                         <option value="">Hepsini Getir</option>
                         <option value="Değişiklik Onayı İsteniyor">Değişiklik Onayı İsteyenler</option>
                         <option value="Değişiklik Sonrası Onay Bekliyor">Değişiklik Sonrası Onay Bekliyor</option>
-                    </select>
+                    </select>*@
 
                 </div>
                 <div class="card-body table-responsive p-0">
@@ -98,7 +98,7 @@
                             @foreach (var item in Model)
                             {
 
-                                if (item.AppointmentTrackStatus == 20 || item.AppointmentTrackStatus == 24 /*20*/ /*|| item.AppointmentTrackStatus == 24*/)
+                                if (/*item.AppointmentTrackStatus == 20 ||*/ item.AppointmentTrackStatus == 24 /*20*/ /*|| item.AppointmentTrackStatus == 24*/)
                                 {
 
                                     <tr>
@@ -135,9 +135,9 @@
                                             </td>
                                         }
 
-                                        <td class="project-state" style="font-size:18px">
-                                            @item.AppStartDate
-                                        </td>
+                                    <td class="project-state" style="font-size:18px">
+                                        @(((DateTime)item.AppStartDate).ToString("dd MMMM")) @item.AppStartDate.ToString("hh:mm")  @item.Calendar.CLSlice.ToString() .Dilim
+                                    </td>
                                         <td class="project-actions text-right">
                                         </td>
 
@@ -155,8 +155,8 @@
                                         else if (item.AppointmentTrackStatus == 24)
                                         {
                                             <td>
-                                                <a href="/CustomerAppAccept/ApplyChangedAppointment/@item.AppointmentID" class="btn btn-warning">Randevuyu Onayla</a>
-                                                <a href="/CustomerAppAccept/SeeAndCancelTheAppointment/@item.AppointmentID" class="btn btn-dark">Randevuyu İptal Et</a>
+                                                @*<a href="/CustomerAppAccept/ApplyChangedAppointment/@item.AppointmentID" class="btn btn-warning">Randevuyu Onayla</a>*@
+                                                <a href="/CustomerAppAccept/SeeAndCancelTheAppointment/@item.AppointmentID" class="btn btn-dark">Randevuyu Görüntüle</a>
                                             </td>
                                         }
 

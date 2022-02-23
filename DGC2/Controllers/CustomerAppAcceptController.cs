@@ -87,16 +87,18 @@ namespace DGC2.Controllers
             var asd = am.GetByIDForChange(true, stat);
             var dsa = am.GetByIDForChange(false, stat);
             asd.AppointmentTrackStatus = 4;
+            asd.AppointmentStatus = false;
             am.AppointmentUpdate(asd);
             am.AppointmentCopyDelete(dsa);
             return RedirectToAction("Appointments");
         }
         public ActionResult ThrowToCancelAppointment(int id)
         {
+           
             var stats = am.GetByID(id).AppointmentUCode;
             var asdd = am.GetByIDForChange(false, stats);
             var dsaa = am.GetByIDForChange(true, stats);
-            asdd.AppointmentTrackStatus = 11;
+           asdd.AppointmentTrackStatus = 11;
             am.AppointmentUpdate(asdd);
             am.AppointmentCopyDelete(dsaa);
             return RedirectToAction("Appointments");
@@ -188,12 +190,17 @@ namespace DGC2.Controllers
         public ActionResult SeeAndCancelTheAppointment(int id)
         {
             ViewBag.a = id;
-
+            
             var appoinmentid = am.GetByID(id);
-            ViewBag.company = appoinmentid.SubCustomer.SubCustomerCompany;
-            ViewBag.name = appoinmentid.AppointmentName;
-            ViewBag.capacity = appoinmentid.AppointmentCapacity;
-            return View(appoinmentid);
+            var oldapp = am.GetByIDForChange(false, appoinmentid.AppointmentUCode);
+            var newapp = am.GetByIDForChange(true, appoinmentid.AppointmentUCode);
+
+            ViewBag.oldname = oldapp.AppointmentName;
+            ViewBag.oldcapacity = oldapp.AppointmentCapacity;
+            ViewBag.company = newapp.SubCustomer.SubCustomerCompany;
+            ViewBag.name = newapp.AppointmentName;
+            ViewBag.capacity = newapp.AppointmentCapacity;
+            return View(newapp);
         }
         [HttpPost]
         public ActionResult SeeAndCancelTheAppointment(Appointment p)

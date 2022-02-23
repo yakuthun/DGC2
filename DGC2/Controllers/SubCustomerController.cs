@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace DGC2.Controllers
 {
@@ -120,19 +122,26 @@ namespace DGC2.Controllers
 
 
             var askvalue = apm.GetByID(id);
+            TempData["oldvalue"] = askvalue.AppointmentID;
             return View(askvalue);
         }
         [HttpPost]
         public ActionResult EditAskChange(Appointment p)
         {
-
+            
+            var oldvalue = apm.GetByID((int)TempData["oldvalue"]);
+            
+            
+                oldvalue.AppointmentTrackStatus = 0;
+            p.AppStartDate = oldvalue.AppStartDate;
+            apm.AppointmentUpdate(oldvalue);
 
             if (p.AppointmentStatus == false)
                 p.AppointmentStatus = true;
-            if (p.AppointmentTrackStatus == 2)
+            if (p.AppointmentTrackStatus == 4)
                 p.AppointmentTrackStatus = 24;
 
-            p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            
             apm.AppointmentAdd(p);
             return RedirectToAction("AppliedListAppoinment");
         }
@@ -293,11 +302,9 @@ namespace DGC2.Controllers
         //------------------------------------------------EGEMEN ALAN--------------------------------------------
 
 
-        public JsonResult getCalenderTime(DateTime date)
+        public ActionResult getCalenderTime()
         {
-            var tempdata = date;
-            TempData["getdatetime"] = tempdata;
-            return Json(tempdata, JsonRequestBehavior.AllowGet);
+            return View();
         }
 
 
