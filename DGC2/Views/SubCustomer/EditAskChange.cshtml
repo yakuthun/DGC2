@@ -26,8 +26,11 @@
     @Html.HiddenFor(x => x.InComingDate)
     @Html.HiddenFor(x => x.AppointmentUCode)
     @Html.HiddenFor(x => x.AppointmentUpdateComment)
-
-
+    @Html.HiddenFor(x => x.AppDriverName)
+    @Html.HiddenFor(x => x.AppDriverNumber)
+    @Html.HiddenFor(x => x.AppDriverPlate)
+    @Html.HiddenFor(x => x.AppDriverLogisticName)
+    @Html.HiddenFor(x => x.CalendarID)
     @Html.Label("Mal Türü")
     @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control" })
 
