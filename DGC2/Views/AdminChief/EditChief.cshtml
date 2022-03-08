@@ -1,11 +1,11 @@
 ﻿@model EntityLayer.Concrete.Chief
 @{
     ViewBag.Title = "EditChief";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
 <h2>Şef Düzenleme</h2>
-
+<a href="/AdminChief/Index/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
 
 @using (Html.BeginForm("EditChief", "AdminChief", FormMethod.Post))
 {

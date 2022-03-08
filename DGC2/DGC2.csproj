@@ -2987,6 +2987,7 @@
     <Content Include="AdminLTE\fullcalendar\examples\php\get-events.php" />
     <Content Include="AdminLTE\fullcalendar\examples\php\get-time-zones.php" />
     <Content Include="AdminLTE\fullcalendar\examples\php\utils.php" />
+    <Content Include="AdminLTE\plugins\datatables\Turkish.json" />
     <None Include="Properties\PublishProfiles\DGC220220220211017 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />

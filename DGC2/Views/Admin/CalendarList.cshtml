@@ -35,8 +35,8 @@
                     <th>Versiyon</th>
                     <th>Statü</th>
                     <th>Dilim ID</th>
-                    <th>K Başlangıç</th>
-                    <th>K Bitiş</th>
+                    @*<th>K Başlangıç</th>
+                    <th>K Bitiş</th>*@
                     <th>Başlangıç Tarihi</th>
                     <th>Bitiş Tarihi</th>
                     <th>Dilim Sayısı</th>
@@ -57,10 +57,10 @@
                         <td>@item.Slice.SliceVersion</td>
                         <td>@item.Slice.SliceStatus</td>
                         <td>@item.CLSliceID</td>
-                        <td>@item.CLUseStartDate</td>
-                        <td>@item.CLUseFinishDate</td>
-                        <td>@item.CLStartDate</td>
-                        <td>@item.CLFinishDate</td>
+                        @*<td>@item.CLUseStartDate</td>
+                        <td>@item.CLUseFinishDate</td>*@
+                    <td> @(((DateTime)item.CLStartDate).ToString("hh:mm"))</td>
+                    <td> @(((DateTime)item.CLFinishDate).ToString("hh:mm"))</td>
                         <td>@item.CLSlice</td>
                         <td>@item.CLAmount</td>
                         <td>@item.CLTolerance</td>

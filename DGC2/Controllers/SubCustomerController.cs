@@ -392,26 +392,7 @@ namespace DGC2.Controllers
 
         //    }
         //}
-        public JsonResult GetTakvimEtkinlik(string start, string end)
-        {
-            DateTime tarihStart = Convert.ToDateTime(start);
-            DateTime tarihEnd = Convert.ToDateTime(end);
 
-            List<Calendar> EtkinlikListe = (from e in c.Appointments
-                                            where e.AppStartDate > tarihStart && e.AppFinishDate < tarihEnd && e.AppointmentStatus == true
-                                            select new
-                                            {
-                                                ID = e.AppointmentID,
-                                                Baslangic = e.AppStartDate,
-                                                Bitis = e.AppFinishDate
-                                            }).ToList().Select(x => new Calendar()
-                                            {
-                                                CalendarID = x.ID,
-
-                                            }).ToList();
-
-            return Json(EtkinlikListe, JsonRequestBehavior.AllowGet);
-        }
 
         //---------------------------------------------------------------------------------------------------------
 

@@ -6,11 +6,11 @@
 }
 
 
-<h2>Yönetici Sayfası</h2>
+<br />
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Yöneticileri Düzenle</h3>
+        <h3 class="card-title" style="font-size:30px; font-weight:700">Yöneticiler</h3>
         <div class="card-tools">
 
             <div class="input-group input-group-sm" style="width: 150px;">
@@ -34,10 +34,11 @@
                 <tr>
                     <th>ID</th>
                     <th>Kullanıcı Adı</th>
-                    <th>Şifre</th>
                     <th>Mail</th>
+                    <th>Şifre</th>
+
                     <th>Rol</th>
-                    <th colspan="2">İşlem</th>
+                    <th colspan="2" style="text-align:center">İşlem</th>
 
                 </tr>
             </thead>
@@ -48,21 +49,22 @@
                 {
 
 
-                    <tr>
-                        <td>@item.AdminID</td>
-                        <td>
-                            @item.AdminUsername
-                        </td>
-                        <td>@item.AdminPassword</td>
-                        <td>@item.AdminMail</td>
-                        <td>@item.AdminRole</td>
+                <tr>
+                    <td>@item.AdminID</td>
+                    <td>
+                        @item.AdminUsername
+                    </td>
+                    <td>@item.AdminMail</td>
+                    <td>@item.AdminPassword</td>
 
-                        <td>
-                            <a href="/Admin/EditAdmin/@item.AdminID" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                           
-                        </td>
-                        <td> <a href="/Admin/DeleteAdmin/@item.AdminID" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
-                    </tr>
+                    <td>@item.AdminRole</td>
+
+                    <td style="text-align:center;">
+                        <a href="/Admin/EditAdmin/@item.AdminID" class="btn btn-success"><i class="fas fa-edit"></i> Düzenle</a>
+
+                    </td>
+                    <td> <a href="/Admin/DeleteAdmin/@item.AdminID" class="btn btn-danger"><i class="fas fa-trash"></i> Sil</a></td>
+                </tr>
 
                 }
             </tbody>
