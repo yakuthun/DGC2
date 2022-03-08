@@ -15,6 +15,7 @@ namespace DGC2.Controllers
         // GET: CustomerSubAppAccept
         AppointmentManager am = new AppointmentManager(new EfAppointmentDal());
         CustomerSubManager csm = new CustomerSubManager(new EfCustomerAddSubDal());
+        CalendarManager cm = new CalendarManager(new EfCalendarDal());
         Context c = new Context();
 
 
@@ -49,17 +50,52 @@ namespace DGC2.Controllers
         }
         public ActionResult ApplyAppointment(int id)
         {
+            /* Randevu Alanı */
             var appvalue = am.GetByID(id);
+            var calappid = am.GetByID(id).CalendarID;
             appvalue.AppointmentTrackStatus = 4;
             am.AppointmentUpdate(appvalue);
+            /* Randevu Alanı */
+
+            /* Takvim Alanı */
+            var calappvalue = cm.GetByID((int)calappid);
+            if (appvalue.AppointmentLoadType == "Dökme")
+            {
+                calappvalue.CLDailyAmount += appvalue.AppointmentCapacity;
+            }
+            else if (appvalue.AppointmentLoadType == "Palet")
+            {
+                calappvalue.CLPalletCapacity += appvalue.AppointmentCapacity;
+            }
+
+            cm.CalendarUpdate(calappvalue);
+            /* Takvim Alanı */
+
             return RedirectToAction("Appointments");
         }
         public ActionResult CancelAppointment(int id)
         {
-
+            /* Randevu Alanı */
             var appvalue = am.GetByID(id);
+            //var calid = am.GetByID(id).CalendarID;
             ViewBag.d = appvalue.AppointmentID;
             appvalue.AppointmentTrackStatus = 7;
+            /* Randevu Alanı */
+
+            /* Takvim Alanı */
+            //var calvalue = cm.GetByID((int)calid);
+            //if(appvalue.AppointmentLoadType == "Dökme")
+            //{
+            //    calvalue.CLDailyAmount -= appvalue.AppointmentCapacity;
+            //}
+            //else if(appvalue.AppointmentLoadType =="Palet")
+            //{
+            //    calvalue.CLPalletCapacity -= appvalue.AppointmentCapacity;
+            //}
+            
+            //cm.CalendarUpdate(calvalue);
+            /* Takvim Alanı */
+
             am.AppointmentDelete(appvalue);
             return RedirectToAction("CanceledAppoinments");
         }
@@ -92,18 +128,31 @@ namespace DGC2.Controllers
             am.AppointmentCopyDelete(dsa);
             return RedirectToAction("Appointments");
         }
+        
+        [HttpGet]
         public ActionResult ThrowToCancelAppointment(int id)
         {
-           
-            var stats = am.GetByID(id).AppointmentUCode;
+            
+            var app = am.GetByID(id);
+            return View(app);
+        }
+
+        [HttpPost]
+        public ActionResult ThrowToCancelAppointment(Appointment p)
+        {
+            int tempdata = (int)TempData["cancelid"];
+            
+            var stats = am.GetByID(tempdata).AppointmentUCode;
             var asdd = am.GetByIDForChange(false, stats);
             var dsaa = am.GetByIDForChange(true, stats);
            asdd.AppointmentTrackStatus = 11;
-            am.AppointmentUpdate(asdd);
+            asdd.AppointmentCancelComment = p.AppointmentCancelComment;
+            
+                am.AppointmentUpdate(asdd);
             am.AppointmentCopyDelete(dsaa);
             return RedirectToAction("Appointments");
         }
-
+       
         public ActionResult WaitingAppointments()
         {
             var waitingvalue = am.GetBySubCustomer();
@@ -182,6 +231,7 @@ namespace DGC2.Controllers
         [HttpPost]
         public ActionResult SeeTheAppointment(Appointment p)
         {
+            
             am.AppointmentUpdate(p);
             return RedirectToAction("SubCustomerList");
         }
@@ -189,6 +239,7 @@ namespace DGC2.Controllers
         [HttpGet]
         public ActionResult SeeAndCancelTheAppointment(int id)
         {
+            TempData["cancelid"] = id;
             ViewBag.a = id;
             
             var appoinmentid = am.GetByID(id);

@@ -1,0 +1,58 @@
+﻿@model EntityLayer.Concrete.Appointment
+@{
+    ViewBag.Title = "EditNotAppliedAppointment";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
+}
+
+<h2>Randevuyu Düzenle</h2>
+<a href="/SubCustomer/AppliedListAppoinment/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
+<hr />
+@using (Html.BeginForm("EditAskChange", "SubCustomer", FormMethod.Post))
+{
+<div class="form-group">
+
+    @Html.HiddenFor(x => x.AppointmentTrackStatus)
+    @Html.HiddenFor(x => x.AppointmentID)
+    @Html.HiddenFor(x => x.AppointmentLoadType)
+    @Html.HiddenFor(x => x.DriverID)
+    @Html.HiddenFor(x => x.SubCustomerID)
+    @Html.HiddenFor(x => x.AppointmentStatus)
+    @Html.HiddenFor(x => x.ChiefID)
+    @Html.HiddenFor(x => x.DownloadedDate)
+    @Html.HiddenFor(x => x.AppointmentImage)
+    @Html.HiddenFor(x => x.AppointmentComment)
+    @Html.HiddenFor(x => x.AppointmentName)
+    @Html.HiddenFor(x => x.AppFinishDate)
+    @Html.HiddenFor(x => x.InComingDate)
+    @Html.HiddenFor(x => x.AppointmentUCode)
+    @Html.HiddenFor(x => x.AppointmentUpdateComment)
+    @Html.HiddenFor(x => x.CalendarID)
+    @Html.HiddenFor(x => x.AppStartHour)
+    @Html.HiddenFor(x => x.AppStartDate)
+    @Html.HiddenFor(x => x.AppointmentCancelComment)
+    @Html.HiddenFor(x => x.AppointmentLoadType)
+    @Html.HiddenFor(x => x.AppointmentCapacity)
+    @Html.HiddenFor(x => x.AppClickTime)
+    @Html.Label("Mal İsim")
+    @Html.TextBoxFor(x => x.AppointmentName, new { @class = "form-control" })
+    @Html.Label("Sürücü İsim")
+    @Html.TextBoxFor(x => x.AppDriverName, new { @class = "form-control" })
+    @Html.Label("Sürücü Telefon")
+    @Html.TextBoxFor(x => x.AppDriverNumber, new { @class = "form-control" })
+    @Html.Label("Plaka")
+    @Html.TextBoxFor(x => x.AppDriverPlate, new { @class = "form-control" })
+    @Html.Label("Sürücü Firma")
+    @Html.TextBoxFor(x => x.AppDriverLogisticName, new { @class = "form-control" })
+
+
+
+
+
+
+
+    <br />
+    <button class="btn btn-success btn-lg btn btn-block">Kaydet</button>
+</div>
+}
+
+

@@ -4,58 +4,114 @@
     ViewBag.Title = "AddAppoinment";
     Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
-<h1>@(((DateTime)ViewBag.startdate).ToString("hh:mm")) - @(((DateTime)ViewBag.finishdate).ToString("hh:mm"))</h1>
-<a href="/SubCustomer/Index/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
-<hr />
-@using (Html.BeginForm("AddAppoinment", "SubCustomer", FormMethod.Post))
-{
-<div class="form-group">
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="~/Scripts/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-3.6.0.js" type="text/javascript"></script>
+    
 
-    @Html.HiddenFor(x => x.AppointmentTrackStatus)
-    @Html.HiddenFor(x => x.AppFinishDate)
-    @Html.HiddenFor(x => x.InComingDate)
-    @Html.HiddenFor(x => x.AppointmentUCode)
-    @Html.HiddenFor(x => x.AppointmentID)
-    @Html.HiddenFor(x => x.DownloadedDate)
-    @Html.HiddenFor(x => x.AppointmentImage)
-    @Html.HiddenFor(x => x.AppointmentComment)
-    @Html.HiddenFor(x => x.AppointmentStatus)
-    @Html.HiddenFor(x => x.AppStartDate)
-    @Html.HiddenFor(x=>x.AppointmentCancelComment)
-    @Html.HiddenFor(x=>x.AppointmentUpdateComment)
 
-    @Html.Label("Yükleme Türü (Dökme/Palet)")
-    @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control" })
 
-    @Html.Label("Tedarikçi id")
-    @Html.TextBoxFor(x => x.SubCustomerID, new { @class = "form-control" })
+</head>
+<body>
+    @ViewBag.deneme
+    <h1>@(((DateTime)ViewBag.startdate).ToString("hh:mm")) - @(((DateTime)ViewBag.finishdate).ToString("hh:mm"))</h1>
+    <a href="/SubCustomer/Index/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
+    <hr />
+    @using (Html.BeginForm("AddAppoinment", "SubCustomer", FormMethod.Post))
+    {
 
-    @Html.Label("Şef ID")
-    @Html.TextBoxFor(x => x.ChiefID, new { @class = "form-control" })
+        <div class="form-group">
 
-    @Html.Label("Mal İsim")
-    @Html.TextBoxFor(x => x.AppointmentName, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.AppointmentTrackStatus)
+            @Html.HiddenFor(x => x.AppFinishDate)
+            @Html.HiddenFor(x => x.InComingDate)
+            @Html.HiddenFor(x => x.AppointmentUCode)
+            @Html.HiddenFor(x => x.AppointmentID)
+            @Html.HiddenFor(x => x.DownloadedDate)
+            @Html.HiddenFor(x => x.AppointmentImage)
+            @Html.HiddenFor(x => x.AppointmentComment)
+            @Html.HiddenFor(x => x.AppointmentStatus)
+            @Html.HiddenFor(x => x.AppStartDate)
+            @Html.HiddenFor(x => x.AppointmentCancelComment)
+            @Html.HiddenFor(x => x.AppointmentUpdateComment)
 
-    @Html.Label("Miktar")
-    @Html.TextBoxFor(x => x.AppointmentCapacity, new { @class = "form-control" })
+            @Html.Label("Yükleme Türü (Dökme/Palet)")
+            @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control" })
 
-    @Html.Label("Sürücü Ad Soyad")
-    @Html.TextBoxFor(x => x.AppDriverName, new { @class = "form-control" })
+            @Html.Label("Tedarikçi id")
+            @Html.TextBoxFor(x => x.SubCustomerID, new { @class = "form-control" })
 
-    @Html.Label("Telefon Numarası")
-    @Html.TextBoxFor(x => x.AppDriverNumber, new { @class = "form-control" })
+            @Html.Label("Şef ID")
+            @Html.TextBoxFor(x => x.ChiefID, new { @class = "form-control" })
 
-    @Html.Label("Araç Plakası")
-    @Html.TextBoxFor(x => x.AppDriverPlate, new { @class = "form-control" })
+            @Html.Label("Mal İsim")
+            @Html.TextBoxFor(x => x.AppointmentName, new { @class = "form-control" })
 
-    @Html.Label("Çalıştığı Firma")
-    @Html.TextBoxFor(x => x.AppDriverLogisticName, new { @class = "form-control" })
-    <br />
-    @Html.Label("Sürücüyü Kaydetmek İstiyorum")
-    @Html.CheckBoxFor(m => m.DriverStatus, new { @checked = "checked" })
-    <br />
-    <br />
-    @ViewBag.asd
-    <button class="btn btn-success btn-lg btn btn-block">Kaydet</button>
-</div>
-}
+            @Html.Label("Miktar")
+            @Html.TextBoxFor(x => x.AppointmentCapacity, new { @class = "form-control", @id = "amount" })
+
+            @Html.Label("Sürücü Ad Soyad")
+            @Html.TextBoxFor(x => x.AppDriverName, new { @class = "form-control" })
+
+            @Html.Label("Telefon Numarası")
+            @Html.TextBoxFor(x => x.AppDriverNumber, new { @class = "form-control" })
+
+            @Html.Label("Araç Plakası")
+            @Html.TextBoxFor(x => x.AppDriverPlate, new { @class = "form-control" })
+
+            @Html.Label("Çalıştığı Firma")
+            @Html.TextBoxFor(x => x.AppDriverLogisticName, new { @class = "form-control" })
+            <br />
+            @Html.Label("Sürücüyü Kaydetmek İstiyorum")
+            @Html.CheckBoxFor(m => m.DriverStatus, new { @checked = "checked" })
+            <br />
+            <br />
+            @ViewBag.asd
+            <button id="submit" class="btn btn-success btn-lg btn btn-block">Kaydet</button>
+        </div>
+
+    }
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#submit").click(function () {
+                var value = {
+                    CLDailyAmount: $("#amount").val(),
+                };
+
+                /*alert(value);*/
+
+                $.ajax({
+                    url: "/SubCustomer/Test",
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(value),
+                    success: function (data) {
+                        alert("Talebiniz Gönderildi");
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    },
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

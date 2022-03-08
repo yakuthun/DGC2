@@ -1,10 +1,17 @@
 ﻿@using EntityLayer.Concrete
-@model List<Calendar>
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Calendar>
 @{
     ViewBag.Title = "Calendar";
     Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
 }
 <!DOCTYPE html>
+
+@{
+    TimeSpan finishtime = TimeSpan.Parse("15:00"); // 15 PM
+    TimeSpan now = DateTime.Now.TimeOfDay;
+}
 
 <title>DGC Lojistik</title>
 @*<table class="table table-bordered">
@@ -37,9 +44,17 @@
             </tr>
         }
     </table>*@
+<html>
+<head>
 
+    <script src="~/Scripts/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-3.6.0.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-3.6.0.intellisense.js" type="text/javascript"></script>
+
+
+</head>
 <body class="hold-transition sidebar-mini">
-    <script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -54,139 +69,156 @@
     <section class="content">
         <!-- Default box -->
         <div class="card">
-            <div class="card-header d-flex justify-content-center">
-                <h3 class="card-title " style="font-size: 30px; font-weight: 700; ">
-                    Randevu Saatleri
-                    <br />
-                    <span style="font-size: 30px; font-weight: 500; ">@(((DateTime)DateTime.Now).ToString("dd MMMM yyyy"))</span>
+            <div class="card-header  d-flex justify-content-center">
+                @*d-flex justify-content-center*@
+                <div>
+                    <span><input id="textbox" type="text" class="form form-control" value="" /></span>
+                    <span><button id="press" class="btn btn-primary" href="">Ara</button></span>
+                </div>
+
+                <h3 class="card-title d-flex justify-content-center ">
+                    <span style="font-size: 50px; font-weight: 600; text-align:center">@(((DateTime)ViewBag.pshow).ToString("dd MMMM"))</span>
+
+                    @Html.PagedListPager((IPagedList)Model, p => Url.Action("Calendar", new { p }), new PagedListRenderOptions
+               {
+
+                   UlElementClasses = new string[] { "pagination" },
+                    LiElementClasses = new string[] { "page-link" },
+                   LinkToPreviousPageFormat = "Önceki Gün",
+                   LinkToNextPageFormat = "Sonraki Gün",
+                   DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                   DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                   DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                   DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                   MaximumPageNumbersToDisplay = 0,
+                   DisplayEllipsesWhenNotShowingAllPageNumbers = false
+
+               })
                 </h3>
 
-
-                <div class="card-tools">
-
-
-                </div>
             </div>
             <div class="card-body p-0">
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
-                            <th style="width: 10%;">
+                            <th style="width: 5%;">
                                 Dilim
                             </th>
+
                             <th style="width: 8%;">
-                                Saat Başlangıç
+                                Saat
                             </th>
                             <th style="width: 15%;">
                                 Saat Bitiş
                             </th>
-                            <th style="width: 10%">
+                            <th style="width: 15%">
                                 Randevu Al
                             </th>
                             <th style="width: 15%; text-align: center">
-                               Dökme Doluluk Oranı
+                                Dökme Doluluk Oranı
                             </th>
                             <th style="width: 15%; text-align:center">
                                 Palet Doluluk Oranı
                             </th>
                             @*<th style="width: 20%">
-        </th>*@
+                                </th>*@
                         </tr>
                     </thead>
                     <tbody>
-
-                        @{int a = 1; }
-                        @{int lastslice = 1; }
-                        @{
-                            var today = DateTime.Now;
-                            var tomorrow = today;
-                        }
-                        @for (int i = 1; i <= lastslice; i++)
+                        @foreach (var item in Model)
                         {
 
-                            //for (int j = 1; j <= 4; j++)
-                            //{
-                            foreach (var item in Model)
-                            {
+                            <tr>
 
-                                //var today = DateTime.Now;
-                                tomorrow = today.AddDays(i - 1);
-                                
+                                <td style="font-size: 25px;">
+                                    @item.CLSlice
 
-                                    <tr>
-                                        <td style="font-size: 25px;">
-                                            @*@item.CLStartDate*@
-                                            @item.CLSlice
+                                </td>
 
-                                        </td>
-                                        <td style="font-size: 25px;">
-                                            @*@item.CLStartDate*@
-                                            @*@(((DateTime)tomorrow).ToString("hh:mm"))*@ @item.CLStartDate.ToString("hh:mm")
+                                <td>
+                                    <a style="font-size: 25px;">
+                                        @item.CLStartHour.ToString("hh mm")
+                                    </a>
+                                    <br />
 
-                                        </td>
-                                        <td>
-                                            <a style="font-size: 25px;">
-                                                @(((DateTime)item.CLFinishDate).ToString("hh:mm"))
-                                            </a>
-                                            <br />
+                                </td>
+                                <td>
+                                    <a style="font-size: 25px;">
+                                        @(((DateTime)item.CLFinishDate).ToString("hh:mm"))
+                                    </a>
+                                    <br />
 
-                                        </td>
-                                        <td>
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item btn btn-warning" style="font-size: 25px; font-weight: 600; ">
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
 
-                                                   @Html.ActionLink("Randevu Al", "AddAppoinment", "SubCustomer", new { mydatetime = tomorrow, id = item.CalendarID }, null)
-                                                   
+
+                                        @if (item.CLDailyAmount >= item.CLAmount && item.CLDailyPaletAmount >= item.CLPalletCapacity)
+                                        {
+                                            <li class="badge badge-danger" style="font-size: 25px; font-weight: 600; ">Dilim Dolu</li>
+                                        }
+                                        else
+                                        {
+                                            if (now < finishtime)
+                                            {
+                                                <li id="submit" class="list-inline-item btn btn-warning" style="font-size: 25px; font-weight: 600; ">
+                                                    @Html.ActionLink("Randevu Talep Et", "AddAppoinment", "SubCustomer", new { myhour = item.CLStartHour, mydatetime = ViewBag.pshow, id = item.CalendarID }, null)
                                                 </li>
+                                            }
 
-                                            </ul>
-
-                                        </td>
-
-                                        <!--<td>-->
-                                        @*<p style="font-weight:800; font-size:20px" class="badge badge-primary">Onay Bekleniyor</p>*@
-                                        <!--</td>-->
-                                        <td class="project-state ">
-                                            <div class="badge badge-warning" style="font-size:25px">
-                                                @item.CLDailyAmount%
-                                                -
-                                                100% @*@item.CLAmount*@
-                                            </div>
-
-                                        </td>
-
-                                        <td class="project-state " style="font-size:25px">
-                                            <div class="badge badge-warning" style="font-size:25px">
-                                                @item.CLDailyPaletAmount%
-                                                -
-                                                100%  @*@item.CLPalletCapacity*@
-                                            </div>
-
-                                        </td>
-                                        @*<td class="project-actions text-right">
-                        </td>*@
-                                    </tr>
+                                        }
 
 
 
 
+                                    </ul>
+
+                                </td>
+
+
+                                <td class="project-state ">
+
+                                    @if (item.CLDailyAmount >= item.CLAmount)
+                                    {
+                                        <span class="badge badge-danger" style="font-size: 25px; font-weight: 600; ">Dökme Doldu</span>
+                                    }
+                                    else
+                                    {
+                                        <div class="badge badge-success" style="font-size:25px">
+                                            @item.CLDailyAmount
+
+                                            @item.CLAmount
+                                        </div>
+
+                                    }
+
+                                </td>
+
+                                <td class="project-state " style="font-size:25px">
+
+                                    @if (item.CLDailyPaletAmount >= item.CLPalletCapacity)
+                                    {
+                                        <span class="badge badge-danger" style="font-size: 25px; font-weight: 600; ">Palet Doldu</span>
+                                    }
+                                    else
+                                    {
+                                        <div class="badge badge-success" style="font-size:25px">
+                                            @item.CLDailyPaletAmount
+
+                                            @item.CLPalletCapacity
+                                        </div>
+
+                                    }
 
 
 
+                                </td>
+                                <td class="project-actions text-right">
+                                </td>
+                            </tr>
 
-                                    item.CLDailyAmount = 0;
-                                    item.CLDailyPaletAmount = 0;
-                                }
-                            @*}*@
-                            
 
                         }
-                        @*@while (a <= 7)
-                        {
-
-
-
-                        }*@
 
                     </tbody>
                 </table>
@@ -196,31 +228,26 @@
         <!-- /.card -->
     </section>
 
-    @*<script type="text/javascript">
 
-            $(function () {
-                $("#getapp").click(function () {
-                    var s = $("#tomorrow").val();
-                    $.ajax({
-                        type: "POST",
-                        url: "/SubCustomer/AddAppoinment/", // the method we are calling
-                        contentType: "application/json; charset=utf-8",
-                        data: { tempDataValue: s },
-                        dataType: "json",
-                        success: function (result) {
-                            alert('Yay! It worked!');
-                            // Or if you are returning something
-                            alert('I returned... ');
-                        },
-                        error: function (result) {
-                            alert('Oh no :(');
-                        }
-                    });
-                });
-            });
+    <script type="text/javascript">
 
-        </script>*@
+        $('#press').click(function () {
+   var url = '@Url.Action("returnToCalendar", "SubCustomer")';
+   var textValue = $('#textbox').val();
+
+   window.location.href = url + '?apvalue=' + textValue;
+});
+    </script>
+
+
+
 </body>
+
+</html>
+
+
+
+
 
 
 

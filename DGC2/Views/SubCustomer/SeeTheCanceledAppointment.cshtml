@@ -9,30 +9,31 @@
 <hr />
 @using (Html.BeginForm("SeeTheCanceledAppointment", "SubCustomer", FormMethod.Get))
 {
-    <div class="form-group">
+<div class="form-group">
 
-        @Html.HiddenFor(x => x.AppointmentTrackStatus)
-        @Html.HiddenFor(x => x.AppointmentID)
-        @Html.HiddenFor(x => x.AppointmentLoadType)
-        @Html.HiddenFor(x => x.DriverID)
-        @Html.HiddenFor(x => x.SubCustomerID)
-        @Html.HiddenFor(x => x.AppointmentStatus)
-        @Html.HiddenFor(x => x.ChiefID)
-        @Html.HiddenFor(x => x.DownloadedDate)
-        @Html.HiddenFor(x => x.AppointmentImage)
-        @Html.HiddenFor(x => x.AppointmentComment)
-        @Html.HiddenFor(x => x.AppointmentName)
-        @Html.HiddenFor(x => x.AppFinishDate)
-        @Html.HiddenFor(x => x.InComingDate)
-        @Html.HiddenFor(x => x.AppointmentUCode)
-        @Html.HiddenFor(x => x.AppointmentUpdateComment)
-        @Html.HiddenFor(x => x.AppointmentLoadType, new { @class = "form-control" })
-        @Html.HiddenFor(x => x.AppointmentCapacity, new { @class = "form-control" })
-        @Html.HiddenFor(x => x.AppStartDate, new { @class = "form-control" })
-        @Html.HiddenFor(x => x.AppStartDate)
-        @Html.TextAreaFor(x => x.AppointmentCancelComment, new { @class = "form-control", @readonly ="readonly" })
+    @Html.HiddenFor(x => x.AppointmentTrackStatus)
+    @Html.HiddenFor(x => x.AppointmentID)
+    @Html.HiddenFor(x => x.AppointmentLoadType)
+    @Html.HiddenFor(x => x.DriverID)
+    @Html.HiddenFor(x => x.SubCustomerID)
+    @Html.HiddenFor(x => x.AppointmentStatus)
+    @Html.HiddenFor(x => x.ChiefID)
+    @Html.HiddenFor(x => x.DownloadedDate)
+    @Html.HiddenFor(x => x.AppointmentImage)
+    @Html.HiddenFor(x => x.AppointmentComment)
+    @Html.HiddenFor(x => x.AppointmentName)
+    @Html.HiddenFor(x => x.AppFinishDate)
+    @Html.HiddenFor(x => x.InComingDate)
+    @Html.HiddenFor(x => x.AppointmentUCode)
+    @Html.HiddenFor(x => x.AppointmentUpdateComment)
+    @Html.HiddenFor(x => x.AppointmentLoadType, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.AppointmentCapacity, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.AppStartDate, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.AppStartDate)
+    @Html.HiddenFor(x => x.AppClickTime)
+    @Html.TextAreaFor(x => x.AppointmentCancelComment, new { @class = "form-control", @readonly = "readonly" })
 
-        <br />
-        <a href="/SubCustomer/CanceledListAppoinment/" class="btn btn-success btn-lg btn btn-block">Geri Dön</a>
-    </div>
+    <br />
+    <a href="/SubCustomer/CanceledListAppoinment/" class="btn btn-success btn-lg btn btn-block">Geri Dön</a>
+</div>
 }
