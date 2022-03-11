@@ -6,12 +6,62 @@
     ViewBag.Title = "Calendar";
     Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
 }
+
+
 <!DOCTYPE html>
 
 @{
-    TimeSpan finishtime = TimeSpan.Parse("15:00"); // 15 PM
+    TimeSpan finishtime = TimeSpan.Parse("23:00"); // 15 PM
     TimeSpan now = DateTime.Now.TimeOfDay;
 }
+
+<style>
+    .card-title{
+       
+    }
+   
+    .dayhead{
+        
+        text-align:center;
+    }
+    .pagelisterleft a {
+        position: relative;
+        float: left;
+        background-color: #007bff;
+        padding: 10px;
+        border-radius: 10px;
+        color: white;
+        font-weight: bold;
+        margin: 10px;
+        bottom: 6px;
+        -o-transition: .3s;
+        -ms-transition: .3s;
+        -moz-transition: .3s;
+        -webkit-transition: .3s;
+        text-align: center;
+    }
+        .pagelisterleft a:hover {
+            position: relative;
+            float: left;
+            left: 0;
+            background-color: #0069D9;
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            margin: 10px;
+            text-align: center;
+        }
+    .pagelisterleft li{
+        padding:30px;
+    }
+    .pagelisterright a {
+        position: relative;
+        float: right;
+        top: 25px;
+        right: 0;
+    }
+</style>
 
 <title>DGC Lojistik</title>
 @*<table class="table table-bordered">
@@ -58,7 +108,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row mb-1">
                 <div class="col-sm-6">
 
                 </div>
@@ -68,46 +118,80 @@
     <!-- Main content -->
     <section class="content">
         <!-- Default box -->
-        <div class="card">
-            <div class="card-header  d-flex justify-content-center">
+        <div class="card container">
+            <div class="card-header ">
                 @*d-flex justify-content-center*@
 
 
-
-                <div class="input-group" style="width:15%; left:-30%;">
-                    <input style="border-radius:10px"  id="textbox" type="text" class="form form-control" value="" placeholder="Miktar Giriniz" />
-                    <div style="margin-left:10px">
-                        <button style="border-radius:5px" id="press" class="btn btn-primary" href="">Ara</button>
-                    </div>
-                </div>
-
                 
-                <h3 class="card-title d-flex justify-content-center ">
-                    <span style="font-size: 50px; font-weight: 600; text-align:center">@(((DateTime)ViewBag.pshow).ToString("dd MMMM"))</span>
+           
+                  
+                            <div class="row  d-flex justify-content-around">
+                                <div class="col">
+                                    
+                                </div>
+                                <div class="col-auto">
+                                    <h3 class="card-title d-flex  ">
 
-                    @Html.PagedListPager((IPagedList)Model, p => Url.Action("Calendar", new { p }), new PagedListRenderOptions
-               {
+                                        @*<span style="font-size: 50px; font-weight: 600; text-align:center">@(((DateTime)ViewBag.pshow).ToString("dd MMMM"))</span>*@
 
-                   UlElementClasses = new string[] { "pagination" },
-                    LiElementClasses = new string[] { "page-link" },
-                   LinkToPreviousPageFormat = "Önceki Gün",
-                   LinkToNextPageFormat = "Sonraki Gün",
-                   DisplayLinkToFirstPage = PagedListDisplayMode.Never,
-                   DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
-                   DisplayLinkToLastPage = PagedListDisplayMode.Never,
-                   DisplayLinkToNextPage = PagedListDisplayMode.Always,
-                   MaximumPageNumbersToDisplay = 0,
-                   DisplayEllipsesWhenNotShowingAllPageNumbers = false
+                                        @Html.PagedListPager((IPagedList)Model, p => Url.Action("Calendar", new { p }), new PagedListRenderOptions
+                                   {
 
-               })
-                </h3>
+                                       UlElementClasses = new string[] { "pagination" },
+                                        LiElementClasses = new string[] { "pagelisterleft" },
+                                       LinkToPreviousPageFormat = "Önceki Gün",
 
+                                       DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                                       DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                                       DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                                       DisplayLinkToNextPage = PagedListDisplayMode.Never,
+                                       MaximumPageNumbersToDisplay = 0,
+                                       DisplayEllipsesWhenNotShowingAllPageNumbers = false
+
+                                   })
+
+                                        <span style="font-size: 50px; font-weight: 600;" class="dayhead">@(((DateTime)ViewBag.pshow).ToString("dd MMMM"))</span>
+
+
+                                        @Html.PagedListPager((IPagedList)Model, p => Url.Action("Calendar", new { p }), new PagedListRenderOptions
+                                   {
+
+                                       UlElementClasses = new string[] { "pagination" },
+                                       //LiElementClasses = new string[] { "page-link" },
+                                       LiElementClasses = new string[] { "pagelisterleft" },
+                                       LinkToNextPageFormat = "Sonraki Gün",
+                                       DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                                       DisplayLinkToPreviousPage = PagedListDisplayMode.Never,
+                                       DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                                       DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                                       MaximumPageNumbersToDisplay = 0,
+                                       DisplayEllipsesWhenNotShowingAllPageNumbers = false
+
+                                   })
+
+                                    </h3>
+                                </div>
+                                <div class="col">
+                                    <div class="input-group mt-1" >
+                                        <input style="border-radius:10px" id="textbox" type="text" size="50" class="form form-control" value="" placeholder="Miktar Giriniz" />
+                                        <div>
+                                            <button style="border-radius:5px" id="press" class="btn btn-primary" href="">Ara</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                
+                    
+
+             
             </div>
             <div class="card-body p-0">
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
-                            <th style="width: 5%;">
+                            <th style="width: 5%; text-align:center">
                                 Dilim
                             </th>
 
@@ -117,17 +201,15 @@
                                 <th style="width: 12%;">
                                     Saat Bitiş
                                 </th>*@
-                            <th style="width: 10%;">
+                            <th style="width: 15%; text-align:center">
                                 Saatler
                             </th>
-                            <th style="width: 15%">
+                            <th style="width: 20%; text-align:center">
                                 Randevu Al
                             </th>
-                            <th style="width: 10%; text-align: center">
-
-                            </th>
+                           
                             <th style="width: 30%; text-align:center">
-
+                                Doluluk Oranı
                             </th>
                             @*<th style="width: 20%">
                                 </th>*@
@@ -139,20 +221,20 @@
 
                             <tr>
 
-                                <td style="font-size: 25px;">
+                                <td style="font-size: 25px; text-align:center">
                                     @item.CLSlice
 
                                 </td>
 
-                                <td>
-                                    <a style="font-size: 25px;">
+                                <td style="text-align:center">
+                                    <a style="font-size: 25px; text-align:center">
                                         @(((DateTime)item.CLStartHour).ToString("hh:mm")) - @(((DateTime)item.CLFinishDate).ToString("hh:mm"))
                                     </a>
-                                    <br />
+                                  
 
                                 </td>
 
-                                <td>
+                                <td style="text-align:center">
                                     <ul class="list-inline">
 
 
@@ -164,9 +246,9 @@
                                         {
                                             if (now < finishtime)
                                             {
-                                                <li id="submit" class="list-inline-item btn btn-warning" style="font-size: 25px; font-weight: 600; ">
-                                                    @Html.ActionLink("Randevu Talep Et", "AddAppoinment", "SubCustomer", new { myhour = item.CLStartHour, mydatetime = ViewBag.pshow, id = item.CalendarID }, null)
-                                                </li>
+                                                
+                                                    @Html.ActionLink("Randevu Talep Et", "AddAppoinment", "SubCustomer", new { myhour = item.CLStartHour, mydatetime = ViewBag.pshow, id = item.CalendarID }, new { @class = "btn btn-success btn-lg" })
+                                               
                                             }
 
                                         }
@@ -212,8 +294,7 @@
 
 
 
-                                <td>
-                                </td>
+                               
 
                                 <td class="project-actions text-right">
                                     @{
@@ -236,7 +317,7 @@
                                         }
 
                                     }
-                                    <div class="progress" style="font-size:20px; height:30px; font-weight:600; border-radius:20px ">
+                                    <div class="progress" style="font-size: 20px; background-color: #dcdde1; height: 30px; font-weight: 600; border-radius: 20px ">
                                         <div class="progress-bar progress-bar-striped progress-bar-animated @currentbar" role="progressbar" aria-valuenow="@result" aria-valuemin="0" aria-valuemax="100" style="width: @(result+"%"); border-radius:20px">@result%</div>
                                     </div>
                                 </td>
