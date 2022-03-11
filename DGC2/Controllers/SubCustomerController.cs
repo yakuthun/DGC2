@@ -315,7 +315,7 @@ namespace DGC2.Controllers
             //return RedirectToAction("Index");
         }
 
-        public ActionResult returnToCalendar(int apvalue, int p=1)
+        public ActionResult returnToCalendar(int apvalue = 1, int p=1)
         {
             var comingnumber = apvalue;
             var today = DateTime.Now;
