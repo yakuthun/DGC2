@@ -8,31 +8,31 @@
 
 
 @*<table class="table table-bordered">
-    <tr>
-        <th>Firma İsim</th>
-        <th>Mal İsim</th>
-        <th>Yük Adet</th>
-        <th>Giriş Tarihi</th>
-        <th>Durum</th>
-        <th>Sürücü İsim</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        if (item.AppointmentTrackStatus == 11)
+        <tr>
+            <th>Firma İsim</th>
+            <th>Mal İsim</th>
+            <th>Yük Adet</th>
+            <th>Giriş Tarihi</th>
+            <th>Durum</th>
+            <th>Sürücü İsim</th>
+        </tr>
+        @foreach (var item in Model)
         {
-            <tr>
+            if (item.AppointmentTrackStatus == 11)
+            {
+                <tr>
 
-                <td>@item.SubCustomer.SubCustomerName</td>
-                <td>@item.AppointmentName</td>
-                <td>@item.AppointmentCapacity</td>
-                <td>@item.AppStartDate</td>
-                <td>@item.AppointmentStatus</td>
-                
+                    <td>@item.SubCustomer.SubCustomerName</td>
+                    <td>@item.AppointmentName</td>
+                    <td>@item.AppointmentCapacity</td>
+                    <td>@item.AppStartDate</td>
+                    <td>@item.AppointmentStatus</td>
 
-            </tr>
+
+                </tr>
+            }
         }
-    }
-</table>*@
+    </table>*@
 <body class="hold-transition sidebar-mini">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -51,7 +51,7 @@
             <div class="card-header">
                 <h3 class="card-title" style="font-size:30px; font-weight:700">Değişimden Sonra İptal Edilen Randevular</h3>
                 <div class="card-tools">
-                    
+
 
                 </div>
             </div>
@@ -59,25 +59,26 @@
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
-                            <th style="width: 8%">
+                            <th style="width: 1%">
                                 Firma
                             </th>
-                            <th style="width: 8%">
+                            <th style="width: 12%" class="text-center">
+                                Talep edilen randevu Zamanı
+                            </th>
+                            <th style="width: 2%">
                                 Tür
                             </th>
-                            <th style="width: 15%">
+                            <th style="width: 5%">
                                 Mal İsim
                             </th>
-                            <th style="width: 15%">
+                            <th style="width: 5%">
                                 Yük Adet
                             </th>
-                            <th style="width: 10%">
+                            <th style="width: 5%">
                                 Durum
                             </th>
-                            <th style="width: 12%" class="text-center">
-                                Geliş Tarihi
-                            </th>
-                            <th style="width: 20%">
+
+                            <th style="width: 20%" colspan="2">
                             </th>
                         </tr>
                     </thead>
@@ -108,38 +109,39 @@
                                 //{
                                 //    color = "badge badge-danger";
                                 //}
-                        <tr>
-                            <td style="font-size: 20px; font-weight:800">
-                                @item.SubCustomer.SubCustomerCompany
-                            </td>
-                            <td style="font-size: 20px;">
-                                @item.AppointmentLoadType
-                            </td>
-                            <td>
-                                <a style="font-size: 20px;">
-                                    @item.AppointmentName
-                                </a>
-                                <br />
+                                <tr>
+                                    <td style="font-size: 20px; font-weight:800">
+                                        @item.SubCustomer.SubCustomerCompany
+                                    </td>
+                                    <td class="project-state" style="font-size:22px">
+                                        @(((DateTime)item.AppStartDate).ToString("dd MMMM"))     @(((DateTime)item.AppStartHour).ToString("hh:mm")) - @(((DateTime)item.Calendar.CLFinishDate).ToString("hh:mm"))     @item.Calendar.CLSlice.ToString() .Dilim
+                                    </td>
+                                    <td style="font-size: 20px;">
+                                        @item.AppointmentLoadType
+                                    </td>
+                                    <td>
+                                        <a style="font-size: 20px;">
+                                            @item.AppointmentName
+                                        </a>
+                                        <br />
 
-                            </td>
-                            <td>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item" style="font-size: 30px; font-weight: 600; ">
-                                        @item.AppointmentCapacity
-                                    </li>
-                                </ul>
-                            </td>
-                            <td>
-                                <p style="font-weight:800; font-size:20px" class="badge badge-warning">Değişimden Sonra İptal Edilmiştir</p>
-                            </td>
-                            <td class="project-state" style="font-size:18px">
-                                @(((DateTime)item.AppStartDate).ToString("dd MMMM")) @(((DateTime)item.AppStartHour).ToString("hh:mm"))  @item.Calendar.CLSlice.ToString() .Dilim
-                            </td>
-                            <td class="project-actions text-right">
-                            </td>
+                                    </td>
+                                    <td>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item" style="font-size: 30px; font-weight: 600; ">
+                                                @item.AppointmentCapacity
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <p style="font-weight: 800; font-size: 20px; margin-top: 6%" class="badge badge-warning">Değişimden Sonra İptal Edilmiştir</p>
+                                    </td>
+
+                                    <td class="project-actions text-right">
+                                    </td>
 
 
-                        </tr>
+                                </tr>
 
                             }
                         }
