@@ -16,10 +16,22 @@
 }
 
 <style>
+ 
     .card-title{
        
     }
+/*    .badge badge-danger {
+        padding: 400px;
+        margin: 200px;
+    }
+    .badger {
+        padding:33px;
+    }*/
+    .doluluk {
+      
    
+      
+    }
     .dayhead{
         
         text-align:center;
@@ -39,6 +51,10 @@
         -moz-transition: .3s;
         -webkit-transition: .3s;
         text-align: center;
+       
+    }
+    .card-header{
+      
     }
         .pagelisterleft a:hover {
             position: relative;
@@ -118,7 +134,7 @@
     <!-- Main content -->
     <section class="content">
         <!-- Default box -->
-        <div class="card container">
+        <div class="card container" >
             <div class="card-header ">
                 @*d-flex justify-content-center*@
 
@@ -187,7 +203,7 @@
 
              
             </div>
-            <div class="card-body p-0">
+            <div class="card-body p-0" style="overflow: auto;">
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
@@ -240,14 +256,15 @@
 
                                         @if (item.CLDailyAmount >= item.CLAmount && item.CLDailyPaletAmount >= item.CLPalletCapacity)
                                         {
-                                            <li class="badge badge-danger" style="font-size: 25px; font-weight: 600; ">Dilim Dolu</li>
+                                            @*<li class="badge badge-danger doluluk"  >Dilim Dolu</li>*@
+                                        <a class="btn btn-danger" href="#" onClick="return false;">Dilim Dolu</a>
                                         }
                                         else
                                         {
                                             if (now < finishtime)
                                             {
                                                 
-                                                    @Html.ActionLink("Randevu Talep Et", "AddAppoinment", "SubCustomer", new { myhour = item.CLStartHour, mydatetime = ViewBag.pshow, id = item.CalendarID }, new { @class = "btn btn-success btn-lg" })
+                                                    @Html.ActionLink("Randevu Talep Et", "AddAppoinment", "SubCustomer", new { myhour = item.CLStartHour, mydatetime = ViewBag.pshow, id = item.CalendarID }, new { @class = "btn btn-success" })
                                                
                                             }
 
