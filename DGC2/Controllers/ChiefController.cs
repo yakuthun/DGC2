@@ -17,12 +17,13 @@ namespace DGC2.Controllers
         
         public ActionResult ClosePopUp()
         {
+
             return RedirectToAction("Index");
         }
 
         public ActionResult Index()
         {
-            
+           
             var appointmentvalue = am.GetList();
             return View(appointmentvalue);
 
@@ -40,22 +41,48 @@ namespace DGC2.Controllers
             return View(appointmentvalue);
         }
 
+       
+
+        [HttpPost]
+        public ActionResult SaveCapture(string data,Appointment p,int id)
+        {
+            string fileName = DateTime.Now.ToString("dd-MM-yy hh-mm-ss");
+            byte[] imageBytes = Convert.FromBase64String(data.Split(',')[1]);
+            string filePath = Server.MapPath(string.Format("~/Captures/{0}.jpg", fileName));
+            System.IO.File.WriteAllBytes(filePath, imageBytes);
+
+            var appvalue = am.GetByID(id);
+            appvalue.AppointmentImage = filePath;
+            am.AppointmentDelete(appvalue);
+            
+
+            return RedirectToAction("EditAppointment", "Chief", new { id = id });
+        }
+
+
 
         [HttpGet]
         public ActionResult EditAppointment(int id, Appointment p)
         {
-            ViewBag.d = p.AppDriverPlate;
+            ViewBag.d = id;
+           
+           
             var appvalues = am.GetByID(id);
+            ViewBag.trackstatus = appvalues.AppointmentTrackStatus;
+            ViewBag.imagecontent = appvalues.AppointmentImage;
             return View(appvalues);
+
         }
         [HttpPost]
         public ActionResult EditAppointment(Appointment p,int id)
         {
+
             
+            //p.AppointmentImage = "xxx";
 
-           // p.InComingDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            // p.InComingDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
             p.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-
+          
             am.AppointmentUpdate(p);
             if (p.AppointmentTrackStatus == 9)
             {
@@ -88,19 +115,6 @@ namespace DGC2.Controllers
             return PartialView();
         }
 
-        //[HttpGet]
-        //public PartialViewResult EditAppPartial(int id)
-        //{
-        //    var appvalues = am.GetByID(id);
-        //    return PartialView(appvalues);
-        //}
-        //[HttpPost]
-        //public ActionResult EditAppPartial(Appointment p)
-        //{
-        //    am.AppointmentUpdate(p);
-        //    return RedirectToAction("Index");
-        //}
-
 
         //------------------------------------------------------------
 
@@ -123,7 +137,7 @@ namespace DGC2.Controllers
 
             appvalue.AppointmentTrackStatus = 8;
             am.AppointmentDelete(appvalue);
-            return RedirectToAction("Index");
+            return RedirectToAction("EditAppointment", "Chief", new { id = id });
         }
         // 9- İNDİRİLİYOR
         public ActionResult Downloaded(int id, Appointment p)
@@ -133,7 +147,7 @@ namespace DGC2.Controllers
 
             appvalue.AppointmentTrackStatus = 9;
             am.AppointmentDelete(appvalue);
-            return RedirectToAction("Index");
+            return RedirectToAction("EditAppointment", "Chief", new { id = id });
         }
         // 9 - GELDİ VE İNDİRİLDİ
         public ActionResult InComingAndDownloading()

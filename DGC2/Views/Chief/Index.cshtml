@@ -13,11 +13,11 @@
     }
 </style>
 
-@{string color1 = "";}
+@*@{string color1 = "";}
 @{string color2 = "";}
 @{string color3 = "";}
 
-@{string veri = "test";}
+@{string veri = "test";}*@
 
 
 <br />
@@ -82,7 +82,7 @@
 
                             <td>@item.AppointmentTrackStatus</td>
 
-                            @switch (item.AppointmentTrackStatus)
+                            @*@switch (item.AppointmentTrackStatus)
                             {
                                 case 4:
                                     color1 = "btn btn-secondary";
@@ -99,13 +99,12 @@
                                     color2 = "btn btn btn-success inactiveLink";
                                     color3 = "btn btn-secondary";
                                     break;
-                            }
+                            }*@
 
 
-                            <td><a href="/Chief/InComingApp/@item.AppointmentID" class="@color1">Geldi</a></td>
-                            <td><a href="/Chief/Downloaded/@item.AppointmentID" class="@color2">İndiriliyor</a></td>
+                      
                             @*<td><a href="/Chief/NotComing/@item.AppointmentID" class="btn btn-danger">Gelmedi</a></td>*@
-                            <td><a href="/Chief/EditAppointment/@item.AppointmentID" class="@color3">İşlem Yap</a></td>
+                            <td><a href="/Chief/EditAppointment/@item.AppointmentID" class="btn btn-primary">İşlem Yap</a></td>
 
 
                             @*<td>
@@ -133,4 +132,6 @@
         </ul>
     </div>
 </div>
+
+
 
