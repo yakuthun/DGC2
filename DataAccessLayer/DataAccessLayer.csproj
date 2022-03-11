@@ -154,6 +154,26 @@
     <Compile Include="Migrations\202202211247338_mig_added_dailypalet.designer.cs">
       <DependentUpon>202202211247338_mig_added_dailypalet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202281333046_mig_added_calendarWeekList.cs" />
+    <Compile Include="Migrations\202202281333046_mig_added_calendarWeekList.designer.cs">
+      <DependentUpon>202202281333046_mig_added_calendarWeekList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202281711393_mig_added_hourwatcher.cs" />
+    <Compile Include="Migrations\202202281711393_mig_added_hourwatcher.designer.cs">
+      <DependentUpon>202202281711393_mig_added_hourwatcher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202281837378_mig_addedhourtoappoinment.cs" />
+    <Compile Include="Migrations\202202281837378_mig_addedhourtoappoinment.designer.cs">
+      <DependentUpon>202202281837378_mig_addedhourtoappoinment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203071958454_mig_addedAppClickTime.cs" />
+    <Compile Include="Migrations\202203071958454_mig_addedAppClickTime.designer.cs">
+      <DependentUpon>202203071958454_mig_addedAppClickTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203082329197_mig_deletedCalendarWeekList.cs" />
+    <Compile Include="Migrations\202203082329197_mig_deletedCalendarWeekList.designer.cs">
+      <DependentUpon>202203082329197_mig_deletedCalendarWeekList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -230,6 +250,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202211247338_mig_added_dailypalet.resx">
       <DependentUpon>202202211247338_mig_added_dailypalet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202281333046_mig_added_calendarWeekList.resx">
+      <DependentUpon>202202281333046_mig_added_calendarWeekList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202281711393_mig_added_hourwatcher.resx">
+      <DependentUpon>202202281711393_mig_added_hourwatcher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202281837378_mig_addedhourtoappoinment.resx">
+      <DependentUpon>202202281837378_mig_addedhourtoappoinment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203071958454_mig_addedAppClickTime.resx">
+      <DependentUpon>202203071958454_mig_addedAppClickTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203082329197_mig_deletedCalendarWeekList.resx">
+      <DependentUpon>202203082329197_mig_deletedCalendarWeekList.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

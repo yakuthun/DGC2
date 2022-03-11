@@ -10,6 +10,7 @@ namespace BusinessLayer.Abstract
     public interface ICalendarService
     {
         List<Calendar> GetList();
+        List<Calendar> GetSearchList(int value);
         void CalendarAdd(Calendar calendar);
         Calendar GetByID(int id);
         void CalendarDelete(Calendar calendar);

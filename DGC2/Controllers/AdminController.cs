@@ -102,8 +102,24 @@ namespace DGC2.Controllers
         [HttpPost]
         public ActionResult AddCalendar(Calendar p)
         {
-            
+            var amount = p.CLAmount;
+            var tolerance = p.CLTolerance;
+            var sum = amount * tolerance / 100;
+            p.CLSumTolerance = sum + amount;
             cl.CalendarAdd(p);
+            var alcalendar = cl.GetList();
+            for (int i = 1; i <= 6; i++)
+            {
+                var today = DateTime.Now.AddDays(i-1);
+                
+                foreach (var item in alcalendar)
+                {
+                    item.CLStartDate = today;
+                    cl.CalendarAdd(item);
+                }
+
+            }
+        
             return RedirectToAction("SliceList", "Admin");
         }
         [HttpGet]

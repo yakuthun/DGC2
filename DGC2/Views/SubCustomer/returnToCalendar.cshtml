@@ -1,0 +1,250 @@
+﻿@using EntityLayer.Concrete
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Calendar>
+@{
+    ViewBag.Title = "returnToCalendar";
+    Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
+}
+<!DOCTYPE html>
+
+
+
+<title>DGC Lojistik</title>
+@*<table class="table table-bordered">
+
+        <tr>
+
+            <th>Saat Başlangıç</th>
+            <th>Saat Bitiş</th>
+            <th>Randevu Al</th>
+            <th>Toplam Miktar</th>
+            <th>Toplam Palet</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.CLStartDate</td>
+                <td>@item.CLFinishDate</td>
+
+                <td><a href="/SubCustomer/AddAppoinment/@item.CalendarID" class="btn btn-success">Randevu Al</a></td>
+                <td>@item.CLDailyAmount
+                       /
+                    @item.CLAmount
+                </td>
+                <td>
+                    @item.CLDailyPaletAmount
+                            /
+                            @item.CLPalletCapacity
+                        </td>
+            </tr>
+        }
+    </table>*@
+<html>
+<head>
+
+    <script src="~/Scripts/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-3.6.0.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-3.6.0.intellisense.js" type="text/javascript"></script>
+
+
+</head>
+<body class="hold-transition sidebar-mini">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header  d-flex justify-content-center">
+                @*d-flex justify-content-center*@
+                <div>
+                    <span><input id="textbox" type="text" class="form form-control" value="" /></span>
+                    <span><button id="press" class="btn btn-primary" href="">Ara</button></span>
+                </div>
+
+                <h3 class="card-title d-flex justify-content-center ">
+                    <span style="font-size: 50px; font-weight: 600; text-align:center">@(((DateTime)ViewBag.pshow).ToString("dd MMMM"))</span>
+
+                    @Html.PagedListPager((IPagedList)Model, p => Url.Action("returnToCalendar", new { p }), new PagedListRenderOptions
+               {
+
+                   UlElementClasses = new string[] { "pagination" },
+                    LiElementClasses = new string[] { "page-link" },
+                   LinkToPreviousPageFormat = "Önceki Gün",
+                   LinkToNextPageFormat = "Sonraki Gün",
+                   DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                   DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                   DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                   DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                   MaximumPageNumbersToDisplay = 0,
+                   DisplayEllipsesWhenNotShowingAllPageNumbers = false
+
+               })
+                </h3>
+
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%;">
+                                Dilim
+                            </th>
+
+                            <th style="width: 8%;">
+                                Saat
+                            </th>
+                            <th style="width: 15%;">
+                                Saat Bitiş
+                            </th>
+                            <th style="width: 15%">
+                                Randevu Al
+                            </th>
+                            <th style="width: 15%; text-align: center">
+                                Dökme Doluluk Oranı
+                            </th>
+                            <th style="width: 15%; text-align:center">
+                                Palet Doluluk Oranı
+                            </th>
+                            @*<th style="width: 20%">
+                                </th>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+
+                                <td style="font-size: 25px;">
+                                    @item.CLSlice
+
+                                </td>
+
+                                <td>
+                                    <a style="font-size: 25px;">
+                                        @item.CLStartHour.ToString("hh mm")
+                                    </a>
+                                    <br />
+
+                                </td>
+                                <td>
+                                    <a style="font-size: 25px;">
+                                        @(((DateTime)item.CLFinishDate).ToString("hh:mm"))
+                                    </a>
+                                    <br />
+
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+
+
+                                        @if (item.CLDailyAmount >= item.CLAmount && item.CLDailyPaletAmount >= item.CLPalletCapacity)
+                                        {
+                                            <li class="badge badge-danger" style="font-size: 25px; font-weight: 600; ">Dilim Dolu</li>
+                                        }
+                                        else
+                                        {
+                                            <li id="submit" class="list-inline-item btn btn-warning" style="font-size: 25px; font-weight: 600; ">
+                                                @Html.ActionLink("Randevu Talep Et", "AddAppoinment", "SubCustomer", new { myhour = item.CLStartHour, mydatetime = ViewBag.pshow, id = item.CalendarID }, null)
+                                            </li>
+                                        }
+
+
+
+
+                                    </ul>
+
+                                </td>
+
+
+                                <td class="project-state ">
+
+                                    @if (item.CLDailyAmount >= item.CLAmount)
+                                    {
+                                        <span class="badge badge-danger" style="font-size: 25px; font-weight: 600; ">Dökme Doldu</span>
+                                    }
+                                    else
+                                    {
+                                        <div class="badge badge-success" style="font-size:25px">
+                                            @item.CLDailyAmount
+
+                                            @item.CLAmount
+                                        </div>
+
+                                    }
+
+                                </td>
+
+                                <td class="project-state " style="font-size:25px">
+
+                                    @if (item.CLDailyPaletAmount >= item.CLPalletCapacity)
+                                    {
+                                        <span class="badge badge-danger" style="font-size: 25px; font-weight: 600; ">Palet Doldu</span>
+                                    }
+                                    else
+                                    {
+                                        <div class="badge badge-success" style="font-size:25px">
+                                            @item.CLDailyPaletAmount
+
+                                            @item.CLPalletCapacity
+                                        </div>
+
+                                    }
+
+
+
+                                </td>
+                                <td class="project-actions text-right">
+                                </td>
+                            </tr>
+
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+
+
+    <script type="text/javascript">
+
+        $('#press').click(function () {
+   var url = '@Url.Action("returnToCalendar", "SubCustomer")';
+   var textValue = $('#textbox').val();
+
+   window.location.href = url + '?apvalue=' + textValue;
+});
+    </script>
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+

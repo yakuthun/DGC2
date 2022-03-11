@@ -15,6 +15,7 @@ namespace EntityLayer.Concrete
         public DateTime CLUseStartDate  { get; set; }
         public DateTime CLUseFinishDate  { get; set; }
         public DateTime CLStartDate { get; set; }
+        public DateTime CLStartHour { get; set; }
         public DateTime CLFinishDate { get; set; }
         public int CLSlice { get; set; }
         public int CLAmount { get; set; }
@@ -26,8 +27,10 @@ namespace EntityLayer.Concrete
         public int? SlicesID { get; set; }
         public virtual Slice Slice { get; set; }
         public ICollection<Appointment> Appointments { get; set; }
-     
+
         
+
+
 
 
     }

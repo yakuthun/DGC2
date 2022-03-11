@@ -18,10 +18,11 @@ namespace DGC2.Controllers
         SubCustomerManager scm = new SubCustomerManager(new EfSubCustomerDal());
         AppointmentManager apm = new AppointmentManager(new EfAppointmentDal());
         CalendarManager cm = new CalendarManager(new EfCalendarDal());
+        
+        
         public ActionResult Index()
         {
-            var Subcustomervalues = apm.GetList();
-            return View(Subcustomervalues);
+            return View();
         }
         [HttpGet]
         public ActionResult AddDriver()
@@ -82,7 +83,7 @@ namespace DGC2.Controllers
         {
             var listappoinment = apm.GetList();
             return View(listappoinment);
-
+            
         }
         public ActionResult AskChangeList()
         {
@@ -105,9 +106,9 @@ namespace DGC2.Controllers
         public ActionResult AskChangeComment(Appointment p)
         {
 
-            if(p.AppointmentTrackStatus == 4)
+            if (p.AppointmentTrackStatus == 4)
             {
-                
+
                 p.AppointmentTrackStatus = 20;
             }
 
@@ -128,11 +129,11 @@ namespace DGC2.Controllers
         [HttpPost]
         public ActionResult EditAskChange(Appointment p)
         {
-            
+
             var oldvalue = apm.GetByID((int)TempData["oldvalue"]);
-            
-            
-                oldvalue.AppointmentTrackStatus = 0;
+
+
+            oldvalue.AppointmentTrackStatus = 0;
             p.AppStartDate = oldvalue.AppStartDate;
             apm.AppointmentUpdate(oldvalue);
 
@@ -141,11 +142,24 @@ namespace DGC2.Controllers
             if (p.AppointmentTrackStatus == 4)
                 p.AppointmentTrackStatus = 24;
 
-            
+
             apm.AppointmentAdd(p);
             return RedirectToAction("AppliedListAppoinment");
         }
 
+
+        [HttpGet]
+        public ActionResult EditNotAppliedAppointment(int id)
+        {
+            var subcustomervalue = apm.GetByID(id);
+            return View(subcustomervalue);
+        }
+        [HttpPost]
+        public ActionResult EditNotAppliedAppointment(Appointment p)
+        {
+            apm.AppointmentUpdate(p);
+            return RedirectToAction("WaitingListAppoinment");
+        }
 
 
         public ActionResult CanceledListAppoinment()
@@ -184,34 +198,42 @@ namespace DGC2.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddAppoinment(int id, DateTime mydatetime)
+        public ActionResult AddAppoinment(int id, DateTime mydatetime, DateTime myhour)
         {
+
+            ViewBag.deneme = ViewBag.dsa;
             TempData["mydatetime"] = mydatetime;
+            TempData["myhour"] = myhour;
             var alldatas = cm.GetByID(id);
-            var datetime = cm.GetByID(id).CLStartDate;
+            var datetime = cm.GetByID(id).CLStartHour;
             var sliceid = cm.GetByID(id).CalendarID;
             var dailyamountid = cm.GetByID(id).CLDailyAmount;
             var dailypaletid = cm.GetByID(id).CLDailyPaletAmount;
+
             TempData["tempdata"] = datetime;
             TempData["tempslice"] = sliceid;
             TempData["tempdailyamount"] = dailyamountid;
             TempData["tempdailypaletamount"] = dailypaletid;
             TempData["allcalendardata"] = cm.GetByID(id).CalendarID;
 
-            ViewBag.startdate = alldatas.CLStartDate;
+            ViewBag.startdate = alldatas.CLStartHour;
             ViewBag.finishdate = alldatas.CLFinishDate;
             return View();
 
 
         }
         [HttpPost]
-        public ActionResult AddAppoinment(Appointment p, Driver d)
+        public ActionResult AddAppoinment(Appointment p, Driver d, Calendar c)
         {
 
-           
+
+
+
 
             int asd = (int)TempData["allcalendardata"];
+
             var allcalendar = cm.GetByID(asd);
+
 
             if (p.AppointmentUCode == null)
             {
@@ -231,14 +253,15 @@ namespace DGC2.Controllers
 
             //p.AppStartDate = DateTime.Parse(TempData["tempdata"].ToString());
 
-
+            p.AppClickTime = DateTime.Now;
             p.AppStartDate = DateTime.Parse(TempData["mydatetime"].ToString());
+            p.AppStartHour = DateTime.Parse(TempData["myhour"].ToString());
             var number = TempData["tempslice"];
             p.CalendarID = int.Parse(number.ToString());
             //var dailyamount = (int)TempData["tempdailyamount"];
 
-            
-            
+
+
             if (p.DriverStatus == false)
             {
                 d.SubCustomerID = p.SubCustomerID;
@@ -256,23 +279,31 @@ namespace DGC2.Controllers
             }
 
 
-            if(p.AppointmentLoadType == "Dökme")
+            //if (p.AppointmentLoadType == "Dökme")
+            //{
+            //    allcalendar.CLDailyAmount += p.AppointmentCapacity;
+            //}
+            //else if (p.AppointmentLoadType == "Palet")
+            //{
+            //    allcalendar.CLDailyPaletAmount += p.AppointmentCapacity;
+            //}
+
+            if (allcalendar.CLDailyAmount <= allcalendar.CLSumTolerance && allcalendar.CLDailyAmount >= allcalendar.CLAmount)
             {
-                allcalendar.CLDailyAmount += p.AppointmentCapacity;
-            }
-            else if(p.AppointmentLoadType=="Palet")
-            {
-                allcalendar.CLDailyPaletAmount += p.AppointmentCapacity;
+                p.AppointmentTrackStatus = 30;
             }
 
-
+            if(allcalendar.CLDailyAmount >= allcalendar.CLAmount && allcalendar.CLDailyAmount <= allcalendar.CLSumTolerance)
+            {
+                p.AppointmentUpdateComment = "asildi";
+            }
             //p.AppointmentName = calenderid.Slice.ToString();
             //p.AppStartDate = DateTime.Parse(calenderid.CLStartDate.ToShortTimeString());
             //p.AppStartDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
             cm.CalendarUpdate(allcalendar);
             apm.AppointmentAdd(p);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Calendar");
             //if (p.AppointmentTrackStatus == 0)
             //{
             //    p.AppointmentTrackStatus = 1;
@@ -284,10 +315,32 @@ namespace DGC2.Controllers
             //return RedirectToAction("Index");
         }
 
-
-        public ActionResult Calendar()
+        public ActionResult returnToCalendar(int apvalue, int p=1)
         {
-            var calenderresult = cm.GetList();
+            var comingnumber = apvalue;
+            var today = DateTime.Now;
+            var tomorrow = today.AddDays(p - 1);
+
+
+
+
+            ViewBag.pshow = tomorrow;
+            var alresult = cm.GetSearchList(comingnumber).ToPagedList(p, 4);
+
+            return View(alresult);
+
+        }
+        public ActionResult Calendar(int p =1,string devam="bos")
+        {
+            var today = DateTime.Now;
+            var tomorrow = today.AddDays(p-1);
+            
+            
+
+
+            ViewBag.pshow = tomorrow;
+            var calenderresult = cm.GetList().ToPagedList(p, 4);
+            
             return View(calenderresult);
         }
 
@@ -302,16 +355,21 @@ namespace DGC2.Controllers
         //------------------------------------------------EGEMEN ALAN--------------------------------------------
 
 
-        public ActionResult getCalenderTime()
-        {
-            return View();
-        }
+
+        
 
 
         //---------------------------------------------------------------------------------------------------------
 
 
 
+        [HttpPost]
+        public JsonResult Test(Calendar p)
+        {
+            var deneme = p.CLDailyAmount;
+            TempData["cldailyamount"] = deneme;
+            return Json(deneme, JsonRequestBehavior.AllowGet);
+        }
 
 
 

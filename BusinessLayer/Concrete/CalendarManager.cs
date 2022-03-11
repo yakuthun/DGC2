@@ -55,5 +55,13 @@ namespace BusinessLayer.Concrete
         {
             return _calendarDal.List(x => x.Slice.SlicesID == id);
         }
+
+        public List<Calendar> GetSearchList(int value)
+        {
+            //throw new NotImplementedException();
+
+            return _calendarDal.List(x => x.CLDailyAmount >= value || value <=x.CLDailyAmount && value <= x.CLAmount);
+
+        }
     }
 }
