@@ -33,6 +33,7 @@
                     <th>Adı</th>
                     <th>Soyadı</th>
                     <th>Şube Numarası</th>
+                    <th>Şef Rolü</th>
                     <th>Giriş Tarihi</th>
                     <th>Çıkış Tarihi</th>
                     <th>Statü</th>
@@ -51,6 +52,7 @@
                         <td>@item.ChiefName</td>
                         <td>@item.ChiefSurname</td>
                         <td>@item.BranchNo</td>
+                        <td>@item.ChiefRole</td>
                         <td>@item.ChiefStartDate</td>
                         <td>@item.ChiefFinishDate</td>
                         <td>@Html.Raw(item.ChiefStatus == true ? "<span class='badge badge-success'>Aktif</span>" : "<span class='badge badge-danger'>Pasif</span>")</td>
