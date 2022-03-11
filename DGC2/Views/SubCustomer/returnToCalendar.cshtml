@@ -238,14 +238,14 @@
 
                                         @if (item.CLDailyAmount >= item.CLAmount && item.CLDailyPaletAmount >= item.CLPalletCapacity)
                                         {
-                                            <li class="badge badge-danger" style="font-size: 25px; font-weight: 600;">Dilim Dolu</li>
+                                            <a class="btn btn-danger" href="#" onClick="return false;">Dilim Dolu</a>
                                         }
                                         else
                                         {
                                             if (now < finishtime)
                                             {
 
-                                                @Html.ActionLink("Randevu Talep Et", "AddAppoinment", "SubCustomer", new { myhour = item.CLStartHour, mydatetime = ViewBag.pshow, id = item.CalendarID }, new { @class = "btn btn-success btn-lg" })
+                                                @Html.ActionLink("Randevu Talep Et", "AddAppoinment", "SubCustomer", new { myhour = item.CLStartHour, mydatetime = ViewBag.pshow, id = item.CalendarID }, new { @class = "btn btn-success " })
 
                                             }
 
