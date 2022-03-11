@@ -127,7 +127,7 @@
                                         <p style="font-weight:800; font-size:20px" class="badge badge-warning">İptal Bekleniyor</p>
                                     </td>
                                     <td class="project-state" style="font-size:18px">
-                                        @(((DateTime)item.AppStartDate).ToString("dd MMMM")) @item.AppStartHour.ToString("hh:mm")  @item.Calendar.CLSlice.ToString() .Dilim
+                                        @(((DateTime)item.AppStartDate).ToString("dd MMMM")) @(((DateTime)item.AppStartHour).ToString("hh:mm"))  @item.Calendar.CLSlice.ToString() .Dilim
                                     </td>
                                     <td class="project-actions text-right">
                                     </td>
