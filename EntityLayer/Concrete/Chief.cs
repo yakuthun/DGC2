@@ -17,6 +17,8 @@ namespace EntityLayer.Concrete
         public string ChiefPassword { get; set; }
         [StringLength(50)]
         public string ChiefCreatedPassword { get; set; }
+        [StringLength(30)]
+        public string ChiefRole { get; set; }
         public int BranchNo { get; set; }
         [StringLength(20)]
         public string ChiefTel { get; set; }
