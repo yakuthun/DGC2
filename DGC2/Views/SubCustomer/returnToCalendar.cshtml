@@ -102,9 +102,10 @@
     </style>
 </head>
 <body class="hold-transition sidebar-mini">
-
+    
     <!-- Content Header (Page header) -->
     <section class="content-header">
+        <h1 style="margin-left:2%; text-align:center; margin-top:2%"><b>Arama Sonucu</b></h1>
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
@@ -117,6 +118,7 @@
     <section class="content">
         <!-- Default box -->
         <div class="card container">
+
             <div class="card-header ">
                 @*d-flex justify-content-center*@
 
@@ -133,7 +135,7 @@
 
                             @*<span style="font-size: 50px; font-weight: 600; text-align:center">@(((DateTime)ViewBag.pshow).ToString("dd MMMM"))</span>*@
 
-                            @Html.PagedListPager((IPagedList)Model, p => Url.Action("Calendar", new { p }), new PagedListRenderOptions
+                            @Html.PagedListPager((IPagedList)Model, p => Url.Action("returnToCalendar", new { p }), new PagedListRenderOptions
                        {
 
                            UlElementClasses = new string[] { "pagination" },
@@ -152,7 +154,7 @@
                             <span style="font-size: 50px; font-weight: 600;" class="dayhead">@(((DateTime)ViewBag.pshow).ToString("dd MMMM"))</span>
 
 
-                            @Html.PagedListPager((IPagedList)Model, p => Url.Action("Calendar", new { p }), new PagedListRenderOptions
+                            @Html.PagedListPager((IPagedList)Model, p => Url.Action("returnToCalendar", new { p }), new PagedListRenderOptions
                        {
 
                            UlElementClasses = new string[] { "pagination" },
