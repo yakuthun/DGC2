@@ -16,6 +16,7 @@ namespace DGC2.Controllers
         AppointmentManager am = new AppointmentManager(new EfAppointmentDal());
         CustomerSubManager csm = new CustomerSubManager(new EfCustomerAddSubDal());
         CalendarManager cm = new CalendarManager(new EfCalendarDal());
+        UserManager um = new UserManager(new EfUserDal());
         Context c = new Context();
 
 
@@ -260,6 +261,53 @@ namespace DGC2.Controllers
             return RedirectToAction("SubCustomerList");
         }
 
-        
+
+
+
+        public ActionResult UserList()
+        {
+            var calendarvalues = um.GetList();
+            //TempData["CustomerID"] = id;
+            //ViewBag.customerid = id;
+            return View(calendarvalues);
+        }
+
+        [HttpGet]
+        public ActionResult AddUser()
+        {
+            ViewBag.t = TempData["CustomerID"];
+            ViewBag.z = "asdasd";
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddUser(User p)
+        {
+
+
+            um.UserAdd(p);
+            return RedirectToAction("UserList");
+        }
+
+        [HttpGet]
+        public ActionResult EditUser(int id)
+        {
+            ViewBag.t = TempData["CustomerID"];
+            var uservalue = um.GetByID(id);
+            return View(uservalue);
+        }
+        [HttpPost]
+        public ActionResult EditUser(User p)
+        {
+            um.UserUpdate(p);
+            return RedirectToAction("UserList");
+        }
+        public ActionResult DeleteUser(int id)
+        {//Güncelleme işlemi
+            //customer delete kısmına git
+            var uservalue = um.GetByID(id);
+            um.UserDelete(uservalue);
+            return RedirectToAction("UserList");
+        }
     }
+
 }

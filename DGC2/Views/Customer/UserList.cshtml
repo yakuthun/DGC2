@@ -1,0 +1,82 @@
+﻿@using EntityLayer.Concrete
+@model List<User>
+@{
+    ViewBag.Title = "UserList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Kullanıcı Listesi</h2>
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Kullanıcıları Düzenle</h3>
+        <div class="card-tools">
+
+            <div class="input-group input-group-sm" style="width: 150px;">
+
+
+
+                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0">
+        <table id="example2" class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Kullanıcı Adı</th>
+                    <th>Şifre</th>
+                    <th>Mail ID</th>
+                    <th>Telefon</th>
+                    <th>Statü</th>
+                    <th>Rol</th>
+                   
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    if (item.CustomerID == ViewBag.customerid)
+                    {
+                        <tr>
+                            <th>@item.UserID</th>
+                            <th>@item.UserUsername</th>
+                            <td>@item.UserPassword</td>
+                            <td>@item.UserMail</td>
+                            <td>@item.UserTel</td>
+                            <td>@item.UserStatus</td>
+                            <td>@item.UserRole</td>
+
+
+                            <td><a href="/Customer/DeleteUser/@item.UserID" class="btn btn-danger">Sil</a></td>
+                            <td><a href="/Customer/EditUser/@item.UserID" class="btn btn-warning">Güncelle</a></td>
+
+                        </tr>
+                    }
+
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+    <div class="card-footer clearfix">
+        <center>
+            <a href="/Customer/AddUser/" class="btn btn-info">Kullanıcı Ekle</a>
+        </center>
+
+    </div>
+</div>

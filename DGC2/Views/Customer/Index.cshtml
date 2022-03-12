@@ -38,8 +38,8 @@
                     <th>Vergi Numarası</th>
                     <th>Vergi Dairesi</th>
                     <th>Sektör</th>
-                    <th>Giriş Zamanı</th>
-                    <th>Çıkış Zamanı</th>
+                    @*<th>Giriş Zamanı</th>
+                    <th>Çıkış Zamanı</th>*@
                     <th>Statü</th>
                     <th>Kullanıcı Adı</th>
                     <th>Şifre</th>
@@ -48,7 +48,7 @@
 
 
 
-                    <th colspan="3" style="text-align:center">İşlem Yap</th>
+                    <th colspan="4" style="text-align:center">İşlem Yap</th>
                     
                 </tr>
             </thead>
@@ -64,8 +64,8 @@
                         <td>@item.TaxNO</td>
                         <td>@item.TaxDepartment</td>
                         <td>@item.Sector</td>
-                        <td>@item.CustomerStartDate</td>
-                        <td>@item.CustomerFinishDate</td>
+                        @*<td>@item.CustomerStartDate</td>
+                        <td>@item.CustomerFinishDate</td>*@
                         <td>@Html.Raw(item.CustomerStatus == true ? "<span class='badge badge-success'>Aktif</span>" : "<span class='badge badge-danger'>Pasif</span>")</td>
                         <td>@item.CustomerUsername</td>
                         <td>@item.CustomerPassword</td>
@@ -75,6 +75,7 @@
                         <td><a href="/Customer/EditCustomer/@item.CustomerID" class="btn btn-warning">Güncelle</a></td>
                         <td><a href="#" class="btn btn-info">Bilgiler</a></td>
                         <td><a href="/Customer/DeleteCustomer/@item.CustomerID" class="btn btn-danger">Sil</a></td>
+                        <td><a href="/Customer/UserList/@item.CustomerID" class="btn btn-success">Hesaplar</a></td>
 
                     </tr>
                 }

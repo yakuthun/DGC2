@@ -39,6 +39,7 @@ namespace EntityLayer.Concrete
         public bool CustomerStatus { get; set; }
        
         public ICollection<SubCustomer> SubCustomers { get; set; }
+        public ICollection<User> Users { get; set; }
 
     }
 }
