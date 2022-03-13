@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
@@ -13,9 +14,14 @@ namespace DGC2.Controllers
     {
         // GET: Customer
         CustomerManager cm = new CustomerManager(new EfCustomerDal());
-        public ActionResult Index()
+        UserManager um = new UserManager(new EfUserDal());
+
+      
+        public ActionResult Index(User p)
         {
+            Context c = new Context();
             var customervalues = cm.GetList();
+            
             return View(customervalues);
         }
         [HttpGet]
@@ -52,6 +58,49 @@ namespace DGC2.Controllers
             cm.CustomerDelete(customervalue);
             return RedirectToAction("Index");
         }
+        public ActionResult UserList(int id)
+        {
+             var calendarvalues = um.GetList();
+            TempData["CustomerID"] = id;
+            ViewBag.customerid = id;
+            return View(calendarvalues);
+        }
 
+        [HttpGet]
+        public ActionResult AddUser()
+        {
+            ViewBag.t = TempData["CustomerID"];
+            ViewBag.z = "asdasd";
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddUser(User p)
+        {
+            
+            
+            um.UserAdd(p);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult EditUser(int id)
+        {
+            ViewBag.t = TempData["CustomerID"];
+            var uservalue = um.GetByID(id);
+            return View(uservalue);
+        }
+        [HttpPost]
+        public ActionResult EditUser(User p)
+        {
+            um.UserUpdate(p);
+            return RedirectToAction("Index");
+        }
+        public ActionResult DeleteUser(int id)
+        {//Güncelleme işlemi
+            //customer delete kısmına git
+            var uservalue = um.GetByID(id);
+            um.UserDelete(uservalue);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -60,6 +60,7 @@
     <Compile Include="Concrete\Driver.cs" />
     <Compile Include="Concrete\Slice.cs" />
     <Compile Include="Concrete\SubCustomer.cs" />
+    <Compile Include="Concrete\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

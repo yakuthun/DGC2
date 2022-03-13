@@ -60,6 +60,7 @@
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\ISliceDal.cs" />
     <Compile Include="Abstract\ISubCustomerDal.cs" />
+    <Compile Include="Abstract\IUserDal.cs" />
     <Compile Include="Concrete\Context.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
     <Compile Include="EntityFramework\EfAdminDal.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="EntityFramework\EfCustomerDal.cs" />
     <Compile Include="EntityFramework\EfSliceDal.cs" />
     <Compile Include="EntityFramework\EfSubCustomerDal.cs" />
+    <Compile Include="EntityFramework\EfUserDal.cs" />
     <Compile Include="Migrations\202202081714080_mig_add_realdate_and_driverconnections.cs" />
     <Compile Include="Migrations\202202081714080_mig_add_realdate_and_driverconnections.designer.cs">
       <DependentUpon>202202081714080_mig_add_realdate_and_driverconnections.cs</DependentUpon>
@@ -186,6 +188,14 @@
     <Compile Include="Migrations\202203111118091_mig_670.designer.cs">
       <DependentUpon>202203111118091_mig_670.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203121049046_mig_user_add.cs" />
+    <Compile Include="Migrations\202203121049046_mig_user_add.designer.cs">
+      <DependentUpon>202203121049046_mig_user_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203121050402_mig_user_role_add.cs" />
+    <Compile Include="Migrations\202203121050402_mig_user_role_add.designer.cs">
+      <DependentUpon>202203121050402_mig_user_role_add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -286,6 +296,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203111118091_mig_670.resx">
       <DependentUpon>202203111118091_mig_670.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203121049046_mig_user_add.resx">
+      <DependentUpon>202203121049046_mig_user_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203121050402_mig_user_role_add.resx">
+      <DependentUpon>202203121050402_mig_user_role_add.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

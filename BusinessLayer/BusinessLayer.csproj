@@ -63,6 +63,7 @@
     <Compile Include="Abstract\ICustomerSubService.cs" />
     <Compile Include="Abstract\ISliceService.cs" />
     <Compile Include="Abstract\ISubCustomerService.cs" />
+    <Compile Include="Abstract\IUserService.cs" />
     <Compile Include="Concrete\AdminManager.cs" />
     <Compile Include="Concrete\AppointmentManager.cs" />
     <Compile Include="Concrete\CalendarManager.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Concrete\CustomerSubManager.cs" />
     <Compile Include="Concrete\SliceManager.cs" />
     <Compile Include="Concrete\SubCustomerManager.cs" />
+    <Compile Include="Concrete\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

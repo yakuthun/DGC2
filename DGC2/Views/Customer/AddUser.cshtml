@@ -1,0 +1,37 @@
+﻿@model EntityLayer.Concrete.User
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
+}
+
+<h2>Alt Müşteri Aç</h2>
+
+<a href="/Customer/Index/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
+<hr />
+@using (Html.BeginForm("AddUser", "Customer", FormMethod.Post))
+{
+<div class="form-group">
+
+    @Html.HiddenFor(x => x.UserID, new { @class = "form-control" })
+    @Html.Label("Kullanıcı Adı")
+    @Html.TextAreaFor(x => x.UserUsername, new { @class = "form-control" })
+    @Html.Label("Şifre")
+    @Html.TextAreaFor(x => x.UserPassword, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.UserCreatedPassword, new { @class = "form-control" })
+    @Html.Label("Mail")
+    @Html.TextAreaFor(x => x.UserMail, new { @class = "form-control" })
+    @Html.Label("Telefon")
+    @Html.TextAreaFor(x => x.UserTel, new { @class = "form-control" })
+    @Html.Label("Statü")
+    @Html.TextAreaFor(x => x.UserStatus, new { @class = "form-control" })
+    @Html.Label("Rol")
+    @Html.TextAreaFor(x => x.UserRole, new { @class = "form-control" })
+    @Html.Label("Müşteri ID")
+    @*@Html.TextAreaFor(x => x.CustomerID, new { @class = "form-control" })*@
+    <br />
+
+    <input type="text" name="CustomerID" value="@ViewBag.t" class="form-control" readonly />
+    <button class="btn btn-info">Oluştur</button>
+</div>
+
+}
