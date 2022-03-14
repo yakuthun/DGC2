@@ -12,42 +12,17 @@
     <script src="~/AdminLTE/plugins/jquery-ui/jquery-ui.min.js"></script>
 </head>
 <body>
+
     <h2>Randevuyu Düzenle</h2>
+
     <a href="/SubCustomer/AppliedListAppoinment/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
     <hr />
+
     @using (Html.BeginForm("EditNotAppliedAppointment", "SubCustomer", FormMethod.Post))
     {
 <div class="form-group">
 
-
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md">
-                <div class="form-group">
-                    <select class="form-control" id="in">
-                        <option value="">Gün Seçiniz</option>
-                        <option value="0"> Günümüz </option>
-                        <option value="1"> 1 Gün Sonrası </option>
-                        <option value="2"> 2 Gün Sonrası </option>
-                        <option value="3"> 3 Gün Sonrası</option>
-                        <option value="4"> 4 Gün Sonrası</option>
-                        <option value="5"> 5 Gün Sonrası</option>
-                        <option value="6"> 6 Gün Sonrası</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-md">
-                <div class="form-group">
-                    <input type="text" readonly class="form-control " id="out" placeholder="Tarih" />
-                    <p id="demo"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
+    <input type="date" id="date" name="AppStartDate" class="form-control " placeholder="Tarih" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@DateTime.Now.AddDays(7).ToString("yyyy-MM-dd")"/>
 
 
     @Html.HiddenFor(x => x.AppointmentTrackStatus)
@@ -67,7 +42,7 @@
     @Html.HiddenFor(x => x.AppointmentUpdateComment)
     @Html.HiddenFor(x => x.CalendarID)
     @Html.HiddenFor(x => x.AppStartHour)
-    @Html.HiddenFor(x => x.AppStartDate)
+    @*@Html.HiddenFor(x => x.AppStartDate)*@
     @Html.HiddenFor(x => x.AppointmentCancelComment)
     @Html.HiddenFor(x => x.AppointmentLoadType)
     @Html.HiddenFor(x => x.AppointmentCapacity)
@@ -83,8 +58,8 @@
     @Html.Label("Sürücü Firma")
     @Html.TextBoxFor(x => x.AppDriverLogisticName, new { @class = "form-control" })
 
-    
-   
+
+
 
 
 
@@ -96,7 +71,7 @@
 
     }
 
-    <script type="text/javascript">
+    @*<script type="text/javascript">
         $(document).ready(function () {
             $("#in").on('change', function () {
                 var days = +$(this).val();
@@ -116,7 +91,7 @@
                 $(".ui-datepicker").hide();
                 dateFormat: 'dd/mm/yyyy';
             });
-
+            /*2022 - 03 - 08 00: 00: 00.000*/
             $('#press').click(function () {
                 var Datee = new Date($('#out').datepicker('getDate'));
                 var newDate = moment(Datee).format('DD/MMMM/YYYY HH:mm:ss ');
@@ -131,9 +106,9 @@
 
         });
 
-    </script>
-
-
+    </script>*@
+ 
+  
 </body>
 </html>
 
