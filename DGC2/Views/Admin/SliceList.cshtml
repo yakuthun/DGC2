@@ -44,10 +44,12 @@
                         <h3>V<sup style="font-size: 20px">@item.SlicesID</sup></h3>
                         <p>Dilim Sayısı: @ViewBag.d1</p>
                     </div>
-                    @*<div class="icon">
-                        <a href="/Admin/PassiveSlice/@item.SlicesID">Dilime Geçiş Yap</a>
-                        <i class="ion ion-stats-bars"></i>
-                    </div>*@
+                    <div class="icon">
+
+                        <i class="ion ion-stats-bars"> <a href="/Admin/PassiveSlice/@item.SlicesID" class="btn btn-success">Dilime Geçiş Yap</a></i>
+                       
+                    </div>
+
                     <a href="/Admin/CalendarList/@item.SlicesID" class="small-box-footer">Dilimi Düzenle<i class="fas fa-arrow-circle-right"></i></a>
                 </div>
              

@@ -332,6 +332,10 @@ namespace DGC2.Controllers
         }
         public ActionResult Calendar(int p =1,string devam="bos")
         {
+            var deger3 = c.Slices.Where(c => c.SliceStatus == true).Select(x => x.SlicesID).FirstOrDefault();
+            ViewBag.d3 = deger3;
+
+
             var today = DateTime.Now;
             var tomorrow = today.AddDays(p-1);
             

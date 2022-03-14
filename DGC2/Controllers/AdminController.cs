@@ -136,13 +136,21 @@ namespace DGC2.Controllers
             return RedirectToAction("SliceList","Admin");
         }
 
-       
+        Context c = new Context();
         public ActionResult PassiveSlice(int id)
         {
+         
+            var deger3 = c.Slices.Where(c => c.SliceStatus == true).Select(x => x.SlicesID).FirstOrDefault();
+            ViewBag.d3 = deger3;
+            
 
             var appvalue = sm.GetByID(id);
 
             appvalue.SliceStatus = true;
+
+            var passiveslice = sm.GetByID(deger3);
+            passiveslice.SliceStatus = false;
+
             sm.SliceUpdate(appvalue);
             return RedirectToAction("SliceList", "Admin");
         }

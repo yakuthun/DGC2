@@ -116,6 +116,7 @@
                             $("#btnUpload").removeAttr("disabled");
                         });
                     });
+
                     $("#btnUpload").click(function () {
                         $.ajax({
                             type: "POST",
@@ -124,6 +125,7 @@
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
                             success: function (r) { }
+                                               
                         });
                         history.go(0);
                     });
