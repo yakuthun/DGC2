@@ -20,7 +20,7 @@
 
     @using (Html.BeginForm("EditNotAppliedAppointment", "SubCustomer", FormMethod.Post))
     {
-<div class="form-group">
+        <div class="form-group">
 
     <input type="date" id="date" name="AppStartDate" class="form-control " placeholder="Tarih" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@DateTime.Now.AddDays(7).ToString("yyyy-MM-dd")"/>
 
@@ -64,9 +64,9 @@
 
 
 
-    <br />
-    <button id="press" class="btn btn-success btn-lg btn btn-block">Kaydet</button>
-</div>
+            <br />
+            <button id="press" class="btn btn-success btn-lg btn btn-block">Kaydet</button>
+        </div>
 
 
     }
@@ -79,9 +79,8 @@
                 actualDate.setDate(actualDate.getDate() + days);
                 console.log(days, actualDate);
 
-
                 $('#out').datepicker("setDate", actualDate);
-                var ShortDate = $('#out').datepicker({ dateFormat: 'dd-mm-yy' }).val();
+                /*var ShortDate = $('#out').datepicker({ dateFormat: 'dd-mm-yy' }).val();*/
                /* $("#demo").html(ActualDate);*/
             });
 
@@ -90,19 +89,20 @@
                 /* $(".ui-datepicker-calendar").hide();*/
                 $(".ui-datepicker").hide();
                 dateFormat: 'dd/mm/yyyy';
+
             });
             /*2022 - 03 - 08 00: 00: 00.000*/
             $('#press').click(function () {
                 var Datee = new Date($('#out').datepicker('getDate'));
-                var newDate = moment(Datee).format('DD/MMMM/YYYY HH:mm:ss ');
-                /*var newDaTe = Datee.toISOString();*/
+                var dateee = $('#in').val();
+                //var newDate = moment(Datee).format('M/D/YYYY h:mm:ss A');
+                //var newDaTe = new String(Datee);
 
-                $.post('@Url.Action("EditNotAppliedAppointment", "SubCustomer")',
+                $.post('@Url.Action("editnotappliedappointment", "subcustomer")',
 
-                    { datee: Datee.toUTCString() });
+                    { dateee: dateee });
+
             });
-
-
 
         });
 
