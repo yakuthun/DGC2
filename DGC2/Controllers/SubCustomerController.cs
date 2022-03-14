@@ -154,35 +154,14 @@ namespace DGC2.Controllers
         public ActionResult EditNotAppliedAppointment(int id)
         {
             var subcustomervalue = apm.GetByID(id);
+            
             return View(subcustomervalue);
         }
         [HttpPost]
-        public ActionResult EditNotAppliedAppointment(Appointment p, DateTime Day)
+        public ActionResult EditNotAppliedAppointment(Appointment p, string dateee)
         {
 
-            //DateTime datee
-
-
-            //DateTime dt = Convert.ToDateTime(datee);
-
-            //int dta = dt.Hour;
-
-
-            //var dtnow = DateTime.Now;
-            //var tomorrow = dtnow;
-            //tomorrow.AddDays(1);
-            //int i = 1;
-            //while (tomorrow <= dt)
-            //{
-            //    if (tomorrow == dt) break;
-            //    tomorrow.AddDays(i);
-            //    i++;
-            //}
-
-            
-
-
-            
+           
             apm.AppointmentUpdate(p);
             return RedirectToAction("WaitingListAppoinment");
         }
