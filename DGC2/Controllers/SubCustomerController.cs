@@ -10,6 +10,8 @@ using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
 
+
+
 namespace DGC2.Controllers
 {
     public class SubCustomerController : Controller
@@ -18,8 +20,8 @@ namespace DGC2.Controllers
         SubCustomerManager scm = new SubCustomerManager(new EfSubCustomerDal());
         AppointmentManager apm = new AppointmentManager(new EfAppointmentDal());
         CalendarManager cm = new CalendarManager(new EfCalendarDal());
-        
-        
+
+
         public ActionResult Index()
         {
             return View();
@@ -83,7 +85,7 @@ namespace DGC2.Controllers
         {
             var listappoinment = apm.GetList();
             return View(listappoinment);
-            
+
         }
         public ActionResult AskChangeList()
         {
@@ -155,8 +157,32 @@ namespace DGC2.Controllers
             return View(subcustomervalue);
         }
         [HttpPost]
-        public ActionResult EditNotAppliedAppointment(Appointment p)
+        public ActionResult EditNotAppliedAppointment(Appointment p, DateTime Day)
         {
+
+            //DateTime datee
+
+
+            //DateTime dt = Convert.ToDateTime(datee);
+
+            //int dta = dt.Hour;
+
+
+            //var dtnow = DateTime.Now;
+            //var tomorrow = dtnow;
+            //tomorrow.AddDays(1);
+            //int i = 1;
+            //while (tomorrow <= dt)
+            //{
+            //    if (tomorrow == dt) break;
+            //    tomorrow.AddDays(i);
+            //    i++;
+            //}
+
+            
+
+
+            
             apm.AppointmentUpdate(p);
             return RedirectToAction("WaitingListAppoinment");
         }
@@ -223,7 +249,7 @@ namespace DGC2.Controllers
 
         }
         [HttpPost]
-        public ActionResult AddAppoinment(Appointment p, Driver d, Calendar c)
+        public ActionResult AddAppoinment(Appointment p, Driver d)
         {
 
 
@@ -293,7 +319,7 @@ namespace DGC2.Controllers
                 p.AppointmentTrackStatus = 30;
             }
 
-            if(allcalendar.CLDailyAmount >= allcalendar.CLAmount && allcalendar.CLDailyAmount <= allcalendar.CLSumTolerance)
+            if (allcalendar.CLDailyAmount >= allcalendar.CLAmount && allcalendar.CLDailyAmount <= allcalendar.CLSumTolerance)
             {
                 p.AppointmentUpdateComment = "asildi";
             }
@@ -315,7 +341,7 @@ namespace DGC2.Controllers
             //return RedirectToAction("Index");
         }
 
-        public ActionResult returnToCalendar(int apvalue = 1, int p=1)
+        public ActionResult returnToCalendar(int apvalue = 1, int p = 1)
         {
             var comingnumber = apvalue;
             var today = DateTime.Now;
@@ -330,21 +356,21 @@ namespace DGC2.Controllers
             return View(alresult);
 
         }
-        public ActionResult Calendar(int p =1,string devam="bos")
+        public ActionResult Calendar(int p = 1, string devam = "bos")
         {
             var deger3 = c.Slices.Where(c => c.SliceStatus == true).Select(x => x.SlicesID).FirstOrDefault();
             ViewBag.d3 = deger3;
 
 
             var today = DateTime.Now;
-            var tomorrow = today.AddDays(p-1);
-            
-            
+            var tomorrow = today.AddDays(p - 1);
+
+
 
 
             ViewBag.pshow = tomorrow;
             var calenderresult = cm.GetList().ToPagedList(p, 4);
-            
+
             return View(calenderresult);
         }
 
@@ -360,20 +386,20 @@ namespace DGC2.Controllers
 
 
 
-        
+
 
 
         //---------------------------------------------------------------------------------------------------------
 
 
 
-        [HttpPost]
-        public JsonResult Test(Calendar p)
-        {
-            var deneme = p.CLDailyAmount;
-            TempData["cldailyamount"] = deneme;
-            return Json(deneme, JsonRequestBehavior.AllowGet);
-        }
+        //[HttpPost]
+        //public JsonResult Test(Calendar p)
+        //{
+        //    var deneme = p.CLDailyAmount;
+        //    TempData["cldailyamount"] = deneme;
+        //    return Json(deneme, JsonRequestBehavior.AllowGet);
+        //}
 
 
 
