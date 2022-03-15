@@ -106,18 +106,23 @@ namespace DGC2.Controllers
             var tolerance = p.CLTolerance;
             var sum = amount * tolerance / 100;
             p.CLSumTolerance = sum + amount;
+
+            p.CLStartDate = DateTime.Now;
             cl.CalendarAdd(p);
             var alcalendar = cl.GetList();
+            var today = DateTime.Now;
+            
             for (int i = 1; i <= 6; i++)
             {
-                var today = DateTime.Now.AddDays(i-1);
-                
+                //var today = DateTime.Now.AddDays(i - 1);
+                var tomorrow = today;
+                tomorrow = tomorrow.AddDays(i);
                 foreach (var item in alcalendar)
                 {
-                    item.CLStartDate = today;
+                    item.CLStartDate = tomorrow;
                     cl.CalendarAdd(item);
                 }
-
+                
             }
         
             return RedirectToAction("SliceList", "Admin");

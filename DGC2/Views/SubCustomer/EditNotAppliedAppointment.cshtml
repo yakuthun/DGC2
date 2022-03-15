@@ -20,9 +20,11 @@
 
     @using (Html.BeginForm("EditNotAppliedAppointment", "SubCustomer", FormMethod.Post))
     {
-        <div class="form-group">
-
-    <input type="date" id="date" name="AppStartDate" class="form-control " placeholder="Tarih" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@DateTime.Now.AddDays(7).ToString("yyyy-MM-dd")"/>
+<div class="form-group">
+    @Html.Label("Yeni Tarih")
+    <input type="date" id="date" name="AppStartDate" class="form-control " placeholder="Tarih" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@DateTime.Now.AddDays(7).ToString("yyyy-MM-dd")" />
+    <br />
+    <input type="text" id="date" name="CLSlice" class="form-control " placeholder="Dilim" />
 
 
     @Html.HiddenFor(x => x.AppointmentTrackStatus)
@@ -35,7 +37,7 @@
     @Html.HiddenFor(x => x.DownloadedDate)
     @Html.HiddenFor(x => x.AppointmentImage)
     @Html.HiddenFor(x => x.AppointmentComment)
-   
+
     @Html.HiddenFor(x => x.AppFinishDate)
     @Html.HiddenFor(x => x.InComingDate)
     @Html.HiddenFor(x => x.AppointmentUCode)
@@ -57,16 +59,16 @@
     @Html.TextBoxFor(x => x.AppDriverPlate, new { @class = "form-control" })
     @Html.Label("Sürücü Firma")
     @Html.TextBoxFor(x => x.AppDriverLogisticName, new { @class = "form-control" })
+    @Html.DropDownListFor(x => x.CalendarID, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
 
 
 
 
 
 
-
-            <br />
-            <button  class="btn btn-success btn-lg btn btn-block">Kaydet</button>
-        </div>
+    <br />
+    <button class="btn btn-success btn-lg btn btn-block">Kaydet</button>
+</div>
 
 
     }

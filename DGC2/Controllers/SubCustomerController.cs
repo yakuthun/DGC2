@@ -20,6 +20,7 @@ namespace DGC2.Controllers
         SubCustomerManager scm = new SubCustomerManager(new EfSubCustomerDal());
         AppointmentManager apm = new AppointmentManager(new EfAppointmentDal());
         CalendarManager cm = new CalendarManager(new EfCalendarDal());
+        
 
 
         public ActionResult Index()
@@ -149,18 +150,30 @@ namespace DGC2.Controllers
             return RedirectToAction("AppliedListAppoinment");
         }
 
-
+        
         [HttpGet]
         public ActionResult EditNotAppliedAppointment(int id )
         {
             var subcustomervalue = apm.GetByID(id);
-
+            List<SelectListItem> valuecm = (from x in cm.GetList()
+                                            select new SelectListItem
+                                            {
+                                                Text = x.CLSlice.ToString(),
+                                                Value = x.CalendarID.ToString()
+                                            }).ToList();
+            ViewBag.vlc = valuecm;
             return View(subcustomervalue);
         }
         [HttpPost]
-        public ActionResult EditNotAppliedAppointment(Appointment p)
+        public ActionResult EditNotAppliedAppointment(Appointment p, Calendar k)
         {
-            
+            Context c = new Context();
+            var curt = k.CLSlice;
+            DateTime dt = DateTime.Now;
+            dt = DateTime.Parse(p.AppStartDate.ToString());
+
+            var newvalue = c.Calendars.Where(x => x.CLSlice == curt);
+             
 
             apm.AppointmentUpdate(p);
            
@@ -327,9 +340,6 @@ namespace DGC2.Controllers
             var today = DateTime.Now;
             var tomorrow = today.AddDays(p - 1);
 
-
-
-
             ViewBag.pshow = tomorrow;
             var alresult = cm.GetSearchList(comingnumber).ToPagedList(p, 4);
 
@@ -345,13 +355,37 @@ namespace DGC2.Controllers
             var today = DateTime.Now;
             var tomorrow = today.AddDays(p - 1);
 
-
+            
 
 
             ViewBag.pshow = tomorrow;
-            var calenderresult = cm.GetList().ToPagedList(p, 4);
+            
 
-            return View(calenderresult);
+            var calenderresult = cm.GetList();
+            var TODAY = DateTime.Now;
+            int j = 0;
+            
+            //for (int i = 1; i <= 6; i++)
+            //{
+                //var today = DateTime.Now.AddDays(i - 1);
+                var TOMORROW = TODAY;
+                TOMORROW = TOMORROW.AddDays(0);
+                foreach (var item in calenderresult)
+                {
+                    if (j == 4)
+                    {
+                        TOMORROW = TOMORROW.AddDays(1);
+                        j = 0;
+                    }
+                    item.CLStartDate = TOMORROW;
+                    cm.CalendarUpdate(item);
+                    j++;
+
+                //}
+
+            }
+            var curt = cm.GetList().ToPagedList(p, 4);
+            return View(curt);
         }
 
         [HttpGet]
