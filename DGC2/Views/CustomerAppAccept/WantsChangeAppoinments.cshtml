@@ -75,7 +75,7 @@
                                     Firma
                                 </th>
                                 <th style="width: 12%" class="text-center">
-                                    Talep edilen randevu Zamanı
+                                    Randevu Değişiklik Yapılma Zamanı
                                 </th>
                                 <th style="width: 2%">
                                     Tür
@@ -109,7 +109,7 @@
                                     @item.SubCustomer.SubCustomerCompany
                                 </td>
                                 <td class="project-state" style="font-size:22px">
-                                    @(((DateTime)item.AppStartDate).ToString("dd MMMM"))     @(((DateTime)item.AppStartHour).ToString("hh:mm")) - @(((DateTime)item.Calendar.CLFinishDate).ToString("hh:mm"))     @item.Calendar.CLSlice.ToString() .Dilim
+                                    @(((DateTime)item.AppClickTime).ToString("dd MMMM hh:mm"))
                                 </td>
                                 <td style="font-size: 20px;">
                                     @item.AppointmentLoadType
