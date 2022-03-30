@@ -52,6 +52,10 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    if (item.CLSliceID == 401)
+                    {
+
+                    }
                     <tr>
                         <th>@item.CalendarID</th>
                         <td>@item.Slice.SliceVersion</td>

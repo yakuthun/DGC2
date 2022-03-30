@@ -234,9 +234,12 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
+                            if (item.SlicesID == ViewBag.d3)
+                            {
 
+                          
                             <tr>
-
+                                
                                 <td style="font-size: 25px; text-align:center">
                                     @item.CLSlice
 
@@ -341,8 +344,8 @@
                             </tr>
 
 
-                        }
-
+                                            }
+                                        }
                     </tbody>
                 </table>
             </div>

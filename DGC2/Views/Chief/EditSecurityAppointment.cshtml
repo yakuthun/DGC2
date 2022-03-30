@@ -1,0 +1,134 @@
+﻿@model EntityLayer.Concrete.Appointment
+@{
+    ViewBag.Title = "EditSecurityAppointment";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
+}
+
+
+
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    @*<script src="~/AdminLTE/webcamjs-master/webcam.js"></script>*@
+    @*<script type="text/javascript" src="~/AdminLTE/webcamjs-master/webcam.min.js"></script>*@
+    <style>
+        .inactiveLink {
+            display: none;
+        }
+    </style>
+</head>
+
+<h2 class="title">Randevu Düzenle</h2>
+
+<a href="/Chief/ClosePopUp/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
+<hr />
+
+
+@{string color1 = "";}
+@{string color2 = "";}
+@{string color3 = "";}
+@{string color4 = "";}
+
+@{string veri = "test";}
+
+@using (Html.BeginForm("EditSecurityAppointment", "Chief", FormMethod.Post))
+{
+
+    @Html.HiddenFor(x => x.AppointmentID, new { @class = "form-control" })
+    @Html.Label("PLAKA")
+    @Html.TextBoxFor(x => x.AppDriverPlate, new { @class = "form-control", @readonly = "readonly" })
+    @Html.Label("Mal Türü")
+    @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control", @readonly = "readonly" })
+    @*@Html.Label("Kapasite")*@
+    @Html.HiddenFor(x => x.AppointmentCapacity, new { @class = "form-control" })
+    @*@Html.Label("Sürücü Adı")*@
+    @Html.HiddenFor(x => x.DriverID, new { @class = "form-control" })
+    @*@Html.Label("Firma İsim")*@
+    @Html.HiddenFor(x => x.SubCustomerID, new { @class = "form-control" })
+    @*@Html.Label("Durum")*@
+    @Html.HiddenFor(x => x.AppointmentStatus, new { @class = "form-control" })
+    @*@Html.Label("Şef ID")*@
+    @Html.HiddenFor(x => x.ChiefID, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.AppointmentCancelComment, new { @class = "form-control" })
+
+    @*@Html.Label("başla")*@
+    @Html.HiddenFor(x => x.AppStartDate, new { @class = "form-control" })
+
+    @*@Html.Label("bitiş")*@
+    @Html.HiddenFor(x => x.AppFinishDate, new { @class = "form-control" })
+    @*@Html.Label("bitiş real")*@
+    @Html.HiddenFor(x => x.DownloadedDate, new { @class = "form-control" })
+
+    @*@Html.Label("bitiş real")
+        @Html.TextBoxFor(x => x.InComingDate, new { @class = "form-control" })*@
+    @Html.HiddenFor(x => x.AppointmentUpdateComment, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.CalendarID, new { @class = "form-control" })
+    @Html.Label("Eşya Adı")
+    @Html.TextBoxFor(x => x.AppointmentName, new { @class = "form-control", @readonly = "readonly" })
+
+    @*@Html.Label("Randevu Image")*@
+    @Html.HiddenFor(x => x.AppointmentImage, new { @class = "form-control" })
+    @*<input type="text" name="AppointmentImage" value="@ViewBag.x" class="form-control" readonly />*@
+    @Html.Label("Randevu Açıklama")
+    @Html.TextBoxFor(x => x.AppointmentComment, new { @class = "form-control" })
+
+    @*@Html.Label("Randevu Müşteri Onay Durumu")*@
+    @Html.HiddenFor(x => x.AppointmentTrackStatus, new { @class = "form-control" })
+
+
+    switch (ViewBag.trackstatus)
+    {
+        case 4:
+            color1 = "btn btn-secondary btn-lg btn-block";
+            color2 = "btn btn-secondary btn-lg btn-block inactiveLink";
+            color3 = "btn btn-secondary btn-lg btn-block inactiveLink";
+            break;
+        case 8:
+            color1 = "btn btn btn-info btn-lg btn-block inactiveLink";
+            color1 = "btn btn btn-info btn-lg btn-block inactiveLink";
+            color3 = "btn btn-secondary btn-lg btn-block inactiveLink";
+            break;
+
+        case 10:
+            color1 = "btn btn btn-success btn-lg btn-block inactiveLink";
+            color2 = "btn btn btn-success btn-lg btn-block inactiveLink";
+            color3 = "btn btn-secondary btn-lg btn-block ";
+
+           
+                <button class="@color3" id="tamamla">Çıkış Yaptı</button>
+          
+
+            break;
+
+    }
+
+
+
+
+    <br />
+    <a href="/Chief/InComingApp/@ViewBag.d" class="@color1">Geldi</a>
+
+
+
+
+    <br />
+    <a href="/Chief/NotComing/@ViewBag.d" class="btn btn-danger  float-right">Gelmedi</a>
+    <h1>@ViewBag.plate</h1>
+    <br />
+
+
+}
+
+
+<script>
+    function myFunction() {
+        var element = document.getElementById("btnUpload");
+        element.classList.remove("disabled");
+    }
+    function myFunction2() {
+        var element = document.getElementById("btnUpload");
+        element.classList.add("inactiveLink");
+        var element2 = document.getElementById("tamamla");
+        element2.removeAttribute("disabled");
+
+    }
+</script>

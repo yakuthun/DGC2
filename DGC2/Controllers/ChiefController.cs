@@ -32,7 +32,31 @@ namespace DGC2.Controllers
             return View(appointmentvalue);
 
         }
-      
+
+        public ActionResult InChief()
+        {
+
+            var deger3 = c.Slices.Where(c => c.SliceStatus == true).Select(x => x.SlicesID).FirstOrDefault();
+            ViewBag.d3 = deger3;
+            var deger4 = c.Calendars.Where(c => c.Slice.SliceStatus == true).Max(x => x.CLSlice);
+            ViewBag.d5 = deger4;
+            var appointmentvalue = am.GetList();
+            return View(appointmentvalue);
+
+        }
+
+        public ActionResult SecurityChief()
+        {
+
+            var deger3 = c.Slices.Where(c => c.SliceStatus == true).Select(x => x.SlicesID).FirstOrDefault();
+            ViewBag.d3 = deger3;
+            var deger4 = c.Calendars.Where(c => c.Slice.SliceStatus == true).Max(x => x.CLSlice);
+            ViewBag.d5 = deger4;
+            var appointmentvalue = am.GetList();
+            return View(appointmentvalue);
+
+        }
+
         public ActionResult Finished()
         {
             var appointmentvalue = am.GetList();
@@ -113,7 +137,88 @@ namespace DGC2.Controllers
             
         }
 
-     
+        [HttpGet]
+        public ActionResult EditInChiefAppointment(int id, Appointment p)
+        {
+            ViewBag.d = id;
+
+
+            var appvalues = am.GetByID(id);
+            ViewBag.trackstatus = appvalues.AppointmentTrackStatus;
+            ViewBag.imagecontent = appvalues.AppointmentImage;
+            return View(appvalues);
+
+        }
+        [HttpPost]
+        public ActionResult EditInChiefAppointment(Appointment p, int id)
+        {
+
+
+            //p.AppointmentImage = "xxx";
+
+            // p.InComingDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            p.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+
+            am.AppointmentUpdate(p);
+            if (p.AppointmentTrackStatus == 9)
+            {
+                var appvalue = am.GetByID(id);
+                appvalue.AppointmentTrackStatus = 10;
+                am.AppointmentDelete(appvalue);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("EditInChiefAppointment", "Chief", p.AppointmentID);
+            }
+
+            if (p.AppointmentTrackStatus == 4 || p.AppointmentTrackStatus == 8 || p.AppointmentTrackStatus == 9)
+            {
+                return RedirectToAction("EditInChiefAppointment", "Chief", p.AppointmentID);
+            }
+            else
+            {
+                return RedirectToAction("InChief", "Chief");
+            }
+
+            //return RedirectToAction("Index");
+
+        }
+
+
+        [HttpGet]
+        public ActionResult EditSecurityAppointment(int id, Appointment p)
+        {
+            ViewBag.d = id;
+
+
+            var appvalues = am.GetByID(id);
+            ViewBag.trackstatus = appvalues.AppointmentTrackStatus;
+            ViewBag.imagecontent = appvalues.AppointmentImage;
+            return View(appvalues);
+
+        }
+        [HttpPost]
+        public ActionResult EditSecurityAppointment(Appointment p, int id)
+        {
+
+
+            //p.AppointmentImage = "xxx";
+
+            // p.InComingDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            p.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+
+            am.AppointmentUpdate(p);
+          
+                var appvalue = am.GetByID(id);
+                appvalue.AppointmentTrackStatus = 25;
+                am.AppointmentDelete(appvalue);
+                return RedirectToAction("SecurityChief", "Chief");
+           
+
+        }
+
+
         public PartialViewResult EditAppPartial()
         {
             return PartialView();
@@ -141,7 +246,8 @@ namespace DGC2.Controllers
 
             appvalue.AppointmentTrackStatus = 8;
             am.AppointmentDelete(appvalue);
-            return RedirectToAction("EditAppointment", "Chief", new { id = id });
+            //return RedirectToAction("EditAppointment", "Chief", new { id = id });
+            return RedirectToAction("SecurityChief", "Chief");
         }
         // 9- İNDİRİLİYOR
         public ActionResult Downloaded(int id, Appointment p)
@@ -151,7 +257,8 @@ namespace DGC2.Controllers
 
             appvalue.AppointmentTrackStatus = 9;
             am.AppointmentDelete(appvalue);
-            return RedirectToAction("EditAppointment", "Chief", new { id = id });
+            //return RedirectToAction("EditAppointment", "Chief", new { id = id });
+            return RedirectToAction("EditInChiefAppointment", "Chief", new { id = id });
         }
         // 9 - GELDİ VE İNDİRİLDİ
         public ActionResult InComingAndDownloading()
