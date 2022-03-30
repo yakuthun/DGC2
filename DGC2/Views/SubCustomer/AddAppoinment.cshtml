@@ -40,11 +40,11 @@
             @Html.Label("Yükleme Türü (Dökme/Palet)")
             @Html.TextBoxFor(x => x.AppointmentLoadType, new { @class = "form-control" })
 
-            @Html.Label("Tedarikçi id")
-            @Html.TextBoxFor(x => x.SubCustomerID, new { @class = "form-control" })
+            
+            @Html.HiddenFor(x => x.SubCustomerID, new { @class = "form-control" })
 
-            @Html.Label("Şef ID")
-            @Html.TextBoxFor(x => x.ChiefID, new { @class = "form-control" })
+          
+            @Html.HiddenFor(x => x.ChiefID, new { @class = "form-control" })
 
             @Html.Label("Mal İsim")
             @Html.TextBoxFor(x => x.AppointmentName, new { @class = "form-control" })
@@ -69,12 +69,12 @@
             <br />
             <br />
             @ViewBag.asd
-            <button id="submit" class="btn btn-success btn-lg btn btn-block">Kaydet</button>
+            <button id="submit" class="btn btn-success btn-lg btn btn-block">Randevu Al</button>
         </div>
 
     }
 
-    <script type="text/javascript">
+    @*<script type="text/javascript">
 
         $(document).ready(function () {
 
@@ -101,7 +101,7 @@
             });
         });
 
-    </script>
+    </script>*@
 </body>
 </html>
 

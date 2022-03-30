@@ -277,6 +277,8 @@ namespace DGC2.Controllers
             p.AppStartHour = DateTime.Parse(TempData["myhour"].ToString());
             var number = TempData["tempslice"];
             p.CalendarID = int.Parse(number.ToString());
+            p.SubCustomerID = 3;
+            p.ChiefID = 1;
             //var dailyamount = (int)TempData["tempdailyamount"];
 
 
@@ -322,7 +324,7 @@ namespace DGC2.Controllers
             cm.CalendarUpdate(allcalendar);
             apm.AppointmentAdd(p);
 
-            return RedirectToAction("Calendar");
+            return RedirectToAction("WaitingListAppoinment");
             //if (p.AppointmentTrackStatus == 0)
             //{
             //    p.AppointmentTrackStatus = 1;
@@ -368,22 +370,22 @@ namespace DGC2.Controllers
             //for (int i = 1; i <= 6; i++)
             //{
                 //var today = DateTime.Now.AddDays(i - 1);
-                var TOMORROW = TODAY;
-                TOMORROW = TOMORROW.AddDays(0);
-                foreach (var item in calenderresult)
-                {
-                    if (j == 4)
-                    {
-                        TOMORROW = TOMORROW.AddDays(1);
-                        j = 0;
-                    }
-                    item.CLStartDate = TOMORROW;
-                    cm.CalendarUpdate(item);
-                    j++;
+            //    var TOMORROW = TODAY;
+            //    TOMORROW = TOMORROW.AddDays(0);
+            //    foreach (var item in calenderresult)
+            //    {
+            //        if (j == 4)
+            //        {
+            //            TOMORROW = TOMORROW.AddDays(1);
+            //            j = 0;
+            //        }
+            //        item.CLStartDate = TOMORROW;
+            //        cm.CalendarUpdate(item);
+            //        j++;
 
-                //}
+            //    //}
 
-            }
+            //}
             var curt = cm.GetList().ToPagedList(p, 4);
             return View(curt);
         }
