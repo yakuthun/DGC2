@@ -3103,6 +3103,7 @@
     <Content Include="Views\CustomerAppAccept\UserList.cshtml" />
     <Content Include="Views\CustomerAppAccept\AddUser.cshtml" />
     <Content Include="Views\CustomerAppAccept\EditUser.cshtml" />
+    <Content Include="Views\CustomerAppAccept\Index.cshtml" />
     <Content Include="Views\Chief\InChief.cshtml" />
     <Content Include="Views\Chief\SecurityChief.cshtml" />
     <Content Include="Views\Chief\EditInChiefAppointment.cshtml" />

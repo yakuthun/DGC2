@@ -215,22 +215,19 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
     with font-awesome or any other icon font library -->
-
-
-
-                        <li style="margin-bottom:5%">
-                            <a href="/CustomerAppAccept/AddSubCustomer" class="nav-link">
-                                <p class="btn btn-success" style="padding-right:42%; padding-bottom:5%; padding-top:5%;">
-                                    Tedarikçi Girişi
-                                </p>
-                            </a>
-                        </li>
+                        @*<li style="margin-bottom:5%">
+            <a href="/CustomerAppAccept/AddSubCustomer" class="nav-link">
+                <p class="btn btn-success" style="padding-right:42%; padding-bottom:5%; padding-top:5%;">
+                    Tedarikçi Girişi
+                </p>
+            </a>
+        </li>*@
 
                         <li class="nav-item">
                             <a href="/CustomerAppAccept/UserList/" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                   Kullanıcılar
+                                    Kullanıcılar
 
                                 </p>
                             </a>
@@ -238,17 +235,6 @@
 
                         </li>
 
-                        <li class="nav-item">
-                            <a href="/CustomerAppAccept/Appointments/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Onaylanan Randevular
-
-                                </p>
-                            </a>
-
-
-                        </li>
                         <li class="nav-item">
                             <a href="/CustomerAppAccept/SubCustomerList/" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -260,23 +246,49 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/CustomerAppAccept/WaitingAppointments/" class="nav-link">
+                            <a href="/CustomerAppAccept/Index/" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Onay Bekleyen
+                                    Ana Sayfa
 
                                 </p>
                             </a>
 
 
                         </li>
+
+                        <li class="nav-item">
+                            <a href="/CustomerAppAccept/WaitingAppointments/" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Onay Bekleyen Randevu
+
+                                </p>
+                            </a>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/CustomerAppAccept/Appointments/" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Onaylanan Randevu
+
+                                </p>
+                            </a>
+
+
+                        </li>
+
+
+
 
 
                         <li class="nav-item">
                             <a href="/CustomerAppAccept/CanceledAppoinments/" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    İptal Randevular
+                                    İptal Edilen Randevu
 
                                 </p>
                             </a>
@@ -284,22 +296,22 @@
 
                         </li>
 
-                        <li class="nav-item">
-                            <a href="/CustomerAppAccept/WantsChangeAppoinments/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Değişiklik Talebi
+                        @*<li class="nav-item">
+            <a href="/CustomerAppAccept/WantsChangeAppoinments/" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    Değişiklik Talebi
 
-                                </p>
-                            </a>
+                </p>
+            </a>
 
 
-                        </li>
+        </li>*@
                         <li class="nav-item">
                             <a href="/CustomerAppAccept/AppliedWantsCancelAppointments/" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    İptal Talebi
+                                    İptal Talepleri
 
                                 </p>
                             </a>
@@ -307,52 +319,18 @@
 
                         </li>
 
-                        <li class="nav-item">
-                            <a href="/CustomerAppAccept/CanceledAfterChangedAppointments/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    İptal Değişenler
+                        @*<li class="nav-item">
+            <a href="/CustomerAppAccept/CanceledAfterChangedAppointments/" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    İptal Değişenler
 
-                                </p>
-                            </a>
+                </p>
+            </a>
 
 
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Grafikler
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Grafik 1</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/flot.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Grafik 2</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/inline.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Grafik 3</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/uplot.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Grafik 4</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+        </li>*@
+
 
 
 

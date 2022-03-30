@@ -1,10 +1,11 @@
 ﻿@using EntityLayer.Concrete
-@model List<Appointment>
-
+@model  List<Appointment>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
+    Layout = "~/Views/Shared/_CustomerAdminLayout.cshtml";
 }
+
+
 
 @{
     int bluebox = 0;
@@ -26,7 +27,7 @@
     {
         yellowbox++;
     }
-    if(item.AppointmentTrackStatus == 11)
+    if (item.AppointmentTrackStatus == 11)
     {
         redbox++;
     }
@@ -45,7 +46,7 @@
             <i class="ion ion-cube"></i>
         </div>
         <ion-icon name="cube-outline"></ion-icon>
-        <a href="/SubCustomer/WaitingListAppoinment/" class="small-box-footer">Detaylara Git <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="/CustomerAppAccept/WaitingAppointments/" class="small-box-footer">Detaylara Git <i class="fas fa-arrow-circle-right"></i></a>
     </div>
 </div>
 
@@ -55,12 +56,12 @@
         <div class="inner">
             <h3>@greenbox @*<sup style="font-size: 20px">%</sup>*@</h3>
 
-            <p>Onaylanan Randevularım</p>
+            <p>Onaylanan Randevular</p>
         </div>
         <div class="icon">
             <i class="ion ion-checkmark"></i>
         </div>
-        <a href="/SubCustomer/AppliedListAppoinment/" class="small-box-footer">Detaylara Git <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="/CustomerAppAccept/Appointments/" class="small-box-footer">Detaylara Git <i class="fas fa-arrow-circle-right"></i></a>
     </div>
 </div>
 
@@ -70,12 +71,12 @@
         <div class="inner">
             <h3>@yellowbox</h3>
 
-            <p>İptal Edilmeyi Bekleyen Randevularım</p>
+            <p>İptal Edilmeyi Bekleyen Randevular</p>
         </div>
         <div class="icon">
             <i class="ion ion-clock"></i>
         </div>
-        <a href="/SubCustomer/CancelChangeList/" class="small-box-footer">Detaylara Git <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="/CustomerAppAccept/AppliedWantsCancelAppointments/" class="small-box-footer">Detaylara Git <i class="fas fa-arrow-circle-right"></i></a>
     </div>
 </div>
 
@@ -85,14 +86,11 @@
         <div class="inner">
             <h3>@redbox</h3>
 
-            <p>İptal Edilen Randevularım</p>
+            <p>İptal Edilen Randevular</p>
         </div>
         <div class="icon">
             <i class="ion ion-alert"></i>
         </div>
-        <a href="/SubCustomer/CanceledListAppoinment/" class="small-box-footer">Detaylara Git <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="/CustomerAppAccept/CanceledAppoinments/" class="small-box-footer">Detaylara Git <i class="fas fa-arrow-circle-right"></i></a>
     </div>
 </div>
-
-
-
