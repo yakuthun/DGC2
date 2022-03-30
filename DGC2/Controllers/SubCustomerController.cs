@@ -25,7 +25,8 @@ namespace DGC2.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var graphicresult = apm.GetList();
+            return View(graphicresult);
         }
         [HttpGet]
         public ActionResult AddDriver()

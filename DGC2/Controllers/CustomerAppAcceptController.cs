@@ -19,7 +19,11 @@ namespace DGC2.Controllers
         UserManager um = new UserManager(new EfUserDal());
         Context c = new Context();
 
-
+        public ActionResult Index()
+        {
+            var graphicvalue = am.GetBySubCustomer();
+            return View(graphicvalue);   
+        }
         public ActionResult Appointments()
         {
 

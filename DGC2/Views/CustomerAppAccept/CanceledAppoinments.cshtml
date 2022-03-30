@@ -75,21 +75,21 @@
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
-                            <th style="width: 1%">
+                            <th style="width: 1%"class="text-center">
                                 Firma
                             </th>
-                            <th style="width: 12%" class="text-center">
-                                Randevu İptal Alınma Zamanı
+                            <th style="width: 8%" class="text-center">
+                                Randevu İptal Edilme Tarihi
                             </th>
                            
-                            <th style="width: 5%">
-                                Mal İsim
+                            <th style="width: 1%">
+                                Yük Cinsi
                             </th>
                             <th style="width: 5%">
-                                Yük Adet
+                                Kap / Koli
                             </th>
-                            <th style="width: 5%">
-                                Durum
+                            <th style="width: 6%">
+                                
                             </th>
 
                             <th style="width: 20%" colspan="2">
@@ -126,28 +126,26 @@
                                 <tr>
 
 
-                                    <td style="font-size: 20px; font-weight:800">
+                                    <td style="font-size: 20px; font-weight:800; text-align:center">
                                         @item.SubCustomer.SubCustomerCompany
                                     </td>
                                     <td class="project-state" style="font-size:22px">
                                     @(((DateTime)item.AppClickTime).ToString(" dd MMMM hh:mm"))    
                                     </td>
                                     <td style="font-size: 20px;">
-                                        @item.AppointmentLoadType
+                                        @item.AppointmentName
                                     </td>
                                     <td>
-                                        <a style="font-size: 20px;">
-                                            @item.AppointmentName
-                                        </a>
-                                        <br />
 
-                                    </td>
-                                    <td>
                                         <ul class="list-inline">
-                                            <li class="list-inline-item" style="font-size: 30px; font-weight: 600; ">
+                                            <li class="list-inline-item" style="font-size: 30px; font-weight: 600;">
                                                 @item.AppointmentCapacity
                                             </li>
                                         </ul>
+
+                                    </td>
+                                    <td>
+                                       
                                     </td>
                                    
                                     
