@@ -3103,6 +3103,10 @@
     <Content Include="Views\CustomerAppAccept\UserList.cshtml" />
     <Content Include="Views\CustomerAppAccept\AddUser.cshtml" />
     <Content Include="Views\CustomerAppAccept\EditUser.cshtml" />
+    <Content Include="Views\Chief\InChief.cshtml" />
+    <Content Include="Views\Chief\SecurityChief.cshtml" />
+    <Content Include="Views\Chief\EditInChiefAppointment.cshtml" />
+    <Content Include="Views\Chief\EditSecurityAppointment.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

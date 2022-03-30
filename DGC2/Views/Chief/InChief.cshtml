@@ -1,13 +1,9 @@
-﻿@using EntityLayer.Concrete
-@model List<Appointment>
-
-
+﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "InChief";
     Layout = "~/Views/Shared/_ChiefLayout.cshtml";
 }
-@{int dilimSayi = 1;}
-@{string takipdurum = "";}
+
 
 <style>
     .inactiveLink {
@@ -15,6 +11,7 @@
         cursor: default;
     }
 </style>
+
 
 
 <br />
@@ -48,8 +45,8 @@
 
             <table id="example1" class="table table-bordered table-striped table-hover">
                 <thead>
-                    <tr >
-                        <th >ID</th>
+                    <tr>
+                        <th>ID</th>
                         <th>Müşteri</th>
                         <th>Tedarikçi</th>
                         <th>Plaka</th>
@@ -81,7 +78,7 @@
                         {
 
 
-                            if (item.AppointmentTrackStatus == 4 || item.AppointmentTrackStatus == 8 || item.AppointmentTrackStatus == 9)
+                            if (item.AppointmentTrackStatus == 8 || item.AppointmentTrackStatus == 9)
                             {
                                 if (item.Calendar.SlicesID == ViewBag.d3)
                                 {
@@ -89,26 +86,8 @@
                                     if (item.Calendar.CLSlice == @i)
                                     {
 
-                                       
-                                        switch (item.AppointmentTrackStatus)
-                                        {
-                                            case 4:
-                                                takipdurum = "bg-primary";
 
-                                                break;
-                                            case 8:
-                                                takipdurum = "bg-success";
-
-                                                break;
-                                            case 9:
-                                                takipdurum = "bg-dark";
-                                                break;
-                                            case 10:
-                                                takipdurum = "bg-success";
-                                                break;
-
-                                        }
-                                        <tr class="@takipdurum" style=" ">
+                                        <tr>
                                             <td>@item.AppointmentID</td>
                                             <td style="font-size:20px;">@item.SubCustomer.Customer.CompanyName</td>
                                             <td>@item.SubCustomer.SubCustomerCompany</td>
@@ -117,30 +96,9 @@
                                             <td>@item.InComingDate</td>
                                             <td>@item.DownloadedDate</td>
 
-                                            <td class="">
+                                            <td>@item.AppointmentTrackStatus</td>
 
-                                                @switch (item.AppointmentTrackStatus)
-                                                {
-                                                    case 4:
-                                                        <p>Geliyor</p>
-
-                                                        break;
-                                                    case 8:
-                                                        <p>Geldi</p>
-
-                                                        break;
-                                                    case 9:
-                                                        <p>İndiriliyor</p>
-                                                        break;
-                                                    case 10:
-                                                        <p>Tamamlandı</p>
-                                                        break;
-
-                                                }
-
-                                            </td>
-
-                                            <td><a href="/Chief/EditAppointment/@item.AppointmentID" class="btn btn-primary">İşlem Yap</a></td>
+                                            <td><a href="/Chief/EditInChiefAppointment/@item.AppointmentID" class="btn btn-primary">İşlem Yap</a></td>
                                         </tr>
 
                                     }
@@ -167,5 +125,7 @@
         </ul>
     </div>
 </div>
+
+
 
 
