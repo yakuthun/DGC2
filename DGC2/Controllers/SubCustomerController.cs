@@ -427,8 +427,8 @@ namespace DGC2.Controllers
         //------------------------------------------------FURKAN ALAN--------------------------------------------
         public ActionResult Calendar101()
         {
-            var calenderresult = cm.GetList();
-            return View(calenderresult);
+            //var calenderresult = cm.GetList();
+            return View();
         }
         Context c = new Context();
 

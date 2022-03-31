@@ -3025,7 +3025,7 @@
     <Content Include="AdminLTE\webcamjs-master\LICENSE" />
     <Content Include="AdminLTE\webcamjs-master\package.json" />
     <Content Include="AdminLTE\webcamjs-master\README.md" />
-    <None Include="Properties\PublishProfiles\DGC220220220211017 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\rokettek - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
