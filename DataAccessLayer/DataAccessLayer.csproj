@@ -196,6 +196,10 @@
     <Compile Include="Migrations\202203121050402_mig_user_role_add.designer.cs">
       <DependentUpon>202203121050402_mig_user_role_add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203302215144_mig_added_AppSlice.cs" />
+    <Compile Include="Migrations\202203302215144_mig_added_AppSlice.designer.cs">
+      <DependentUpon>202203302215144_mig_added_AppSlice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -302,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203121050402_mig_user_role_add.resx">
       <DependentUpon>202203121050402_mig_user_role_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203302215144_mig_added_AppSlice.resx">
+      <DependentUpon>202203302215144_mig_added_AppSlice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

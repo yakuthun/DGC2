@@ -156,6 +156,8 @@ namespace DGC2.Controllers
         public ActionResult EditNotAppliedAppointment(int id )
         {
             var subcustomervalue = apm.GetByID(id);
+            ViewBag.editnot = subcustomervalue.AppSlice;
+            
             List<SelectListItem> valuecm = (from x in cm.GetList()
                                             select new SelectListItem
                                             {
@@ -168,12 +170,13 @@ namespace DGC2.Controllers
         [HttpPost]
         public ActionResult EditNotAppliedAppointment(Appointment p, Calendar k)
         {
-            Context c = new Context();
-            var curt = k.CLSlice;
-            DateTime dt = DateTime.Now;
-            dt = DateTime.Parse(p.AppStartDate.ToString());
+            //Context c = new Context();
+            //var curt = p.AppSlice;
+            
+            //DateTime dt = DateTime.Now;
+            //dt = DateTime.Parse(p.AppStartDate.ToString());
 
-            var newvalue = c.Calendars.Where(x => x.CLSlice == curt);
+            //var newvalue = c.Calendars.Where(x => x.CLSlice == curt);
              
 
             apm.AppointmentUpdate(p);

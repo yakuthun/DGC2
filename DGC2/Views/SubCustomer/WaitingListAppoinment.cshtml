@@ -9,7 +9,7 @@
 
 
 @{
-    TimeSpan finishtime = TimeSpan.Parse("22:00"); // 10 PM
+    TimeSpan finishtime = TimeSpan.Parse("03:00"); // 10 PM
     TimeSpan now = DateTime.Now.TimeOfDay;
 }
 <body class="hold-transition sidebar-mini">
@@ -102,7 +102,7 @@
                                 @(((DateTime)item.AppStartDate).ToString("dd MMMM"))     @(((DateTime)item.AppStartHour).ToString("hh:mm")) - @(((DateTime)item.Calendar.CLFinishDate).ToString("hh:mm"))
                             </td>
                             <td class="project-state" style="font-size:22px; font-weight:600">
-                                @item.Calendar.CLSlice.ToString()
+                                @item.AppSlice.ToString()
                             </td>
                             <td style="font-size: 20px; text-align:center">
                                 @item.AppointmentLoadType
