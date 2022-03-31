@@ -26,6 +26,7 @@ namespace EntityLayer.Concrete
         public string AppointmentComment { get; set; }
         public DateTime? AppStartDate { get; set; }
 
+        public int? AppSlice { get; set; }
         public DateTime? AppStartHour { get; set; }
         public DateTime? AppClickTime { get; set; }
         public DateTime? AppFinishDate { get; set; }
