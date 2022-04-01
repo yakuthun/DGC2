@@ -115,7 +115,7 @@ namespace DGC2.Controllers
 
                 p.AppointmentTrackStatus = 20;
             }
-
+            
             p.AppointmentStatus = false;
             apm.AppointmentUpdate(p);
             return RedirectToAction("AppliedListAppoinment");
