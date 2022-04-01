@@ -23,8 +23,8 @@ namespace DGC2.Controllers
         Context c = new Context();
         public ActionResult Index()
         {
-            var gelen = c.Appointments.Where(c => c.AppStartDate == DateTime.Today).Count();
-            ViewBag.gelen = gelen;
+            //var gelen = c.Appointments.Where(c => c.AppStartDate == DateTime.Today).Count();
+            //ViewBag.gelen = gelen;
 
             var geldi = c.Appointments.Where(c => c.InComingDate == DateTime.Today).Count();
             ViewBag.geldi = geldi;

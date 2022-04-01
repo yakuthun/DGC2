@@ -277,12 +277,12 @@ namespace DGC2.Controllers
             //p.AppStartDate = DateTime.Parse(TempData["tempdata"].ToString());
 
             p.AppClickTime = DateTime.Now;
-            p.AppStartDate = DateTime.Parse(TempData["mydatetime"].ToString());
-            p.AppStartHour = DateTime.Parse(TempData["myhour"].ToString());
-            var number = TempData["tempslice"];
-            p.CalendarID = int.Parse(number.ToString());
-            p.SubCustomerID = 3;
-            p.ChiefID = 1;
+            //p.AppStartDate =/* DateTime.Parse(TempData["mydatetime"].ToString()); //2 nisan yorum satırına aldım*/
+            //p.AppStartHour = DateTime.Parse(TempData["myhour"].ToString());
+            //var number = TempData["tempslice"];
+            //p.CalendarID = int.Parse(number.ToString());
+            //p.SubCustomerID = 3;
+            //p.ChiefID = 1;
             //var dailyamount = (int)TempData["tempdailyamount"];
 
 
