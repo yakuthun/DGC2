@@ -17,6 +17,7 @@ namespace DGC2.Controllers
     public class SubCustomerController : Controller
     {
         // GET: SubCustomer
+        
         SubCustomerManager scm = new SubCustomerManager(new EfSubCustomerDal());
         AppointmentManager apm = new AppointmentManager(new EfAppointmentDal());
         CalendarManager cm = new CalendarManager(new EfCalendarDal());
@@ -27,6 +28,7 @@ namespace DGC2.Controllers
         {
             var graphicresult = apm.GetList();
             return View(graphicresult);
+            
         }
         [HttpGet]
         public ActionResult AddDriver()
@@ -39,6 +41,7 @@ namespace DGC2.Controllers
         [HttpPost]
         public ActionResult AddDriver(Driver p, Appointment ps)
         {
+            
             p.DriverName = "Mahmut";
             //p.DriverSurname = "Özcan";
             p.DriverNumber = "321321321";
@@ -277,7 +280,7 @@ namespace DGC2.Controllers
             //p.AppStartDate = DateTime.Parse(TempData["tempdata"].ToString());
 
             p.AppClickTime = DateTime.Now;
-            p.AppStartDate = DateTime.Parse(TempData["mydatetime"].ToString());
+            //p.AppStartDate = DateTime.Parse(TempData["mydatetime"].ToString());
             p.AppStartHour = DateTime.Parse(TempData["myhour"].ToString());
             var number = TempData["tempslice"];
             p.CalendarID = int.Parse(number.ToString());
