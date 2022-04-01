@@ -34,6 +34,7 @@ namespace EntityLayer.Concrete
         public DateTime? InComingDate { get; set; }
 
         public DateTime? DownloadedDate { get; set; }
+        public DateTime? OutDate { get; set; }
         [StringLength(20)]
         public string AppointmentUCode { get; set; }
         public bool AppointmentStatus { get; set; }

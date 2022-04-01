@@ -14,9 +14,9 @@ namespace EntityLayer.Concrete
         public int CLSliceID { get; set; }
         public DateTime CLUseStartDate  { get; set; }
         public DateTime CLUseFinishDate  { get; set; }
-        public DateTime CLStartDate { get; set; }
-        public DateTime CLStartHour { get; set; }
-        public DateTime CLFinishDate { get; set; }
+        public string CLStartDate { get; set; }
+        public string CLStartHour { get; set; }
+        public string CLFinishDate { get; set; }
         public int CLSlice { get; set; }
         public int CLAmount { get; set; }
         public int CLTolerance { get; set; }

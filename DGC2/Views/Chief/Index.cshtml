@@ -27,7 +27,7 @@
     <div class="container-fluid" style="background-color:red" >
         <div class="row">
             <div class="col bg-primary">
-                Geliyor @ViewBag.gelen
+                Bekleniyor @ViewBag.gelen
             </div>
             <div class="col bg-primary">
                 Geldi @ViewBag.geldi
@@ -79,16 +79,13 @@
 
                 <tbody>
 
-
-
-
                     @foreach (var item in Model)
                     {
                         if (/*DateTime.Now.Day == Convert.ToDateTime(item.AppStartDate).Day*/ DateTime.Now == DateTime.Now)
                         {
 
 
-                            if (item.AppointmentTrackStatus == 4 || item.AppointmentTrackStatus == 8 || item.AppointmentTrackStatus == 9)
+                            if (item.AppointmentTrackStatus == 4 || item.AppointmentTrackStatus == 8 || item.AppointmentTrackStatus == 9 || item.AppointmentTrackStatus == 10)
                             {
                                 if (item.Calendar.SlicesID == ViewBag.d3)
                                 {
@@ -129,7 +126,7 @@
                                                 @switch (item.AppointmentTrackStatus)
                                                 {
                                                     case 4:
-                                                        <p>Geliyor</p>
+                                                        <p>Bekleniyor</p>
 
                                                         break;
                                                     case 8:

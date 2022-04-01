@@ -256,7 +256,7 @@ namespace DGC2.Controllers
         {
            
             var appvalue = am.GetByID(id);
-            appvalue.InComingDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            appvalue.InComingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
 
             appvalue.AppointmentTrackStatus = 8;
             am.AppointmentDelete(appvalue);
