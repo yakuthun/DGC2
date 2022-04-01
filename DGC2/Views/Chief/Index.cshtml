@@ -22,17 +22,24 @@
 <div class="card">
     <div class="card-header">
         <h3 class="card-title" style="font-size:30px; font-weight:700">Bekleyen Randevular</h3>
-        <div class="card-tools">
 
-            <div class="input-group input-group-sm" style="width: 150px;">
-
-                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
+    </div>
+    <div class="container-fluid" style="background-color:red" >
+        <div class="row">
+            <div class="col bg-primary">
+                Geliyor @ViewBag.gelen
+            </div>
+            <div class="col bg-primary">
+                Geldi @ViewBag.geldi
+            </div>
+            <div class="col">
+                İndiriliyor @ViewBag.indiriliyor
+            </div>
+            <div class="col">
+                Tamamlandı @ViewBag.biten
+            </div>
+            <div class="col">
+                Çıktı @ViewBag.cikti
             </div>
         </div>
     </div>
@@ -48,8 +55,8 @@
 
             <table id="example1" class="table table-bordered table-striped table-hover">
                 <thead>
-                    <tr >
-                        <th >ID</th>
+                    <tr>
+                        <th>ID</th>
                         <th>Müşteri</th>
                         <th>Tedarikçi</th>
                         <th>Plaka</th>
@@ -89,7 +96,7 @@
                                     if (item.Calendar.CLSlice == @i)
                                     {
 
-                                       
+
                                         switch (item.AppointmentTrackStatus)
                                         {
                                             case 4:

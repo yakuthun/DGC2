@@ -23,7 +23,21 @@ namespace DGC2.Controllers
         Context c = new Context();
         public ActionResult Index()
         {
-           
+            var gelen = c.Appointments.Where(c => c.AppStartDate == DateTime.Today).Count();
+            ViewBag.gelen = gelen;
+
+            var geldi = c.Appointments.Where(c => c.InComingDate == DateTime.Today).Count();
+            ViewBag.geldi = geldi;
+
+            var indiriliyor = c.Appointments.Where(c => c.DownloadedDate == DateTime.Today).Count();
+            ViewBag.indiriliyor = indiriliyor;
+
+            var bitenveri = c.Appointments.Where(c => c.AppFinishDate == DateTime.Today).Count();
+            ViewBag.biten = bitenveri;
+
+            var cikti = c.Appointments.Where(c => c.AppFinishDate == DateTime.Today).Count();
+            ViewBag.cikti = cikti;
+
             var deger3 = c.Slices.Where(c => c.SliceStatus == true).Select(x => x.SlicesID).FirstOrDefault();
             ViewBag.d3 = deger3;
             var deger4 = c.Calendars.Where(c => c.Slice.SliceStatus == true).Max(x => x.CLSlice);
