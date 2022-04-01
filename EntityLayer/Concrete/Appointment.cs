@@ -24,7 +24,7 @@ namespace EntityLayer.Concrete
         [Required(AllowEmptyStrings = true)]
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string AppointmentComment { get; set; }
-        public DateTime? AppStartDate { get; set; }
+        public string AppStartDate { get; set; }
 
         public int? AppSlice { get; set; }
         public DateTime? AppStartHour { get; set; }
