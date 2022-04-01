@@ -28,9 +28,26 @@
             <div class="container">
                 <div class="row">
                     <div class="col text-center">
+                        <br /><h3 style="font-weight:600">Açıklama</h3>
+                        <hr />
+                        <h5 style="font-weight:600; text-align:right" class="mt-3">Tarih</h5><br />
+                        <br />
+
+                        <h5 style="font-weight:600; text-align:right">Dilim</h5><br />
+                        <h5 style="font-weight:600; text-align:right" class="mt-3">Yük Cinsi</h5><br />
+                        <h5 style="font-weight:600; text-align:right"class="mt-3">Tür</h5><br />
+                        <h5 style="font-weight:600; text-align:right"class="mt-2">Kap / Koli</h5><br />
+                        <h5 style="font-weight:600; text-align:right"class="mt-2">Sürücü İsim</h5><br />
+                        <h5 style="font-weight:600; text-align:right"class="mt-3">Sürücü Telefon</h5><br />
+                        <h5 style="font-weight:600; text-align:right"class="mt-3">Sürücü Plaka</h5><br />
+                        <h5 style="font-weight:600; text-align:right"class="mt-3">Sürücü Firma</h5><br />
+
+
+                    </div>
+                    <div class="col text-center">
                         <br /> <h3 style="font-weight:600">Eski Randevu</h3>
                         <hr />
-                        <input class="form-control "  readonly placeholder="Tarih" value="@(((DateTime)Model.AppStartDate).ToString("dd MMMM "))  " />
+                        <input class="form-control " readonly placeholder="Tarih" value="@(((DateTime)Model.AppStartDate).ToString("dd MMMM "))  " />
                         <br />
 
                         <input type="text" class="form-control" readonly placeholder="Eski Dilim" value="@Model.AppSlice"><br />
@@ -45,18 +62,19 @@
                     <div class="col text-center">
                         <br /><h3 style="font-weight:600">Yeni Randevu</h3>
                         <hr />
-                        <input type="date" id="date" name="AppStartDate" class="form-control " placeholder="Tarih" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@DateTime.Now.AddDays(7).ToString("yyyy-MM-dd")" />
+                        <input type="date" id="date" name="AppStartDate" class="form-control " value="@(((DateTime)Model.AppStartDate).ToString("dd MMMM "))  " placeholder="Tarih" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@DateTime.Now.AddDays(7).ToString("yyyy-MM-dd")" />
                         <br />
 
-                        <input type="number" id="number" class="form-control" name="AppSlice" placeholder="Yeni Dilim" min="1" max="4"><br />
-                        <input type="text" id="text" class="form-control" name="AppointmentName" placeholder="Yük Cinsi"><br />
-                        <input type="text" id="text" class="form-control" name="AppointmentLoadType" placeholder="Tür"><br />
-                        <input type="number" id="number" class="form-control" name="AppointmentCapacity" placeholder="Kap / Koli"><br />
-                        <input type="text" id="text" class="form-control" name="AppDriverName" placeholder="Sürücü İsim"><br />
-                        <input type="text" id="text" class="form-control" name="AppDriverNumber" placeholder="Sürücü Telefon"><br />
-                        <input type="text" id="text" class="form-control" name="AppDriverPlate" placeholder="Sürücü Plaka"><br />
-                        <input type="text" id="text" class="form-control" name="AppDriverLogisticName" placeholder="Sürücü Firma">
+                        <input type="text" class="form-control" placeholder="Dilim" value="@Model.AppSlice"><br />
+                        <input type="text" class="form-control" placeholder="Yük Cinsi" value="@Model.AppointmentName"><br />
+                        <input type="text" class="form-control" placeholder="Tür" value="@Model.AppointmentLoadType"><br />
+                        <input type="text" class="form-control" placeholder="Kap / Koli" value="@Model.AppointmentCapacity"><br />
+                        <input type="text" class="form-control" placeholder="Sürücü İsim" value="@Model.AppDriverName"><br />
+                        <input type="text" class="form-control" placeholder="Sürücü Telefon" value="@Model.AppDriverNumber"><br />
+                        <input type="text" class="form-control" placeholder="Sürücü Plaka" value="@Model.AppDriverPlate"><br />
+                        <input type="text" class="form-control" placeholder="Sürücü Firma" value="@Model.AppDriverLogisticName">
                     </div>
+
 
                 </div>
             </div>
