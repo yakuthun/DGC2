@@ -15,8 +15,8 @@
 
 </head>
 <body>
-    @ViewBag.deneme
-    <h1>@(((DateTime)ViewBag.startdate).ToString("hh:mm")) - @(((DateTime)ViewBag.finishdate).ToString("hh:mm"))</h1>
+    @*@ViewBag.deneme
+    <h1>@(((DateTime)ViewBag.startdate).ToString("hh:mm")) - @(((DateTime)ViewBag.finishdate).ToString("hh:mm"))</h1>*@
     <a href="/SubCustomer/Index/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
     <hr />
     @using (Html.BeginForm("AddAppoinment", "SubCustomer", FormMethod.Post))
