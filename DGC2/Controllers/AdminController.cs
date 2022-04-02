@@ -87,8 +87,13 @@ namespace DGC2.Controllers
 
         public ActionResult CalendarList(int id)
         {
-            
-           var onemli = cl.GetListByID(id);
+
+            var toplamdilim = c.Calendars.Where(c => c.CalendarID == id).Max(x => x.CLSlice);
+            ViewBag.d5 = toplamdilim;
+
+
+
+            var onemli = cl.GetListByID(id);
             TempData["SliceID"] = id;
             return View(onemli);
         }
@@ -103,7 +108,7 @@ namespace DGC2.Controllers
         public ActionResult AddCalendar(Calendar p)
         {
 
-            //p.CLStartHour = p.CLStartDate + " - " + p.CLFinishDate;
+      
             p.CLStartDate = p.CLStartHour;
 
             var amount = p.CLAmount;
@@ -111,24 +116,23 @@ namespace DGC2.Controllers
             var sum = amount * tolerance / 100;
             p.CLSumTolerance = sum + amount;
 
-            //p.CLStartDate = DateTime.Now.ToString();
-            //cl.CalendarAdd(p);
-            //var alcalendar = cl.GetList();
-            //var today = DateTime.Now;
-
-            //for (int i = 1; i <= 6; i++)
-            //{
-            //    //var today = DateTime.Now.AddDays(i - 1);
-            //    var tomorrow = today;
-            //    tomorrow = tomorrow.AddDays(i);
-            //    foreach (var item in alcalendar)
-            //    {
-            //        item.CLStartDate = tomorrow.ToString();
-            //        cl.CalendarAdd(item);
-            //    }
-
-            //}
+            p.CLStartDate = DateTime.Now.ToString();
             cl.CalendarAdd(p);
+            var alcalendar = cl.GetByID(p.CalendarID);
+            var today = DateTime.Now;
+
+            for (int i = 1; i <= 6; i++)
+            {
+                //var today = DateTime.Now.AddDays(i - 1);
+                var tomorrow = today;
+                tomorrow = tomorrow.AddDays(i);
+               
+                    p.CLStartDate = tomorrow.ToString();
+                    cl.CalendarAdd(alcalendar);
+                
+            }
+
+            //cl.CalendarAdd(p);
             return RedirectToAction("SliceList", "Admin");
         }
         [HttpGet]

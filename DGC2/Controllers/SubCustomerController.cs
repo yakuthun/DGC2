@@ -363,6 +363,8 @@ namespace DGC2.Controllers
             var deger3 = c.Slices.Where(c => c.SliceStatus == true).Select(x => x.SlicesID).FirstOrDefault();
             ViewBag.d3 = deger3;
 
+            var deger4 = c.Calendars.Where(c => c.Slice.SliceStatus == true).Max(x => x.CLSlice);
+            ViewBag.d5 = deger4;
 
             var today = DateTime.Now;
             var tomorrow = today.AddDays(p - 1);
@@ -371,15 +373,15 @@ namespace DGC2.Controllers
 
 
             ViewBag.pshow = tomorrow;
-            
 
-            var calenderresult = cm.GetList();
-            var TODAY = DateTime.Now;
-            int j = 0;
-            
+
+            //var calenderresult = cm.GetList();
+            //var TODAY = DateTime.Now;
+            //int j = 0;
+
             //for (int i = 1; i <= 6; i++)
             //{
-                //var today = DateTime.Now.AddDays(i - 1);
+            //var today = DateTime.Now.AddDays(i - 1);
             //    var TOMORROW = TODAY;
             //    TOMORROW = TOMORROW.AddDays(0);
             //    foreach (var item in calenderresult)
@@ -396,7 +398,8 @@ namespace DGC2.Controllers
             //    //}
 
             //}
-            var curt = cm.GetList().ToPagedList(p, 4);
+           
+            var curt = cm.GetList().Where(c => c.SlicesID == deger3).OrderByDescending(c => c.CLStartDate).ToPagedList(p, deger4);
             return View(curt);
         }
 
