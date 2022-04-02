@@ -87,8 +87,13 @@ namespace DGC2.Controllers
 
         public ActionResult CalendarList(int id)
         {
-            
-           var onemli = cl.GetListByID(id);
+
+            var toplamdilim = c.Calendars.Where(c => c.CalendarID == id).Max(x => x.CLSlice);
+            ViewBag.d5 = toplamdilim;
+
+
+
+            var onemli = cl.GetListByID(id);
             TempData["SliceID"] = id;
             return View(onemli);
         }

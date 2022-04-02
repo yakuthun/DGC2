@@ -48,14 +48,19 @@
                     <th>Güncelle</th>
                 </tr>
             </thead>
-
+           
             <tbody>
-                @foreach (var item in Model)
+              @for (int i = 0; i < 4; i++)
+              {
+
+              
+                foreach (var item in Model)
                 {
-                    if (item.CLSliceID == 401)
+
+                    if (item.CLSlice == i)
                     {
 
-                    }
+                    
                     <tr>
                         <th>@item.CalendarID</th>
                         <td>@item.Slice.SliceVersion</td>
@@ -74,9 +79,13 @@
                         <td><a href="/Admin/DeleteAdmin/@item.CalendarID" class="btn btn-danger">Sil</a></td>
                         <td><a href="/Admin/EditCalendar/@item.CalendarID" class="btn btn-warning">Güncelle</a></td>
 
-                    </tr>
-                }
+                    </tr> 
+                    break;
+                      }
 
+
+                  }
+              }
             </tbody>
 
         </table>
