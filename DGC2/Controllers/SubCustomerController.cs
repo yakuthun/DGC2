@@ -224,12 +224,14 @@ namespace DGC2.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddAppoinment(int id, DateTime mydatetime, DateTime myhour)
+        public ActionResult AddAppoinment(int id, string mydatetime, string myhour, string myhourfinish, int myslice)
         {
 
             ViewBag.deneme = ViewBag.dsa;
             TempData["mydatetime"] = mydatetime;
             TempData["myhour"] = myhour;
+            TempData["myhourfinish"] = myhourfinish;
+            TempData["myslice"] = myslice;
             var alldatas = cm.GetByID(id);
             var datetime = cm.GetByID(id).CLStartHour;
             var sliceid = cm.GetByID(id).CalendarID;
@@ -253,8 +255,9 @@ namespace DGC2.Controllers
         {
 
 
-
-
+            p.AppStartDate = (string)TempData["mydatetime"];
+            p.AppStartHour = (string)TempData["myhour"] + " - " + TempData["myhourfinish"];
+            p.AppSlice = (int)TempData["myslice"];
 
             int asd = (int)TempData["allcalendardata"];
 
@@ -284,8 +287,8 @@ namespace DGC2.Controllers
             //p.AppStartHour = DateTime.Parse(TempData["myhour"].ToString());
             //var number = TempData["tempslice"];
             //p.CalendarID = int.Parse(number.ToString());
-            //p.SubCustomerID = 3;
-            //p.ChiefID = 1;
+            p.SubCustomerID = 3;
+            p.ChiefID = 1;
             //var dailyamount = (int)TempData["tempdailyamount"];
 
 

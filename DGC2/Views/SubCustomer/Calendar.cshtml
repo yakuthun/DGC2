@@ -247,7 +247,7 @@
 
                                 <td style="text-align:center">
                                     <a style="font-size: 25px; text-align:center">
-                                        @item.CLStartHour
+                                        @item.CLStartHour - @item.CLFinishDate
                                     </a>
                                   
 
@@ -267,7 +267,7 @@
                                             if (now < finishtime)
                                             {
                                                 
-                                                    @Html.ActionLink("Randevu Talep Et", "AddAppoinment", "SubCustomer", new { myhour = item.CLStartHour, mydatetime = ViewBag.pshow, id = item.CalendarID }, new { @class = "btn btn-success" })
+                                                    @Html.ActionLink("Randevu Talep Et", "AddAppoinment", "SubCustomer", new { myslice= item.CLSlice, myhour = item.CLStartHour, myhourfinish = item.CLFinishDate, mydatetime = ((DateTime)ViewBag.pshow).ToString("dd MMMM"), id = item.CalendarID }, new { @class = "btn btn-success" })
                                                
                                             }
 

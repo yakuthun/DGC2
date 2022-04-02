@@ -141,7 +141,7 @@
                             </td>
 
                             <td class="project-state" style="font-size:22px">
-                                @(((DateTime)item.AppStartDate).ToString("dd MMMM"))     @(((DateTime)item.AppStartHour).ToString("hh:mm")) - @(((DateTime)item.Calendar.CLFinishDate).ToString("hh:mm"))     
+                                @item.AppStartDate.ToString()  @item.AppStartHour.ToString() - @item.Calendar.CLFinishDate.ToString()    
                             </td>
                             <td class="project-state" style="font-size:22px; font-weight:600">
                                 @item.Calendar.CLSlice.ToString() 
