@@ -3106,6 +3106,7 @@
     <Content Include="Views\Chief\SecurityChief.cshtml" />
     <Content Include="Views\Chief\EditInChiefAppointment.cshtml" />
     <Content Include="Views\Chief\EditSecurityAppointment.cshtml" />
+    <Content Include="Views\SubCustomer\FinishedListAppoinment.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

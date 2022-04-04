@@ -164,7 +164,10 @@ namespace DGC2.Controllers
             TempData["OldStartDate"] = subcustomervalue.AppStartDate;
             
             TempData["OldCalendarID"] = subcustomervalue.CalendarID;
-            
+            var editDateTime = subcustomervalue.AppStartDate;
+            DateTime NewDT = Convert.ToDateTime(editDateTime);
+            var parsedDateTime = DateTime.Parse(NewDT.ToShortDateString());
+            ViewBag.parsedDateTime = parsedDateTime.ToString("yyyy-MM-dd");
 
             ViewBag.editnot = subcustomervalue.AppSlice;
             
@@ -282,6 +285,13 @@ namespace DGC2.Controllers
         {
             var appliedappoinment = apm.GetList();
             return View(appliedappoinment);
+
+        }
+
+        public ActionResult FinishedListAppoinment()
+        {
+            var finishedappoinment = apm.GetList();
+            return View(finishedappoinment);
 
         }
         public ActionResult AskChange(int id)

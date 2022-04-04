@@ -11,6 +11,12 @@
     int yellowbox = 0;
     int greenbox = 0;
     int redbox = 0;
+
+    int darksmallbox = 0;
+    int bluesmallbox = 0;
+    int greensmallbox = 0;
+    int yellowsmallbox = 0;
+    int redsmallbox = 0;
 }
 @foreach (var item in Model)
 {
@@ -26,12 +32,109 @@
     {
         yellowbox++;
     }
-    if(item.AppointmentTrackStatus == 11)
+    if (item.AppointmentTrackStatus == 11)
     {
         redbox++;
     }
 
+    if(item.AppointmentTrackStatus == 4)
+    {
+        darksmallbox++;
+    }
+    if(item.AppointmentTrackStatus == 8)
+    {
+        bluesmallbox++;
+    }
+    if(item.AppointmentTrackStatus == 9)
+    {
+        yellowsmallbox++;
+    }
+    if(item.AppointmentTrackStatus == 10)
+    {
+        greensmallbox++;
+    }
+    if(item.AppointmentTrackStatus == 5)
+    {
+        redsmallbox++;
+    }
 }
+
+<br />
+<div class="row">
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box">
+            <span class="info-box-icon bg-dark elevation-1"><i class="ion ion-clock"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Depoya Bekleniyor</span>
+                <span class="info-box-number">
+                    @darksmallbox
+                   
+                </span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box">
+            <span class="info-box-icon bg-info elevation-1"><i class="ion ion-home"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Depoya Geldi</span>
+                <span class="info-box-number">
+                    @bluesmallbox
+                    
+                </span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-danger elevation-1"><i class="ion ion-alert"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Depoya Gelmedi</span>
+                <span class="info-box-number">@redsmallbox</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <!-- fix for small devices only -->
+    <div class="clearfix hidden-md-up"></div>
+
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-success elevation-1"><i class="ion ion-checkmark"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Tamamlanan Randevular</span>
+                <span class="info-box-number">@greensmallbox</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-warning elevation-1"><i class="ion ion-cube"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Yük İndiriliyor</span>
+                <span class="info-box-number">@yellowsmallbox</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+</div>
 
 <div class="col-lg-3 col-6">
     <!-- small box -->
@@ -93,6 +196,8 @@
         <a href="/SubCustomer/CanceledListAppoinment/" class="small-box-footer">Detaylara Git <i class="fas fa-arrow-circle-right"></i></a>
     </div>
 </div>
+
+
 
 
 
