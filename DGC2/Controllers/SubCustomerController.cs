@@ -171,16 +171,32 @@ namespace DGC2.Controllers
             return View(subcustomervalue);
         }
         [HttpPost]
-        public ActionResult EditNotAppliedAppointment(Appointment p, Calendar k)
+        public ActionResult EditNotAppliedAppointment(Appointment p, Calendar k, string dateee)
         {
+            DateTime stdate = Convert.ToDateTime(p.AppStartDate);
+            DateTime dt = DateTime.Parse(stdate.ToLongDateString());
+            string searchdate = dt.ToString("dd MMMM");
+            //string newdate = stdate.ToLongDateString();
+            
+            //string dday = dt.Day + " " + dt.Month;
+            //string newdate = dateee;
+            //DateTime newDate = DateTime.ParseExact(newdate, "dd MMMM",System.Globalization.CultureInfo.InvariantCulture);
+            // p.AppStartDate = newdate;
             //Context c = new Context();
             //var curt = p.AppSlice;
+
+            p.AppStartDate = dt.ToString("dd MMMM");
+
+            var newcalendarid = c.Calendars.Where(c => c.CLStartDate == searchdate && c.CLSlice == p.AppSlice).Select(c=>c.CalendarID).FirstOrDefault();
             
+           // p.CalendarID = int.Parse(newcalendarid.ToString());
+            p.CalendarID = newcalendarid;
+            //p.CalendarID = newcalendartime;
             //DateTime dt = DateTime.Now;
             //dt = DateTime.Parse(p.AppStartDate.ToString());
 
             //var newvalue = c.Calendars.Where(x => x.CLSlice == curt);
-             
+
 
             apm.AppointmentUpdate(p);
            
@@ -287,6 +303,7 @@ namespace DGC2.Controllers
             //p.AppStartHour = DateTime.Parse(TempData["myhour"].ToString());
             //var number = TempData["tempslice"];
             //p.CalendarID = int.Parse(number.ToString());
+            p.CalendarID = asd;
             p.SubCustomerID = 3;
             p.ChiefID = 1;
             //var dailyamount = (int)TempData["tempdailyamount"];
@@ -398,7 +415,7 @@ namespace DGC2.Controllers
             //    //}
 
             //}
-           
+          
             var curt = cm.GetList().Where(c => c.SlicesID == deger3).OrderByDescending(c => c.CLStartDate).ToPagedList(p, deger4);
             return View(curt);
         }

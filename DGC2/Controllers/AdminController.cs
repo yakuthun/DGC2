@@ -145,6 +145,16 @@ namespace DGC2.Controllers
         [HttpPost]
         public ActionResult EditCalendar(Calendar p)
         {
+            var deger3 = c.Slices.Where(c => c.SliceStatus == true).Select(x => x.SlicesID).FirstOrDefault();
+            ViewBag.d3 = deger3;
+
+            var curt = cl.GetList().Where(c => c.SlicesID == deger3).OrderByDescending(c => c.CLStartDate);
+
+
+            foreach (var item in curt)
+            {
+
+            }
             cl.CalendarUpdate(p);
             return RedirectToAction("SliceList","Admin");
         }
