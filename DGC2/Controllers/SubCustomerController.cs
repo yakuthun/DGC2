@@ -159,6 +159,13 @@ namespace DGC2.Controllers
         public ActionResult EditNotAppliedAppointment(int id )
         {
             var subcustomervalue = apm.GetByID(id);
+            var idvalue = subcustomervalue.AppointmentID;
+            TempData["OldSlice"] = subcustomervalue.AppSlice;
+            TempData["OldStartDate"] = subcustomervalue.AppStartDate;
+            
+            TempData["OldCalendarID"] = subcustomervalue.CalendarID;
+            
+
             ViewBag.editnot = subcustomervalue.AppSlice;
             
             List<SelectListItem> valuecm = (from x in cm.GetList()
@@ -173,30 +180,91 @@ namespace DGC2.Controllers
         [HttpPost]
         public ActionResult EditNotAppliedAppointment(Appointment p, Calendar k, string dateee)
         {
+
+            //var oldAppCalendarID = apm.GetByID((int)TempData["OldCalendarID"]);
+
+            var oldAppCalendarID = cm.GetByID((int)TempData["OldCalendarID"]);
+            string oldStartDate = (string)TempData["OldStartDate"];
+            int oldSlice = (int)TempData["OldSlice"];
             DateTime stdate = Convert.ToDateTime(p.AppStartDate);
             DateTime dt = DateTime.Parse(stdate.ToLongDateString());
             string searchdate = dt.ToString("dd MMMM");
-            //string newdate = stdate.ToLongDateString();
-            
-            //string dday = dt.Day + " " + dt.Month;
-            //string newdate = dateee;
-            //DateTime newDate = DateTime.ParseExact(newdate, "dd MMMM",System.Globalization.CultureInfo.InvariantCulture);
-            // p.AppStartDate = newdate;
-            //Context c = new Context();
-            //var curt = p.AppSlice;
-
-            p.AppStartDate = dt.ToString("dd MMMM");
-
+           
             var newcalendarid = c.Calendars.Where(c => c.CLStartDate == searchdate && c.CLSlice == p.AppSlice).Select(c=>c.CalendarID).FirstOrDefault();
-            
-           // p.CalendarID = int.Parse(newcalendarid.ToString());
-            p.CalendarID = newcalendarid;
+
+            if (oldStartDate != p.AppStartDate) // Gün Değişirse
+            {
+                p.CalendarID = newcalendarid;
+                var newcl = cm.GetByID(newcalendarid);
+                if(p.AppointmentLoadType =="Dökme")
+                {
+                    oldAppCalendarID.CLDailyAmount -= p.AppointmentCapacity;
+                    newcl.CLDailyAmount += p.AppointmentCapacity;
+
+                }
+                else if(p.AppointmentLoadType =="Palet")
+                {
+                    oldAppCalendarID.CLDailyPaletAmount -= p.AppointmentCapacity;
+                    newcl.CLPalletCapacity += p.AppointmentCapacity;
+                }
+                
+                p.AppStartDate = dt.ToString("dd MMMM");
+                cm.CalendarUpdate(oldAppCalendarID);
+                cm.CalendarUpdate(newcl);
+
+            }
+            else if (oldSlice != p.AppSlice) // Dilim Değişirse
+            {
+                var newslice = c.Calendars.Where(c=>c.CLSlice == p.AppSlice).Select(c => c.CalendarID).FirstOrDefault();
+                var justslice = cm.GetByID(newslice);
+                p.CalendarID = newslice;
+
+                if (p.AppointmentLoadType == "Dökme")
+                {
+                    oldAppCalendarID.CLDailyAmount -= p.AppointmentCapacity;
+                    justslice.CLDailyAmount += p.AppointmentCapacity;
+                   
+                    
+                }
+                else if (p.AppointmentLoadType == "Palet")
+                {
+                    oldAppCalendarID.CLDailyPaletAmount -= p.AppointmentCapacity;
+                    justslice.CLPalletCapacity += p.AppointmentCapacity;
+                }
+                cm.CalendarUpdate(oldAppCalendarID);
+                cm.CalendarUpdate(justslice);
+            }
+            else if (oldStartDate !=p.AppStartDate 
+                &&   oldSlice != p.AppSlice ) // Dilim ve Gün Değişirse
+            {
+
+                p.CalendarID = newcalendarid;
+                var newcl = cm.GetByID(newcalendarid);
+                if (p.AppointmentLoadType == "Dökme")
+                {
+                    oldAppCalendarID.CLDailyAmount -= p.AppointmentCapacity;
+                    newcl.CLDailyAmount += p.AppointmentCapacity;
+
+                }
+                else if (p.AppointmentLoadType == "Palet")
+                {
+                    oldAppCalendarID.CLDailyPaletAmount -= p.AppointmentCapacity;
+                    newcl.CLPalletCapacity += p.AppointmentCapacity;
+                }
+
+                
+                p.CalendarID = newcalendarid;
+                p.AppStartDate = dt.ToString("dd MMMM");
+
+                cm.CalendarUpdate(oldAppCalendarID);
+                cm.CalendarUpdate(newcl);
+            }
+           
             //p.CalendarID = newcalendartime;
             //DateTime dt = DateTime.Now;
             //dt = DateTime.Parse(p.AppStartDate.ToString());
 
             //var newvalue = c.Calendars.Where(x => x.CLSlice == curt);
-
 
             apm.AppointmentUpdate(p);
            
@@ -305,7 +373,7 @@ namespace DGC2.Controllers
             //p.CalendarID = int.Parse(number.ToString());
             p.CalendarID = asd;
             p.SubCustomerID = 3;
-            p.ChiefID = 1;
+            p.ChiefID = 2; //laptopa geçildi normalde -> ' 1 '
             //var dailyamount = (int)TempData["tempdailyamount"];
 
 
