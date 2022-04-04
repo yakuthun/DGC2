@@ -87,15 +87,15 @@ namespace DGC2.Controllers
 
         public ActionResult CalendarList(int id)
         {
-            var deger1 = c.Calendars.Count();
+            var deger1 = c.Slices.Count();
             if (deger1 == 0)
             {
 
             }
             else
             {
-                var toplamdilim = c.Calendars.Where(c => c.CalendarID == id).Max(x => x.CLSlice);
-                ViewBag.d5 = toplamdilim;
+                //var toplamdilim = c.Calendars.Where(c => c.CalendarID == id).Max(x => x.CLSlice);
+                //ViewBag.d5 = toplamdilim;
             }
           
 
