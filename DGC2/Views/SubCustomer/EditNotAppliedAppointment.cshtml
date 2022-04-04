@@ -47,7 +47,7 @@
                     <div class="col text-center">
                         <br /> <h3 style="font-weight:600">Eski Randevu</h3>
                         <hr />
-                        <input class="form-control " readonly placeholder="Tarih" value="@(Model.AppStartDate)" />
+                        <input class="form-control "  readonly placeholder="Tarih" value="@(Model.AppStartDate)" />
                         <br />
 
                         <input type="text" class="form-control" readonly placeholder="Eski Dilim" value="@Model.AppSlice"><br />
@@ -62,17 +62,17 @@
                     <div class="col text-center">
                         <br /><h3 style="font-weight:600">Yeni Randevu</h3>
                         <hr />
-                        <input type="date" id="date" name="AppStartDate" class="form-control " value="@(Model.AppStartDate)" placeholder="Tarih" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@DateTime.Now.AddDays(7).ToString("yyyy-MM-dd")" />
+                        <input type="date" id="date" name="AppStartDate" class="form-control " value="@ViewBag.parsedDateTime" placeholder="dd-MMMM" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@DateTime.Now.AddDays(7).ToString("yyyy-MM-dd")" />
                         <br />
-
+                        
                         <input type="text" id="text" class="form-control" name="AppSlice" placeholder="Dilim" value="@Model.AppSlice"><br />
-                        <input type="text" id="text"class="form-control" name="AppointmentName"placeholder="Yük Cinsi" value="@Model.AppointmentName"><br />
-                        <input type="text" id="text"class="form-control" name="AppointmentLoadType"placeholder="Tür" value="@Model.AppointmentLoadType"><br />
-                        <input type="text" id="text"class="form-control"name="AppointmentCapacity" placeholder="Kap / Koli" value="@Model.AppointmentCapacity"><br />
-                        <input type="text" id="text"class="form-control" name="AppDriverName"placeholder="Sürücü İsim" value="@Model.AppDriverName"><br />
-                        <input type="text" id="text"class="form-control" name="AppDriverNumber"placeholder="Sürücü Telefon" value="@Model.AppDriverNumber"><br />
-                        <input type="text" id="text"class="form-control" name="AppDriverPlate"placeholder="Sürücü Plaka" value="@Model.AppDriverPlate"><br />
-                        <input type="text" id="text"class="form-control" name="AppDriverLogisticName"placeholder="Sürücü Firma" value="@Model.AppDriverLogisticName">
+                        <input type="text" id="text" class="form-control" name="AppointmentName" placeholder="Yük Cinsi" value="@Model.AppointmentName"><br />
+                        <input type="text" id="text" class="form-control" name="AppointmentLoadType" placeholder="Tür" value="@Model.AppointmentLoadType"><br />
+                        <input type="text" id="text" class="form-control" name="AppointmentCapacity" placeholder="Kap / Koli" value="@Model.AppointmentCapacity"><br />
+                        <input type="text" id="text" class="form-control" name="AppDriverName" placeholder="Sürücü İsim" value="@Model.AppDriverName"><br />
+                        <input type="text" id="text" class="form-control" name="AppDriverNumber" placeholder="Sürücü Telefon" value="@Model.AppDriverNumber"><br />
+                        <input type="text" id="text" class="form-control" name="AppDriverPlate" placeholder="Sürücü Plaka" value="@Model.AppDriverPlate"><br />
+                        <input type="text" id="text" class="form-control" name="AppDriverLogisticName" placeholder="Sürücü Firma" value="@Model.AppDriverLogisticName">
                     </div>
 
 
@@ -130,12 +130,30 @@
 
 
             <br />
-            <button class="btn btn-success btn-lg btn btn-block">Kaydet</button>
+            <button id="press" class="btn btn-success btn-lg btn btn-block">Kaydet</button>
         </div>
 
 
     }
 
+@*<script type="text/javascript">
+    $(document).ready(function () {
+
+             $('#press').click(function () {
+                 var Datee = new Date($('#out').datepicker().val());
+                 var dateee = Datee.toDateString();
+                 
+                    //var newDate = moment(Datee).format('M/D/YYYY h:mm:ss A');
+                    //var newDaTe = new String(Datee);
+
+                    $.post('@Url.Action("editnotappliedappointment", "subcustomer")',
+
+                        { dateee: dateee });
+
+                });
+        })
+
+</script>*@
     @*<script type="text/javascript">
             $(document).ready(function () {
                 $("#in").on('change', function () {

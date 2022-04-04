@@ -12,6 +12,12 @@
     int yellowbox = 0;
     int greenbox = 0;
     int redbox = 0;
+
+    int darksmallbox = 0;
+    int bluesmallbox = 0;
+    int greensmallbox = 0;
+    int yellowsmallbox = 0;
+    int redsmallbox = 0;
 }
 @foreach (var item in Model)
 {
@@ -32,7 +38,95 @@
         redbox++;
     }
 
+    if (item.AppointmentTrackStatus == 4)
+    {
+        darksmallbox++;
+    }
+    if (item.AppointmentTrackStatus == 8)
+    {
+        bluesmallbox++;
+    }
+    if (item.AppointmentTrackStatus == 9)
+    {
+        yellowsmallbox++;
+    }
+    if (item.AppointmentTrackStatus == 10)
+    {
+        greensmallbox++;
+    }
+    if (item.AppointmentTrackStatus == 5)
+    {
+        redsmallbox++;
+    }
+
 }
+<br />
+
+
+<div class="row">
+    
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box">
+            <span class="info-box-icon bg-info elevation-1"><i class="ion ion-home"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Tüm Onay Bekleyen Randevular</span>
+                <span class="info-box-number">
+                    @bluesmallbox
+
+                </span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-danger elevation-1"><i class="ion ion-alert"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Tüm İptal Edilen Randevular</span>
+                <span class="info-box-number">@redsmallbox</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <!-- fix for small devices only -->
+    <div class="clearfix hidden-md-up"></div>
+
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-success elevation-1"><i class="ion ion-checkmark"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Tüm Tamamlanan Randevular</span>
+                <span class="info-box-number">@greensmallbox</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-warning elevation-1"><i class="ion ion-cube"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Tüm İptal Edilmeyi Bekleyen Randevular</span>
+                <span class="info-box-number">@yellowsmallbox</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+</div>
+
+<hr />
+
 
 <div class="col-lg-3 col-6">
     <!-- small box -->
@@ -93,4 +187,49 @@
         </div>
         <a href="/CustomerAppAccept/CanceledAppoinments/" class="small-box-footer">Detaylara Git <i class="fas fa-arrow-circle-right"></i></a>
     </div>
+</div>
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Günlük Randevu Durumları</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="chart-responsive">
+                    <canvas id="pieChart" height="150"></canvas>
+                </div>
+                <!-- ./chart-responsive -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-4">
+                <ul class="chart-legend clearfix">
+                    <li><i class="far fa-circle text-danger"></i> Chrome</li>
+                    <li><i class="far fa-circle text-success"></i> IE</li>
+                    <li><i class="far fa-circle text-warning"></i> FireFox</li>
+                    <li><i class="far fa-circle text-info"></i> Safari</li>
+                    <li><i class="far fa-circle text-primary"></i> Opera</li>
+                    <li><i class="far fa-circle text-secondary"></i> Navigator</li>
+                </ul>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer bg-light p-0">
+        
+    </div>
+    <!-- /.footer -->
 </div>
