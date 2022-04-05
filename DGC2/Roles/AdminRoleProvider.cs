@@ -7,7 +7,7 @@ using System.Web.Security;
 
 namespace DGC2.Roles
 {
-    public class ChiefRoleProvider : RoleProvider
+    public class AdminRoleProvider : RoleProvider
     {
         public override string ApplicationName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
@@ -39,26 +39,8 @@ namespace DGC2.Roles
         public override string[] GetRolesForUser(string username)
         {
             Context c = new Context();
-            string adminRole = string.Empty;
-            string chiefRole = string.Empty;
-
-            var admin = c.Admins.FirstOrDefault(y => y.AdminUsername == username);
-            if (admin !=null)
-            {
-                adminRole = admin.AdminRole;
-            }
-
-            var chief = c.Chiefs.FirstOrDefault(y => y.ChiefUsername == username);
-            if (chief !=null)
-            {
-                chiefRole = chief.ChiefRole;
-            }
-
-
-
-            string[] result = { adminRole, chiefRole };
-            return result;
-
+            var x = c.Admins.FirstOrDefault(y => y.AdminUsername == username);
+            return new string[] { x.AdminRole };
         }
 
         public override string[] GetUsersInRole(string roleName)

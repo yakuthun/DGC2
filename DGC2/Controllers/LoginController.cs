@@ -126,5 +126,13 @@ namespace DGC2.Controllers
             }
 
         }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Login","Login");
+        }
+
     }
 }
