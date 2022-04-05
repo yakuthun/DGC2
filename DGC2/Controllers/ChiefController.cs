@@ -38,11 +38,20 @@ namespace DGC2.Controllers
             var cikti = c.Appointments.Where(c => c.AppFinishDate == DateTime.Today).Count();
             ViewBag.cikti = cikti;
 
+
+
+
             var deger3 = c.Slices.Where(c => c.SliceStatus == true).Select(x => x.SlicesID).FirstOrDefault();
             ViewBag.d3 = deger3;
 
-            var deger4 = c.Calendars.Where(c => c.Slice.SliceStatus == true).Max(x => x.CLSlice);
-            ViewBag.d5 = deger4;
+          
+           
+                var deger4 = c.Calendars.Where(c => c.Slice.SliceStatus == true).Max(x => x.CLSlice);
+                ViewBag.d5 = deger4;
+            
+
+
+
             var appointmentvalue = am.GetList();
             return View(appointmentvalue);
 
