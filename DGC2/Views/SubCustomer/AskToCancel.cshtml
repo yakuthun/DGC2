@@ -1,0 +1,26 @@
+﻿@model EntityLayer.Concrete.Appointment
+@{
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    
+</head>
+<body>
+    <h2>Aydınlatma Metni</h2>
+
+    <a href="/SubCustomer/AppliedListAppoinment/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
+    <hr />
+
+    
+    <p>
+        ...
+    </p>
+
+    <a id="press" href="/SubCustomer/CancelChange/@Model.AppointmentID" class="btn btn-success btn-lg btn btn-block">İptal Talebini Onayla</a>
+</body>
+</html>

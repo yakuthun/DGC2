@@ -76,21 +76,40 @@
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
-                            <th style="width: 1%" class="text-center">
+                            <th style="width: 1%">
                                 Firma
                             </th>
-                            <th style="width: 6%" class="text-center">
-                                Randevu Tarihi
+                            <th style="width: 16%" class="text-center">
+                                Randevu Alınma Tarihi
                             </th>
-                            
-                            <th style="width: 2%">
-                                Yük Cinsi
+                            <th style="width: 8%" class="text-center">
+                                Ürün Cinsi
                             </th>
-                            <th style="width: 3%">
+                            <th style="width: 6%">
                                 Kap / Koli
                             </th>
-                            <th style="width: 3%; text-align:center"  >
-                                
+                            <th style="width: 16%" class="text-center">
+                                Randevu Tarihi
+                            </th>
+                            <th style="width: 5%" class="text-center">
+                                Dilim
+                            </th>
+
+                            <th style="width: 10%" class="text-center">
+                                Sürücü
+                            </th>
+                            <th style="width: 10%" class="text-center">
+                                Plaka
+                            </th>
+                            <th style="width: 10%" class="text-center">
+                                Telefon
+                            </th>
+
+
+
+
+                            <th style="width: 5%">
+
                             </th>
 
                             <th style="width: 20%" colspan="2">
@@ -124,38 +143,52 @@
                                 //{
                                 //    color = "badge badge-danger";
                                 //}
-                                <tr>
+                        <tr>
 
 
-                                    <td style="font-size: 20px; font-weight:800; text-align:center">
-                                        @item.SubCustomer.SubCustomerCompany
-                                    </td>
-                                    <td class="project-state" style="font-size:22px">
-                                        @(((DateTime)item.AppClickTime).ToString("dd MMMM hh:mm"))
-                                    </td>
-                                    
-                                    <td>
-                                        <a style="font-size: 20px;">
-                                            @item.AppointmentName
-                                        </a>
-                                        <br />
+                            <td style="font-size: 20px; font-weight:800">
+                                @item.SubCustomer.SubCustomerCompany
+                            </td>
+                            <td class="project-state" style="font-size: 22px;; font-weight: 600">
+                                @(((DateTime)item.AppClickTime).ToString("dd MMMM hh:mm"))
+                            </td>
 
-                                    </td>
-                                    <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item" style="font-size: 30px; font-weight: 600; ">
-                                                @item.AppointmentCapacity
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    
-                                    <td class="project-actions text-right">
-                                        <a href="/CustomerAppAccept/ApplyAppointment/@item.AppointmentID" class="btn btn-success">Onayla</a>
-                                    </td>
-                                    <td>
-                                        <a href="/CustomerAppAccept/CancelAppointment/@item.AppointmentID" class="btn btn-danger">Reddet</a>
-                                    </td>
-                                </tr>
+                            <td class="project-state" style="font-size:22px; font-weight:600">
+                                @item.AppointmentName
+                            </td>
+                            <td>
+                                <ul class="list-inline text-center">
+                                    <li class="list-inline-item" style="font-size: 24px; font-weight: 600;  ">
+                                        @item.AppointmentCapacity
+                                    </li>
+                                </ul>
+                            </td>
+                            <td class="project-state" style="font-size:22px; font-weight:600">
+                                @item.AppStartDate.ToString()  @item.AppStartHour.ToString()
+                            </td>
+
+                            <td class="project-state" style="font-size:22px; ">
+                                @item.Calendar.CLSlice.ToString()
+                            </td>
+
+                            <td class="project-state" style="font-size:22px;  text-align:center">
+                                @item.AppDriverName
+                            </td>
+                            <td class="project-state" style="font-size: 22px;  text-align: center">
+                                @item.AppDriverPlate
+                            </td>
+                            <td class="project-state" style="font-size: 22px; text-align: center">
+                                @item.AppDriverNumber
+                            </td>
+
+                            <td class="project-actions">
+                                
+                            </td>
+                            <td class="project-actions text-right">
+                                <a href="/CustomerAppAccept/ApplyAppointment/@item.AppointmentID" class="btn btn-success m-md-0">Onayla</a>
+                                <a href="/CustomerAppAccept/CancelAppointment/@item.AppointmentID" class="btn btn-danger m-md-2">Reddet</a>
+                            </td>
+                        </tr>
 
                             }
                         }

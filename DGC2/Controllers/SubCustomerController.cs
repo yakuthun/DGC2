@@ -304,6 +304,14 @@ namespace DGC2.Controllers
             apm.AppointmentUpdate(appvalue);
             return RedirectToAction("AppliedListAppoinment");
         }
+
+        [HttpGet]
+        public ActionResult AskToCancel(int id)
+        {
+            var finishedappoinment = apm.GetByID(id);
+            return View(finishedappoinment);
+
+        }
         public ActionResult CancelChange(int id)
         {
             var appvalue = apm.GetByID(id);

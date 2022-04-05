@@ -53,6 +53,14 @@ namespace DGC2.Controllers
             am.AppointmentUpdate(appvalue);
             return RedirectToAction("Appointments");
         }
+
+        public ActionResult FinishedAppointments()
+        {
+
+
+            var finishedvalue = am.GetBySubCustomer();
+            return View(finishedvalue);
+        }
         public ActionResult ApplyAppointment(int id)
         {
             /* Randevu Alanı */
