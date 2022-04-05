@@ -21,6 +21,7 @@ namespace DGC2.Controllers
             return RedirectToAction("Index");
         }
         Context c = new Context();
+       
         public ActionResult Index()
         {
             //var gelen = c.Appointments.Where(c => c.AppStartDate == DateTime.Today).Count();
@@ -56,7 +57,7 @@ namespace DGC2.Controllers
             return View(appointmentvalue);
 
         }
-
+        [Authorize(Roles = "A")]
         public ActionResult InChief()
         {
 
@@ -68,7 +69,7 @@ namespace DGC2.Controllers
             return View(appointmentvalue);
 
         }
-
+        [Authorize(Roles = "B")]
         public ActionResult SecurityChief()
         {
 

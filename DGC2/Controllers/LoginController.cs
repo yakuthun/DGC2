@@ -99,5 +99,32 @@ namespace DGC2.Controllers
             }
             
         }
+
+        //Admin
+        [HttpGet]
+        public ActionResult Chief()
+        {
+
+            return View();
+
+        }
+        [HttpPost]
+        public ActionResult Chief(Chief p)
+        {
+            Context c = new Context();
+            var adminuserinfo = c.Chiefs.FirstOrDefault(x => x.ChiefUsername == p.ChiefUsername && x.ChiefPassword == p.ChiefPassword);
+
+            if (adminuserinfo != null)
+            {
+                FormsAuthentication.SetAuthCookie(adminuserinfo.ChiefUsername, false);
+                Session["ChiefUsername"] = adminuserinfo.ChiefUsername;
+                return RedirectToAction("Index", "Chief");
+            }
+            else
+            {
+                return RedirectToAction("Chief", "Login");
+            }
+
+        }
     }
 }

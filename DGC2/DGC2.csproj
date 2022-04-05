@@ -155,6 +155,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roles\ChiefRoleProvider.cs" />
     <Compile Include="Views\TestController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -3115,6 +3116,7 @@
     <Content Include="Views\Login\Admin.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\Chief.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

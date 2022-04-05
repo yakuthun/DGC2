@@ -10,6 +10,7 @@ namespace BusinessLayer.Abstract
     public interface IChiefService
     {
         List<Chief> GetList();
+        List<Chief> GetListByChief(string role);
         void ChiefAdd(Chief chief);
         Chief GetByID(int id);
         void ChiefDelete(Chief chief);
