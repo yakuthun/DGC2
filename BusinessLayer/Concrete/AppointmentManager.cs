@@ -40,9 +40,9 @@ namespace BusinessLayer.Concrete
             
         }
 
-        public List<Appointment> GetBySubCustomer()
+        public List<Appointment> GetBySubCustomer(int id)
         {
-            return _appointmentDal.List(x => x.SubCustomerID == 1); //Session'dan gelecek.
+            return _appointmentDal.List(x => x.SubCustomer.CustomerID == id); //Session'dan gelecek.
         }
         public List<Appointment> GetByChief()
         {
