@@ -3110,7 +3110,7 @@
     <Content Include="Views\SubCustomer\FinishedListAppoinment.cshtml" />
     <Content Include="Views\SubCustomer\AskToCancel.cshtml" />
     <Content Include="Views\CustomerAppAccept\FinishedAppointments.cshtml" />
-    <Content Include="Views\LoginSubCustomer\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\CustomerIndex.cshtml" />
     <Content Include="Views\Login\Admin.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />

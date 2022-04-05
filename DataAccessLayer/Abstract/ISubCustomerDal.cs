@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface ISubCustomerDal : IRepository<Driver>
+    public interface ISubCustomerDal : IRepository<SubCustomer>
     {
     }
 }
