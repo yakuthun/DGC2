@@ -19,31 +19,60 @@ namespace DGC2.Controllers
         UserManager um = new UserManager(new EfUserDal());
         Context c = new Context();
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(string p)
         {
-            var graphicvalue = am.GetBySubCustomer();
+            p = (string)Session["CustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+
+            //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
+            var graphicvalue = am.GetBySubCustomer(subCustomerInfo);
+            
             return View(graphicvalue);   
         }
-        public ActionResult Appointments()
+        public ActionResult Appointments(string p)
         {
+            p = (string)Session["CustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
 
+            //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
+            var appointmentvalue = am.GetBySubCustomer(subCustomerInfo);
 
-            var appointmentvalue = am.GetBySubCustomer();
+            
             return View(appointmentvalue);
         }
-        public ActionResult SubCustomerList()
+        public ActionResult SubCustomerList(string p)
         {
-            var ssubcustomervalue = csm.GetList();
+            p = (string)Session["CustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+
+            
+            var ssubcustomervalue = csm.GetList().Where(x=>x.CustomerID == subCustomerInfo);
             return View(ssubcustomervalue);
         }
-        public ActionResult CanceledAppoinments()
+        public ActionResult CanceledAppoinments(string p)
+
         {
-            var appointmentvalue = am.GetBySubCustomer();
+            p = (string)Session["CustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+
+            //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
+            var appointmentvalue = am.GetBySubCustomer(subCustomerInfo);
+            
             return View(appointmentvalue);
         }
-        public ActionResult WantsChangeAppoinments()
+        public ActionResult WantsChangeAppoinments(string p)
         {
-            var appointmentvalue = am.GetBySubCustomer();
+            p = (string)Session["CustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+
+            //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
+            var appointmentvalue = am.GetBySubCustomer(subCustomerInfo);
+            
             return View(appointmentvalue);
         }
         public ActionResult AccesChangeAppointment(int id)
@@ -54,11 +83,16 @@ namespace DGC2.Controllers
             return RedirectToAction("Appointments");
         }
 
-        public ActionResult FinishedAppointments()
+        public ActionResult FinishedAppointments(string p)
         {
 
+            p = (string)Session["CustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
 
-            var finishedvalue = am.GetBySubCustomer();
+            //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
+            var finishedvalue = am.GetBySubCustomer(subCustomerInfo);
+            
             return View(finishedvalue);
         }
         public ActionResult ApplyAppointment(int id)
@@ -166,19 +200,32 @@ namespace DGC2.Controllers
             return RedirectToAction("Appointments");
         }
        
-        public ActionResult WaitingAppointments()
+        public ActionResult WaitingAppointments(string p)
         {
-            var waitingvalue = am.GetBySubCustomer();
+
+            p = (string)Session["CustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+
+            //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
+            var waitingvalue = am.GetBySubCustomer(subCustomerInfo);
+            
             return View(waitingvalue);
         }
-        public ActionResult CanceledAfterChangedAppointments()
+        //public ActionResult CanceledAfterChangedAppointments()
+        //{
+        //    var waitingvalue = am.GetBySubCustomer();
+        //    return View(waitingvalue);
+        //}
+        public ActionResult AppliedWantsCancelAppointments(string p)
         {
-            var waitingvalue = am.GetBySubCustomer();
-            return View(waitingvalue);
-        }
-        public ActionResult AppliedWantsCancelAppointments()
-        {
-            var appwcgvalue = am.GetBySubCustomer();
+            p = (string)Session["CustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+
+            //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
+            var appwcgvalue = am.GetBySubCustomer(subCustomerInfo);
+            
             return View(appwcgvalue);
         }
         public ActionResult YesCancel(int id)
@@ -276,9 +323,14 @@ namespace DGC2.Controllers
 
 
 
-        public ActionResult UserList()
+        public ActionResult UserList(string p)
         {
-            var calendarvalues = um.GetList();
+            p = (string)Session["CustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+
+            
+            var calendarvalues = um.GetList().Where(x=>x.CustomerID == subCustomerInfo);
             //TempData["CustomerID"] = id;
             //ViewBag.customerid = id;
             return View(calendarvalues);

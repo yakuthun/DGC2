@@ -16,7 +16,7 @@ namespace BusinessLayer.Abstract
         Appointment GetByID(int id);
         Appointment GetByIDForChange(bool id,string code);
         Appointment GetByIDForDelete(int id, bool t ,string code);
-        List<Appointment> GetBySubCustomer();
+        List<Appointment> GetBySubCustomer(int id);
         List<Appointment> GetBySubCustomerID(int id);
         List<Appointment> GetByChief();
         void AppointmentDelete(Appointment appointment);

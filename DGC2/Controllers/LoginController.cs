@@ -48,7 +48,7 @@ namespace DGC2.Controllers
             if (customerInfo != null)
             {
                 FormsAuthentication.SetAuthCookie(customerInfo.CustomerUsername, false);
-                Session["SubCustomerUsername"] = customerInfo.CustomerUsername;
+                Session["CustomerUsername"] = customerInfo.CustomerUsername;
                 return RedirectToAction("Index", "CustomerAppAccept");
             }
             else
