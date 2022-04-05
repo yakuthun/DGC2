@@ -229,54 +229,65 @@
                             </a>
 
                         </li>
-                        <li class="nav-item">
-                            <a href="/Chief/InChief/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Şef Kontrol
-                                </p>
-                            </a>
+                        @if (User.IsInRole("A"))
+                        {
 
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Chief/SecurityChief/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Güvenlik Kontrol
-                                </p>
-                            </a>
 
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Chief/Finished/" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Tamamlanan Randevular
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Chief/NotComings/" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Gelmeyen Randevular
+                            <li class="nav-item">
+                                <a href="/Chief/InChief/" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        İçerdeki Şef Kontrol
+                                    </p>
+                                </a>
 
-                                </p>
-                            </a>
-                        </li>
+                            </li>
+                        }
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-plus-square"></i>
-                                <p>
-                                    Çıkış Yap
+                        @if (User.IsInRole("B"))
+                        {
 
-                                </p>
-                            </a>
 
-                        </li>
+                            <li class="nav-item">
+                                <a href="/Chief/SecurityChief/" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Güvenlik Kontrol
+                                    </p>
+                                </a>
 
-                    </ul>
+                            </li>
+                        }
+                            <li class="nav-item">
+                                <a href="/Chief/Finished/" class="nav-link">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Tamamlanan Randevular
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Chief/NotComings/" class="nav-link">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Gelmeyen Randevular
+
+                                    </p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/Login/LogOut/" class="nav-link">
+                                    <i class="nav-icon far fa-plus-square"></i>
+                                    <p>
+                                        Çıkış Yap
+
+                                    </p>
+                                </a>
+
+                            </li>
+
+                        </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
