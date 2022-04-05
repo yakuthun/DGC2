@@ -18,14 +18,11 @@ namespace DGC2.Controllers
         //    return View();
         //}
 
-        [HttpPost]
+    
         public ActionResult Login()
         {
             return View();
-
         }
-
-
 
         [HttpGet]
         public ActionResult Index()
@@ -92,7 +89,7 @@ namespace DGC2.Controllers
             if (adminuserinfo != null)
             {
                 FormsAuthentication.SetAuthCookie(adminuserinfo.AdminUsername, false);
-                Session["AdminUserName"] = adminuserinfo.AdminUsername;
+                Session["AdminUsername"] = adminuserinfo.AdminUsername;
                 return RedirectToAction("Index", "Admin");
             }
             else
