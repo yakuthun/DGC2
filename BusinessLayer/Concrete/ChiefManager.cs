@@ -42,5 +42,10 @@ namespace BusinessLayer.Concrete
         {
             return _chiefDal.List();
         }
+
+        public List<Chief> GetListByChief(string role)
+        {
+            return _chiefDal.List(x => x.ChiefRole == role);
+        }
     }
 }
