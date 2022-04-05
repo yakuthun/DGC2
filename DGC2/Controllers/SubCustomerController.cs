@@ -23,7 +23,7 @@ namespace DGC2.Controllers
         CalendarManager cm = new CalendarManager(new EfCalendarDal());
         
 
-
+        [Authorize]
         public ActionResult Index()
         {
             var graphicresult = apm.GetList();
@@ -86,6 +86,7 @@ namespace DGC2.Controllers
             return RedirectToAction("Index");
         }
 
+        
         public ActionResult WaitingListAppoinment()
         {
             var listappoinment = apm.GetList();
