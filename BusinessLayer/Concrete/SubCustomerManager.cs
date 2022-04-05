@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
            return _subcustomerDal.Get(x => x.SubCustomerID == id);
         }
 
+        public List<SubCustomer> GetListByID(int id)
+        {
+            return _subcustomerDal.List(x => x.CustomerID == id);
+        }
+
         //public void DriverAdd(Driver driver)
         //{
         //    _subcustomerDal.Insert(driver);

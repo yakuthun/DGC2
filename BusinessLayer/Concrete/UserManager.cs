@@ -28,6 +28,11 @@ namespace BusinessLayer.Concrete
             return _userDal.List();
         }
 
+        public List<User> GetListUserByID(int id)
+        {
+            return _userDal.List(x => x.CustomerID == id);
+        }
+
         public void UserAdd(User user)
         {
             _userDal.Insert(user);
