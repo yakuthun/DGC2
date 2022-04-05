@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace DGC2.Controllers
 {
+    [Authorize(Roles = "A")]
     public class AdminController : Controller
     {
         AdminManager am = new AdminManager(new EfAdminDal());
@@ -18,7 +19,8 @@ namespace DGC2.Controllers
         CustomerSubManager sbm = new CustomerSubManager(new EfCustomerAddSubDal());
         SliceManager sm = new SliceManager(new EfSliceDal());
 
-        [Authorize]
+        
+       
 
         public ActionResult Index()
         {
