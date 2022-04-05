@@ -87,9 +87,17 @@ namespace DGC2.Controllers
 
         public ActionResult CalendarList(int id)
         {
+            var deger1 = c.Calendars.Count();
+            if (deger1 == 0)
+            {
 
-            var toplamdilim = c.Calendars.Where(c => c.CalendarID == id).Max(x => x.CLSlice);
-            ViewBag.d5 = toplamdilim;
+            }
+            else
+            {
+                var toplamdilim = c.Calendars.Where(c => c.CalendarID == id).Max(x => x.CLSlice);
+                ViewBag.d5 = toplamdilim;
+            }
+          
 
 
 
@@ -168,11 +176,22 @@ namespace DGC2.Controllers
             
 
             var appvalue = sm.GetByID(id);
-
             appvalue.SliceStatus = true;
 
-            var passiveslice = sm.GetByID(deger3);
-            passiveslice.SliceStatus = false;
+            var icveri = c.Slices.Count();
+            if (icveri == 1)
+            {
+                appvalue.SliceStatus = true;
+            }
+            else
+            {
+                var deger4 = c.Slices.Where(c => c.SliceStatus == true).Select(x => x.SlicesID).FirstOrDefault();
+                var passiveslice = sm.GetByID(deger4);
+                passiveslice.SliceStatus = false;
+
+            }
+
+
 
             sm.SliceUpdate(appvalue);
             return RedirectToAction("SliceList", "Admin");
@@ -182,7 +201,7 @@ namespace DGC2.Controllers
         public ActionResult SliceList()
         {
             Context c = new Context();
-            var deger1 = c.Calendars.Count().ToString();
+            var deger1 = c.Slices.Count().ToString();
             ViewBag.d1 = deger1;
 
             var calendarvalues = sm.GetList();
