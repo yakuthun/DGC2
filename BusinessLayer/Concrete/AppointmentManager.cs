@@ -42,7 +42,7 @@ namespace BusinessLayer.Concrete
 
         public List<Appointment> GetBySubCustomer()
         {
-            return _appointmentDal.List(x => x.SubCustomer.CustomerID == 1); //Session'dan gelecek.
+            return _appointmentDal.List(x => x.SubCustomerID == 1); //Session'dan gelecek.
         }
         public List<Appointment> GetByChief()
         {
@@ -67,6 +67,11 @@ namespace BusinessLayer.Concrete
         public Appointment GetByIDForDelete(int id, bool t, string code)
         {
             return _appointmentDal.Get(x =>x.AppointmentID == id && x.AppointmentStatus == t && x.AppointmentUCode == code);
+        }
+
+        public List<Appointment> GetBySubCustomerID(int id)
+        {
+            return _appointmentDal.List(x => x.SubCustomerID == id);
         }
     }
 }

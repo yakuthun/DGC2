@@ -24,10 +24,15 @@ namespace DGC2.Controllers
         
 
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(string p)
         {
-            var graphicresult = apm.GetList();
-            return View(graphicresult);
+            p = (string)Session["SubCustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+
+            //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
+            var graphicResult = apm.GetBySubCustomerID(subCustomerInfo);
+            return View(graphicResult);
             
         }
         [HttpGet]
@@ -54,7 +59,7 @@ namespace DGC2.Controllers
             var logisticname = p.DriverLogisticName;
             var app = apm.GetByID(78);
             //ps.AppointmentComment =p.DriverName + " " + p.DriverSurname + " " + p.DriverNumber + " " + p.DriverPlate + " " + p.DriverLogisticName;
-            scm.DriverAdd(p);
+            //scm.DriverAdd(p);
 
             var fullname = String.Format("İsim:" + name + " Soyad:" + " Telefon:" + number + " Plaka:" + plate + " Firma:" + logisticname);
             var asd = apm.GetByID(78);
@@ -63,39 +68,51 @@ namespace DGC2.Controllers
             //apm.AppointmentUpdate(app);
             return RedirectToAction("Index");
         }
-        [HttpGet]
-        public ActionResult EditDriver(int id)
-        {
+        //[HttpGet]
+        //public ActionResult EditDriver(int id)
+        //{
 
 
-            var drivervalue = scm.GetByID(id);
-            return View(drivervalue);
-        }
-        [HttpPost]
-        public ActionResult EditDriver(Driver p)
-        {
+        //    var drivervalue = scm.GetByID(id);
+        //    return View(drivervalue);
+        //}
+        //[HttpPost]
+        //public ActionResult EditDriver(Driver p)
+        //{
 
-            scm.DriverUpdate(p);
-            return RedirectToAction("Index");
-        }
-        public ActionResult DeleteDriver(int id)
-        {
-            var drivervalue = scm.GetByID(id);
-            drivervalue.DriverStatus = false;
-            scm.DriverUpdate(drivervalue);
-            return RedirectToAction("Index");
-        }
+        //    scm.DriverUpdate(p);
+        //    return RedirectToAction("Index");
+        //}
+        //public ActionResult DeleteDriver(int id)
+        //{
+        //    var drivervalue = scm.GetByID(id);
+        //    drivervalue.DriverStatus = false;
+        //    scm.DriverUpdate(drivervalue);
+        //    return RedirectToAction("Index");
+        //}
 
         
-        public ActionResult WaitingListAppoinment()
+        public ActionResult WaitingListAppoinment(string p)
         {
-            var listappoinment = apm.GetList();
+            p = (string)Session["SubCustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+
+            //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
+            var listappoinment = apm.GetBySubCustomerID(subCustomerInfo);
+            
             return View(listappoinment);
 
         }
-        public ActionResult AskChangeList()
+        public ActionResult AskChangeList(string p)
         {
-            var listappoinment = apm.GetList();
+            p = (string)Session["SubCustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+
+            //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
+            var listappoinment = apm.GetBySubCustomerID(subCustomerInfo);
+            
             return View(listappoinment);
 
         }
@@ -276,22 +293,40 @@ namespace DGC2.Controllers
         }
 
 
-        public ActionResult CanceledListAppoinment()
+        public ActionResult CanceledListAppoinment(string p)
         {
-            var canceledappoinment = apm.GetList();
+            p = (string)Session["SubCustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+
+            //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
+            var canceledappoinment = apm.GetBySubCustomerID(subCustomerInfo);
+            
             return View(canceledappoinment);
 
         }
-        public ActionResult AppliedListAppoinment()
+        public ActionResult AppliedListAppoinment(string p)
         {
-            var appliedappoinment = apm.GetList();
+            p = (string)Session["SubCustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+
+            //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
+            var appliedappoinment = apm.GetBySubCustomerID(subCustomerInfo);
+            
             return View(appliedappoinment);
 
         }
 
-        public ActionResult FinishedListAppoinment()
+        public ActionResult FinishedListAppoinment(string p)
         {
-            var finishedappoinment = apm.GetList();
+            p = (string)Session["SubCustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+
+            //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
+            var finishedappoinment = apm.GetBySubCustomerID(subCustomerInfo);
+            
             return View(finishedappoinment);
 
         }
@@ -320,9 +355,15 @@ namespace DGC2.Controllers
             apm.AppointmentUpdate(appvalue);
             return RedirectToAction("AppliedListAppoinment");
         }
-        public ActionResult CancelChangeList()
+        public ActionResult CancelChangeList(string p)
         {
-            var cancelChangeList = apm.GetList();
+            p = (string)Session["SubCustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+
+            //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
+            var cancelChangeList = apm.GetBySubCustomerID(subCustomerInfo);
+            
             return View(cancelChangeList);
         }
 
@@ -405,7 +446,7 @@ namespace DGC2.Controllers
                 d.DriverPlate = p.AppDriverPlate;
                 d.DriverLogisticName = p.AppDriverLogisticName;
                 d.DriverStatus = true;
-                scm.DriverAdd(d);
+                // scm.DriverAdd(d);
             }
 
             if (p.AppointmentTrackStatus == 0)

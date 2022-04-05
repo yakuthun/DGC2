@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public class EfSubCustomerDal : GenericRepository<Driver>, ISubCustomerDal
+    public class EfSubCustomerDal : GenericRepository<SubCustomer>,  ISubCustomerDal
     {
     }
 }

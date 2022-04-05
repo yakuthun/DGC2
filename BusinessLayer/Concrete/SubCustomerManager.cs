@@ -18,33 +18,38 @@ namespace BusinessLayer.Concrete
             _subcustomerDal = subcustomerDal;
         }
 
-        public void DriverAdd(Driver driver)
+        public SubCustomer GetBySubCustomerID(int id)
         {
-            _subcustomerDal.Insert(driver);
+           return _subcustomerDal.Get(x => x.SubCustomerID == id);
         }
 
-        public void DriverDelete(Driver driver)
-        {
-            _subcustomerDal.Update(driver);
-        }
+        //public void DriverAdd(Driver driver)
+        //{
+        //    _subcustomerDal.Insert(driver);
+        //}
 
-        public void DriverUpdate(Driver driver)
-        {
-            _subcustomerDal.Update(driver);
-        }
+        //public void DriverDelete(Driver driver)
+        //{
+        //    _subcustomerDal.Update(driver);
+        //}
 
-        public Driver GetByID(int id)
-        {
-            return _subcustomerDal.Get(x => x.DriverID == id);
-        }
+        //public void DriverUpdate(Driver driver)
+        //{
+        //    _subcustomerDal.Update(driver);
+        //}
 
-       
+        //public Driver GetByID(int id)
+        //{
+        //    return _subcustomerDal.Get(x => x.DriverID == id);
+        //}
 
-        public List<Driver> GetList()
-        {
-            return _subcustomerDal.List();
-        }
 
-        
+
+        //public List<Driver> GetList()
+        //{
+        //    return _subcustomerDal.List();
+        //}
+
+
     }
 }

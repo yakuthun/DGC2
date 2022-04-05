@@ -9,11 +9,13 @@ namespace BusinessLayer.Abstract
 {
     public interface ISubCustomerService
     {
-        List<Driver> GetList();
-        void DriverAdd(Driver driver);
-        Driver GetByID(int id);
+        //List<Driver> GetList();
+        //void DriverAdd(Driver driver);
+        //Driver GetByID(int id);
+
+        SubCustomer GetBySubCustomerID(int id);
         
-        void DriverDelete(Driver driver);
-        void DriverUpdate(Driver driver);
+        //void DriverDelete(Driver driver);
+        //void DriverUpdate(Driver driver);
     }
 }
