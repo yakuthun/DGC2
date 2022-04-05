@@ -23,7 +23,7 @@ namespace DGC2.Controllers
         {
             p = (string)Session["CustomerUsername"];
             Context c = new Context();
-            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+            var subCustomerInfo = c.Customers.Where(x => x.CustomerUsername == p).Select(x => x.CustomerID).FirstOrDefault();
 
             //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
             var graphicvalue = am.GetBySubCustomer(subCustomerInfo);
@@ -34,7 +34,7 @@ namespace DGC2.Controllers
         {
             p = (string)Session["CustomerUsername"];
             Context c = new Context();
-            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+            var subCustomerInfo = c.Customers.Where(x => x.CustomerUsername == p).Select(x => x.CustomerID).FirstOrDefault();
 
             //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
             var appointmentvalue = am.GetBySubCustomer(subCustomerInfo);
@@ -46,9 +46,9 @@ namespace DGC2.Controllers
         {
             p = (string)Session["CustomerUsername"];
             Context c = new Context();
-            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+            var subCustomerInfo = c.Customers.Where(x => x.CustomerUsername == p).Select(x => x.CustomerID).FirstOrDefault();
 
-            
+
             var ssubcustomervalue = csm.GetList().Where(x=>x.CustomerID == subCustomerInfo);
             return View(ssubcustomervalue);
         }
@@ -57,7 +57,7 @@ namespace DGC2.Controllers
         {
             p = (string)Session["CustomerUsername"];
             Context c = new Context();
-            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+            var subCustomerInfo = c.Customers.Where(x => x.CustomerUsername == p).Select(x => x.CustomerID).FirstOrDefault();
 
             //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
             var appointmentvalue = am.GetBySubCustomer(subCustomerInfo);
@@ -88,7 +88,7 @@ namespace DGC2.Controllers
 
             p = (string)Session["CustomerUsername"];
             Context c = new Context();
-            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+            var subCustomerInfo = c.Customers.Where(x => x.CustomerUsername == p).Select(x => x.CustomerID).FirstOrDefault();
 
             //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
             var finishedvalue = am.GetBySubCustomer(subCustomerInfo);
@@ -205,7 +205,7 @@ namespace DGC2.Controllers
 
             p = (string)Session["CustomerUsername"];
             Context c = new Context();
-            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+            var subCustomerInfo = c.Customers.Where(x => x.CustomerUsername == p).Select(x => x.CustomerID).FirstOrDefault();
 
             //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
             var waitingvalue = am.GetBySubCustomer(subCustomerInfo);
@@ -221,7 +221,7 @@ namespace DGC2.Controllers
         {
             p = (string)Session["CustomerUsername"];
             Context c = new Context();
-            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+            var subCustomerInfo = c.Customers.Where(x => x.CustomerUsername == p).Select(x => x.CustomerID).FirstOrDefault();
 
             //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
             var appwcgvalue = am.GetBySubCustomer(subCustomerInfo);
@@ -327,9 +327,9 @@ namespace DGC2.Controllers
         {
             p = (string)Session["CustomerUsername"];
             Context c = new Context();
-            var subCustomerInfo = c.SubCustomers.Where(x => x.SubCustomerUsername == p).Select(x => x.SubCustomerID).FirstOrDefault();
+            var subCustomerInfo = c.Customers.Where(x => x.CustomerUsername == p).Select(x => x.CustomerID).FirstOrDefault();
 
-            
+
             var calendarvalues = um.GetList().Where(x=>x.CustomerID == subCustomerInfo);
             //TempData["CustomerID"] = id;
             //ViewBag.customerid = id;

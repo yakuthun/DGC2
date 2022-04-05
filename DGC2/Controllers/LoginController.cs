@@ -9,6 +9,7 @@ using System.Web.Security;
 
 namespace DGC2.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         // GET: LoginSubCustomer
