@@ -3112,6 +3112,8 @@
     <Content Include="Views\CustomerAppAccept\FinishedAppointments.cshtml" />
     <Content Include="Views\LoginSubCustomer\Index.cshtml" />
     <Content Include="Views\Login\CustomerIndex.cshtml" />
+    <Content Include="Views\Login\Admin.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
