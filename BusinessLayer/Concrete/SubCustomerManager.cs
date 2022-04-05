@@ -38,9 +38,13 @@ namespace BusinessLayer.Concrete
             return _subcustomerDal.Get(x => x.DriverID == id);
         }
 
+       
+
         public List<Driver> GetList()
         {
             return _subcustomerDal.List();
         }
+
+        
     }
 }

@@ -149,6 +149,7 @@
     <Compile Include="Controllers\CustomerSubController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SubCustomerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3107,6 +3108,10 @@
     <Content Include="Views\Chief\EditInChiefAppointment.cshtml" />
     <Content Include="Views\Chief\EditSecurityAppointment.cshtml" />
     <Content Include="Views\SubCustomer\FinishedListAppoinment.cshtml" />
+    <Content Include="Views\SubCustomer\AskToCancel.cshtml" />
+    <Content Include="Views\CustomerAppAccept\FinishedAppointments.cshtml" />
+    <Content Include="Views\LoginSubCustomer\Index.cshtml" />
+    <Content Include="Views\Login\CustomerIndex.cshtml" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

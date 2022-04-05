@@ -23,7 +23,7 @@ namespace DGC2.Controllers
         CalendarManager cm = new CalendarManager(new EfCalendarDal());
         
 
-
+        [Authorize]
         public ActionResult Index()
         {
             var graphicresult = apm.GetList();
@@ -86,6 +86,7 @@ namespace DGC2.Controllers
             return RedirectToAction("Index");
         }
 
+        
         public ActionResult WaitingListAppoinment()
         {
             var listappoinment = apm.GetList();
@@ -303,6 +304,14 @@ namespace DGC2.Controllers
             appvalue.AppointmentTrackStatus = 20;
             apm.AppointmentUpdate(appvalue);
             return RedirectToAction("AppliedListAppoinment");
+        }
+
+        [HttpGet]
+        public ActionResult AskToCancel(int id)
+        {
+            var finishedappoinment = apm.GetByID(id);
+            return View(finishedappoinment);
+
         }
         public ActionResult CancelChange(int id)
         {

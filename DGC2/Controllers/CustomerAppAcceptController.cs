@@ -18,7 +18,7 @@ namespace DGC2.Controllers
         CalendarManager cm = new CalendarManager(new EfCalendarDal());
         UserManager um = new UserManager(new EfUserDal());
         Context c = new Context();
-
+        [Authorize]
         public ActionResult Index()
         {
             var graphicvalue = am.GetBySubCustomer();
@@ -52,6 +52,14 @@ namespace DGC2.Controllers
             appvalue.AppointmentTrackStatus = 2;
             am.AppointmentUpdate(appvalue);
             return RedirectToAction("Appointments");
+        }
+
+        public ActionResult FinishedAppointments()
+        {
+
+
+            var finishedvalue = am.GetBySubCustomer();
+            return View(finishedvalue);
         }
         public ActionResult ApplyAppointment(int id)
         {

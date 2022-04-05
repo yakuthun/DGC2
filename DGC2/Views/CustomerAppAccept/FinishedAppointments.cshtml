@@ -1,46 +1,18 @@
 ﻿@using EntityLayer.Concrete
 @model List<Appointment>
 @{
-    ViewBag.Title = "AppliedListAppoinment";
-    Layout = "~/Views/Shared/_SubCustomerLayout.cshtml";
+    ViewBag.Title = "FinishedAppointments";
+    Layout = "~/Views/Shared/_CustomerAdminLayout.cshtml";
 }
+
+
 
 @{
     string color = "";
-    string text = "Bekleniyor";
-    TimeSpan finishtime = TimeSpan.Parse("15:00"); // 10 PM
-    TimeSpan now = DateTime.Now.TimeOfDay;
+    string text = "";
+
 }
 
-@*<table class="table table-bordered">
-        <tr>
-            <th>Firma İsim</th>
-            <th>Mal İsim</th>
-            <th>Yük Adet</th>
-            <th>Giriş Tarihi</th>
-            <th>Durum</th>
-            <th>Sürücü İsim</th>
-            <th>Talep</th>
-            <th>Talep</th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            if (item.AppointmentTrackStatus == 4)
-            {
-                <tr>
-
-                    <td>@item.SubCustomer.SubCustomerName</td>
-                    <td>@item.AppointmentName</td>
-                    <td>@item.AppointmentCapacity</td>
-                    <td>@item.AppStartDate</td>
-                    <td>@item.AppointmentStatus</td>
-
-                    <td><a href="/SubCustomer/AskChange/@item.AppointmentID" class="btn btn-warning">Değişiklik Talebi</a></td>
-                    <td><a href="/SubCustomer/CancelChange/@item.AppointmentID" class="btn btn-dark">İptal Talebi</a></td>
-                </tr>
-            }
-        }
-    </table>*@
 <body class="hold-transition sidebar-mini">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -57,7 +29,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header bg-success">
-                <h3 class="card-title" style="font-size:30px; font-weight:700">Onaylanan Randevular</h3>
+                <h3 class="card-title" style="font-size:30px; font-weight:700">Tamamlanan Randevular</h3>
                 <div class="card-tools">
 
 
@@ -67,8 +39,8 @@
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
-                            <th style="width: 13%">
-                                Randevu Alınma Tarihi
+                            <th style="width: 1%">
+                                Firma
                             </th>
                             <th style="width: 8%" class="text-center">
                                 Ürün Cinsi
@@ -76,14 +48,14 @@
                             <th style="width: 6%">
                                 Kap / Koli
                             </th>
-                            <th style="width: 15%" class="text-center">
+                            <th style="width: 16%" class="text-center">
                                 Randevu Tarihi
                             </th>
-                            <th style="width: 1%" class="text-center">
+                            <th style="width: 5%" class="text-center">
                                 Dilim
                             </th>
 
-                            <th style="width: 8%" class="text-center">
+                            <th style="width: 10%" class="text-center">
                                 Sürücü
                             </th>
                             <th style="width: 10%" class="text-center">
@@ -107,38 +79,29 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            if (item.AppointmentTrackStatus == 4 
-                                || item.AppointmentTrackStatus == 8
-                                || item.AppointmentTrackStatus == 9
+                            if (item.AppointmentTrackStatus == 5
                                 || item.AppointmentTrackStatus == 10)
                             {
 
 
-                                if (item.AppointmentTrackStatus== 4)
-                                {
-                                    color = "badge badge-dark";
-                                }
-                                if (item.AppointmentTrackStatus == 8)
-                                {
-                                    color = "badge badge-primary";
-                                    text = "Depoya Geldi";
-                                }
-                                if (item.AppointmentTrackStatus == 9)
-                                {
-                                    color = "badge badge-warning";
-                                    text = "İndiriliyor";
-                                }
+
                                 if (item.AppointmentTrackStatus == 10)
                                 {
                                     color = "badge badge-success";
                                     text = "Randevu Tamamlandı";
                                 }
+                                if (item.AppointmentTrackStatus == 5)
+                                {
+                                    color = "badge badge-danger";
+                                    text = "Depoya Gelmedi";
+                                }
+
 
                         <tr>
 
 
-                            <td class="project-state" style="font-size:22px; font-weight:600">
-                                @(((DateTime)item.AppClickTime).ToString("dd MMMM hh:mm"))
+                            <td style="font-size: 20px; font-weight:800">
+                                @item.SubCustomer.SubCustomerCompany
                             </td>
                             <td class="project-state" style="font-size:22px; font-weight:600">
                                 @item.AppointmentName
@@ -167,17 +130,14 @@
                             <td class="project-state" style="font-size: 22px; text-align: center">
                                 @item.AppDriverNumber
                             </td>
-                            <td class="text-center">
-                                <p style="font-weight:800; font-size:20px;" class="mt-3  @color">@text</p>
-                            </td>
 
-                            <td class=" text-right">
+
+
+                            <td>
                             </td>
                             <td class="project-actions text-right">
-                                <a href="/SubCustomer/EditAskChange/@item.AppointmentID" class="btn btn-warning  m-md-3">Düzenle</a>
-                                <a href="/SubCustomer/AskToCancel/@item.AppointmentID" class="btn btn-danger">İptal Talep Et</a>
+                                <p style="font-weight:800; font-size:20px;" class="mt-2 text-center @color">@text</p>
                             </td>
-
 
                         </tr>
 
