@@ -10,6 +10,7 @@ namespace BusinessLayer.Abstract
     public interface IUserService
     {
         List<User> GetList();
+        List<User> GetListUserByID(int id);
         void UserAdd(User user);
         User GetByID(int id);
         void UserDelete(User user);

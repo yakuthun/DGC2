@@ -16,6 +16,7 @@ namespace DGC2.Controllers
         AppointmentManager am = new AppointmentManager(new EfAppointmentDal());
         CustomerSubManager csm = new CustomerSubManager(new EfCustomerAddSubDal());
         CalendarManager cm = new CalendarManager(new EfCalendarDal());
+        SubCustomerManager scm = new SubCustomerManager(new EfSubCustomerDal());
         UserManager um = new UserManager(new EfUserDal());
         Context c = new Context();
         [Authorize]
@@ -49,7 +50,7 @@ namespace DGC2.Controllers
             var subCustomerInfo = c.Customers.Where(x => x.CustomerUsername == p).Select(x => x.CustomerID).FirstOrDefault();
 
 
-            var ssubcustomervalue = csm.GetList().Where(x=>x.CustomerID == subCustomerInfo);
+            var ssubcustomervalue = scm.GetListByID(subCustomerInfo);
             return View(ssubcustomervalue);
         }
         public ActionResult CanceledAppoinments(string p)
@@ -330,7 +331,7 @@ namespace DGC2.Controllers
             var subCustomerInfo = c.Customers.Where(x => x.CustomerUsername == p).Select(x => x.CustomerID).FirstOrDefault();
 
 
-            var calendarvalues = um.GetList().Where(x=>x.CustomerID == subCustomerInfo);
+            var calendarvalues = um.GetListUserByID(subCustomerInfo);
             //TempData["CustomerID"] = id;
             //ViewBag.customerid = id;
             return View(calendarvalues);

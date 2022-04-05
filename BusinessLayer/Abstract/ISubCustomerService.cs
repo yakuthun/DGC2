@@ -14,7 +14,7 @@ namespace BusinessLayer.Abstract
         //Driver GetByID(int id);
 
         SubCustomer GetBySubCustomerID(int id);
-        
+        List<SubCustomer> GetListByID(int id);
         //void DriverDelete(Driver driver);
         //void DriverUpdate(Driver driver);
     }
