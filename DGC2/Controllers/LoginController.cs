@@ -12,11 +12,24 @@ namespace DGC2.Controllers
     public class LoginController : Controller
     {
         // GET: LoginSubCustomer
+        //[HttpGet]
+        //public ActionResult LogOn(LogOnViewModel model, string returnUrl)
+        //{
+        //    return View();
+        //}
+
+    
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Index(SubCustomer p)
         {
@@ -56,6 +69,34 @@ namespace DGC2.Controllers
                 return RedirectToAction("CustomerIndex");
             }
 
+        }
+
+
+        //Admin
+        [HttpGet]
+        public ActionResult Admin()
+        {
+           
+                return View();
+            
+        }
+        [HttpPost]
+        public ActionResult Admin(Admin p)
+        {
+            Context c = new Context();
+            var adminuserinfo = c.Admins.FirstOrDefault(x => x.AdminUsername == p.AdminUsername && x.AdminPassword == p.AdminPassword);
+
+            if (adminuserinfo != null)
+            {
+                FormsAuthentication.SetAuthCookie(adminuserinfo.AdminUsername, false);
+                Session["AdminUsername"] = adminuserinfo.AdminUsername;
+                return RedirectToAction("Index", "Admin");
+            }
+            else
+            {
+                return RedirectToAction("Admin","Login");
+            }
+            
         }
     }
 }

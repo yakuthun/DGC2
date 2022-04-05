@@ -233,7 +233,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Animated Login Form</title>
+    <title>Yönetici Girişi</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
@@ -246,17 +246,17 @@
             <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg">
         </div>
         <div class="login-content">
-            @using (Html.BeginForm("CustomerIndex", "Login", FormMethod.Post))
+            @using (Html.BeginForm("Admin", "Login", FormMethod.Post))
             {
                 <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg">
-                <h2 class="title">Customer</h2>
+                <h2 class="title">ADMİN</h2>
                 <div class="input-div one">
                     <div class="i">
                         <i class="fas fa-user"></i>
                     </div>
                     <div class="div">
                         <h5>Kullanıcı Adı</h5>
-                        <input type="text" id="text" name="CustomerUsername" class="input">
+                        <input type="text" id="text" name="AdminUsername" class="input">
                     </div>
                 </div>
                 <div class="input-div pass">
@@ -265,7 +265,7 @@
                     </div>
                     <div class="div">
                         <h5>Şifre</h5>
-                        <input type="password" id="password" name="CustomerPassword" class="input">
+                        <input type="password" id="password" name="AdminPassword" class="input">
                     </div>
                 </div>
                 <a href="#">Şifremi Unuttum</a>

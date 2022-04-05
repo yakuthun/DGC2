@@ -17,11 +17,21 @@ namespace DGC2.Controllers
         CalendarManager cl = new CalendarManager(new EfCalendarDal());
         CustomerSubManager sbm = new CustomerSubManager(new EfCustomerAddSubDal());
         SliceManager sm = new SliceManager(new EfSliceDal());
+
+        [Authorize]
+
         public ActionResult Index()
         {
             var adminvalues = am.GetList();
             return View(adminvalues);
         }
+     
+
+
+
+
+
+
         [HttpGet]
         public ActionResult AddAdmin()
         {
