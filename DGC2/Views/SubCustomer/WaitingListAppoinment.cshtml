@@ -142,7 +142,7 @@
                             </td>
 
                             <td class="project-actions text-right">
-                                @if (now > finishtime)
+                                @if (now < finishtime)
                                 {
                                     <a class="btn btn-primary" href="/SubCustomer/EditNotAppliedAppointment/@item.AppointmentID">Randevuyu Düzenle</a>
                                 }

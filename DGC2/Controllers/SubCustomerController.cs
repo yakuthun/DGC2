@@ -21,6 +21,7 @@ namespace DGC2.Controllers
         SubCustomerManager scm = new SubCustomerManager(new EfSubCustomerDal());
         AppointmentManager apm = new AppointmentManager(new EfAppointmentDal());
         CalendarManager cm = new CalendarManager(new EfCalendarDal());
+        DriverManager dm = new DriverManager(new EfDriverDal());
         
 
         [Authorize]
@@ -395,8 +396,15 @@ namespace DGC2.Controllers
 
         }
         [HttpPost]
-        public ActionResult AddAppoinment(Appointment p, Driver d)
+        public ActionResult AddAppoinment(Appointment p, Driver d,string a)
         {
+
+            a = (string)Session["SubCustomerUsername"];
+            Context c = new Context();
+            var subcustomerID = c.SubCustomers.Where(x => x.SubCustomerUsername == a).Select(x => x.SubCustomerID).FirstOrDefault();
+
+            //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
+            var SubCustomerID = scm.GetBySubCustomerID(subcustomerID).SubCustomerID;
 
 
             p.AppStartDate = (string)TempData["mydatetime"];
@@ -432,7 +440,7 @@ namespace DGC2.Controllers
             //var number = TempData["tempslice"];
             //p.CalendarID = int.Parse(number.ToString());
             p.CalendarID = asd;
-            p.SubCustomerID = 3;
+            p.SubCustomerID = SubCustomerID;
             p.ChiefID = 2; //laptopa geçildi normalde -> ' 1 '
             //var dailyamount = (int)TempData["tempdailyamount"];
 
@@ -446,7 +454,7 @@ namespace DGC2.Controllers
                 d.DriverPlate = p.AppDriverPlate;
                 d.DriverLogisticName = p.AppDriverLogisticName;
                 d.DriverStatus = true;
-                // scm.DriverAdd(d);
+                 dm.DriverAdd(d);
             }
 
             if (p.AppointmentTrackStatus == 0)

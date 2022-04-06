@@ -57,6 +57,7 @@
     <Compile Include="Abstract\ICustomerAddSubDal.cs" />
     <Compile Include="Abstract\IChiefDal.cs" />
     <Compile Include="Abstract\ICustomerDal.cs" />
+    <Compile Include="Abstract\IDriverDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\ISliceDal.cs" />
     <Compile Include="Abstract\ISubCustomerDal.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="EntityFramework\EfCustomerAddSubDal.cs" />
     <Compile Include="EntityFramework\EfChiefDal.cs" />
     <Compile Include="EntityFramework\EfCustomerDal.cs" />
+    <Compile Include="EntityFramework\EfDriverDal.cs" />
     <Compile Include="EntityFramework\EfSliceDal.cs" />
     <Compile Include="EntityFramework\EfSubCustomerDal.cs" />
     <Compile Include="EntityFramework\EfUserDal.cs" />

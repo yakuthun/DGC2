@@ -61,6 +61,7 @@
     <Compile Include="Abstract\IChiefService.cs" />
     <Compile Include="Abstract\ICustomerService.cs" />
     <Compile Include="Abstract\ICustomerSubService.cs" />
+    <Compile Include="Abstract\IDriverService.cs" />
     <Compile Include="Abstract\ISliceService.cs" />
     <Compile Include="Abstract\ISubCustomerService.cs" />
     <Compile Include="Abstract\IUserService.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Concrete\ChiefManager.cs" />
     <Compile Include="Concrete\CustomerManager.cs" />
     <Compile Include="Concrete\CustomerSubManager.cs" />
+    <Compile Include="Concrete\DriverManager.cs" />
     <Compile Include="Concrete\SliceManager.cs" />
     <Compile Include="Concrete\SubCustomerManager.cs" />
     <Compile Include="Concrete\UserManager.cs" />
