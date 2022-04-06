@@ -29,11 +29,6 @@ namespace DGC2.Controllers
         }
      
 
-
-
-
-
-
         [HttpGet]
         public ActionResult AddAdmin()
         {
