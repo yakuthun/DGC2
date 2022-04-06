@@ -72,10 +72,6 @@
     <Compile Include="EntityFramework\EfSliceDal.cs" />
     <Compile Include="EntityFramework\EfSubCustomerDal.cs" />
     <Compile Include="EntityFramework\EfUserDal.cs" />
-    <Compile Include="Migrations\202204041238139_laptopmig.cs" />
-    <Compile Include="Migrations\202204041238139_laptopmig.designer.cs">
-      <DependentUpon>202204041238139_laptopmig.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -95,9 +91,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204012226127_initial.resx">
       <DependentUpon>202204012226127_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202204041238139_laptopmig.resx">
-      <DependentUpon>202204041238139_laptopmig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

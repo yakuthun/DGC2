@@ -24,24 +24,44 @@
         <h3 class="card-title" style="font-size:30px; font-weight:700">Bekleyen Randevular</h3>
 
     </div>
-    <div class="container-fluid" style="background-color:red" >
+
+    <div class="container-fluid">
         <div class="row">
-            <div class="col bg-primary">
-                Bekleniyor @ViewBag.gelen
+          
+            <div class="col bg-gradient-orange" style="text-align:center">
+                <h3 class="mt-1"> @ViewBag.gelen 100 Araç Bekleniyor</h3>
             </div>
-            <div class="col bg-primary">
-                Geldi @ViewBag.geldi
-            </div>
-            <div class="col">
-                İndiriliyor @ViewBag.indiriliyor
-            </div>
-            <div class="col">
-                Tamamlandı @ViewBag.biten
-            </div>
-            <div class="col">
-                Çıktı @ViewBag.cikti
+
+
+            <div class="col bg-gradient-green" style="text-align:center">
+                <h3 class="mt-1">İşlemdekiler</h3>
             </div>
         </div>
+
+
+        <div class="row">
+            <div class="col bg-primary">
+                <div class="row">
+                    <div class="col bg-black">
+                        <div class="row">
+                            <div class="col" style="text-align:center">Beklenen: @ViewBag.gelen</div>
+                            <div class="col" style="text-align:center">Gelen: @ViewBag.geldi</div>
+                            </div>
+                        </div>
+                        <div class="col bg-primary">
+                            <div class="row">
+                                <div class="col" style="text-align:center"> İndiriliyor: @ViewBag.indiriliyor</div>
+                                <div class="col" style="text-align:center"> Tamamlandı: @ViewBag.biten</div>
+                                <div class="col" style="text-align:center"> Çıktı: @ViewBag.cikti</div>
+                                <div class="col" style="text-align:center"> Gelmedi: @ViewBag.cikti</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+            </div>
+
     </div>
     Aktif Dilim:  @ViewBag.d3
     Toplam Dilim: @ViewBag.d5
@@ -54,7 +74,7 @@
             <hr />
 
             <table id="example1" class="table table-bordered table-striped table-hover">
-                <thead>
+                <thead >
                     <tr>
                         <th>ID</th>
                         <th>Müşteri</th>
@@ -97,18 +117,18 @@
                                         switch (item.AppointmentTrackStatus)
                                         {
                                             case 4:
-                                                takipdurum = "bg-primary";
+                                                takipdurum = "table-primary";
 
                                                 break;
                                             case 8:
-                                                takipdurum = "bg-success";
+                                                takipdurum = "table-warning";
 
                                                 break;
                                             case 9:
-                                                takipdurum = "bg-dark";
+                                                takipdurum = "table-info";
                                                 break;
                                             case 10:
-                                                takipdurum = "bg-success";
+                                                takipdurum = "table-success";
                                                 break;
 
                                         }

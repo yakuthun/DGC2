@@ -27,8 +27,18 @@ namespace DGC2.Controllers
             //var gelen = c.Appointments.Where(c => c.AppStartDate == DateTime.Today).Count();
             //ViewBag.gelen = gelen;
 
+           
+
+
+
             var geldi = c.Appointments.Where(c => c.InComingDate == DateTime.Today).Count();
             ViewBag.geldi = geldi;
+
+
+
+            var iniyor = c.Appointments.Where(c => c.DownloadedDate == DateTime.Today).Count();
+            ViewBag.iniyor = iniyor;
+
 
             var indiriliyor = c.Appointments.Where(c => c.DownloadedDate == DateTime.Today).Count();
             ViewBag.indiriliyor = indiriliyor;
@@ -36,7 +46,7 @@ namespace DGC2.Controllers
             var bitenveri = c.Appointments.Where(c => c.AppFinishDate == DateTime.Today).Count();
             ViewBag.biten = bitenveri;
 
-            var cikti = c.Appointments.Where(c => c.AppFinishDate == DateTime.Today).Count();
+            var cikti = c.Appointments.Where(c => c.OutDate == DateTime.Today).Count();
             ViewBag.cikti = cikti;
 
 
@@ -220,6 +230,8 @@ namespace DGC2.Controllers
             var appvalues = am.GetByID(id);
             ViewBag.trackstatus = appvalues.AppointmentTrackStatus;
             ViewBag.imagecontent = appvalues.AppointmentImage;
+
+
             return View(appvalues);
 
         }
@@ -236,7 +248,8 @@ namespace DGC2.Controllers
             am.AppointmentUpdate(p);
           
                 var appvalue = am.GetByID(id);
-                appvalue.AppointmentTrackStatus = 25;
+            appvalue.OutDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            appvalue.AppointmentTrackStatus = 25;
                 am.AppointmentDelete(appvalue);
                 return RedirectToAction("SecurityChief", "Chief");
            
@@ -278,7 +291,7 @@ namespace DGC2.Controllers
         public ActionResult Downloaded(int id, Appointment p)
         {
             var appvalue = am.GetByID(id);
-            appvalue.DownloadedDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            appvalue.DownloadedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
 
             appvalue.AppointmentTrackStatus = 9;
             am.AppointmentDelete(appvalue);
@@ -299,6 +312,17 @@ namespace DGC2.Controllers
             var appvalue = am.GetByID(id);
             appvalue.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             appvalue.AppointmentTrackStatus = 10;
+            am.AppointmentDelete(appvalue);
+            return RedirectToAction("Index");
+        }
+
+
+        // 10 - Çıktı
+        public ActionResult Out(int id, Appointment p)
+        {
+            var appvalue = am.GetByID(id);
+            appvalue.OutDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            appvalue.AppointmentTrackStatus = 25;
             am.AppointmentDelete(appvalue);
             return RedirectToAction("Index");
         }
