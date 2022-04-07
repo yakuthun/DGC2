@@ -56,8 +56,8 @@
     @*@Html.Label("bitiş real")*@
     @Html.HiddenFor(x => x.DownloadedDate, new { @class = "form-control" })
 
-    @*@Html.Label("bitiş real")
-        @Html.TextBoxFor(x => x.InComingDate, new { @class = "form-control" })*@
+    @Html.Label("bitiş real")
+    @Html.HiddenFor(x => x.InComingDate, new { @class = "form-control" })
     @Html.HiddenFor(x => x.AppointmentUpdateComment, new { @class = "form-control" })
     @Html.HiddenFor(x => x.CalendarID, new { @class = "form-control" })
     @Html.Label("Eşya Adı")

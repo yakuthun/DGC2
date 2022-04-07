@@ -24,8 +24,8 @@ namespace DGC2.Controllers
        
         public ActionResult Index()
         {
-            //var gelen = c.Appointments.Where(c => c.AppStartDate == DateTime.Today).Count();
-            //ViewBag.gelen = gelen;
+            var gelen = c.Appointments.Where(c => c.AppStartDate.ToString() == DateTime.Today.ToString()).Count();
+            ViewBag.gelen = gelen;
 
            
 
@@ -140,9 +140,6 @@ namespace DGC2.Controllers
         public ActionResult EditAppointment(Appointment p,int id)
         {
 
-            
-            //p.AppointmentImage = "xxx";
-
             // p.InComingDate = DateTime.Parse(DateTime.Now.ToShortTimeString());
             p.AppFinishDate = DateTime.Parse(DateTime.Now.ToShortDateString());
           
@@ -150,6 +147,7 @@ namespace DGC2.Controllers
             if (p.AppointmentTrackStatus == 9)
             {
                 var appvalue = am.GetByID(id);
+
                 appvalue.AppointmentTrackStatus = 10;
                 am.AppointmentDelete(appvalue);
                 return RedirectToAction("Index");
@@ -248,8 +246,8 @@ namespace DGC2.Controllers
             am.AppointmentUpdate(p);
           
                 var appvalue = am.GetByID(id);
-            appvalue.OutDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            appvalue.AppointmentTrackStatus = 25;
+                  appvalue.OutDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                 appvalue.AppointmentTrackStatus = 25;
                 am.AppointmentDelete(appvalue);
                 return RedirectToAction("SecurityChief", "Chief");
            
