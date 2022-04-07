@@ -27,7 +27,12 @@ namespace DGC2.Controllers
             var adminvalues = am.GetList();
             return View(adminvalues);
         }
-     
+
+        public ActionResult Dashboard()
+        {
+            var adminvalues = am.GetList();
+            return View(adminvalues);
+        }
 
         [HttpGet]
         public ActionResult AddAdmin()
