@@ -191,16 +191,25 @@ namespace DGC2.Controllers
 
         public ActionResult DeleteCalendar(int id,Calendar p)
         {
-            var test = p.CLSlice;
-            var diziliste = new[] { c.Calendars.Where(c => c.CLSlice == test).Where(x => x.SlicesID == p.SlicesID).Select(y => y.CalendarID).FirstOrDefault() };
-            var calendarvalue = cl.GetByID(id);
-            foreach (var item in diziliste)
-            {
-                
+            
 
+            var clvalue = cl.GetByID(id);
+
+            var clslice = clvalue.CLSlice;
+            var slices = clvalue.SlicesID;
+           // var diziliste = new[] { c.Calendars.Where(c => c.CLSlice == test).Where(x => x.SlicesID == p.SlicesID).Select(y => y.CalendarID).FirstOrDefault() };
+           // var calendarvalue = cl.GetByID(id);
+
+            var cart = cl.GetList().Where(x => x.CLSlice == clslice && x.SlicesID == slices);
+            
+            foreach (var item in cart)
+            {
+
+                cl.CalendarDelete(item);
                
             }
-            cl.CalendarDelete(p);
+            //cl.CalendarDelete(p);
+            
             return RedirectToAction("Index");
         }
 

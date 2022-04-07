@@ -62,25 +62,26 @@
                     {
 
                     
-                    <tr>
-                        <th>@item.CalendarID</th>
-                        <td>@item.Slice.SliceVersion</td>
-                        <td>@item.Slice.SliceStatus</td>
-                        <td>@item.CLSliceID</td>
-                        @*<td>@item.CLUseStartDate</td>
-                        <td>@item.CLUseFinishDate</td>*@
+                <tr>
+                    <th>@item.CalendarID</th>
+                    <td>@item.Slice.SliceVersion</td>
+                    <td>@item.Slice.SliceStatus</td>
+                    <td>@item.CLSliceID</td>
+                    @*<td>@item.CLUseStartDate</td>
+        <td>@item.CLUseFinishDate</td>*@
                     <td>@item.CLStartHour</td>
                     <td>@item.CLFinishDate</td>
-                        <td>@item.CLSlice</td>
-                        <td>@item.CLAmount</td>
-                        <td>@item.CLTolerance</td>
-                        <td>@item.CLSumTolerance</td>
-                        <td>@item.CLPalletCapacity</td>
+                    <td>@item.CLSlice</td>
+                    <td>@item.CLAmount</td>
+                    <td>@item.CLTolerance</td>
+                    <td>@item.CLSumTolerance</td>
+                    <td>@item.CLPalletCapacity</td>
 
-                        <td><a href="/Admin/DeleteAdmin/@item.CalendarID" class="btn btn-danger">Sil</a></td>
-                        <td><a href="/Admin/EditCalendar/@item.CalendarID" class="btn btn-warning">Güncelle</a></td>
+                    <td><a href="/Admin/DeleteCalendar/@item.CalendarID" class="btn btn-danger">Sil</a></td>
+                    <td><a href="/Admin/EditCalendar/@item.CalendarID" class="btn btn-warning">Güncelle</a></td>
+                   
 
-                    </tr> 
+                </tr> 
                           //break;
                       }
 
