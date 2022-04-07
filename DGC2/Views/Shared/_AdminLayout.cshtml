@@ -216,6 +216,16 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
     with font-awesome or any other icon font library -->
+                        <li class="nav-item">
+                            <a href="/Admin/Dashboard/" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Dashboard
+
+                                </p>
+                            </a>
+
+                        </li>
                         @if (User.IsInRole("A"))
                         {
                             <li class="nav-item">
@@ -229,102 +239,102 @@
 
                             </li>
                         }
-                            <li class="nav-item">
-                                <a href="/Customer/Index/" class="nav-link">
-                                    <i class="nav-icon fas fa-th"></i>
-                                    <p>
-                                        Müşteriler
+                        <li class="nav-item">
+                            <a href="/Customer/Index/" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Müşteriler
 
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/AdminChief/Index/" class="nav-link">
-                                    <i class="nav-icon fas fa-tree"></i>
-                                    <p>
-                                        Operasyon
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/AdminChief/Index/" class="nav-link">
+                                <i class="nav-icon fas fa-tree"></i>
+                                <p>
+                                    Operasyon
 
-                                    </p>
-                                </a>
+                                </p>
+                            </a>
 
-                            </li>
-                            <li class="nav-item">
-                                <a href="/Admin/SubCustomerList" class="nav-link">
-                                    <i class="nav-icon fas fa-copy"></i>
-                                    <p>
-                                        Tedarikçiler
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Admin/SubCustomerList" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    Tedarikçiler
 
-                                    </p>
-                                </a>
+                                </p>
+                            </a>
 
-                            </li>
-                            <li class="nav-item">
-                                <a href="/Admin/WaitingApp/" class="nav-link">
-                                    <i class="nav-icon fas fa-copy"></i>
-                                    <p>
-                                        Onay Bekliyor
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Admin/WaitingApp/" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    Onay Bekliyor
 
-                                    </p>
-                                </a>
+                                </p>
+                            </a>
 
-                            </li>
-                            <li class="nav-item">
-                                <a href="/Admin/SliceList/" class="nav-link">
-                                    <i class="nav-icon fas fa-copy"></i>
-                                    <p>
-                                        Dilimler
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Admin/SliceList/" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    Dilimler
 
-                                    </p>
-                                </a>
+                                </p>
+                            </a>
 
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-chart-pie"></i>
-                                    <p>
-                                        Grafikler
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="pages/charts/chartjs.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Grafik 1</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/charts/flot.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Grafik 2</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/charts/inline.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Grafik 3</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/charts/uplot.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Grafik 4</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/Login/LogOut/" class="nav-link">
-                                    <i class="nav-icon far fa-plus-square"></i>
-                                    <p>
-                                        Çıkış Yap
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Grafikler
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="pages/charts/chartjs.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Grafik 1</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/charts/flot.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Grafik 2</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/charts/inline.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Grafik 3</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/charts/uplot.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Grafik 4</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Login/LogOut/" class="nav-link">
+                                <i class="nav-icon far fa-plus-square"></i>
+                                <p>
+                                    Çıkış Yap
 
-                                    </p>
-                                </a>
+                                </p>
+                            </a>
 
-                            </li>
+                        </li>
 
-                        </ul>
+                    </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
