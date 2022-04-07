@@ -97,8 +97,13 @@ namespace DGC2.Controllers
             return RedirectToAction("WaitingApp", "Admin");
         }
 
-        public ActionResult CalendarList(int id)
+        public ActionResult CalendarList(int id,Calendar p)
         {
+
+
+        
+
+
             var deger1 = c.Slices.Count();
             if (deger1 == 0)
             {
@@ -168,15 +173,35 @@ namespace DGC2.Controllers
             var deger3 = c.Slices.Where(c => c.SliceStatus == true).Select(x => x.SlicesID).FirstOrDefault();
             ViewBag.d3 = deger3;
 
-            var curt = cl.GetList().Where(c => c.SlicesID == deger3).OrderByDescending(c => c.CLStartDate);
+            var idDizi = cl.GetList().Where(c => c.SlicesID == deger3).OrderByDescending(c => c.CLStartDate);
 
+            var dizi = cl.GetList();
 
-            foreach (var item in curt)
+            foreach (var item in idDizi)
             {
 
             }
             cl.CalendarUpdate(p);
             return RedirectToAction("SliceList","Admin");
+        }
+
+
+
+
+
+        public ActionResult DeleteCalendar(int id,Calendar p)
+        {
+            var test = p.CLSlice;
+            var diziliste = new[] { c.Calendars.Where(c => c.CLSlice == test).Where(x => x.SlicesID == p.SlicesID).Select(y => y.CalendarID).FirstOrDefault() };
+            var calendarvalue = cl.GetByID(id);
+            foreach (var item in diziliste)
+            {
+                
+
+               
+            }
+            cl.CalendarDelete(p);
+            return RedirectToAction("Index");
         }
 
         Context c = new Context();
