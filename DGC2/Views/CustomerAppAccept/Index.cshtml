@@ -26,49 +26,53 @@
     int greensmallbox = 0;
     int yellowsmallbox = 0;
     int redsmallbox = 0;
-}
-@foreach (var item in Model)
-{
-    if (item.AppointmentTrackStatus == 1)
-    {
-        bluebox++;
-    }
-    if (item.AppointmentTrackStatus == 4)
-    {
-        greenbox++;
-    }
-    if (item.AppointmentTrackStatus == 7)
-    {
 
-        redbox++;
+    var dt = DateTime.Now;
+    DateTime today = DateTime.Parse(dt.ToLongDateString());
+    string dtst = today.ToString("dd MMMM");
     }
-    if (item.AppointmentTrackStatus == 3)
+    @foreach (var item in Model)
     {
-        yellowbox++;
-    }
+        if (item.AppointmentTrackStatus == 1  && item.AppStartDate == dtst)
+        {
+            bluebox++;
+        }
+        if (item.AppointmentTrackStatus == 4 && item.AppStartDate == dtst)
+        {
+            greenbox++;
+        }
+        if (item.AppointmentTrackStatus == 7 && item.AppStartDate == dtst)
+        {
 
-    if (item.AppointmentTrackStatus == 4)
-    {
-        darksmallbox++;
-    }
-    if (item.AppointmentTrackStatus == 8)
-    {
-        bluesmallbox++;
-    }
-    if (item.AppointmentTrackStatus == 9)
-    {
-        yellowsmallbox++;
-    }
-    if (item.AppointmentTrackStatus == 10)
-    {
-        greensmallbox++;
-    }
-    if (item.AppointmentTrackStatus == 5)
-    {
-        redsmallbox++;
-    }
+            redbox++;
+        }
+        if (item.AppointmentTrackStatus == 3 && item.AppStartDate == dtst)
+        {
+            yellowbox++;
+        }
 
-}
+        if (item.AppointmentTrackStatus == 4)
+        {
+            darksmallbox++;
+        }
+        if (item.AppointmentTrackStatus == 8)
+        {
+            bluesmallbox++;
+        }
+        if (item.AppointmentTrackStatus == 9)
+        {
+            yellowsmallbox++;
+        }
+        if (item.AppointmentTrackStatus == 10)
+        {
+            greensmallbox++;
+        }
+        if (item.AppointmentTrackStatus == 5)
+        {
+            redsmallbox++;
+        }
+
+    }
 <br />
 
 <body>
@@ -197,7 +201,10 @@
             <a href="/CustomerAppAccept/CanceledAppoinments/" class="small-box-footer">Detaylara Git <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
-    -
+    
+
+
+    
 
     <div class="card">
         <div class="card-header">
@@ -281,7 +288,6 @@
 <script src="~/AdminLTE/plugins/jquery-mapael/maps/usa_states.min.js"></script>-->
 <!-- ChartJS -->
 <!--<script src="~/AdminLTE/plugins/chart.js/Chart.min.js"></script>-->
-
 <!-- AdminLTE for demo purposes -->
 <!--<script src="~/AdminLTE/dist/js/demo.js"></script>-->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->

@@ -102,7 +102,9 @@ namespace DGC2.Controllers
             var appvalue = am.GetByID(id);
             var calappid = am.GetByID(id).CalendarID;
             appvalue.AppointmentTrackStatus = 4;
+            appvalue.AppClickTime = DateTime.Now;
             am.AppointmentUpdate(appvalue);
+            
             /* Randevu Alanı */
 
             /* Takvim Alanı */
@@ -115,7 +117,7 @@ namespace DGC2.Controllers
             {
                 calappvalue.CLPalletCapacity += appvalue.AppointmentCapacity;
             }
-
+            
             cm.CalendarUpdate(calappvalue);
             /* Takvim Alanı */
 
@@ -128,6 +130,7 @@ namespace DGC2.Controllers
             //var calid = am.GetByID(id).CalendarID;
             ViewBag.d = appvalue.AppointmentID;
             appvalue.AppointmentTrackStatus = 7;
+            appvalue.AppClickTime = DateTime.Now;
             /* Randevu Alanı */
 
             /* Takvim Alanı */
@@ -233,6 +236,7 @@ namespace DGC2.Controllers
         {
             var yescancel = am.GetByID(id);
             yescancel.AppointmentTrackStatus = 11;
+            yescancel.AppClickTime = DateTime.Now;
             am.AppointmentUpdate(yescancel);
             return RedirectToAction("Appointments");
         }
@@ -240,6 +244,7 @@ namespace DGC2.Controllers
         {
             var nocancel = am.GetByID(id);
             nocancel.AppointmentTrackStatus = 6;
+            nocancel.AppClickTime = DateTime.Now;
             am.AppointmentUpdate(nocancel);
             return RedirectToAction("Appointments");
         }

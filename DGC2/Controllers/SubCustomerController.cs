@@ -17,12 +17,12 @@ namespace DGC2.Controllers
     public class SubCustomerController : Controller
     {
         // GET: SubCustomer
-        
+
         SubCustomerManager scm = new SubCustomerManager(new EfSubCustomerDal());
         AppointmentManager apm = new AppointmentManager(new EfAppointmentDal());
         CalendarManager cm = new CalendarManager(new EfCalendarDal());
         DriverManager dm = new DriverManager(new EfDriverDal());
-        
+
 
         [Authorize]
         public ActionResult Index(string p)
@@ -34,7 +34,7 @@ namespace DGC2.Controllers
             //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
             var graphicResult = apm.GetBySubCustomerID(subCustomerInfo);
             return View(graphicResult);
-            
+
         }
         [HttpGet]
         public ActionResult AddDriver()
@@ -47,7 +47,7 @@ namespace DGC2.Controllers
         [HttpPost]
         public ActionResult AddDriver(Driver p, Appointment ps)
         {
-            
+
             p.DriverName = "Mahmut";
             //p.DriverSurname = "Özcan";
             p.DriverNumber = "321321321";
@@ -92,7 +92,7 @@ namespace DGC2.Controllers
         //    return RedirectToAction("Index");
         //}
 
-        
+
         public ActionResult WaitingListAppoinment(string p)
         {
             p = (string)Session["SubCustomerUsername"];
@@ -101,7 +101,7 @@ namespace DGC2.Controllers
 
             //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
             var listappoinment = apm.GetBySubCustomerID(subCustomerInfo);
-            
+
             return View(listappoinment);
 
         }
@@ -113,7 +113,7 @@ namespace DGC2.Controllers
 
             //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
             var listappoinment = apm.GetBySubCustomerID(subCustomerInfo);
-            
+
             return View(listappoinment);
 
         }
@@ -137,7 +137,7 @@ namespace DGC2.Controllers
 
                 p.AppointmentTrackStatus = 20;
             }
-            
+
             p.AppointmentStatus = false;
             apm.AppointmentUpdate(p);
             return RedirectToAction("AppliedListAppoinment");
@@ -173,15 +173,15 @@ namespace DGC2.Controllers
             return RedirectToAction("AppliedListAppoinment");
         }
 
-        
+
         [HttpGet]
-        public ActionResult EditNotAppliedAppointment(int id )
+        public ActionResult EditNotAppliedAppointment(int id)
         {
             var subcustomervalue = apm.GetByID(id);
             var idvalue = subcustomervalue.AppointmentID;
             TempData["OldSlice"] = subcustomervalue.AppSlice;
             TempData["OldStartDate"] = subcustomervalue.AppStartDate;
-            
+
             TempData["OldCalendarID"] = subcustomervalue.CalendarID;
             var editDateTime = subcustomervalue.AppStartDate;
             DateTime NewDT = Convert.ToDateTime(editDateTime);
@@ -189,7 +189,7 @@ namespace DGC2.Controllers
             ViewBag.parsedDateTime = parsedDateTime.ToString("yyyy-MM-dd");
 
             ViewBag.editnot = subcustomervalue.AppSlice;
-            
+
             List<SelectListItem> valuecm = (from x in cm.GetList()
                                             select new SelectListItem
                                             {
@@ -211,25 +211,25 @@ namespace DGC2.Controllers
             DateTime stdate = Convert.ToDateTime(p.AppStartDate);
             DateTime dt = DateTime.Parse(stdate.ToLongDateString());
             string searchdate = dt.ToString("dd MMMM");
-           
-            var newcalendarid = c.Calendars.Where(c => c.CLStartDate == searchdate && c.CLSlice == p.AppSlice).Select(c=>c.CalendarID).FirstOrDefault();
+
+            var newcalendarid = c.Calendars.Where(c => c.CLStartDate == searchdate && c.CLSlice == p.AppSlice).Select(c => c.CalendarID).FirstOrDefault();
 
             if (oldStartDate != p.AppStartDate) // Gün Değişirse
             {
                 p.CalendarID = newcalendarid;
                 var newcl = cm.GetByID(newcalendarid);
-                if(p.AppointmentLoadType =="Dökme")
+                if (p.AppointmentLoadType == "Dökme")
                 {
                     oldAppCalendarID.CLDailyAmount -= p.AppointmentCapacity;
                     newcl.CLDailyAmount += p.AppointmentCapacity;
 
                 }
-                else if(p.AppointmentLoadType =="Palet")
+                else if (p.AppointmentLoadType == "Palet")
                 {
                     oldAppCalendarID.CLDailyPaletAmount -= p.AppointmentCapacity;
                     newcl.CLPalletCapacity += p.AppointmentCapacity;
                 }
-                
+
                 p.AppStartDate = dt.ToString("dd MMMM");
                 cm.CalendarUpdate(oldAppCalendarID);
                 cm.CalendarUpdate(newcl);
@@ -237,7 +237,7 @@ namespace DGC2.Controllers
             }
             else if (oldSlice != p.AppSlice) // Dilim Değişirse
             {
-                var newslice = c.Calendars.Where(c=>c.CLSlice == p.AppSlice).Select(c => c.CalendarID).FirstOrDefault();
+                var newslice = c.Calendars.Where(c => c.CLSlice == p.AppSlice).Select(c => c.CalendarID).FirstOrDefault();
                 var justslice = cm.GetByID(newslice);
                 p.CalendarID = newslice;
 
@@ -245,8 +245,8 @@ namespace DGC2.Controllers
                 {
                     oldAppCalendarID.CLDailyAmount -= p.AppointmentCapacity;
                     justslice.CLDailyAmount += p.AppointmentCapacity;
-                   
-                    
+
+
                 }
                 else if (p.AppointmentLoadType == "Palet")
                 {
@@ -256,8 +256,8 @@ namespace DGC2.Controllers
                 cm.CalendarUpdate(oldAppCalendarID);
                 cm.CalendarUpdate(justslice);
             }
-            else if (oldStartDate !=p.AppStartDate 
-                &&   oldSlice != p.AppSlice ) // Dilim ve Gün Değişirse
+            else if (oldStartDate != p.AppStartDate
+                && oldSlice != p.AppSlice) // Dilim ve Gün Değişirse
             {
 
                 p.CalendarID = newcalendarid;
@@ -274,14 +274,14 @@ namespace DGC2.Controllers
                     newcl.CLPalletCapacity += p.AppointmentCapacity;
                 }
 
-                
+
                 p.CalendarID = newcalendarid;
                 p.AppStartDate = dt.ToString("dd MMMM");
 
                 cm.CalendarUpdate(oldAppCalendarID);
                 cm.CalendarUpdate(newcl);
             }
-           
+
             //p.CalendarID = newcalendartime;
             //DateTime dt = DateTime.Now;
             //dt = DateTime.Parse(p.AppStartDate.ToString());
@@ -289,7 +289,7 @@ namespace DGC2.Controllers
             //var newvalue = c.Calendars.Where(x => x.CLSlice == curt);
 
             apm.AppointmentUpdate(p);
-           
+
             return RedirectToAction("WaitingListAppoinment");
         }
 
@@ -302,7 +302,7 @@ namespace DGC2.Controllers
 
             //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
             var canceledappoinment = apm.GetBySubCustomerID(subCustomerInfo);
-            
+
             return View(canceledappoinment);
 
         }
@@ -314,7 +314,7 @@ namespace DGC2.Controllers
 
             //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
             var appliedappoinment = apm.GetBySubCustomerID(subCustomerInfo);
-            
+
             return View(appliedappoinment);
 
         }
@@ -327,7 +327,7 @@ namespace DGC2.Controllers
 
             //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
             var finishedappoinment = apm.GetBySubCustomerID(subCustomerInfo);
-            
+
             return View(finishedappoinment);
 
         }
@@ -364,7 +364,7 @@ namespace DGC2.Controllers
 
             //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
             var cancelChangeList = apm.GetBySubCustomerID(subCustomerInfo);
-            
+
             return View(cancelChangeList);
         }
 
@@ -396,7 +396,7 @@ namespace DGC2.Controllers
 
         }
         [HttpPost]
-        public ActionResult AddAppoinment(Appointment p, Driver d,string a)
+        public ActionResult AddAppoinment(Appointment p, Driver d, string a)
         {
 
             a = (string)Session["SubCustomerUsername"];
@@ -410,7 +410,7 @@ namespace DGC2.Controllers
             p.AppStartDate = (string)TempData["mydatetime"];
             p.AppStartHour = (string)TempData["myhour"] + " - " + TempData["myhourfinish"];
             p.AppSlice = (int)TempData["myslice"];
-            
+
             int asd = (int)TempData["allcalendardata"];
 
             var allcalendar = cm.GetByID(asd);
@@ -454,7 +454,7 @@ namespace DGC2.Controllers
                 d.DriverPlate = p.AppDriverPlate;
                 d.DriverLogisticName = p.AppDriverLogisticName;
                 d.DriverStatus = true;
-                 dm.DriverAdd(d);
+                dm.DriverAdd(d);
             }
 
             if (p.AppointmentTrackStatus == 0)
@@ -522,37 +522,80 @@ namespace DGC2.Controllers
             var today = DateTime.Now;
             var tomorrow = today.AddDays(p - 1);
 
-            
+
 
 
             ViewBag.pshow = tomorrow;
 
 
+
+            //DateTime dt = DateTime.Parse(stdate.ToLongDateString());
+            //string searchdate = dt.ToString("dd MMMM");
             //var calenderresult = cm.GetList();
             //var TODAY = DateTime.Now;
             //int j = 0;
 
-            //for (int i = 1; i <= 6; i++)
+
+            
+            TimeSpan finishtime = TimeSpan.Parse("11:00"); // 24 PM
+            TimeSpan now = DateTime.Now.TimeOfDay;
+            var curt = cm.GetList().Where(c => c.SlicesID == deger3).OrderByDescending(c => c.CLStartDate).ToPagedList(p, deger4);
+
+            //if (now > finishtime)
             //{
-            //var today = DateTime.Now.AddDays(i - 1);
-            //    var TOMORROW = TODAY;
+            //var thisday = DateTime.Now;
+            //var tmrday = thisday;
+            //tmrday = tmrday.AddDays(0);
+            int j = 1;
+            //for (int i = 1; i <= deger4; i++)
+            //{
+            var newcurt = cm.GetList();
+            //for (int i = 1; i <= 4; i++)
+            //{
+            //    var thisday = DateTime.Now.AddDays(i - 1);
+            //    var TOMORROW = today;
             //    TOMORROW = TOMORROW.AddDays(0);
-            //    foreach (var item in calenderresult)
+            //    var newdt = DateTime.Parse(TOMORROW.ToLongDateString());
+            //    foreach (var item in newcurt)
             //    {
             //        if (j == 4)
             //        {
             //            TOMORROW = TOMORROW.AddDays(1);
-            //            j = 0;
+            //            j = 1;
             //        }
-            //        item.CLStartDate = TOMORROW;
+            //        item.CLStartDate = TOMORROW.ToString("dd MMMM");
             //        cm.CalendarUpdate(item);
             //        j++;
+            //    }
+            //}
 
-            //    //}
+            //for (int i = 0; i <= 4; i++)
+            //{
+            var thisday = DateTime.Now;
+             var tmrday = today;
+            int k = 1;
+            foreach (var item in newcurt)
+            {
+                if (k > deger4)
+                {
+
+                    tmrday = tmrday.AddDays(1);
+                    k = 1;
+                }
+                var newdt = DateTime.Parse(tmrday.ToLongDateString());
+                item.CLStartDate = newdt.ToString("dd MMMM");
+                cm.CalendarUpdate(item);
+                k++;
+                
+
+            }
+            //}
+
 
             //}
-          
-            var curt = cm.GetList().Where(c => c.SlicesID == deger3).OrderByDescending(c => c.CLStartDate).ToPagedList(p, deger4);
+
+
+            //}
             return View(curt);
         }
 

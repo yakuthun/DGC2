@@ -17,18 +17,20 @@
     int greensmallbox = 0;
     int yellowsmallbox = 0;
     int redsmallbox = 0;
+
+    
 }
 @foreach (var item in Model)
 {
-    if (item.AppointmentTrackStatus == 1)
+    if (item.AppointmentTrackStatus == 1 )
     {
         bluebox++;
     }
-    if (item.AppointmentTrackStatus == 4)
+    if (item.AppointmentTrackStatus == 4 )
     {
         greenbox++;
     }
-    if (item.AppointmentTrackStatus == 7)
+    if (item.AppointmentTrackStatus == 7 )
     {
         yellowbox++;
     }
