@@ -27,6 +27,9 @@ namespace DGC2.Controllers
             var subCustomerInfo = c.Customers.Where(x => x.CustomerUsername == p).Select(x => x.CustomerID).FirstOrDefault();
 
             //var graphicresult = apm.GetList().Where(x=>x.SubCustomerID == subCustomerInfo);
+
+            var arrayOfValues = csm.GetList();
+            ViewBag.arrayOfValues = arrayOfValues;
             var graphicvalue = am.GetBySubCustomer(subCustomerInfo);
             
             return View(graphicvalue);   
@@ -377,6 +380,19 @@ namespace DGC2.Controllers
             var uservalue = um.GetByID(id);
             um.UserDelete(uservalue);
             return RedirectToAction("UserList");
+        }
+
+        public ActionResult pieChartDeneme(string p)
+        {
+            p = (string)Session["CustomerUsername"];
+            Context c = new Context();
+            var subCustomerInfo = c.Customers.Where(x => x.CustomerUsername == p).Select(x => x.CustomerID).FirstOrDefault();
+
+
+            var calendarvalues = um.GetListUserByID(subCustomerInfo);
+            //TempData["CustomerID"] = id;
+            //ViewBag.customerid = id;
+            return View(calendarvalues);
         }
     }
 
