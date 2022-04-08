@@ -264,7 +264,7 @@
                                         }
                                         else
                                         {
-                                            if (now < finishtime)
+                                            if (now > finishtime)
                                             {
                                                 
                                                     @Html.ActionLink("Randevu Talep Et", "AddAppoinment", "SubCustomer", new { myslice= item.CLSlice, myhour = item.CLStartHour, myhourfinish = item.CLFinishDate, mydatetime = ((DateTime)ViewBag.pshow).ToString("dd MMMM"), id = item.CalendarID }, new { @class = "btn btn-success" })

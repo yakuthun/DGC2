@@ -132,7 +132,7 @@ namespace DGC2.Controllers
             var appvalue = am.GetByID(id);
             //var calid = am.GetByID(id).CalendarID;
             ViewBag.d = appvalue.AppointmentID;
-            appvalue.AppointmentTrackStatus = 7;
+            appvalue.AppointmentTrackStatus = 11;
             appvalue.AppClickTime = DateTime.Now;
             /* Randevu Alanı */
 
@@ -259,9 +259,13 @@ namespace DGC2.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddSubCustomer(SubCustomer p)
+        public ActionResult AddSubCustomer(SubCustomer m, string p)
         {
-            csm.SubCustomerAdd(p);
+            p = (string)Session["CustomerUsername"];
+            Context c = new Context();
+            var CustomerInfo = c.Customers.Where(x => x.CustomerUsername == p).Select(x => x.CustomerID).FirstOrDefault();
+            m.CustomerID = CustomerInfo;
+            csm.SubCustomerAdd(m);
             return RedirectToAction("SubCustomerList");
         }
         [HttpGet]
