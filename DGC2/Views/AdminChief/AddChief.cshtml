@@ -5,22 +5,23 @@
 }
 
 <h2>Şef Ekle</h2>
-
+<a href="/AdminChief/Index/" class="closepopup"><i class="fas fa-minus-circle"></i></a>
 @using (Html.BeginForm("AddChief", "AdminChief", FormMethod.Post))
 {
     <div class="form-group">
         @Html.Label("Adı")
-        @Html.TextAreaFor(x => x.ChiefName, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.ChiefName, new { @class = "form-control" })
         @Html.Label("Soyadı")
-        @Html.TextAreaFor(x => x.ChiefSurname, new { @class = "form-control" }) 
+        @Html.TextBoxFor(x => x.ChiefSurname, new { @class = "form-control" }) 
         @Html.Label("Rol")
-        @Html.TextAreaFor(x => x.ChiefRole, new { @class = "form-control" })
-        @Html.Label("Şube No")
-        @Html.TextAreaFor(x => x.BranchNo, new { @class = "form-control" })
+        @Html.DropDownListFor(x => x.ChiefRole, new[] { new SelectListItem { Value = "A", Text = "Operasyon" }, new SelectListItem { Value = "B", Text = "Güvenlik" } }, "Seçim Yapınız", new { @class = "form-control" })
+        @*@Html.Label("Şube No")
+        @Html.TextBoxFor(x => x.BranchNo, new { @class = "form-control" })*@
         @Html.Label("Kullanıcı Adı")
-        @Html.TextAreaFor(x => x.ChiefUsername, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.ChiefUsername, new { @class = "form-control" })
         @Html.Label("Şifre")
-        @Html.TextAreaFor(x => x.ChiefPassword, new { @class = "form-control" })
-        <button class="btn btn-primary">Oluştur</button>
+        @Html.TextBoxFor(x => x.ChiefPassword, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary btn-lg btn-block">Oluştur</button>
      </div>
 }

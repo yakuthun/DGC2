@@ -60,8 +60,16 @@ namespace DGC2.Controllers
         }
 
 
-        public ActionResult DeleteAdmin(int id)
+        public ActionResult DeleteAdmin(int id, Admin p)
         {
+            if (p.AdminRole == "B")
+            {
+               
+            }
+            else
+            {
+
+            }
             var adminvalue = am.GetByID(id);
             am.AdminDelete(adminvalue);
             return RedirectToAction("Index");
@@ -100,10 +108,6 @@ namespace DGC2.Controllers
         public ActionResult CalendarList(int id,Calendar p)
         {
 
-
-        
-
-
             var deger1 = c.Slices.Count();
             if (deger1 == 0)
             {
@@ -115,8 +119,6 @@ namespace DGC2.Controllers
                 //ViewBag.d5 = toplamdilim;
             }
           
-
-
 
             var onemli = cl.GetListByID(id);
             TempData["SliceID"] = id;
@@ -160,6 +162,7 @@ namespace DGC2.Controllers
             //cl.CalendarAdd(p);
             return RedirectToAction("SliceList", "Admin");
         }
+
         [HttpGet]
         public ActionResult EditCalendar(int id)
         {
@@ -167,21 +170,24 @@ namespace DGC2.Controllers
             var calendarvalue = cl.GetByID(id);
             return View(calendarvalue);
         }
+
         [HttpPost]
-        public ActionResult EditCalendar(Calendar p)
+        public ActionResult EditCalendar(Calendar p,int id)
         {
-            var deger3 = c.Slices.Where(c => c.SliceStatus == true).Select(x => x.SlicesID).FirstOrDefault();
-            ViewBag.d3 = deger3;
+            var clvalue = cl.GetByID(id);
 
-            var idDizi = cl.GetList().Where(c => c.SlicesID == deger3).OrderByDescending(c => c.CLStartDate);
+            var clslice = clvalue.CLSlice;
+            var slices = clvalue.SlicesID;
+            
+            var cart = cl.GetList().Where(x => x.CLSlice == clslice && x.SlicesID == slices);
 
-            var dizi = cl.GetList();
-
-            foreach (var item in idDizi)
+            foreach (var item in cart)
             {
 
+                cl.CalendarUpdate(item);
+
             }
-            cl.CalendarUpdate(p);
+          
             return RedirectToAction("SliceList","Admin");
         }
 
@@ -197,8 +203,7 @@ namespace DGC2.Controllers
 
             var clslice = clvalue.CLSlice;
             var slices = clvalue.SlicesID;
-           // var diziliste = new[] { c.Calendars.Where(c => c.CLSlice == test).Where(x => x.SlicesID == p.SlicesID).Select(y => y.CalendarID).FirstOrDefault() };
-           // var calendarvalue = cl.GetByID(id);
+
 
             var cart = cl.GetList().Where(x => x.CLSlice == clslice && x.SlicesID == slices);
             
@@ -208,7 +213,6 @@ namespace DGC2.Controllers
                 cl.CalendarDelete(item);
                
             }
-            //cl.CalendarDelete(p);
             
             return RedirectToAction("Index");
         }

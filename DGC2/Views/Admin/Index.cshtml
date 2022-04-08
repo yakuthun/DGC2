@@ -48,23 +48,35 @@
                 @foreach (var item in Model)
                 {
 
+                    if (item.AdminRole == "A" || item.AdminRole == "B")
+                    {
+                        <tr>
+                            <td>@item.AdminID</td>
+                            <td>
+                                @item.AdminUsername
+                            </td>
+                            <td>@item.AdminMail</td>
+                            <td>@item.AdminPassword</td>
 
-                <tr>
-                    <td>@item.AdminID</td>
-                    <td>
-                        @item.AdminUsername
-                    </td>
-                    <td>@item.AdminMail</td>
-                    <td>@item.AdminPassword</td>
+                            <td>
+                            @if (@item.AdminRole == "A")
+                            {
+                                <p>Yönetici</p>
+                            }
+                            else
+                            {
+                                <p>Görüntüleyici</p>
+                            }
+                            </td>
 
-                    <td>@item.AdminRole</td>
+                            <td style="text-align:center;">
+                                <a href="/Admin/EditAdmin/@item.AdminID" class="btn btn-success"><i class="fas fa-edit"></i> Düzenle</a>
 
-                    <td style="text-align:center;">
-                        <a href="/Admin/EditAdmin/@item.AdminID" class="btn btn-success"><i class="fas fa-edit"></i> Düzenle</a>
+                            </td>
+                            <td> <a href="/Admin/DeleteAdmin/@item.AdminID" class="btn btn-danger"><i class="fas fa-trash"></i> Sil</a></td>
+                        </tr>
+                    }
 
-                    </td>
-                    <td> <a href="/Admin/DeleteAdmin/@item.AdminID" class="btn btn-danger"><i class="fas fa-trash"></i> Sil</a></td>
-                </tr>
 
                 }
             </tbody>

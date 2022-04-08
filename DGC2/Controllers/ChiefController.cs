@@ -128,8 +128,6 @@ namespace DGC2.Controllers
         public ActionResult EditAppointment(int id, Appointment p)
         {
             ViewBag.d = id;
-           
-           
             var appvalues = am.GetByID(id);
             ViewBag.trackstatus = appvalues.AppointmentTrackStatus;
             ViewBag.imagecontent = appvalues.AppointmentImage;
@@ -297,12 +295,12 @@ namespace DGC2.Controllers
             return RedirectToAction("EditInChiefAppointment", "Chief", new { id = id });
         }
         // 9 - GELDİ VE İNDİRİLDİ
-        public ActionResult InComingAndDownloading()
-        {
-            var appointmentvalue = am.GetList();
+        //public ActionResult InComingAndDownloading()
+        //{
+        //    var appointmentvalue = am.GetList();
 
-            return View(appointmentvalue);
-        }
+        //    return View(appointmentvalue);
+        //}
 
         // 10 - TAMAMLANAN
         public ActionResult Completed(int id, Appointment p)

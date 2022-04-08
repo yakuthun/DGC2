@@ -206,18 +206,29 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
+    with font-awesome or any other icon font library -->
                         @*<li style="margin-bottom:5%">
-                                <a href="/CustomerAppAccept/AddSubCustomer" class="nav-link">
-                                    <p class="btn btn-success" style="padding-right:42%; padding-bottom:5%; padding-top:5%;">
-                                        Tedarikçi Girişi
-                                    </p>
-                                </a>
-                            </li>*@
+            <a href="/CustomerAppAccept/AddSubCustomer" class="nav-link">
+                <p class="btn btn-success" style="padding-right:42%; padding-bottom:5%; padding-top:5%;">
+                    Tedarikçi Girişi
+                </p>
+            </a>
+        </li>*@
 
                         <li class="nav-item">
+                            <a href="/CustomerAppAccept/Index/" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    Ana Sayfa
+
+                                </p>
+                            </a>
+
+
+                        </li>
+                        <li class="nav-item">
                             <a href="/CustomerAppAccept/UserList/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Kullanıcılar
 
@@ -229,7 +240,7 @@
 
                         <li class="nav-item">
                             <a href="/CustomerAppAccept/SubCustomerList/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fas fa-truck"></i>
                                 <p>
                                     Tedarikçiler
 
@@ -237,21 +248,10 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="/CustomerAppAccept/Index/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Ana Sayfa
-
-                                </p>
-                            </a>
-
-
-                        </li>
 
                         <li class="nav-item">
                             <a href="/CustomerAppAccept/WaitingAppointments/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fas fa-spinner"></i>
                                 <p>
                                     Onay Bekleyen Randevu
 
@@ -262,7 +262,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="/CustomerAppAccept/Appointments/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fas fa-check-circle"></i>
                                 <p>
                                     Onaylanan Randevu
 
@@ -274,7 +274,7 @@
 
                         <li class="nav-item">
                             <a href="/CustomerAppAccept/FinishedAppointments/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fas fa-th-list"></i>
                                 <p>
                                     Tamamlanan Randevu
 
@@ -290,7 +290,7 @@
 
                         <li class="nav-item">
                             <a href="/CustomerAppAccept/CanceledAppoinments/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fas fa-ban"></i>
                                 <p>
                                     İptal Edilen Randevu
 
@@ -301,19 +301,19 @@
                         </li>
 
                         @*<li class="nav-item">
-                                <a href="/CustomerAppAccept/WantsChangeAppoinments/" class="nav-link">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        Değişiklik Talebi
+            <a href="/CustomerAppAccept/WantsChangeAppoinments/" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    Değişiklik Talebi
 
-                                    </p>
-                                </a>
+                </p>
+            </a>
 
 
-                            </li>*@
+        </li>*@
                         <li class="nav-item">
                             <a href="/CustomerAppAccept/AppliedWantsCancelAppointments/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fas fa-exclamation"></i>
                                 <p>
                                     İptal Talepleri
 
@@ -324,23 +324,23 @@
                         </li>
 
                         @*<li class="nav-item">
-                                <a href="/CustomerAppAccept/CanceledAfterChangedAppointments/" class="nav-link">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        İptal Değişenler
+            <a href="/CustomerAppAccept/CanceledAfterChangedAppointments/" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    İptal Değişenler
 
-                                    </p>
-                                </a>
+                </p>
+            </a>
 
 
-                            </li>*@
+        </li>*@
 
 
 
 
                         <li class="nav-item">
                             <a href="/Login/LogOut/" class="nav-link">
-                                <i class="nav-icon far fa-plus-square"></i>
+                                <i class="nav-icon fas fa-sign-in-alt"></i>
                                 <p>
                                     Çıkış Yap
 

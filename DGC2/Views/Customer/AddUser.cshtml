@@ -14,24 +14,24 @@
 
     @Html.HiddenFor(x => x.UserID, new { @class = "form-control" })
     @Html.Label("Kullanıcı Adı")
-    @Html.TextAreaFor(x => x.UserUsername, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.UserUsername, new { @class = "form-control" })
     @Html.Label("Şifre")
-    @Html.TextAreaFor(x => x.UserPassword, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.UserPassword, new { @class = "form-control" })
     @Html.HiddenFor(x => x.UserCreatedPassword, new { @class = "form-control" })
     @Html.Label("Mail")
-    @Html.TextAreaFor(x => x.UserMail, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.UserMail, new { @class = "form-control" })
     @Html.Label("Telefon")
-    @Html.TextAreaFor(x => x.UserTel, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.UserTel, new { @class = "form-control" })
     @Html.Label("Statü")
-    @Html.TextAreaFor(x => x.UserStatus, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.UserStatus, new { @class = "form-control" })
     @Html.Label("Rol")
-    @Html.TextAreaFor(x => x.UserRole, new { @class = "form-control" })
-    @Html.Label("Müşteri ID")
+    @Html.TextBoxFor(x => x.UserRole, new { @class = "form-control" })
+    @*@Html.Label("Müşteri ID")*@
     @*@Html.TextAreaFor(x => x.CustomerID, new { @class = "form-control" })*@
-    <br />
+    
 
-    <input type="text" name="CustomerID" value="@ViewBag.t" class="form-control" readonly />
-    <button class="btn btn-info">Oluştur</button>
+    <input type="text" name="CustomerID" value="@ViewBag.t" class="form-control" readonly style="visibility:hidden" />
+    <button class="btn btn-primary btn-lg btn-block">Oluştur</button>
 </div>
 
 }

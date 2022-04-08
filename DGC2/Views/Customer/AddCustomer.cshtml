@@ -11,31 +11,31 @@
 {
     <div class="form-group">
         @Html.Label("Firma Adı")
-        @Html.TextAreaFor(x => x.CompanyName, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.CompanyName, new { @class = "form-control" })
         @Html.Label("Firma Kodu")
-        @Html.TextAreaFor(x => x.CompanyCode, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.CompanyCode, new { @class = "form-control" })
         @Html.Label("Vergi Numarası")
-        @Html.TextAreaFor(x => x.TaxNO, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.TaxNO, new { @class = "form-control" })
         @Html.Label("Vergi Dairesi")
-        @Html.TextAreaFor(x => x.TaxDepartment, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.TaxDepartment, new { @class = "form-control" })
         @Html.Label("Sektör")
-        @Html.TextAreaFor(x => x.Sector, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.Sector, new { @class = "form-control" })
         @*@Html.Label("Giriş Zamanı")
             @Html.TextAreaFor(x => x.CustomerStartDate, new { @class = "form-control" })
             @Html.Label("Çıkış Zamanı")
             @Html.TextAreaFor(x => x.CustomerFinishDate, new { @class = "form-control" })*@
         @Html.Label("Statü")
-        @Html.TextAreaFor(x => x.CustomerStatus, new { @class = "form-control" })
+        @Html.DropDownListFor(x => x.CustomerStatus, new[] { new SelectListItem { Value = "true", Text = "Aktif" }, new SelectListItem { Value = "false", Text = "Pasif" } }, new { @class = "form-control" })
         @Html.Label("Kullanıcı Adı")
-        @Html.TextAreaFor(x => x.CustomerUsername, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.CustomerUsername, new { @class = "form-control" })
         @Html.Label("Şifre")
-        @Html.TextAreaFor(x => x.CustomerPassword, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.CustomerPassword, new { @class = "form-control" })
         @Html.Label("Mail")
-        @Html.TextAreaFor(x => x.CustomernMail, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.CustomernMail, new { @class = "form-control" })
         @Html.Label("Telefon")
-        @Html.TextAreaFor(x => x.CustomerTel, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.CustomerTel, new { @class = "form-control" })
         <br />
-        <button class="btn btn-info">Oluştur</button>
+        <button class="btn btn-primary btn-lg btn-block">Oluştur</button>
     </div>
 
 }
