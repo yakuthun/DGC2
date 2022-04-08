@@ -111,8 +111,9 @@ namespace DGC2.Controllers
         {
             string fileName = DateTime.Now.ToString("dd-MM-yy hh-mm-ss");
             byte[] imageBytes = Convert.FromBase64String(data.Split(',')[1]);
-            string filePath = Server.MapPath(string.Format("~/Captures/{0}.jpg", fileName));
+            string filePath = Server.MapPath(string.Format("~/Views/Images/{0}.jpg", fileName));
             System.IO.File.WriteAllBytes(filePath, imageBytes);
+            
 
             var appvalue = am.GetByID(id);
             appvalue.AppointmentImage = filePath;
