@@ -14,15 +14,9 @@
 
             <div class="input-group input-group-sm" style="width: 150px;">
 
-                <a href="/Customer/AddCustomer/" class="btn btn-success">Müşteri Ekle</a>
+                <a href="/Customer/AddCustomer/" class="btn btn-primary">Müşteri Ekle</a>
 
           
-
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
             </div>
         </div>
     </div>
@@ -39,45 +33,45 @@
                     <th>Vergi Dairesi</th>
                     <th>Sektör</th>
                     @*<th>Giriş Zamanı</th>
-                    <th>Çıkış Zamanı</th>*@
-                    <th>Statü</th>
+        <th>Çıkış Zamanı</th>*@
+
                     <th>Kullanıcı Adı</th>
                     <th>Şifre</th>
                     <th>Mail</th>
                     <th>Telefon</th>
+                    <th>Statü</th>
 
 
+                    <th colspan="2" style="text-align:center">İşlem Yap</th>
 
-                    <th colspan="4" style="text-align:center">İşlem Yap</th>
-                    
                 </tr>
             </thead>
 
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <th>@item.CustomerID</th>
-                        <td>@item.CompanyName</td>
-                        <td>@item.CompanyCode</td>
+                <tr>
+                    <th>@item.CustomerID</th>
+                    <td>@item.CompanyName</td>
+                    <td>@item.CompanyCode</td>
 
-                        <td>@item.TaxNO</td>
-                        <td>@item.TaxDepartment</td>
-                        <td>@item.Sector</td>
-                        @*<td>@item.CustomerStartDate</td>
-                        <td>@item.CustomerFinishDate</td>*@
-                        <td>@Html.Raw(item.CustomerStatus == true ? "<span class='badge badge-success'>Aktif</span>" : "<span class='badge badge-danger'>Pasif</span>")</td>
-                        <td>@item.CustomerUsername</td>
-                        <td>@item.CustomerPassword</td>
-                        <td>@item.CustomernMail</td>
-                        <td>@item.CustomerTel</td>
+                    <td>@item.TaxNO</td>
+                    <td>@item.TaxDepartment</td>
+                    <td>@item.Sector</td>
+                    @*<td>@item.CustomerStartDate</td>
+        <td>@item.CustomerFinishDate</td>*@
 
-                        <td><a href="/Customer/EditCustomer/@item.CustomerID" class="btn btn-warning">Güncelle</a></td>
-                        <td><a href="#" class="btn btn-info">Bilgiler</a></td>
-                        <td><a href="/Customer/DeleteCustomer/@item.CustomerID" class="btn btn-danger">Sil</a></td>
-                        <td><a href="/Customer/UserList/@item.CustomerID" class="btn btn-success">Hesaplar</a></td>
+                    <td>@item.CustomerUsername</td>
+                    <td>@item.CustomerPassword</td>
+                    <td>@item.CustomernMail</td>
+                    <td>@item.CustomerTel</td>
+                    <td>@Html.Raw(item.CustomerStatus == true ? "<span class='badge badge-success'>Aktif</span>" : "<span class='badge badge-danger'>Pasif</span>")</td>
+                    <td><a href="/Customer/EditCustomer/@item.CustomerID" class="btn btn-success">Düzenle</a></td>
+                    @*<td><a href="#" class="btn btn-info">Bilgiler</a></td>*@
+                    @*<td><a href="/Customer/DeleteCustomer/@item.CustomerID" class="btn btn-danger">Sil</a></td>*@
+                    <td><a href="/Customer/UserList/@item.CustomerID" class="btn btn-primary">Alt Hesap</a></td>
 
-                    </tr>
+                </tr>
                 }
             </tbody>
         </table>

@@ -31,20 +31,37 @@
         <table id="example1" class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Müşteri</th>
-                    <th>Tedarikçi</th>
-                    <th>Kapasite</th>
-                    <th>Paket Tipi</th>
-                    <th>Sürücü</th>
-                    <th>Randevu Alış Tarihi</th>
-                    <th>Geldi</th>
-                    <th>İndiriliyor</th>
-                    <th>Tamamlandı</th>
-                    <th colspan="2">Durum</th>
-                   
-                  
+               
+                    <th>
+                        Firma
+                    </th>
+                    <th>
+                        Tedarikçi
+                    </th>
+
+
+                    <th>
+                        Ürün Cinsi
+                    </th>
+                    <th>
+                        Kap / Koli
+                    </th>
+
+                    <th>
+                        Dilim
+                    </th>
+
+                    <th>
+                        Plaka
+                    </th>
+
+
+
+
+
                 </tr>
+
+        
             </thead>
 
             <tbody>
@@ -54,23 +71,40 @@
                     if (item.AppointmentTrackStatus == 6)
                     {
 
-                        <tr>
-                            <td>@item.AppointmentID</td>
-                            <td>@item.SubCustomer.Customer.CompanyName</td>
-                            <td>@item.SubCustomer.SubCustomerCompany</td>
-                            <td>@item.AppointmentCapacity</td>
-                            <td>@item.AppointmentLoadType</td>
-                            @*<td>@item.Driver.DriverLogisticName</td>*@
+                <tr>
+                    <td style="font-size: 20px; font-weight:800">
+                       @item.SubCustomer.Customer.CompanyName
+                    </td>
+                    <td class="project-state" style="font-size: 18px; font-weight: 600">
+                       @item.SubCustomer.SubCustomerCompany
+                    </td>
 
-                            <td>@item.AppFinishDate</td>
-                            <td>@item.InComingDate</td>
-                            <td>@item.DownloadedDate</td>
-                            <td>@item.AppStartDate</td>
-                            <td>@item.AppointmentTrackStatus</td>
+                    <td class="project-state" style="font-size:18px; font-weight:600">
+                        @item.AppointmentName
+                    </td>
+                    <td>
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item" style="font-size: 24px; font-weight: 600;  ">
+                                @item.AppointmentCapacity
+                            </li>
+                        </ul>
+                    </td>
 
-                            <td><a href="/Admin/Canceled/@item.AppointmentID" class="btn btn-success">Onayla</a></td>
-                            <td><a href="/Admin/Completed/@item.AppointmentID" class="btn btn-danger">Reddet</a></td>
-                        </tr>
+
+                    <td class="project-state" style="font-size:22px; ">
+                        @item.Calendar.CLSlice.ToString()
+                    </td>
+
+                    <td class="project-state" style="font-size: 22px;  text-align: center">
+                        @item.AppDriverPlate
+                    </td>
+
+
+                  
+
+                    <td><a href="/Admin/Completed/@item.AppointmentID" class="btn btn-success">Onayla</a></td>
+                    <td><a href="/Admin/Canceled/@item.AppointmentID" class="btn btn-danger">Reddet</a></td>
+                </tr>
 
                     }
 

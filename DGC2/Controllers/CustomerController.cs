@@ -63,6 +63,7 @@ namespace DGC2.Controllers
              var calendarvalues = um.GetList();
             TempData["CustomerID"] = id;
             ViewBag.customerid = id;
+       
             return View(calendarvalues);
         }
 

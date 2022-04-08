@@ -32,12 +32,12 @@
         <table id="example2" class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Müşteri</th>
                     <th>Kullanıcı Adı</th>
                     <th>Şifre</th>
-                    <th>Mail ID</th>
+                    <th>Mail</th>
                     <th>Telefon</th>
-                    <th>Statü</th>
+                    @*<th>Statü</th>*@
                     <th>Rol</th>
                    
                     <th>Sil</th>
@@ -46,18 +46,18 @@
             </thead>
 
             <tbody>
-
+                
                 @foreach (var item in Model)
                 {
                     if (item.CustomerID == ViewBag.customerid)
                     {
                         <tr>
-                            <th>@item.UserID</th>
+                            <th>@item.Customer.CompanyName</th>
                             <th>@item.UserUsername</th>
                             <td>@item.UserPassword</td>
                             <td>@item.UserMail</td>
                             <td>@item.UserTel</td>
-                            <td>@item.UserStatus</td>
+                            @*<td>@item.UserStatus</td>*@
                             <td>@item.UserRole</td>
 
 

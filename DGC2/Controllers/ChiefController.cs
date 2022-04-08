@@ -111,8 +111,9 @@ namespace DGC2.Controllers
         {
             string fileName = DateTime.Now.ToString("dd-MM-yy hh-mm-ss");
             byte[] imageBytes = Convert.FromBase64String(data.Split(',')[1]);
-            string filePath = Server.MapPath(string.Format("~/Captures/{0}.jpg", fileName));
+            string filePath = Server.MapPath(string.Format("~/Views/Images/{0}.jpg", fileName));
             System.IO.File.WriteAllBytes(filePath, imageBytes);
+            
 
             var appvalue = am.GetByID(id);
             appvalue.AppointmentImage = filePath;
@@ -128,8 +129,6 @@ namespace DGC2.Controllers
         public ActionResult EditAppointment(int id, Appointment p)
         {
             ViewBag.d = id;
-           
-           
             var appvalues = am.GetByID(id);
             ViewBag.trackstatus = appvalues.AppointmentTrackStatus;
             ViewBag.imagecontent = appvalues.AppointmentImage;
@@ -297,12 +296,12 @@ namespace DGC2.Controllers
             return RedirectToAction("EditInChiefAppointment", "Chief", new { id = id });
         }
         // 9 - GELDİ VE İNDİRİLDİ
-        public ActionResult InComingAndDownloading()
-        {
-            var appointmentvalue = am.GetList();
+        //public ActionResult InComingAndDownloading()
+        //{
+        //    var appointmentvalue = am.GetList();
 
-            return View(appointmentvalue);
-        }
+        //    return View(appointmentvalue);
+        //}
 
         // 10 - TAMAMLANAN
         public ActionResult Completed(int id, Appointment p)
